@@ -41,7 +41,6 @@
 			<h2>Menu</h2>
 			<ul>
 				<li><a href="../index.html">Assignments</a></li>
-				<li><a href="../midtermproject.html">Midterm Project</a></li>
 				<li><a href="../finalproject.html">Final Project</a></li>
 				<li><a href="../about.html">About Me</a></li>
 			</ul>
@@ -50,61 +49,195 @@
 		<!-- Main -->
 		<div id="main">
 			<div class="inner">
-				<h1>Assignment 1, RTOS Introduction</h1>
+				<h1>Assignment 1, Introduction</h1>
 					<p>
-						In this session, the behavior of a system was translated into independent real-time tasks to support correct scheduling and safe multitasking design.
+						In this session, the behavior of a generative AI system was tested through highly structured prompts to understand its capabilities and limitations.
 					</p>
 
-					<h2>1. Activity goals</h2>
+					<h2>1. Activity Requirements</h2>
 					<p>
-						Identify logical FreeRTOS tasks from system behavior, even when no RTOS code is shown.
-						<br>Our main focus were the following aspects:
 						<ul>
-							<li>Timing requirements</li>
-							<li>Blocking behavior</li>
-							<li>Safety and criticality</li>
-							<li>Independent execution flows</li>
+							<li>Submit the signed syllabus for the week and place the signed syllabus on the Week 1 page.</li>
+							<li>Send the PDF of your signed syllabus to a selected classmate so they can compile it into a single file.</li>
+							<li>Create your personal pages on GitHub.</li>
+							<li>Write the address of your pages in <a href="https://docs.google.com/spreadsheets/d/1K19NMJWUl0Xz4gGL0zMCp6Fc3yzoC8mmfAGNCUIXeGc/edit?usp=sharing">This List</a>.</li>
+							<li>Choose an area of interest to develop your final project. If you already have a project, start expanding its possibilities.</li>
+							<li>Make a brief presentation of your SCAMPER exercise.</li>
 						</ul>
 					</p>
 
+					<h2>2. Generative AI Prompt Analysis</h2>
+                <p>
+                    Below is an analysis of the structured prompts used to test the AI. The system was guided through a progression of tasks: open ideation, strategic problem framing via role-play, and finally, a highly constrained SCAMPER exercise. 
+                </p>
 
-					<h2>2. Analysis</h2>
-					<p>
-						<table border="1" cellpadding="6" cellspacing="0">
-								<tbody><tr>
-									<th>Task Name</th>
-									<th>Trigger (Time/Event)</th>
-									<th>Periodic or Event-Based</th>
-									<th>Is it time critical?</th>
-									<th>Can it block safely?</th>
-									<th>What happens if its delayed?</th>
-									<th>Priority</th>
-								</tr>
-								<tr><td>Read temperature</td><td>Every 50 ms</td><td>Periodic</td><td>Yes</td><td>Non-blocking</td><td>Data loss</td><td>Medium</td></tr>
-								<tr><td>Send data</td><td>Every 2 s</td><td>Periodic</td><td>No</td><td>Non-blocking</td>	<td>Data loss or comms corruption</td><td>Medium</td></tr>
-								<tr><td>Monitor emergency button</td><td>Button pressed</td><td>Event-based</td><td>Yes</td><td>Non-blocking</td><td>Big boom-boom</td><td>High</td></tr>
-								<tr><td>Blink status LED</td><td>Every second</td><td>Periodic</td><td>No</td><td>Blocking</td><td>Blink gets delayed</td><td>Low</td></tr>
-								<tr><td>Store error message</td><td>Event-Failure</td><td>Event-based</td><td>No</td><td>Blocking</td><td>Error message arrives eventually</td><td>Low</td></tr>
-								</tbody></table>
+                <!-- Test Case 1 -->
+                <h3>Test Case 1: Open Ideation & Gamification</h3>
+                <div style="margin-bottom: 3em;">
+                    
+                    <!-- Prompt Box -->
+                    <div style="background-color: #f4f4f4; padding: 1.25em; border-left: 5px solid #0078D7; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>Structured Prompt:</strong>
+                        <p style="margin-bottom: 0; font-family: monospace; font-size: 0.95em;">
+                            "Necesito diseñar un dispositivo 100% analogico que impida físicamente que los comensales usen el telefono celular durante la comida, convirtiendo la desconexión en un jugo de mesa. Ayúdame mediante una lluvia de ideas"
+                        </p>
+                    </div>
 
-						<h3>Priority Justification</h3>
-						<ol>
-						<li><b>Monitor emergency button — High priority</b>
-						<br>This task is time-critical and event-based, as it responds to an emergency condition triggered by user input. Any delay could result in severe consequences, making immediate system response essential. Therefore, it must have the highest priority to ensure safety.</li>
-<p></p>
-						<li><b>Read temperature — Medium priority</b>
-						<br>This task is periodic and time-critical, as delayed execution may lead to loss of sensor data. However, a short delay does not pose an immediate safety risk. For this reason, it is assigned a medium priority to balance responsiveness and system load.</li>
-<p></p>
-						<li><b>Send data — Medium priority</b>
-						<br>Although this task runs periodically, it is not time-critical. Delays may cause data loss or communication issues but do not directly affect system safety. It is assigned medium priority to ensure regular operation without interfering with more critical tasks.
-<p></p>
-						<li><b>Blink status LED — Low priority</b>
-						<br>This task is periodic and not time-critical. Delays only affect visual feedback and do not compromise system functionality or safety. Consequently, it is assigned a low priority.
-<p></p>
-						<li><b>Store error message — Low priority</b>
-						<br>This task is event-based but not time-critical. Delays do not prevent the system from functioning correctly, as error messages can be stored later without significant impact. Therefore, it is assigned a low priority.
-						</ol>
-					</p>
+                    <!-- AI Response Box -->
+                    <div style="background-color: #fafafa; padding: 1.25em; border-left: 5px solid #28A745; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>AI Response:</strong>
+                        <p>Me parece una idea fantástica. Mezclar la desconexión digital con un diseño industrial 100% analógico y una dinámica de juego tiene muchísimo potencial...</p>
+                        
+                        <p><strong>1. El Cofre de los Enigmas (Estilo "Escape Room" de Mesa)</strong><br>
+                        <em>El Dispositivo:</em> Un cofre central de madera con ranuras superiores acolchadas  (como una alcancía múltiple). Al inicio de la comida, todos deslizan su teléfono en una ranura. Un mecanismo de pestillo simple, accionado por la gravedad al caer el último teléfono, bloquea la tapa principal.<br>
+                        <em>La Dinámica de Juego:</em> Los laterales del cofre son en realidad un rompecabezas mecánico (laberintos físicos, diales de letras, piezas deslizantes).<br>
+                        <em>Cómo se abre:</em> Para liberar la tapa, los comensales deben trabajar en equipo para alinear los engranajes o resolver el laberinto. Las pistas para resolverlo pueden venir impresas en las servilletas, en tarjetas que se reparten con cada plato, o grabadas en los vasos. El postre no se sirve hasta que el cofre se abre.</p>
+
+                        <p><strong>2. La Ruleta del Peso (La "Lazy Susan" Cautiva)</strong><br>
+                        <em>El Dispositivo:</em> Una bandeja giratoria para el centro de la mesa. En los bordes tiene pequeñas jaulas individuales. Los jugadores introducen su celular en su jaula correspondiente.<br>
+                        <em>La Dinámica de Juego:</em> El mecanismo es una balanza. Solo cuando todas las jaulas tienen un teléfono dentro, el peso total presiona un resorte central que desbloquea el eje de rotación de la bandeja. Ahora, la bandeja puede girar libremente y se convierte en una ruleta.<br>
+                        <em>Cómo se abre:</em> La superficie de la ruleta tiene casillas con preguntas profundas, retos o confesiones. Usan una canica de acero para jugar mientras comen. Al final de la comida, introducen la canica en un orificio central; esta rueda por un riel interno que presiona el retén maestro y abre todas las jaulas al mismo tiempo.</p>
+
+                        <p><strong>3. El Monolito de Equilibrio (Estilo "Jenga" Inverso)</strong><br>
+                        <em>El Dispositivo:</em> Una torre vertical transparente (acrílico grueso y madera) donde los celulares se apilan uno sobre otro. La puerta de la torre está asegurada por un pasador que está conectado a piezas de madera estructurales en el exterior de la torre.<br>
+                        <em>La Dinámica de Juego:</em> Durante la sobremesa, los jugadores sacan tarjetas de conversación o de trivia. Si alguien da una buena respuesta o gana una ronda, tiene derecho a retirar una de las piezas estructurales de la torre.<br>
+                        <em>Cómo se abre:</em> Retirar la pieza "llave" correcta libera el pasador. Pero si alguien intenta forzarlo o tira una pieza equivocada, la torre tiene un sistema de contrapesos que activa una campanita de penalización.</p>
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Test Case 2 -->
+                <h3>Test Case 2: Role-Playing & Strategic Framing</h3>
+                <div style="margin-bottom: 3em;">
+                    
+                    <div style="background-color: #f4f4f4; padding: 1.25em; border-left: 5px solid #0078D7; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>Structured Prompt:</strong>
+                        <p style="margin-bottom: 0; font-family: monospace; font-size: 0.95em;">
+                            "ROL: Actúa como un Consultor Senior en Innovación, Diseño de Servicios y Estrategia de Negocios. <br>
+                            CONTEXTO: Tengo un desafío de co-creación lúdico y disruptivo. He tirado tres dados que me han arrojado tres variables obligatorias para diseñar un proyecto:<br>
+							
+								<br>1. EL QUÉ (Formato/Entregable):  Una Campaña Visual o Sistema de Comunicación (Identidad, señalización, kit de difusión o estrategia de guerrilla).
+								<br>2. EL CÓMO (Restricción/Enfoque): Fabricación Digital / Código Abierto (Planos descargables para corte CNC, impresión 3D o plantillas replicables).
+								<br>3. EL PARA QUIÉN (Usuario/Contexto): 3. Espacios Educativos con Recursos Limitados (Escuelas públicas de periferia, centros comunitarios, talleres locales).<br>
+					
+                            <br>TAREA: Antes de comenzar a idear soluciones específicas, necesito que me ayudes a enmarcar y entender el problema profundamente. Haz lo siguiente de forma concisa:<br>
+								<br>1. CONTEXTO Y DOLOR: Define brevemente cuál es el principal punto de dolor (pain point) de este Usuario específico cuando se enfrenta a este Formato bajo esa Restricción técnica.
+								<br>2. LA PARADOJA: Si existe una contradicción o incompatibilidad aparente entre las tres variables (por ejemplo, digital vs. brecha digital, o cero presupuesto vs. infraestructura), explica brevemente cómo podemos transformarla en una oportunidad de diseño inteligente (tecnología invisible, interfaces alternativas, etc.).
+								<br>3. LAS 3 PREGUNTAS HMW: Genera 3 variantes del formato estricto "¿Cómo podríamos...?" (How Might We) que unan estas tres variables. Cada opción debe enfocarse en un ángulo diferente (eficiencia, impacto social o experiencia emocional).<br>
+								
+							<br>Termina tu respuesta preguntándome cuál de las 3 opciones de "¿Cómo podríamos...?" quiero elegir para pasar a la fase de ideación SCAMPER.
+                        </p>
+                    </div>
+
+                    <div style="background-color: #fafafa; padding: 1.25em; border-left: 5px solid #28A745; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>AI Response:</strong>
+                        <p>Excelente reto. Como consultor en diseño de servicios e innovación, te aseguro que cruzar restricciones técnicas de alto nivel con entornos de recursos limitados es donde nacen las soluciones más ingeniosas.</p>
+						<br>Aquí tienes el encuadre estratégico del problema para preparar el terreno antes de la ideación:<br>
+                        <ul>
+                            <li><strong>1. Contexto y Dolor (Pain Point):</strong> El dolor principal es la "falsa accesibilidad". El usuario necesita urgentemente mejorar la comunicación, señalización o identidad de su espacio para generar orden y pertenencia. Sin embargo, se enfrenta a la tremenda frustración de que las soluciones de "código abierto" suelen requerir acceso directo a hardware costoso (cortadoras láser, routers CNC, impresoras 3D), materiales específicos y alfabetización técnica que su contexto no posee. El archivo es gratis, pero la materialización se siente inalcanzable.</li>
+                            <li><strong>2. La Paradoja (y la Oportunidad):</strong>La Paradoja: Exigir fabricación digital (alta tecnología/precisión) en un entorno de infraestructura precaria (baja tecnología/cero presupuesto).La Oportunidad: Diseño descentralizado y herramientas de replicación. En lugar de fabricar la campaña final, utilizamos la fabricación digital para crear herramientas analógicas de replicación. Por ejemplo, usar una CNC externa para cortar "stencils" ultrarresistentes o una impresora 3D para hacer rodillos tipográficos. Así, la tecnología de punta ocurre una sola vez (en un FabLab aliado o universidad), y la comunidad usa esas matrices para replicar la campaña visual de forma infinita, económica (con pintura o gis) y manual.</li>
+                            <li><strong>3. Las 3 Preguntas HMW:</strong>
+                                <br>- <em>Opción 1 (Eficiencia):</em> ¿Cómo podríamos diseñar un sistema de señalización de código abierto que requiera un mínimo de horas de máquina en un FabLab aliado, de modo que la comunidad escolar pueda ensamblar los módulos a presión en menos de un día y sin usar herramientas??
+                                <br>- <em>Opción 2 (Impacto Social):</em> ¿Cómo podríamos utilizar planos de corte digital para fabricar matrices que empoderen a los propios estudiantes a co-crear la campaña visual de su centro comunitario casi sin costo de materiales??
+                                <br>- <em>Opción 3 (Experiencia Emocional):</em> ¿Cómo podríamos transformar el proceso de instalar un kit de comunicación visual en un evento o ritual lúdico que devuelva la dignidad, el orgullo y la identidad a una escuela pública de la periferia??
+                            </li>
+                        </ul>
+						<br>Para avanzar de forma estructurada, dime: ¿Cuál de estas 3 opciones de "¿Cómo podríamos...?" (Eficiencia, Impacto Social o Experiencia Emocional) quieres elegir para que pasemos a la fase de ideación con la metodología SCAMPER?
+                    </div>
+                </div>
+                <hr>
+
+                <!-- Test Case 3 -->
+                <h3>Test Case 3: Constrained SCAMPER Ideation</h3>
+                <div style="margin-bottom: 3em;">
+                    
+                    <!-- Prompt Box -->
+                    <div style="background-color: #f4f4f4; padding: 1.25em; border-left: 5px solid #0078D7; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>Structured Prompt:</strong>
+                        <div style="font-family: monospace; font-size: 0.95em; margin-top: 0.5em;">
+                            <p style="margin-bottom: 1em;">He elegido la opción de HMW número 1.</p>
+                            <p style="margin-bottom: 1em;">Como nuestro consultor de innovación, ahora vamos a aplicar la metodología SCAMPER para generar ideas altamente disruptivas para esta pregunta específica, teniendo muy presentes las restricciones de nuestros dados originales.</p>
+                            <p style="margin-bottom: 1em;">Para no inundarme de información genérica, haz lo siguiente:</p>
+                            <ol style="margin-bottom: 1em; padding-left: 1.5em;">
+                                <li><strong>EL FILTRO DE AUDACIA:</strong> Genera exactamente 2 ideas innovadoras y viables para cada una de las siguientes letras de SCAMPER que son las más críticas para nuestro reto:
+                                    <ul style="margin-top: 0.5em;">
+                                        <li><strong>S (Sustituir):</strong> ¿Qué elemento tradicional, proceso o material del problema podemos sustituir para romper las reglas?</li>
+                                        <li><strong>C (Combinar):</strong> ¿Con qué otro servicio, industria, hábito o tendencia actual podemos combinar nuestra solución para crear algo único?</li>
+                                        <li><strong>M (Magnificar/Modificar):</strong> ¿Qué pasaría si exageramos al extremo el beneficio principal o modificamos radicalmente el formato?</li>
+                                        <li><strong>E (Eliminar):</strong> ¿Qué elemento que todos dan por obligatorio en este tipo de soluciones podemos eliminar por completo para simplificar la vida del usuario?</li>
+                                    </ul>
+                                </li>
+                                <li style="margin-top: 0.5em;"><strong>FORMATO DE SALIDA:</strong> Presenta cada idea con:
+                                    <ul style="margin-top: 0.5em;">
+                                        <li>Un título llamativo (máximo 4 palabras).</li>
+                                        <li>Una descripción de 2 frases (qué es y cómo funciona).</li>
+                                        <li>"El factor Wow": Qué la hace atractiva tanto para un emprendedor/freelancer (agilidad/negocio) como para un funcionario público (impacto social/comunidad).</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p style="margin-bottom: 0;">Comienza de inmediato.</p>
+                        </div>
+                    </div>
+
+                    <!-- AI Response Box -->
+                    <div style="background-color: #fafafa; padding: 1.25em; border-left: 5px solid #28A745; border-radius: 4px; margin-bottom: 1em;">
+                        <strong>AI Response:</strong>
+                        <p style="margin-top: 0.5em;">Aquí tienes las 8 ideas pasadas por el Filtro de Audacia, diseñadas específicamente para minimizar el tiempo de máquina y empoderar a la comunidad mediante un ensamble rápido y sin herramientas.</p>
+                        
+                        <h4 style="margin-top: 1.5em; margin-bottom: 0.5em;">S (Sustituir)</h4>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Nodos 3D para Reciclaje</strong><br>
+                            <strong>Descripción:</strong> Un sistema de uniones simples impresas en 3D que utilizan escobas viejas, tubos de cartón o botellas PET recicladas por los alumnos para armar estructuras de señalización. Los conectores se imprimen rápidamente en masa y la comunidad ensambla los tótems informativos a presión, sin tornillos ni pegamento.<br>
+                            <strong>El factor Wow:</strong> Para el emprendedor, es un modelo de negocio ultra escalable vendiendo o liberando solo el archivo del conector; para el funcionario público, promueve la economía circular y reduce el costo de material de la escuela a cero.
+                        </p>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Iconografía Modular Sin Texto</strong><br>
+                            <strong>Descripción:</strong> En lugar de fresar letras que consumen muchísimo tiempo de máquina, el sistema utiliza perfiles rápidos de iconografía universal que se encastran a presión en rieles estandarizados. Esto elimina la barrera del idioma, acelera el corte CNC en un 80% y hace que el ensamble sea tan intuitivo como un rompecabezas infantil.<br>
+                            <strong>El factor Wow:</strong> El diseñador freelance puede crear y monetizar bibliotecas de símbolos descargables; el sector público asegura inclusión absoluta para comunidades con analfabetismo o diversidad lingüística.
+                        </p>
+
+                        <h4 style="margin-top: 1.5em; margin-bottom: 0.5em;">C (Combinar)</h4>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Señales Didácticas de Engranajes</strong><br>
+                            <strong>Descripción:</strong> Los módulos de orientación se combinan con ábacos y engranajes mecánicos paramétricos, creando paneles que funcionan como material de juego interactivo en los pasillos. Los estudiantes descubren la información de las áreas escolares girando y manipulando las piezas móviles que ensamblaron a presión.<br>
+                            <strong>El factor Wow:</strong> Para un innovador, es un producto dual (comunicación y juego) muy atractivo para licitaciones; para el funcionario, justifica el presupuesto al cruzar infraestructura escolar con herramientas para el plan de estudios matemático.
+                        </p>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Letras Vivas de Encastre</strong><br>
+                            <strong>Descripción:</strong> Se trata de un sistema de rejillas simples cortadas por CNC donde vasos de plástico o macetas recicladas encajan a presión formando flechas, zonas o palabras. La comunidad escolar siembra y encastra los módulos botánicos, creando una señalización ecológica y autosustentable con flora local.<br>
+                            <strong>El factor Wow:</strong> El emprendedor vende un sistema de arquitectura de paisaje hiper-accesible; el funcionario público logra un triple impacto comunitario con urbanismo verde, educación ambiental y señalética funcional.
+                        </p>
+
+                        <h4 style="margin-top: 1.5em; margin-bottom: 0.5em;">M (Magnificar / Modificar)</h4>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Tótems de Sombra Gigantes</strong><br>
+                            <strong>Descripción:</strong> Modificamos radicalmente la escala para que las señales encastrables sean lo suficientemente grandes como para funcionar como pérgolas en las áreas comunes. Se ensamblan como un juego de construcción gigante estructural, protegiendo a los niños del sol mientras comunican las zonas de la escuela.<br>
+                            <strong>El factor Wow:</strong> El consultor ofrece intervenciones de urbanismo táctico de alto impacto visual; el funcionario soluciona dos problemas críticos (desorientación espacial y falta de techados) con una sola intervención de rápida instalación.
+                        </p>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Píxeles de Madera Universales</strong><br>
+                            <strong>Descripción:</strong> Reducimos toda la señalética a un solo bloque básico estandarizado (un "píxel") que se produce de forma ultrarrápida y se encaja a presión tipo bloque de construcción. Los alumnos pueden armar, desarmar y reconfigurar murales informativos gigantes para eventos escolares, adaptándose a las necesidades diarias sin generar basura.<br>
+                            <strong>El factor Wow:</strong> El diseñador crea un sistema atemporal y anti-obsolescencia; el funcionario público invierte en infraestructura dinámica de una sola vez, que nunca requerirá presupuesto extra para actualizaciones de diseño.
+                        </p>
+
+                        <h4 style="margin-top: 1.5em; margin-bottom: 0.5em;">E (Eliminar)</h4>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Plantillas de Sombras Solares</strong><br>
+                            <strong>Descripción:</strong> Eliminamos el tablero de fondo y solo cortamos perfiles minimalistas que, al encastrarse en las cornisas o techos, utilizan la luz del sol para proyectar palabras e indicaciones en el piso. Esto reduce el uso de material en un 90%, generando un efecto visual mágico que cambia según la hora del día.<br>
+                            <strong>El factor Wow:</strong> El freelancer minimiza sus costos de producción al extremo usando despuntes de madera; el funcionario aprueba proyectos poéticos y 100% antivandálicos, ya que no hay pintura en las paredes que se pueda rayar.
+                        </p>
+                        <p style="margin-bottom: 1em;">
+                            <strong>Señalética Humana Sin Muros</strong><br>
+                            <strong>Descripción:</strong> Eliminamos la necesidad de instalar o perforar infraestructura mediante soportes encastrables diseñados para adaptarse a las mochilas de "estudiantes guías" o al mobiliario rodante de la escuela. El sistema de orientación escolar se vuelve humano, orgánico y en constante movimiento por las instalaciones sin usar un solo taladro.<br>
+                            <strong>El factor Wow:</strong> El diseñador crea un producto viralizable de identidad escolar y sentido de pertenencia; el funcionario público evita por completo la burocracia de permisos de obra y evita daños a muros precarizados.
+                        </p>
+                    </div>
+
+					<ul>
+					<li><a href="../assets/files/2026_Syllabus_Proyecto_Ingeniería_IV_FIRMADO_JCMP.pdf" target="_blank"><h2><u>Signed Syllabus</u></h2></a></li>
+					</ul>
+
+                </div>
 			</div>
 		</div>
 
