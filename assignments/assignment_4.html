@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 4: Market Validation, Sizing & Blue Ocean Strategy</h1>
+        <p>
+            In this phase, we synthesized our user interviews to adjust our core hypotheses, mapped out the actionable market opportunity, evaluated our product using Bain's Value Pyramid, sized our market (TAM/SAM/SOM), and developed a Blue Ocean strategy canvas against our direct and indirect competitors.
+        </p>
+
+        <!-- Section 1: Interview Conclusions -->
+        <h2>1. Interview Conclusions & Hypothesis Adjustments</h2>
+        
+        <h3>Original Hypotheses</h3>
+        <ul>
+            <li><strong>H1 (Business Model):</strong> HIIT/functional studio owners would pay $1,500-2,000 MXN/month for the software (buying pods at cost) because it automates circuit direction and increases retention. <strong>If false:</strong> the SaaS dies, and we get trapped in a hardware price war.</li>
+            <li><strong>H2 (User Experience):</strong> Group class clients prefer to be guided by LEDs and rank reaction times because gamification distracts from exhaustion better than a traditional circuit. <strong>If false:</strong> the lights add no value over a wall timer.</li>
+            <li><strong>H3 (Technical Viability):</strong> The ESP32 + tap sensors + accelerometer architecture withstands hundreds of daily impacts on walls, floors, and heavy bags without failing or losing connection over a month of commercial use. <strong>If false:</strong> the portable format is unviable, and we must revert to a fixed wired station.</li>
+        </ul>
+
+        <h3>Reformulated Hypotheses</h3>
+        <ul>
+            <li><strong>H1 Reformulated:</strong> "We believe a HIIT/functional studio owner currently pays for some tool or process to direct their circuits (extra instructor, timer, app) and recognizes an operational problem expensive enough to accept an institutional subscription of $X MXN/month above what an individual user would pay for a workout app. <br><strong>If false:</strong> there is no value differential between 'for the studio' and 'for me', and the price must anchor to the consumer app range (60-150 MXN), forcing a low-ticket B2C model instead of B2B."</li>
+            <li><strong>H2 Reformulated:</strong> "We believe adding visual stimuli and rankings to a reaction exercise increases motivation and the number of repetitions/touches compared to doing the same exercise without visual feedback—regardless of whether it's in a group, at home, or in a 1-on-1 session. <br><strong>If false:</strong> gamification doesn't change measurable behavior, reducing the product's value to a timer with lights."</li>
+            <li><strong>H3:</strong> Remains unchanged.</li>
+        </ul>
+
+        <h3>New Hypothesis: Individual vs. Institutional Subscription Pricing</h3>
+        <p>
+            <em>"We believe that if the product is sold as an individual subscription (not institutional), the price a gym user will accept is in the $79-149 MXN/month range—the same range they currently pay for Spotify, premium streaming apps (Peloton, Adidas), or wearable apps—and that a gym would be willing to subsidize or resell that subscription if the per-user price stays under that ceiling. <br><strong>If false:</strong> gym users don't value a reaction app at the same level as general fitness apps, and the real equilibrium price is lower (freemium with hardware upsell) or higher only if repositioned as a professional tool for the coach, not the student."</em>
+        </p>
+
+        <h3>Validation Synthesis</h3>
+        <ul>
+            <li><strong>What did we test?</strong> H1 (SaaS pricing), H2 (LED gamification UX), and H3 (hardware durability) through 4 validation interviews.</li>
+            <li><strong>What did we find?</strong> <br><strong>H1 pivots:</strong> the only available price data point (60-100 MXN) contradicts the $1,500-2,000 ticket, and no interviews were with the actual buyer (HIIT studio owner). <br><strong>H2 adjusted:</strong> genuine interest in gamification exists, but no specific evidence for "group classes" (interest skewed toward individual/home use). <br><strong>H3 untested:</strong> no interview evaluated durability.</li>
+            <li><strong>Crucial User Quote:</strong> <em>"It's free. Everything is free, there's no way to attach an economic part to it."</em> — Gym administrator, on the cost of not having a good reaction measurement solution.</li>
+            <li><strong>Concept Changes:</strong> Pivoted from "measuring reaction time" as the core value to "making a circuit more fun and motivating," with measurement as part of the game. The business model shifts from a high-ticket institutional SaaS toward hardware sales or a low-ticket individual subscription, pending validation with the correct buyer.</li>
+        </ul>
+
+        <!-- Section 2: Market Opportunity -->
+        <h2>2. Market Opportunity</h2>
+        
+        <h3>Actionable Segment Profile</h3>
+        
+        <h4>Layer 1: Demographic (Who are they?)</h4>
+        <ul>
+            <li><strong>HYPOTHESIS:</strong> Boutique studios, HIIT gyms, CrossFit boxes, or functional training centers in Mexico.</li>
+            <li><strong>VERIFIED:</strong> Private fitness establishments identifiable by location, activity, and size in the DENUE database (>6 million economic units).</li>
+            <li><strong>Core Gap:</strong> The buyer persona is not yet precisely identified (owner, admin, head coach, or student).</li>
+        </ul>
+
+        <h4>Layer 2: Behavioral (What do they do today?)</h4>
+        <ul>
+            <li><strong>VERIFIED:</strong> The interviewed coach uses traffic lights and whistles for reaction stimuli.</li>
+            <li><strong>VERIFIED:</strong> The boxer receives measurement as part of their coach's monthly fee.</li>
+            <li><strong>VERIFIED:</strong> The track athlete uses a Garmin watch but forgets to check the data.</li>
+            <li><strong>VERIFIED:</strong> The observable problem is friction in converting existing measurements into frequent training and motivation, not a lack of measuring instruments.</li>
+        </ul>
+
+        <h4>Layer 3: Psychographic (What moves them to change?)</h4>
+        <ul>
+            <li><strong>VERIFIED:</strong> <em>"What will truly generate change is daily training,"</em> not the device itself (Coach quote).</li>
+            <li><strong>VERIFIED:</strong> Motivation and engagement outweigh data precision.</li>
+            <li><strong>Core Gap:</strong> Insufficient evidence on trust criteria, AI perception, data privacy, or willingness to replace current processes.</li>
+        </ul>
+
+        <h4>Layer 4: Economic (What does it cost and what will they pay?)</h4>
+        <ul>
+            <li><strong>VERIFIED:</strong> Interviewees do not currently pay specifically for reaction time measurement.</li>
+            <li><strong>VERIFIED:</strong> The only mentioned price anchor was 60–100 MXN/month (B2C personal expense perception).</li>
+            <li><strong>Core Gap:</strong> The economic cost of operational friction and the B2B willingness to pay are unknown.</li>
+        </ul>
+
+        <h3>Priority Research Agenda</h3>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Interview</strong></td>
+                        <td style="padding: 10px;">Owners and admins of at least three sub-segments separately: Box/CrossFit, Boxing/Martial Arts, and HIIT/Functional studios.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee; background-color: #f9fff9;">
+                        <td style="padding: 10px;"><strong>Observe</strong></td>
+                        <td style="padding: 10px;">A full class to measure the current process: setup, stimuli application, data capture, and time invested.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>B2B Metrics</strong></td>
+                        <td style="padding: 10px;">Ask about specific metrics: attendance, cancellations, retention, weekly classes, and monthly tech spend.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee; background-color: #f9fff9;">
+                        <td style="padding: 10px;"><strong>Validate Payment</strong></td>
+                        <td style="padding: 10px;">Test a functional demo and request a verifiable action: paid pilot, deposit, or letter of intent.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <strong>Operative Conclusion:</strong> The hypothesized segment is not validated as a buying segment. What IS validated is a transversal problem of adoption and tracking, not measurement: <em>making training happen more frequently, making it more attractive, and requiring less manual labor.</em> The next experiment should sell an <strong>engagement and tracking pilot</strong> to a clearly identified business decision-maker.
+        </blockquote>
+
+        <!-- Section 3: Bain's Pyramid -->
+        <h2>3. Bain's Value Pyramid</h2>
+        
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Level</th>
+                        <th style="padding: 10px;">Value</th>
+                        <th style="padding: 10px;">Beneficiary</th>
+                        <th style="padding: 10px;">Evidence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Transformational</strong></td>
+                        <td style="padding: 10px;">Stimuli automation (replaces whistles)</td>
+                        <td style="padding: 10px;">Coach</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Transformational</strong></td>
+                        <td style="padding: 10px;">Converting measurement to recurrent habit</td>
+                        <td style="padding: 10px;">Business / User</td>
+                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Emotional</strong></td>
+                        <td style="padding: 10px;">Motivation to train & Fun</td>
+                        <td style="padding: 10px;">End User</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Emotional</strong></td>
+                        <td style="padding: 10px;">Sense of progress / Performance tracking</td>
+                        <td style="padding: 10px;">End User</td>
+                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Functional</strong></td>
+                        <td style="padding: 10px;">Reaction time & cadence measurement</td>
+                        <td style="padding: 10px;">User / Coach</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Functional</strong></td>
+                        <td style="padding: 10px;">Portability / Ease of implementation</td>
+                        <td style="padding: 10px;">Business</td>
+                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; font-family: monospace; text-align: center; line-height: 1.4; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+                 ╔══════════════════════╗<br>
+                 ║    SOCIAL IMPACT     ║<br>
+                 ║  (hypothesis only —  ║<br>
+                 ║   no solid evidence  ║<br>
+                 ║   available yet)     ║<br>
+                 ╚══════════════════════╝<br>
+<br>
+              ╔════════════════════════════╗<br>
+              ║      TRANSFORMATIONAL      ║<br>
+              ║  Convert measurement into  ║<br>
+              ║     recurrent training     ║<br>
+              ║  (🟡 central hypothesis)   ║<br>
+              ╚════════════════════════════╝<br>
+<br>
+           ╔══════════════════════════════════╗<br>
+           ║             EMOTIONAL            ║<br>
+           ║   Motivation 🟢 · Fun 🟢         ║<br>
+           ║   Sense of progress 🟡           ║<br>
+           ╚══════════════════════════════════╝<br>
+<br>
+        ╔══════════════════════════════════════════╗<br>
+        ║                FUNCTIONAL                ║<br>
+        ║  Reaction/cadence measurement 🟢         ║<br>
+        ║  Rankings/visualization 🟡               ║<br>
+        ║  Portability 🟡                          ║<br>
+        ╚══════════════════════════════════════════╝
+        </div>
+
+        <!-- Section 4: TAM / SAM / SOM -->
+        <h2>4. Market Sizing (TAM/SAM/SOM)</h2>
+        
+        <h3>TAM (Total Addressable Market)</h3>
+        <p>Starting universe: 30,242 private fitness establishments in Mexico (INEGI DENUE 05/2026).</p>
+        <ul>
+            <li>Filtered for in-person training: 18,145</li>
+            <li>Filtered for HIIT/Functional/CrossFit affinity: 8,165</li>
+            <li>Filtered for utility in group classes: 4,899</li>
+            <li>Filtered for willingness to pay (HW MXN 4,490–7,990 + B2B SW): <strong>1,715 establishments</strong></li>
+        </ul>
+        <p><strong>Annual TAM Value:</strong> MXN 30,407,520 (Hardware: ~MXN 11.9M + Recurring SaaS: ~MXN 18.5M).</p>
+
+        <h3>SAM (Serviceable Available Market)</h3>
+        <ul>
+            <li>Filtered for initial geography (CDMX, Edomex, GDL, MTY, PUE): 943</li>
+            <li>Filtered for recurrent group operations: 472</li>
+            <li>Filtered for commercial accessibility: 330</li>
+            <li>Filtered for actual payment capacity: <strong>198 establishments</strong></li>
+        </ul>
+        <p><strong>Annual SAM Value:</strong> MXN 3,510,144.</p>
+
+        <h3>SOM (Serviceable Obtainable Market - Years 1-2)</h3>
+        <p><strong>Goal:</strong> 45 paying gyms/studios (22.7% of SAM) via direct sales, demos, and coach alliances.</p>
+        <p><strong>Annual SOM Value:</strong> MXN 797,760 in gross revenue.</p>
+        
+        <p><strong>Viability Signal:</strong> Marginal. MXN 797,760 likely does not cover four salaries, app development, inventory, sales, support, and logistics. Lumetriq must reach 75-100 locations or increase the B2B SaaS price to MXN 1,199–1,499/month to be sustainable.</p>
+
+        <!-- Section 5: Competitive Analysis & Blue Ocean -->
+        <h2>5. Competitive Analysis & Blue Ocean Strategy</h2>
+        
+        <h3>The Most Dangerous Competitor</h3>
+        <p>
+            The most dangerous competitor is not BlazePod; it is the <strong>manual circuit with cones and a whistle</strong>. It has zero marginal cost, is the default language of training, and requires no budget approvals, connectivity, or charging. A high-tech app cannot easily displace a method a coach can improvise in seconds.
+        </p>
+        <p>
+            To win, Lumetriq must position itself as a class assistant that frees up the coach, not just another sports evaluation tool. The pitch is: <em>"The circuit runs itself, the athletes compete, and the coach goes back to focusing on correcting technique."</em>
+        </p>
+
+        <h3>Blue Ocean Strategy Canvas</h3>
+        
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Attribute (Score 1-5)</th>
+                        <th style="padding: 10px;">BlazePod</th>
+                        <th style="padding: 10px;">FITLIGHT</th>
+                        <th style="padding: 10px;">Manual Circuit (Cones)</th>
+                        <th style="padding: 10px;">Lumetriq</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">1. Hardware entry price (Accessibility)</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">2. Recurring software cost (Accessibility)</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">3. Speed & autonomy of setup</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">4. Advanced analytics depth <strong>[ELIMINATED]</strong></td>
+                        <td style="padding: 10px;">4</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;"><strong>0</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">5. Multimodal impact measurement <strong>[CREATED]</strong></td>
+                        <td style="padding: 10px;">0</td>
+                        <td style="padding: 10px;">0</td>
+                        <td style="padding: 10px;">0</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">6. Localization for Mexico</td>
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">7. Initial kit scalability</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">8. Persistent social progress <strong>[CREATED]</strong></td>
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;">0</td>
+                        <td style="padding: 10px;">0</td>
+                        <td style="padding: 10px;"><strong>4</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <strong>The Winning Value Proposition:</strong><br>
+            "For HIIT, boxing, and functional coaches in Mexico: Lumetriq turns every reaction drill into a challenge your students want to repeat, with a leaderboard that fosters competition week after week—not just on the day of class."
+        </blockquote>
+
+        <!-- Section 6: Reflection -->
+        <h2>6. Reflection and Key Takeaways</h2>
+        <p>
+            This assignment was a massive reality check, particularly during the market sizing and competitive analysis. Calculating our TAM, SAM, and SOM revealed that capturing 45 initial customers wouldn't generate enough revenue (~$800K MXN) to sustain a startup team of four. This forced us to look at our pricing strategy critically: relying on low-ticket consumer SaaS pricing simply won't keep the lights on, meaning we either have to scale aggressively to 100+ studios quickly or pivot to a stronger B2B institutional pricing model.
+        </p>
+        <p>
+            The Blue Ocean exercise was equally eye-opening. We realized our biggest competitor isn't BlazePod or FITLIGHT—it's the completely free, zero-friction method of a coach blowing a whistle and pointing at cones. Trying to compete on "elite sports analytics" (like FITLIGHT) is a red ocean that alienates our actual target market. Instead, by entirely eliminating deep analytics and focusing heavily on gamification (persistent social progress) and instant setup, we found a blue ocean. We aren't selling a clinical measurement device; we are selling a seamless, fun class experience that makes athletes want to come back the next week.
+        </p>
+
+    </div>
+</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
