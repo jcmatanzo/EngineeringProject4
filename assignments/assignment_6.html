@@ -1,0 +1,747 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 6: Design Concept Generation &amp; Selection</h1>
+        <p>
+            In this phase we moved from <em>what problem we solve</em> to <em>how Lumetriq looks, is handled, and is used</em>. Using generative AI (Claude and Imagen 3), we built a morphological chart, looked for technology analogies, generated three concepts, evaluated them with a Pugh matrix, and left the selected concept ready for CAD in Week 7.
+        </p>
+
+        <!-- Section 1: Morphological Chart -->
+        <h2>1. Morphological Chart</h2>
+
+        <h3>Prompt 1: Exploring Alternatives by Parameter</h3>
+        <p><strong>Tool:</strong> Claude, acting as an industrial designer specialized in connected hardware for Latin America. Every variant had to be manufacturable with a 3D printer, basic CNC, and components available in Mexico.</p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Input constraints:</strong> resistance to sweat, vibration, and environments crowded with 2.4 GHz signals; installation in a few steps (take it out of the case, place it, turn it on, sync with the app, and train); maximum dimensions of 14 × 14 cm. We asked for 7 parameters with 3 variants each, plus the most important manufacturing implication of each. In a second iteration, shape A was changed to include a semi-curved back face for heavy bags, and material variant B was changed to evaluate die-cast aluminum.</em>
+        </blockquote>
+
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Parameter</th><th style="padding: 10px;">Variant A</th><th style="padding: 10px;">Variant B</th><th style="padding: 10px;">Variant C</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Housing shape</strong></td><td style="padding: 10px;">Body with a semi-curved back face for heavy bags and a removable flat base <em>(3D printed in two parts)</em></td><td style="padding: 10px;">Rounded-edge hexagon that tiles into a mosaic <em>(3D printing)</em></td><td style="padding: 10px;">Hemispherical dome on a wide, tip-resistant base <em>(3D printing with variable infill)</em></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Installation / mounting</strong></td><td style="padding: 10px;">Free-standing on a non-slip rubber mat <em>(laser or die cut)</em></td><td style="padding: 10px;">Industrial Velcro patch with an adhesive counterpart on the floor or wall <em>(bent sheet)</em></td><td style="padding: 10px;">Perimeter silicone suction-cup ring <em>(silicone mold or commercial O-ring)</em></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Status indicator without the app</strong></td><td style="padding: 10px;">Perimeter LED ring with a color code <em>(translucent printed diffuser)</em></td><td style="padding: 10px;">Window with 3–5 discrete traffic-light LEDs <em>(simple machining or printed insert)</em></td><td style="padding: 10px;">The same stimulus LEDs show status with special patterns <em>(firmware only)</em></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Material and finish</strong></td><td style="padding: 10px;">Printed PETG or ABS; ABS smoothed with acetone vapor <em>(3D printing + post-processing)</em></td><td style="padding: 10px;">Die-cast aluminum, anodized or powder coated <em>(external contract manufacturing)</em></td><td style="padding: 10px;">CNC-machined polycarbonate cover over a printed base <em>(CNC + 3D printing)</em></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Physical interface</strong></td><td style="padding: 10px;">Capacitive touch surface under a translucent cover <em>(commercial capacitive PCB)</em></td><td style="padding: 10px;">Silicone membrane over a dome switch <em>(silicone mold + metal dome)</em></td><td style="padding: 10px;">Rigid surface with a piezoelectric or force sensor underneath <em>(sensor bonded internally)</em></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Power source</strong></td><td style="padding: 10px;">Internal battery charged through pogo pins <em>(soldered pogo pins)</em></td><td style="padding: 10px;">Battery with USB-C protected by a silicone cap <em>(molded or purchased cap)</em></td><td style="padding: 10px;">Qi inductive charging in the case <em>(commercial Qi module)</em></td></tr>
+                <tr><td style="padding: 10px;"><strong>Environmental resistance and sealing</strong></td><td style="padding: 10px;">O-ring between cover and base with screws, basic IP54 <em>(purchased O-ring)</em></td><td style="padding: 10px;">Glued monoblock housing with no exposed screws <em>(structural bonding)</em></td><td style="padding: 10px;">Double housing with resin-encapsulated electronics <em>(epoxy potting)</em></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Reflection Pause: Checking the Chart Against the PDS</h3>
+        <p>The chart was generated before the Week 5 architecture was closed, so we checked it against the PDS and the current decisions. Several variants are manufacturable, but they do not work in a product that takes boxing punches.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Variant</th><th style="padding: 10px;">Issue Found</th><th style="padding: 10px;">Decision</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Interface A: capacitive</strong></td><td style="padding: 10px;">A boxing glove (leather or synthetic over foam) insulates the hand, so capacitive detection through the glove is unreliable <strong>[Strong hypothesis: test with a real glove]</strong>. It also does not measure acceleration or force.</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Interface B: dome switch</strong></td><td style="padding: 10px;">It is binary (it does not measure intensity), and its fatigue life will not withstand 10,000 impacts of ≈ 1,600–2,600 N (FR-06).</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Interface C: sensor under a rigid surface</strong></td><td style="padding: 10px;">This is the right foundation. With the v2 component list it evolves into an <strong>ADXL375 + 4 load cells under a floating plate</strong>, which measures force regardless of how the pod is mounted.</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Kept and improved</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Power C: Qi</strong></td><td style="padding: 10px;">It does not chain pods or allow charging by stacking, and it is less efficient (PDS contradiction C3).</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Power A + B</strong></td><td style="padding: 10px;">They are not mutually exclusive: the PDS calls for stacking (pogo), and the critical review kept USB-C as the baseline route.</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Combined</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Indicator A + C</strong></td><td style="padding: 10px;">Using the same stimulus ring to show status eliminates parts; the LED window (B) duplicates hardware.</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 A and C combined</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Material B: die-cast aluminum</strong></td><td style="padding: 10px;">The mold exceeds both budget and schedule, and a metal housing blocks 2.4 GHz (Week 5, section D.9c).</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Volume production only</span>; aluminum only for the internal plate</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Material C: polycarbonate on the striking face</strong></td><td style="padding: 10px;">A hard surface right where the knuckles land.</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded for the striking face</span>; useful as a diffuser</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Sealing B and C</strong></td><td style="padding: 10px;">They prevent replacing the battery and PCB in under 5 minutes (NFR-06), and potting a lithium cell in resin makes heat dissipation harder.</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span>; the O-ring (A) stays</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Mounting C: suction cup</strong></td><td style="padding: 10px;">It comes loose under lateral punches and on dusty or sweaty floors.</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Shape B: hexagon</strong></td><td style="padding: 10px;">It requires a specific orientation when stacking; the concentric contact rings were chosen precisely so that rotation would not matter.</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Discarded</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Missing option</strong></td><td style="padding: 10px;">The chart does not include <strong>rigid wall mounting</strong>, the most realistic position for boxing (face and torso height).</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Added as variant D</span></td></tr>
+                <tr><td style="padding: 10px;"><strong>Budget of $500–600 MXN per unit</strong></td><td style="padding: 10px;">Not realistic for an instrumented pod: the v2 list comes to ≈ $1,380–1,830. Only a "reaction-only" version (no accelerometer or load cells) comes close.</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Contradiction flagged</span>; the target remains $1,500 per prototype</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 2: Technology Analogies -->
+        <h2>2. Technology Analogies</h2>
+
+        <h3>Prompt 2: Solutions from Other Industries for the Weakest Parameters</h3>
+        <p>After the review, the weakest parameters were mounting, force measurement, contact protection, and user confirmation. For each one, we looked for a product from another industry that had already solved an equivalent problem.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Weak Parameter</th><th style="padding: 10px;">Analogy</th><th style="padding: 10px;">What It Solves There</th><th style="padding: 10px;">What Transfers to Lumetriq</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Rigid, removable mounting</strong></td><td style="padding: 10px;">Camera lens bayonet and ceiling light fixture mount</td><td style="padding: 10px;">A heavy part locks in with a quarter turn, in a single orientation, without tools</td><td style="padding: 10px;">A fixed plate on the wall and a pod that mounts and dismounts with a quarter turn and a lock</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Force measurement regardless of location</strong></td><td style="padding: 10px;">Bathroom scale and laboratory force plate</td><td style="padding: 10px;">Load cells under a plate measure the transmitted load, not acceleration</td><td style="padding: 10px;">4 × 50 kg load cells under a floating plate with stops (v2 list)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>A surface that takes punches and senses them</strong></td><td style="padding: 10px;">Electronic drum pad and drumhead with a tension hoop</td><td style="padding: 10px;">A membrane tensioned by a hoop over a rigid plate with a sensor; it withstands millions of hits, measures intensity, and the head is replaceable</td><td style="padding: 10px;">Faux leather tensioned with a ring over EVA and an aluminum plate; the sensor never takes the direct hit and the cover is replaceable</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Guiding the punch to the center</strong></td><td style="padding: 10px;">Trainer's focus mitt</td><td style="padding: 10px;">Faux leather over foam with a concave face: it "catches" the fist and shows where to hit</td><td style="padding: 10px;">A concave pad (≈ 4 mm sag) with the same materials; the concavity comes from an EVA ring under the faux leather</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Exposed charging contacts</strong></td><td style="padding: 10px;">Magnetic smartwatch and laptop chargers</td><td style="padding: 10px;">A small connector that magnets align and hold in place</td><td style="padding: 10px;">A magnetic pogo connector recessed at the 6 o'clock position, on the front and back faces</td></tr>
+                <tr><td style="padding: 10px;"><strong>User confirmation</strong></td><td style="padding: 10px;">The <em>Simon</em> game, traffic lights, and car turn signals</td><td style="padding: 10px;">Color, pattern, and position communicate status and direction without a screen</td><td style="padding: 10px;">Three confirmation levels using the same LED arc (see "Selected Concept")</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 3: Three Concepts -->
+        <h2>3. Three Concepts</h2>
+
+        <h3>Prompt 3: Complete Concepts (Object, App, and Landing Page)</h3>
+        <p>The three concepts differ in at least 3 parameters (shape, mounting, indicator, and power). All of them share the Week 5 electronic architecture (ESP32, BLE + ESP-NOW gateway, WS2812B ring, 18650 cell, React Native app), so the comparison is about design, not electronics.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Aspect</th><th style="padding: 10px;">1. Reflex</th><th style="padding: 10px;">2. Fixed Strike</th><th style="padding: 10px;">3. Chain</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>One-sentence idea</strong></td><td style="padding: 10px;">A luminous target on the wall, at the opponent's height</td><td style="padding: 10px;">A rugged floor pod with a concave center that "catches" the punch</td><td style="padding: 10px;">Modules that stack, charge as a tower, and light up in sequence</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Morphological combination</strong></td><td style="padding: 10px;">Shape C (biomorphic dome) · Mounting D (wall, quick anchor) · Indicator A+C · Interface C · Power B</td><td style="padding: 10px;">Modified shape A (disc with a recessed pad) · Mounting A (free-standing on the floor) · Indicator A+C · Interface C · Power A+B</td><td style="padding: 10px;">Stackable cylinder · Mounting A · Indicator A+C · Interface C · Power A (copper rings)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Installation</strong></td><td style="padding: 10px;">Screw a bracket to the wall and snap the pod in</td><td style="padding: 10px;">Take it out of the case and place it on the floor</td><td style="padding: 10px;">Unstack the charging tower and distribute the pods</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Daily use</strong></td><td style="padding: 10px;">Shadowboxing and combinations at face and torso height</td><td style="padding: 10px;">Footwork agility, kicks, and reaction drills on the floor</td><td style="padding: 10px;">Reaction circuits; when finished, the pods stack to charge</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Technology analogy</strong></td><td style="padding: 10px;">Reactive shooting targets and action camera mounts</td><td style="padding: 10px;">E-drum pad and arcade machine button</td><td style="padding: 10px;">Charging tower for portable radios and smartwatch pogo pins</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Main manufacturing implication</strong></td><td style="padding: 10px;">The "seamless" rubber-to-plastic junction requires overmolding or bi-material; separate metal bracket</td><td style="padding: 10px;">Simple: printed TPU pad + PETG housing</td><td style="padding: 10px;">Copper contacts (ENIG PCB) and tight stacking tolerances</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>App</strong></td><td style="padding: 10px;">"Combinations" mode: each light is a punch (jab, cross, hook)</td><td style="padding: 10px;">"Agility" mode and a "first to touch wins" competition</td><td style="padding: 10px;">"Sequence" mode: the lights run from pod to pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Landing page</strong></td><td style="padding: 10px;">"Train your reflexes at your opponent's height"</td><td style="padding: 10px;">"No installation: put it on the floor and train"</td><td style="padding: 10px;">"Charges as a tower, no cables"</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Strength</strong></td><td style="padding: 10px;">Highest realism and appeal; the light sits right in front of the eyes</td><td style="padding: 10px;">Protects the electronics and centers the punch</td><td style="padding: 10px;">Directly meets the PDS stacking requirement</td></tr>
+                <tr><td style="padding: 10px;"><strong>Weakness</strong></td><td style="padding: 10px;">A dome cannot be stacked; the convex surface deflects punches; an action-camera mount will not survive a boxing punch</td><td style="padding: 10px;">On the floor, a boxer cannot punch with proper technique</td><td style="padding: 10px;">Exposed contacts on the striking face; it is more a storage concept than a training concept</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 4: AI Renders -->
+        <h2>4. AI Renders</h2>
+
+        <h3>Prompt 4: Quick Visualization with Imagen 3</h3>
+        <p><strong>Method:</strong> Claude, acting as an art director, translated each concept into an English prompt with concrete materials (matte rubber vs. glossy plastic), precise spatial relationships, and mechanical terms. The prompts were run in Imagen 3 (Gemini), and we iterated on the results: concept 2 was renamed <strong>Fixed Strike</strong>, and the green halo on the floor was removed so the light is only visible inside the pad's recess.</p>
+
+        <span class="image fit"><img src="../assignments/assignment_assets/PRIMERA_PROPUESTA_DE_IMAGEN_SEGUN_PROMPT.jpg" alt="Imagen 3 triptych showing the Reflex (wall), Fixed Strike (floor, concave), and Chain (stackable) concepts" /></span>
+        <p style="text-align: center;"><em>Triptych generated with Imagen 3: Reflex (wall), Fixed Strike (floor, concave center), and Chain (modular stacking).</em></p>
+
+        <h4>Concept 1 Prompt (Reflex)</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-family: monospace; font-size: 0.9em; line-height: 1.5; margin-bottom: 20px;">A photorealistic industrial design product shot of a smart boxing training pod mounted on a textured home gym wall. The device is a soft, biomorphic pebble-like dome, approximately 130mm in diameter. The central striking area features a matte, light-absorbing dark rubber texture, which transitions seamlessly without visible joints into a smooth, glossy hard plastic outer shell. The pod is firmly attached to the wall using a visible, mechanical two-prong quick-release mount made of rigid polymer, similar to action camera accessories. A glowing LED ring at the base of the dome emits a dynamic, bright cyan and white light, casting a crisp gradient glow against the wall. Cinematic studio lighting highlighting the contrast between the matte rubber and the glossy plastic.</div>
+
+        <h3>Renders as a Quick Filter Before Pugh</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Criterion</th><th style="padding: 10px;">What It Communicates Well</th><th style="padding: 10px;">What the Render Invents or Exaggerates</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Mounting affordance</strong></td><td style="padding: 10px;">Reflex makes it clear that it goes on the wall; Chain, that the modules stack</td><td style="padding: 10px;">Reflex's mount is small and off to the side: it would not survive a ≈ 2,500 N frontal punch</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Material transition</strong></td><td style="padding: 10px;">Fixed Strike clearly separates the impact skin (matte) from the hard housing</td><td style="padding: 10px;">Reflex's "seamless" junction cannot be made with FDM or in a single process</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Component feasibility</strong></td><td style="padding: 10px;">The LED rings and side notches look manufacturable</td><td style="padding: 10px;">Chain's copper rings are exposed on the striking face, contradicting the recessed-contacts decision</td></tr>
+                <tr><td style="padding: 10px;"><strong>Scale</strong></td><td style="padding: 10px;">Fixed Strike and Chain are consistent with Ø 130 × 70 mm</td><td style="padding: 10px;">Reflex's dome looks deeper than the allowed 80 mm (NFR-01)</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p>The render is useful for communicating and detecting aesthetic intent, but it <strong>does not validate engineering</strong>: the AI naturally draws solutions that cannot be manufactured or that would not hold the load. That is why the selection was made with the matrix and not with the most attractive image.</p>
+
+        <!-- Section 5: Pugh Matrix -->
+        <h2>5. Pugh Matrix</h2>
+
+        <h3>Prompt 5: Selection with Weighted Criteria</h3>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Rules:</strong> concept 3 (Chain) is the <strong>datum</strong> (all of its cells are S). Each concept is rated against it: <strong>+</strong> better, <strong>–</strong> worse, <strong>S</strong> same. Ten criteria with weights that add up to 100: <strong>4 for desirability (40%)</strong> and <strong>6 for feasibility/viability (60%)</strong>. Score = Σ weights of the + − Σ weights of the −. The last column rates, with the same rules, the combined concept proposed in the next section.</em>
+        </blockquote>
+
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Criterion</th><th style="padding: 10px;">Weight</th><th style="padding: 10px;">1. Reflex</th><th style="padding: 10px;">2. Fixed Strike</th><th style="padding: 10px;">3. Chain (datum)</th><th style="padding: 10px; background-color: #e6f7e6;">Reflex + Fixed Strike</th></tr></thead>
+            <tbody>
+                <tr style="background-color: #f4f4f4;"><td colspan="6" style="padding: 10px;"><strong>Desirability (40)</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>D1. Striking at a realistic height (face and torso)</strong></td><td style="padding: 10px;">12</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold; background-color: #f9fff9;">+</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>D2. Stimulus visibility at 2–3 m</strong></td><td style="padding: 10px;">10</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold; background-color: #f9fff9;">+</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>D3. Punch safety and comfort</strong></td><td style="padding: 10px;">10</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold; background-color: #f9fff9;">+</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>D4. Tool-free installation and transport</strong></td><td style="padding: 10px;">8</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888; background-color: #f9fff9;">S</td></tr>
+                <tr style="background-color: #f4f4f4;"><td colspan="6" style="padding: 10px;"><strong>Feasibility and Viability (60)</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T1. Repeatable, mounting-independent measurement</strong></td><td style="padding: 10px;">14</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold; background-color: #f9fff9;">+</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T2. Protection of electronics and contacts</strong></td><td style="padding: 10px;">12</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold;">+</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #28A745; font-weight: bold; background-color: #f9fff9;">+</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T3. Charging by stacking (PDS requirement)</strong></td><td style="padding: 10px;">10</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888; background-color: #f9fff9;">S</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T4. Manufacturable with 3D printing and lab tools</strong></td><td style="padding: 10px;">10</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888; background-color: #f9fff9;">S</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T5. Cost ≤ $1,500 MXN per prototype</strong></td><td style="padding: 10px;">8</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold;">–</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold; background-color: #f9fff9;">–</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T6. Schedule risk (8 weeks)</strong></td><td style="padding: 10px;">6</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #888;">S</td><td style="padding: 10px; text-align: center; color: #DC3545; font-weight: bold; background-color: #f9fff9;">–</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;">Σ + / Σ – / Σ S</td><td style="padding: 10px;">—</td><td style="padding: 10px;">3 / 5 / 2</td><td style="padding: 10px;">3 / 1 / 6</td><td style="padding: 10px;">0 / 0 / 10</td><td style="padding: 10px;">5 / 2 / 3</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;">Weighted desirability</td><td style="padding: 10px;">40</td><td style="padding: 10px;">+24</td><td style="padding: 10px;">–4</td><td style="padding: 10px;">0</td><td style="padding: 10px;">+32</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;">Weighted feasibility</td><td style="padding: 10px;">60</td><td style="padding: 10px;">–42</td><td style="padding: 10px;">+26</td><td style="padding: 10px;">0</td><td style="padding: 10px;">+12</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total score</strong></td><td style="padding: 10px;">100</td><td style="padding: 10px;"><strong>–18</strong></td><td style="padding: 10px;"><strong>+22</strong></td><td style="padding: 10px;"><strong>0</strong></td><td style="padding: 10px; background-color: #e6f7e6;"><strong>+44</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;">Rank</td><td style="padding: 10px;">—</td><td style="padding: 10px;">4</td><td style="padding: 10px;">2</td><td style="padding: 10px;">3</td><td style="padding: 10px; background-color: #e6f7e6;"><strong>1</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Rating Rationale</h4>
+        <ul>
+            <li><strong>Reflex, D1–D3 (+):</strong> striking at face height reproduces the real technical motion and puts the stimulus in front of the eyes; the soft shape has no sharp edges.</li>
+            <li><strong>Reflex, D4 (–):</strong> it requires screwing a bracket to the wall.</li>
+            <li><strong>Reflex, T1 (–):</strong> the convex surface deflects punches that do not land on center, and on the wall the "force" estimated with F = m·a changes compared to the floor (contradiction C2).</li>
+            <li><strong>Reflex, T3–T5 (–):</strong> a dome cannot be stacked; the seamless junction cannot be printed; the anchor requires an extra metal part.</li>
+            <li><strong>Fixed Strike, D1 (–):</strong> on the floor it only allows kicks or forced downward punches; for boxing, this is its biggest flaw.</li>
+            <li><strong>Fixed Strike, T1–T2 (+):</strong> the concave center guides the fist to the center of the sensor (better repeatability), and the rigid rim protects the interior.</li>
+            <li><strong>Combined, T5–T6 (–):</strong> the wall plate, the load cells, and three mounting modes cost more and add work; that is its real cost.</li>
+        </ul>
+
+        <h4>Analysis</h4>
+        <ul>
+            <li><strong>Reflex wins on desirability (+24) and loses on feasibility (–42).</strong> It is the most attractive concept, but as drawn it cannot be built properly.</li>
+            <li><strong>Fixed Strike wins on feasibility (+26) and loses on desirability (–4).</strong> It has the best engineering, in the wrong position for boxing.</li>
+            <li>As the methodology requires, the winner (Fixed Strike) is a <strong>starting point, not a final decision</strong>. Its strengths and those of Reflex are complementary, so the two are combined.</li>
+            <li><strong>Robustness:</strong> the combined concept beats the datum on both desirability (+32) and feasibility (+12). Fixed Strike would only beat it if feasibility weighed more than ≈ 80% of the total.</li>
+        </ul>
+
+        <!-- Section 6: Selected Concept -->
+        <h2>6. Selected Concept</h2>
+
+        <h3>Fixed Reflex: Reflex with the Structure of Fixed Strike</h3>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>"A luminous target mounted on the wall at the opponent's height that tells you where to punch and measures how fast and how hard you did it."</em>
+        </blockquote>
+        <p><strong>What it takes from each concept:</strong> from <strong>Reflex</strong>, striking on the wall with the light in front of the eyes and a soft shape. From <strong>Fixed Strike</strong>, the concave pad that centers the punch and the rigid rim that protects it. From <strong>Chain</strong>, only what the PDS requires: stacking, with protected contacts.</p>
+
+        <h4>Changes in This Revision (Concept v2)</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Observation</th><th style="padding: 10px;">Before</th><th style="padding: 10px;">Now</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1. Pad material</strong></td><td style="padding: 10px;">Printed TPU 95A + EVA</td><td style="padding: 10px;"><strong>Upholstery faux leather over 2 layers of high-density EVA</strong>, tensioned with a ring like a drumhead; a bicycle inner-tube diaphragm in the gap</td><td style="padding: 10px;">Everything can be bought in Mexico without a flexible-filament printer. It is the same construction as a focus mitt, and the cover can be replaced in minutes</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2. Size</strong></td><td style="padding: 10px;">Ø 130 × 70 mm (Ø 90 pad)</td><td style="padding: 10px;"><strong>Ø 160 × 75 mm</strong> (Ø 120 mm pad)</td><td style="padding: 10px;">The pad is sized for the glove and the rim for what it must house. It deliberately exceeds the PDS's 15 cm limit; see "Size Justification"</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3. Light</strong></td><td style="padding: 10px;">Full ring of 16 LEDs</td><td style="padding: 10px;"><strong>120° arc (≈ 1/3 of the circumference) at the top</strong>, with 18 WS2812B LEDs under a diffuser</td><td style="padding: 10px;">It sits in the line of sight, marks "up" (matching the bayonet orientation), and enables directional stimuli: left, center, and right thirds</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3b. Charging contacts</strong></td><td style="padding: 10px;">Concentric contact ring at R 55</td><td style="padding: 10px;"><strong>Magnetic pogo connector recessed at the 6 o'clock position</strong></td><td style="padding: 10px;">The arc takes up the top of the rim. A commercial magnetic pogo connector is a discrete part, not a ring; with a fixed orientation it no longer needs to be concentric</td></tr>
+                <tr><td style="padding: 10px;"><strong>4. Durability</strong></td><td style="padding: 10px;">Printed pad, TPU bumper</td><td style="padding: 10px;">Replaceable cover, EPDM rubber weatherstrip, recessed diffuser, brass inserts, threadlocker, and a 10,000-punch test plan</td><td style="padding: 10px;">See the feasibility and durability table</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Size Justification: Ø 160 × 75 mm with a Ø 120 Pad</h4>
+        <p>The size was calculated from the inside out: first the area the glove needs, then what the rim must house.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Element (Radius)</th><th style="padding: 10px;">Dimension</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pad</strong></td><td style="padding: 10px;">R 60 (Ø 120)</td><td style="padding: 10px;">The knuckle face of a 12–16 oz glove is on the order of 9–10 cm wide <strong>[Estimated: measure with a real glove]</strong>. With Ø 120, the whole glove lands on the pad even if the punch strays ≈ 1–1.5 cm from center, and fewer punches hit the rigid rim (improves D3, safety)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gap with diaphragm</strong></td><td style="padding: 10px;">1.5 mm</td><td style="padding: 10px;">Lets the pad float without touching the rim, so all the force goes through the load cells</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Rim</strong></td><td style="padding: 10px;">15.5 mm (R 61.5–77)</td><td style="padding: 10px;">Light-arc window (7 mm) + 2 mm walls on each side + margin so the diffuser is not right on the edge. At 6 o'clock it houses the magnetic pogo connector (≈ 10–12 mm <strong>[Verify the model]</strong>). It is also the shoulder another pod rests on when stacking</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Weatherstrip</strong></td><td style="padding: 10px;">3 mm</td><td style="padding: 10px;">Protects the edge from off-center punches and drops</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total</strong></td><td style="padding: 10px;"><strong>R 80 → Ø 160</strong></td><td style="padding: 10px;">60 + 1.5 + 15.5 + 3 = 80 mm</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Why not smaller:</strong> with Ø 150 and the same pad, the rim would be 10.5 mm. The diffuser and the connector would not both fit, the stacking shoulder would be too thin, and the diffuser would sit on the edge, where most edge hits land.</p>
+        <p><strong>Why not larger:</strong> the pad already covers the glove; a wider rim does not improve the punch but does increase mass, cost, and print time. Ø 160 still fits on a 220 × 220 mm print bed; above ≈ Ø 180 the body would have to be printed in parts.</p>
+        <p><strong>Why the depth stays at 75 mm:</strong> on the wall, every millimeter of depth is a lever arm for hooks acting on the bayonet. The 75 mm already house the foam and the electronics; the larger diameter adds room without making the pod deeper.</p>
+        <p><strong>Effects verified by calculation [Estimated]:</strong></p>
+        <ul>
+            <li><strong>Usable area:</strong> the pad takes up 56% of the front (previously 51% with a Ø 100 pad on a Ø 140 body) and has 44% more area than the Ø 100 pad.</li>
+            <li><strong>Measurement:</strong> the plate becomes Ø 118 × 3 mm (≈ 89 g). With a plate and pad of ≈ 0.2 kg on 4 load cells, the natural frequency stays at ≈ 1 kHz, still well above the frequency content of a punch (≈ 100 Hz).</li>
+            <li><strong>Mass:</strong> ≈ 0.6 kg, which the plate and the wall anchors support without any issue.</li>
+            <li><strong>Battery life:</strong> with 18 LEDs (40% brightness, 30% duty cycle) the draw is ≈ 263 mA, and 3 h require ≈ 1,280 mAh with margins; the 2,000 mAh cell is enough.</li>
+            <li><strong>Cost:</strong> ≈ +$60–80 MXN per pod (more filament, a larger plate and more foam, and 3 extra LEDs).</li>
+            <li><strong>Pugh:</strong> the ranking does not change. D3 improves (fewer punches on the rim) and T5 (cost) gets slightly worse.</li>
+        </ul>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>PDS change:</strong> we propose changing requirement NFR-01 (15 × 15 × 15 cm) to <strong>Ø 160 × 80 mm</strong>. This is a conscious, documented deviation: the limit was set before we knew the glove size and the rim geometry. It must be approved by the advisor. To support it, we recommend the Week 7 cardboard test: Ø 100, 120, and 140 mm circles on the wall, counting how many punches land fully inside each one.</em>
+        </blockquote>
+
+        <h4>Pad Material: Alternatives to TPU</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Material</th><th style="padding: 10px;">Where to Get It</th><th style="padding: 10px;">Cost per Pod [Estimated]</th><th style="padding: 10px;">Durability and Feel</th><th style="padding: 10px;">Verdict</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Printed TPU 95A</strong></td><td style="padding: 10px;">Flexible filament; requires a direct-drive extruder and fine tuning</td><td style="padding: 10px;">$40–80</td><td style="padding: 10px;">Good, but with visible layers and variable quality</td><td style="padding: 10px;">Discarded due to access</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Faux leather + high-density EVA</strong></td><td style="padding: 10px;">Faux leather at fabric and upholstery stores; EVA as interlocking gym floor mats (supermarkets, Mercado Libre)</td><td style="padding: 10px;">$30–60</td><td style="padding: 10px;">The construction used in focus mitts and heavy bags; faux leather resists abrasion and sweat and is replaceable</td><td style="padding: 10px;"><strong>Chosen</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>EPDM rubber or neoprene sheet, 3–5 mm</strong></td><td style="padding: 10px;">Rubber and gasket stores, hardware stores</td><td style="padding: 10px;">$50–120</td><td style="padding: 10px;">Uniform and durable; firmer</td><td style="padding: 10px;">Alternative if the EVA compresses</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>SBR rubber gym mat</strong></td><td style="padding: 10px;">Sporting goods stores</td><td style="padding: 10px;">$30–70</td><td style="padding: 10px;">Very durable, but hard and heavy for the fist</td><td style="padding: 10px;">Base layer only</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cast RTV silicone</strong></td><td style="padding: 10px;">Craft and resin stores</td><td style="padding: 10px;">$80+</td><td style="padding: 10px;">Very durable; requires a printed mold and curing</td><td style="padding: 10px;">Future version</td></tr>
+                <tr><td style="padding: 10px;"><strong>EVA alone (craft foam)</strong></td><td style="padding: 10px;">Stationery stores</td><td style="padding: 10px;">$10–20</td><td style="padding: 10px;">Dents and compresses permanently</td><td style="padding: 10px;">Inner layer only</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>How the pad is assembled (analogy: a drumhead):</strong> a 12 mm EVA disc goes on top of the Ø 118 aluminum plate, and on top of that, a 4 mm EVA <strong>ring</strong> only at the edge. When the faux leather is tensioned over both, the center sits ≈ 4 mm lower: the concavity comes from the foam, with no molds. The faux leather is held by a <strong>PETG tension ring</strong> screwed to the plate (6 M3 screws). Between the floating pad and the fixed rim there is a 1.5 mm gap, sealed with a <strong>diaphragm</strong> cut from a bicycle inner tube, like the surround of a speaker: it lets the pad move without diverting force from the load cells and keeps sweat and dust out. <strong>[Verify on the bench: faux leather tension, actual sag, and that the diaphragm does not "steal" more than 2% of the force.]</strong></p>
+
+        <h4>120° Light Arc</h4>
+        <ul>
+            <li><strong>Position:</strong> on the rim, between R 64 and R 71 mm (≈ 140 mm long), from 10 to 2 o'clock. It sits above the pad, where the user looks, and outside the main striking zone.</li>
+            <li><strong>LEDs:</strong> the prototype uses a 144 LED/m WS2812B strip cut into 3 segments of 6 LEDs (40° chords of ≈ 46 mm), for 18 LEDs in total. For the batch: an arc-shaped PCB with 12–14 WS2812B 5050 LEDs that the team can fabricate and solder. The 60 LED/m strip already quoted works, but it only gives 6 LEDs and requires a deeper diffuser.</li>
+            <li><strong>Diffuser:</strong> natural PETG printed at 100% infill or cut polycarbonate (not acrylic, which cracks), recessed 1 mm from the rim so the glove does not hit it squarely.</li>
+            <li><strong>Uses:</strong> full stimulus, directional stimulus by thirds (left, center, and right to indicate a jab, a straight, or a hook), battery bar, and connection states.</li>
+            <li><strong>Power draw:</strong> 18 LEDs at 40% brightness average ≈ 263 mA; the 3 h are still covered by the 2,000 mAh cell (see the size justification).</li>
+        </ul>
+
+        <h4>Concept Design Improvements</h4>
+        <ol>
+            <li><strong>A single mounting interface.</strong> The back has a quarter-turn bayonet receptacle. The same bayonet accepts the wall plate, a non-slip floor disc, and a semi-curved adapter with straps for a heavy bag.</li>
+            <li><strong>Measurement that does not depend on mounting.</strong> From the v2 component list: ADXL375 + 4 × 50 kg load cells under the floating plate (now Ø 118 × 3 mm) with stops + ADS1220 at 2 kSPS.</li>
+            <li><strong>Stacking without loading the sensor.</strong> The back face has a Ø 122 × 3 mm recess: the upper pod rests on the <em>rim</em> of the one below, never on its pad, and the recess centers the tower. To stack, the light arcs are aligned, and the magnetic connector completes the alignment.</li>
+            <li><strong>Contacts the glove cannot reach.</strong> A magnetic pogo connector recessed at 6 o'clock (R 70), on both faces. On the wall, the rear connector sits outside the plate (Ø 120) and does not touch metal.</li>
+            <li><strong>Recessed plate.</strong> The 3 mm plate fits into the back recess; the pod protrudes ≈ 75 mm from the wall (NFR-01 ≤ 80).</li>
+            <li><strong>Maintenance from the back and the front.</strong> Battery and PCB are accessed through the back cover (4 screws, hidden when mounted); the pad cover is replaced from the front by removing the tension ring.</li>
+        </ol>
+
+        <h4>Feasibility and Durability</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Wear or Failure Risk</th><th style="padding: 10px;">Design Solution</th><th style="padding: 10px;">How It Is Verified</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The faux leather scuffs or tears</strong></td><td style="padding: 10px;">Replaceable cover with a tension ring; ≈ $5–10 in spare material</td><td style="padding: 10px;">Inspection every 1,000 punches during the 10,000-punch test</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The EVA compresses permanently</strong></td><td style="padding: 10px;">Two layers of high-density EVA; plan B: neoprene or EPDM</td><td style="padding: 10px;">Measure thickness and sag before and after 10,000 punches; change material if it loses more than 10%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cracks between print layers</strong></td><td style="padding: 10px;">PETG with 5 perimeters, 40–50% gyroid, radial ribs, and layers perpendicular to the punch load</td><td style="padding: 10px;">Visual and magnifying-glass inspection after the impact test</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Screws come loose</strong></td><td style="padding: 10px;">Heat-set brass inserts and medium-strength threadlocker</td><td style="padding: 10px;">Torque check every 1,000 punches</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Punches on the arc diffuser</strong></td><td style="padding: 10px;">Recessed 1 mm, PETG at 100% infill or polycarbonate</td><td style="padding: 10px;">Off-center punches aimed at the arc</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Edge hits and drops</strong></td><td style="padding: 10px;">EPDM rubber weatherstrip on the front half of the edge, seated in a groove (not just glued)</td><td style="padding: 10px;">1 m drop onto a concrete floor, 10 times</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The pad touches the rim and the force "skips" the load cells</strong></td><td style="padding: 10px;">1.5 mm gap with a flexible diaphragm; radial guide with 0.5 mm clearance</td><td style="padding: 10px;">Off-center load at 25 mm with weights: the reading must not drop by more than 8%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Sweat and dust</strong></td><td style="padding: 10px;">O-ring on the back cover, diaphragm on the front, capped USB-C on the rear half of the edge</td><td style="padding: 10px;">Salt-water spray on the mounted pod; internal inspection</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The bayonet rotates under hooks</strong></td><td style="padding: 10px;">Lock with a set screw or a latch</td><td style="padding: 10px;">1,000 real punches on a test wall</td></tr>
+                <tr><td style="padding: 10px;"><strong>Load cell wires break</strong></td><td style="padding: 10px;">Strain relief with cable ties and a JST-PH connector</td><td style="padding: 10px;">Continuity test after the 10,000 punches</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>The Seven Design Principles Applied</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Principle</th><th style="padding: 10px;">How Fixed Reflex Meets It</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1. Affordances</strong></td><td style="padding: 10px;">The concave pad in dark, matte faux leather says "hit here"; the lighter satin rim says "this is not for hitting." The light arc marks where "up" is and where to look.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2. Contour bias</strong></td><td style="padding: 10px;">No sharp edges: a front radius of ≥ 8 mm, a rubber weatherstrip on the edge, and a concave, padded striking surface.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3. Consistency</strong></td><td style="padding: 10px;">A circle-and-arc language: pod, pad, light arc, wall plate, and the app's progress ring.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4. Constraints</strong></td><td style="padding: 10px;">The bayonet only fits in one orientation (arc up, USB-C and connector down); to stack, the arcs are aligned and the magnetic connector only closes in that position; the button is recessed; the top output is de-energized unless the Hall sensor detects another pod; the stops prevent overloading the load cells.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>5. Confirmation</strong></td><td style="padding: 10px;"><strong>Minor:</strong> punch registered → white flash on the arc and the counter goes up in the app. <strong>Important:</strong> end of a set or a new record → green left-to-right sweep across all pods and phone vibration. <strong>Critical:</strong> battery &lt; 15%, pod disconnected, or sensor saturated → pulsing amber or red arc, red banner, and the session pauses.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>6. Cost-benefit</strong></td><td style="padding: 10px;">See the next table.</td></tr>
+                <tr><td style="padding: 10px;"><strong>7. Development cycle</strong></td><td style="padding: 10px;">The principles are kept (wall, concave center, light where you look) and the forms are revised: the dome became a cylinder, the camera mount a bayonet, the full ring an arc, and TPU became faux leather.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Cost-Benefit of Each Decision</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Feature</th><th style="padding: 10px;">Cost per Pod [Estimated]</th><th style="padding: 10px;">Benefit</th><th style="padding: 10px;">Decision</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Load cells + ADS1220 + aluminum plate</strong></td><td style="padding: 10px;">≈ $270–400</td><td style="padding: 10px;">Force in N, independent of mounting (T1, 14 pts)</td><td style="padding: 10px;">In; bench test in Week 2 and decision at the end of Week 3 (v2 list)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Wall plate with bayonet</strong></td><td style="padding: 10px;">≈ $40 (6 mm MDF or acrylic) for the prototype; ≈ $80–150 in steel</td><td style="padding: 10px;">Striking at a real height (D1, 12 pts) and a universal interface</td><td style="padding: 10px;">In; steel only if it passes the load test</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Faux leather + EVA + diaphragm pad</strong></td><td style="padding: 10px;">≈ $30–60 (less than TPU + EVA)</td><td style="padding: 10px;">Accessible, replaceable material proven in focus mitts</td><td style="padding: 10px;">In</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>18-LED arc + diffuser</strong></td><td style="padding: 10px;">≈ $40–70 (segment of a 144 LED/m strip) <strong>[Verify price]</strong></td><td style="padding: 10px;">Visible, directional stimulus</td><td style="padding: 10px;">In; arc PCB for the batch</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Ø 160 size (vs. Ø 140)</strong></td><td style="padding: 10px;">≈ +$60–80</td><td style="padding: 10px;">A Ø 120 pad sized for the glove and a functional rim</td><td style="padding: 10px;">In (see justification)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Magnetic pogo connector</strong></td><td style="padding: 10px;">≈ $150 per pair (prototype)</td><td style="padding: 10px;">PDS stacking requirement</td><td style="padding: 10px;">Deferred to Weeks 4–5</td></tr>
+                <tr><td style="padding: 10px;"><strong>EPDM weatherstrip and recessed button</strong></td><td style="padding: 10px;">≈ $15–25</td><td style="padding: 10px;">Edge protection and power-on without the app</td><td style="padding: 10px;">In</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Honest budget reading:</strong> configuration B from the v2 list without pogo (≈ $1,380–1,830), plus the plate, the arc, the weatherstrip, and the Ø 160 size, and with the cheaper pad, comes to ≈ $1,510–1,980. <strong>It no longer fits within $1,500 without adjustments:</strong> with the levers from the v2 list (a local ESP32 DevKit, saving ≈ $80–130, and an FR4 plate for the prototype, ≈ −$50), the low end drops to ≈ $1,330–1,380. If it still does not fit, the force path is presented as an upgrade with a separate budget, without changing the housing.</p>
+
+        <h4>Prompt for the Selected Concept Render</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-family: monospace; font-size: 0.9em; line-height: 1.5; margin-bottom: 20px;">Photorealistic industrial design hero shot of a smart boxing training pod mounted on a concrete gym wall at face height. The pod is a low-profile cylinder, 160 mm in diameter and 75 mm deep, with softly rounded front edges and a black rubber bumper strip around the front half of its side. The front face has a slightly concave striking pad, 120 mm wide, covered in matte black synthetic leather stretched like a drum head and held by a thin dark ring; its edge sits flush with a satin light-grey rigid rim about 15 mm wide. In the upper third of the rim, a curved light bar spanning about 120 degrees glows cyan behind a frosted diffuser, slightly recessed; the rest of the rim is unlit. A small recessed magnetic connector sits at the bottom of the rim. The pod sits almost flush against the wall on a hidden quarter-turn bayonet plate. Inset in the lower right corner: two identical pods stacked flat on a gym floor with their light bars aligned. Neutral studio lighting, shallow depth of field, no text, no logos, no full LED ring, no domes, no action-camera mounts.</div>
+
+        <!-- Section 7: Technical Sketch -->
+        <h2>7. Technical Sketch</h2>
+
+        <h3>Front, Side, and Section Views</h3>
+        <p>Dimensions in mm. This is a first approximation for CAD; the internal heights come from the v2 component list stack-up, adjusted for the foam of the new pad.</p>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+            <svg viewBox="0 0 990 450" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Front view and side view of Fixed Reflex with dimensions" style="width: 100%; min-width: 760px; height: auto;">
+                <style>
+                    .tb { font: bold 14px Arial, sans-serif; fill: #032472; }
+                    .ts { font: 11.5px Arial, sans-serif; fill: #4d5a78; }
+                    .ln { stroke: #4d5a78; stroke-width: 1; fill: none; }
+                    .dim { stroke: #b10a0a; stroke-width: 1; fill: none; }
+                    .dt { font: 12px Arial, sans-serif; fill: #b10a0a; }
+                </style>
+                <text class="tb" x="135" y="24">FRONT VIEW</text>
+                <!-- front: center (190,214), scale 2.1 px/mm -->
+                <circle cx="190" cy="214" r="168" fill="#2f333d"></circle>
+                <circle cx="190" cy="214" r="161.7" fill="#c9cfdc" stroke="#4d5a78"></circle>
+                <path d="M67.2 143.1 A141.75 141.75 0 0 1 312.8 143.1" fill="none" stroke="#9fe7f7" stroke-width="15" stroke-linecap="round"></path>
+                <path d="M67.2 143.1 A141.75 141.75 0 0 1 312.8 143.1" fill="none" stroke="#20c4e8" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 5"></path>
+                <circle cx="190" cy="214" r="129.2" fill="#7a808c"></circle>
+                <circle cx="190" cy="214" r="126" fill="#2b2f38"></circle>
+                <circle cx="190" cy="214" r="117.6" fill="none" stroke="#5a6070" stroke-width="3"></circle>
+                <circle cx="190" cy="214" r="80" fill="none" stroke="#3a3f4b"></circle>
+                <circle cx="190" cy="214" r="40" fill="none" stroke="#3a3f4b"></circle>
+                <rect x="177" y="356" width="26" height="10" rx="2" fill="#c77d3a"></rect>
+                <line class="dim" x1="22" y1="408" x2="358" y2="408"></line>
+                <line class="dim" x1="22" y1="400" x2="22" y2="416"></line><line class="dim" x1="358" y1="400" x2="358" y2="416"></line>
+                <text class="dt" x="172" y="430">Ø 160</text>
+                <line class="dim" x1="64" y1="214" x2="316" y2="214" stroke-dasharray="4 3"></line>
+                <text class="dt" x="206" y="208" style="fill:#ffb3b3">Ø 120 pad</text>
+                <line class="ln" x1="300" y1="112" x2="388" y2="70"></line><text class="ts" x="392" y="68">120° arc: 18 LEDs under a diffuser</text>
+                <line class="ln" x1="340" y1="160" x2="388" y2="110"></line><text class="ts" x="392" y="108">PETG rim, 15.5 mm (R 61.5–77)</text>
+                <line class="ln" x1="355" y1="214" x2="388" y2="150"></line><text class="ts" x="392" y="148">EPDM rubber weatherstrip in groove</text>
+                <line class="ln" x1="316" y1="246" x2="388" y2="190"></line><text class="ts" x="392" y="188">Bike inner-tube diaphragm</text>
+                <line class="ln" x1="296" y1="276" x2="388" y2="230"></line><text class="ts" x="392" y="228">PETG tension ring (8 × M3)</text>
+                <line class="ln" x1="240" y1="296" x2="388" y2="270"></line><text class="ts" x="392" y="268">Pad: faux leather + HD EVA</text>
+                <line class="ln" x1="203" y1="361" x2="388" y2="312"></line><text class="ts" x="392" y="310">Magnetic pogo connector (6 o'clock)</text>
+
+                <text class="tb" x="672" y="24">SIDE VIEW</text>
+                <rect x="634" y="40" width="16" height="350" fill="#d9dbe0"></rect>
+                <text class="ts" x="612" y="404">Wall</text>
+                <path d="M650 46 L790 46 Q807.5 46 807.5 63.5 L807.5 364.5 Q807.5 382 790 382 L650 382 Z" fill="#c9cfdc" stroke="#4d5a78" stroke-width="1.5"></path>
+                <rect x="728" y="46" width="68" height="6" fill="#2f333d"></rect>
+                <rect x="728" y="376" width="68" height="6" fill="#2f333d"></rect>
+                <rect x="650" y="88" width="6.3" height="252" fill="none" stroke="#4d5a78" stroke-dasharray="4 3"></rect>
+                <path d="M807.5 88 Q799 214 807.5 340" fill="none" stroke="#2b2f38" stroke-width="4"></path>
+                <rect x="676" y="380" width="24" height="5" fill="#10131a"></rect>
+                <rect x="712" y="380" width="10" height="5" fill="#10131a"></rect>
+                <line class="dim" x1="650" y1="414" x2="807.5" y2="414"></line>
+                <line class="dim" x1="650" y1="406" x2="650" y2="422"></line><line class="dim" x1="807.5" y1="406" x2="807.5" y2="422"></line>
+                <text class="dt" x="676" y="436">≈ 75 (from the wall)</text>
+                <line class="dim" x1="828" y1="46" x2="828" y2="382"></line>
+                <line class="dim" x1="820" y1="46" x2="836" y2="46"></line><line class="dim" x1="820" y1="382" x2="836" y2="382"></line>
+                <text class="dt" x="836" y="218">Ø 160</text>
+                <line class="ln" x1="654" y1="120" x2="690" y2="108"></line><text class="ts" x="668" y="100">Recessed plate</text>
+                <text class="ts" x="878" y="100">Concave front</text>
+                <text class="ts" x="878" y="116">(sag ≈ 4)</text>
+                <text class="ts" x="878" y="300">Weatherstrip</text>
+                <text class="ts" x="878" y="316">on front half only</text>
+                <text class="ts" x="664" y="374">USB-C + button</text>
+            </svg>
+            <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
+                <em>Front view and side view, wall-mounted. Approximate scale 2.1 px/mm; the plate and the back recess are hidden (dashed lines).</em>
+            </p>
+        </div>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+            <svg viewBox="0 0 930 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Side section of Fixed Reflex showing component placement" style="width: 100%; min-width: 760px; height: auto;">
+                <style>
+                    .t2  { font: 13px Arial, sans-serif; fill: #1b1f2a; }
+                    .tb2 { font: bold 14px Arial, sans-serif; fill: #032472; }
+                    .ts2 { font: 11.5px Arial, sans-serif; fill: #4d5a78; }
+                    .ln2 { stroke: #4d5a78; stroke-width: 1; fill: none; }
+                </style>
+                <text class="tb2" x="60" y="22">SECTION A-A (side, wall-mounted)</text>
+                <rect x="34" y="34" width="26" height="336" fill="#d9dbe0"></rect>
+                <path d="M60 34 L200 34 Q217.5 34 217.5 51.5 L217.5 352.5 Q217.5 370 200 370 L60 370 Z" fill="#c9cfdc" stroke="#4d5a78" stroke-width="1.5"></path>
+                <rect x="139" y="34" width="66" height="6.3" fill="#2f333d"></rect>
+                <rect x="139" y="363.7" width="66" height="6.3" fill="#2f333d"></rect>
+                <rect x="60" y="76" width="6.3" height="252" fill="#8a93a6"></rect>
+                <rect x="66.3" y="76" width="6.3" height="252" fill="#a9b2c6"></rect>
+                <rect x="81" y="96" width="4" height="212" fill="#3c8d5a"></rect>
+                <circle cx="76" cy="110" r="3" fill="#6b7280"></circle><circle cx="76" cy="294" r="3" fill="#6b7280"></circle>
+                <rect x="100" y="134" width="38" height="136" rx="8" fill="#f1c27d" stroke="#b07d2b"></rect>
+                <rect x="146" y="70" width="6.3" height="264" fill="#a9b2c6"></rect>
+                <rect x="140" y="196" width="6" height="12" fill="#7b2cbf"></rect>
+                <rect x="152.4" y="82" width="16.8" height="72" fill="#0d48d2"></rect>
+                <rect x="152.4" y="250" width="16.8" height="72" fill="#0d48d2"></rect>
+                <rect x="155" y="176" width="12" height="6" fill="#444"></rect><rect x="155" y="222" width="12" height="6" fill="#444"></rect>
+                <rect x="173.4" y="78" width="6.3" height="248" fill="#7c8698"></rect>
+                <rect x="169" y="74" width="11" height="9" fill="#5a6070"></rect>
+                <rect x="169" y="321" width="11" height="9" fill="#5a6070"></rect>
+                <path d="M179.7 76 L215.4 76 Q203 202 215.4 328 L179.7 328 Z" fill="#3a3f4b"></path>
+                <path d="M207 80 L207 98 M207 306 L207 324" stroke="#9aa3b5" stroke-dasharray="2 2"></path>
+                <path d="M215.4 76 Q203 202 215.4 328" fill="none" stroke="#111" stroke-width="3"></path>
+                <path d="M211 73 q3 -3 6 0" stroke="#b10a0a" stroke-width="2" fill="none"></path>
+                <path d="M211 331 q3 3 6 0" stroke="#b10a0a" stroke-width="2" fill="none"></path>
+                <path d="M185 40.3 L203 40.3 Q217.5 40.3 217.5 54.8 L217.5 72.8 L185 72.8 Z" fill="#5a6274"></path>
+                <rect x="205" y="54" width="6" height="12" fill="#20c4e8"></rect>
+                <rect x="211" y="52.9" width="6.5" height="14.7" fill="#bfeefa"></rect>
+                <path d="M185 331.2 L217.5 331.2 L217.5 349.2 Q217.5 363.7 203 363.7 L185 363.7 Z" fill="#5a6274"></path>
+                <rect x="210" y="345" width="7.5" height="8" fill="#c77d3a"></rect>
+                <rect x="60" y="345" width="6.3" height="8" fill="#c77d3a"></rect>
+                <rect x="90" y="366" width="24" height="6" fill="#10131a"></rect>
+                <path d="M310 202 L228 202" stroke="#b10a0a" stroke-width="3"></path>
+                <path d="M228 202 l12 -7 l0 14 z" fill="#b10a0a"></path>
+                <text class="t2" x="252" y="192">Punch</text>
+                <text class="ts2" x="56" y="392">0</text><text class="ts2" x="96" y="392">20</text><text class="ts2" x="138" y="392">40</text><text class="ts2" x="166" y="392">54</text><text class="ts2" x="206" y="392">75</text>
+                <text class="ts2" x="60" y="410">Depth from the wall (mm)</text>
+                <line class="ln2" x1="209" y1="60" x2="420" y2="44"></line><text class="ts2" x="424" y="48">18-LED arc (top) + diffuser recessed 1 mm</text>
+                <line class="ln2" x1="214" y1="74" x2="420" y2="68"></line><text class="ts2" x="424" y="72">Bike inner-tube diaphragm in the 1.5 mm gap</text>
+                <line class="ln2" x1="175" y1="79" x2="420" y2="92"></line><text class="ts2" x="424" y="96">PETG tension ring holding the faux leather to the plate</text>
+                <line class="ln2" x1="161" y1="118" x2="420" y2="116"></line><text class="ts2" x="424" y="120">4 × 50 kg load cells at 90° (R ≈ 40), 44–52 mm</text>
+                <line class="ln2" x1="205" y1="140" x2="420" y2="140"></line><text class="ts2" x="424" y="144">Ø120 pad: faux leather 1 mm + EVA 12 mm + EVA ring 4 mm, 57–74 mm</text>
+                <line class="ln2" x1="177" y1="165" x2="420" y2="164"></line><text class="ts2" x="424" y="168">Aluminum floating plate Ø118 × 3 mm, 54–57 mm</text>
+                <line class="ln2" x1="143" y1="202" x2="420" y2="188"></line><text class="ts2" x="424" y="192">ADXL375 bolted to the chassis, at the center</text>
+                <line class="ln2" x1="161" y1="225" x2="420" y2="212"></line><text class="ts2" x="424" y="216">Adjustable M4 stops at ≈ 90% load</text>
+                <line class="ln2" x1="118" y1="250" x2="420" y2="236"></line><text class="ts2" x="424" y="240">18650 cell with tabs, in a foam cradle, 19–37 mm</text>
+                <line class="ln2" x1="83" y1="275" x2="420" y2="260"></line><text class="ts2" x="424" y="264">PCB (ESP32, TP4056, AP2112K, ADS1220) on isolators, 10 mm</text>
+                <line class="ln2" x1="69" y1="300" x2="420" y2="284"></line><text class="ts2" x="424" y="288">Back cover with O-ring: battery and PCB access (4 screws)</text>
+                <line class="ln2" x1="63" y1="320" x2="420" y2="308"></line><text class="ts2" x="424" y="312">Ø120 × 3 mm wall plate in a Ø122 recess; ¼-turn bayonet + lock</text>
+                <line class="ln2" x1="214" y1="349" x2="420" y2="332"></line><text class="ts2" x="424" y="336">Magnetic pogo connector recessed at 6 o'clock (front = out, back = in)</text>
+                <line class="ln2" x1="190" y1="367" x2="420" y2="356"></line><text class="ts2" x="424" y="360">EPDM weatherstrip in a groove, front half of the edge</text>
+                <line class="ln2" x1="102" y1="371" x2="420" y2="380"></line><text class="ts2" x="424" y="384">USB-C with cover and recessed button, rear half of the edge</text>
+            </svg>
+            <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
+                <em>Schematic side section showing component placement according to the v2 component list. Approximate proportions.</em>
+            </p>
+        </div>
+
+        <h3>CAD Specification</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Part</th><th style="padding: 10px;">Approximate Dimensions</th><th style="padding: 10px;">Material and Process</th><th style="padding: 10px;">Notes</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Envelope</strong></td><td style="padding: 10px;">Ø 160 (with weatherstrip) × ≈ 75 mm; 78 mm maximum in CAD</td><td style="padding: 10px;">—</td><td style="padding: 10px;">Requires approval of the change of NFR-01 to Ø 160 × 80 mm</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Body / chassis</strong></td><td style="padding: 10px;">Ø 154 mm without weatherstrip; 2.5–3 mm wall</td><td style="padding: 10px;">Printed PETG or ASA, 5 perimeters, 40–50% gyroid</td><td style="padding: 10px;">Fits a 220 × 220 mm bed; radial ribs under the load cells and stops; M3/M4 brass inserts</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Front rim</strong></td><td style="padding: 10px;">Ring R 61.5–77 mm (15.5 mm); front radius ≥ 8</td><td style="padding: 10px;">Light satin PETG</td><td style="padding: 10px;">Window for the 120° arc (R 64–71) and connector housing at 6 o'clock</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Striking pad</strong></td><td style="padding: 10px;">Ø 120 mm, ≈ 4 mm sag, ≈ 17 mm thick</td><td style="padding: 10px;">Faux leather 1 mm + high-density EVA 12 mm + EVA ring 4 mm</td><td style="padding: 10px;">Replaceable cover; plan B: 5 mm neoprene or EPDM</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Tension ring</strong></td><td style="padding: 10px;">Ø 120 / Ø 108 mm × 4 mm</td><td style="padding: 10px;">PETG, 8 M3 screws</td><td style="padding: 10px;">Holds the faux leather and the diaphragm to the plate</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Floating plate</strong></td><td style="padding: 10px;">Ø 118 × 3 mm (≈ 89 g)</td><td style="padding: 10px;">Cut 5052/6061 aluminum (double FR4 for the prototype)</td><td style="padding: 10px;">Load cells at R ≈ 40 mm; radial guide with 0.5 mm clearance</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Light arc</strong></td><td style="padding: 10px;">120°, R 64–71 mm, ≈ 140 mm long</td><td style="padding: 10px;">WS2812B 144 LED/m strip (3 segments of 6) or an arc PCB; natural PETG or polycarbonate diffuser</td><td style="padding: 10px;">Diffuser recessed 1 mm</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Weatherstrip</strong></td><td style="padding: 10px;">Front half of the edge, ≈ 3 mm</td><td style="padding: 10px;">EPDM rubber weatherstrip (hardware store)</td><td style="padding: 10px;">In a retention groove, not just adhesive</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Back cover</strong></td><td style="padding: 10px;">Ø 122 mm, 3 mm recess</td><td style="padding: 10px;">PETG with O-ring</td><td style="padding: 10px;">Bayonet receptacle with 3 lugs; one wider lug sets the orientation</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Wall plate</strong></td><td style="padding: 10px;">Ø 120 × 3 mm, 4 holes</td><td style="padding: 10px;">6 mm MDF or acrylic for the prototype; 3 mm steel in v2</td><td style="padding: 10px;">Lock with a set screw or a latch</td></tr>
+                <tr><td style="padding: 10px;"><strong>Total mass</strong></td><td style="padding: 10px;">≈ 0.6 kg <strong>[Estimated]</strong></td><td colspan="2" style="padding: 10px;">Body ≈ 230 g, plate ≈ 89 g, 18650 cell ≈ 45 g, pad and weatherstrip ≈ 70 g, electronics, load cells, and hardware ≈ 150 g</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 8: App Wireframe -->
+        <h2>8. App Wireframe</h2>
+
+        <h3>Home Screen (Normal and Alert) and the First Three Installation Steps</h3>
+        <p>Low fidelity. We keep the Week 5 architecture (the app talks to a single gateway pod over BLE) and the product's circle-and-arc language.</p>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+            <svg viewBox="0 0 880 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="App wireframes: normal screen, alert screen, and three installation steps" style="width: 100%; min-width: 760px; height: auto;">
+                <style>
+                    .ph { fill: #ffffff; stroke: #1b1f2a; stroke-width: 2; }
+                    .wt { font: 11px Arial, sans-serif; fill: #1b1f2a; }
+                    .wb { font: bold 12px Arial, sans-serif; fill: #1b1f2a; }
+                    .wh { font: bold 13px Arial, sans-serif; fill: #032472; }
+                    .ws { font: 10px Arial, sans-serif; fill: #5a5a5a; }
+                    .wbox { fill: #eef1f7; stroke: #9aa3b5; }
+                    .wbtn { fill: #0d48d2; }
+                    .wbtt { font: bold 11px Arial, sans-serif; fill: #fff; }
+                </style>
+                <text class="wh" x="98" y="18" text-anchor="middle">Home: normal</text>
+                <text class="wh" x="272" y="18" text-anchor="middle">Home: alert</text>
+                <text class="wh" x="446" y="18" text-anchor="middle">Step 1</text>
+                <text class="wh" x="620" y="18" text-anchor="middle">Step 2</text>
+                <text class="wh" x="794" y="18" text-anchor="middle">Step 3</text>
+
+                <!-- normal -->
+                <rect class="ph" x="20" y="28" width="156" height="340" rx="18"></rect>
+                <text class="wb" x="34" y="56">Session · Combos 1</text>
+                <circle cx="98" cy="130" r="48" fill="none" stroke="#dfe3ec" stroke-width="10"></circle>
+                <path d="M98 82 A48 48 0 1 1 52 145" fill="none" stroke="#0d48d2" stroke-width="10"></path>
+                <text class="wb" x="98" y="128" text-anchor="middle">312 ms</text>
+                <text class="ws" x="98" y="143" text-anchor="middle">avg. reaction</text>
+                <text class="wt" x="34" y="200">Punches 42 / 60</text>
+                <text class="wt" x="34" y="218">Avg. force 640 N</text>
+                <circle cx="44" cy="248" r="10" fill="#36b37e"></circle><circle cx="76" cy="248" r="10" fill="#36b37e"></circle>
+                <circle cx="108" cy="248" r="10" fill="#36b37e"></circle><circle cx="140" cy="248" r="10" fill="#36b37e"></circle>
+                <text class="ws" x="34" y="274">4 pods · battery 78–91%</text>
+                <rect class="wbtn" x="34" y="320" width="128" height="30" rx="15"></rect><text class="wbtt" x="98" y="339" text-anchor="middle">Pause</text>
+
+                <!-- alert -->
+                <rect class="ph" x="194" y="28" width="156" height="340" rx="18"></rect>
+                <rect x="200" y="40" width="144" height="48" rx="8" fill="#fde2e2" stroke="#b10a0a"></rect>
+                <text class="wb" x="208" y="58" style="fill:#b10a0a">Pod 3 disconnected</text>
+                <text class="ws" x="208" y="72">Punches are saved</text>
+                <text class="ws" x="208" y="84">on the pod. Paused.</text>
+                <circle cx="272" cy="140" r="38" fill="none" stroke="#dfe3ec" stroke-width="10"></circle>
+                <text class="wb" x="272" y="144" text-anchor="middle">Paused</text>
+                <circle cx="218" cy="210" r="10" fill="#36b37e"></circle><circle cx="250" cy="210" r="10" fill="#f2a900"></circle>
+                <circle cx="282" cy="210" r="10" fill="#b0b6c3"></circle><circle cx="314" cy="210" r="10" fill="#36b37e"></circle>
+                <text class="wb" x="279" y="214" style="fill:#fff">!</text>
+                <text class="ws" x="208" y="240">Pod 2: battery 12%</text>
+                <text class="ws" x="208" y="254">Pod 3: no signal</text>
+                <rect class="wbtn" x="208" y="300" width="128" height="30" rx="15"></rect><text class="wbtt" x="272" y="319" text-anchor="middle">Retry</text>
+                <text class="ws" x="272" y="348" text-anchor="middle">Continue without pod 3</text>
+
+                <!-- step 1 -->
+                <rect class="ph" x="368" y="28" width="156" height="340" rx="18"></rect>
+                <text class="wb" x="382" y="56">1. Mount the plate</text>
+                <rect x="382" y="72" width="128" height="120" class="wbox"></rect>
+                <circle cx="446" cy="124" r="32" fill="#c9cfdc" stroke="#4d5a78"></circle>
+                <circle cx="446" cy="124" r="22" fill="#2b2f38"></circle>
+                <path d="M424 112 A26 26 0 0 1 468 112" fill="none" stroke="#20c4e8" stroke-width="4"></path>
+                <path d="M484 104 A40 40 0 0 1 488 144" fill="none" stroke="#0d48d2" stroke-width="2"></path>
+                <text class="ws" x="478" y="164">¼</text>
+                <line x1="390" y1="178" x2="502" y2="178" stroke="#9aa3b5" stroke-dasharray="3 3"></line>
+                <text class="ws" x="446" y="189" text-anchor="middle">chin height</text>
+                <text class="wt" x="382" y="214">Screw the plate to</text>
+                <text class="wt" x="382" y="229">concrete or block. Fit</text>
+                <text class="wt" x="382" y="244">the pod with the light</text>
+                <text class="wt" x="382" y="259">arc on top; turn ¼.</text>
+                <rect class="wbtn" x="382" y="320" width="128" height="30" rx="15"></rect><text class="wbtt" x="446" y="339" text-anchor="middle">Done</text>
+
+                <!-- step 2 -->
+                <rect class="ph" x="542" y="28" width="156" height="340" rx="18"></rect>
+                <text class="wb" x="556" y="56">2. Turn on the pods</text>
+                <rect x="556" y="72" width="128" height="120" class="wbox"></rect>
+                <circle cx="620" cy="136" r="38" fill="#c9cfdc" stroke="#4d5a78"></circle>
+                <circle cx="620" cy="136" r="27" fill="#2b2f38"></circle>
+                <path d="M590 120 A33 33 0 0 1 650 120" fill="none" stroke="#20c4e8" stroke-width="5" stroke-dasharray="6 5"></path>
+                <text class="wt" x="556" y="214">Hold the side button</text>
+                <text class="wt" x="556" y="229">for 2 s. The arc blinks</text>
+                <text class="wt" x="556" y="244">blue: it is ready to</text>
+                <text class="wt" x="556" y="259">pair.</text>
+                <rect class="wbtn" x="556" y="320" width="128" height="30" rx="15"></rect><text class="wbtt" x="620" y="339" text-anchor="middle">It's blinking</text>
+
+                <!-- step 3 -->
+                <rect class="ph" x="716" y="28" width="156" height="340" rx="18"></rect>
+                <text class="wb" x="730" y="56">3. Punch each pod</text>
+                <rect x="730" y="72" width="128" height="34" rx="6" class="wbox"></rect><text class="wt" x="740" y="93">Pod-A3F2 · found</text>
+                <rect x="730" y="112" width="128" height="34" rx="6" class="wbox"></rect><text class="wt" x="740" y="133">Pod-7C10 · found</text>
+                <text class="wt" x="730" y="174">Punch each pod once.</text>
+                <text class="wt" x="730" y="189">Its arc turns green and</text>
+                <text class="wt" x="730" y="204">it shows up numbered.</text>
+                <circle cx="760" cy="240" r="12" fill="#36b37e"></circle><text class="ws" x="760" y="244" style="fill:#fff" text-anchor="middle">1</text>
+                <circle cx="796" cy="240" r="12" fill="#36b37e"></circle><text class="ws" x="796" y="244" style="fill:#fff" text-anchor="middle">2</text>
+                <circle cx="832" cy="240" r="12" fill="none" stroke="#9aa3b5" stroke-dasharray="3 3"></circle>
+                <rect class="wbtn" x="730" y="320" width="128" height="30" rx="15"></rect><text class="wbtt" x="794" y="339" text-anchor="middle">Train</text>
+            </svg>
+            <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
+                <em>Low-fidelity wireframes. In the alert, the session pauses and the events stay stored on the pod (Week 5 offline operation).</em>
+            </p>
+        </div>
+
+        <ul>
+            <li><strong>Normal:</strong> the progress ring echoes the pod's shape; it shows reaction time, punches, and average force, and the pods appear as circles with their status.</li>
+            <li><strong>Alert:</strong> a red banner with the cause and what happens to the data ("saved on the pod"), the affected pod in gray, low battery in amber, and two ways out: retry or continue without that pod.</li>
+            <li><strong>Step 1:</strong> the instruction "light arc on top" sets the bayonet orientation without the user having to read any markings.</li>
+            <li><strong>Step 3:</strong> pairing is confirmed <strong>by punching the pod</strong>. The user learns the main gesture from the first minute and knows which pod is which.</li>
+        </ul>
+
+        <!-- Section 9: Technical Critique -->
+        <h2>9. Technical Critique</h2>
+
+        <h3>Prompt 6: Sketch Review Before CAD</h3>
+        <h4>Critical Issues (Maximum 3)</h4>
+        <ol>
+            <li><strong>Bayonet rotation under hooks.</strong> An off-center hook creates torque that can unlock a quarter turn. <strong>Adjustment:</strong> a mandatory lock (side set screw or spring latch) and lugs with a self-locking ramp; test with off-center punches 25 mm from the center.</li>
+            <li><strong>Floating pad against a fixed rim.</strong> If the pad touches the rim when it compresses or under an angled punch, part of the force goes into the chassis without passing through the load cells. <strong>Adjustment:</strong> a 1.5 mm gap with a flexible diaphragm, a radial guide with 0.5 mm clearance, and verification with off-center loading (loss &lt; 8%).</li>
+            <li><strong>Heat during charging.</strong> With the O-ring, the diaphragm, and the cell behind the PCB, charging at 500 mA without ventilation can heat up the interior. <strong>Adjustment:</strong> charging mode turns off the LED arc, and the cell temperature is measured during a full charge, with a &lt; 45 °C criterion.</li>
+        </ol>
+        <p><strong>Resolved in this revision:</strong> the depth went from 70 to 75 mm (78 mm maximum in CAD), leaving margin for the foam and the printing tolerances, and the diameter went to Ø 160 so the 15.5 mm rim can house the arc, the connector, and the stacking shoulder. <strong>Pending:</strong> approval of the NFR-01 change.</p>
+
+        <h4>Open Questions</h4>
+        <ul>
+            <li>A fixed mounting height, or a vertical rail with several positions for users of different heights?</li>
+            <li>What kind of wall does the pilot gym have? On drywall, the plate needs an intermediate wooden board.</li>
+            <li>Is a single gateway pod enough if four pods are on different walls more than 5 m apart? This will be validated with the Week 4 ESP-NOW test.</li>
+            <li>Can the arc's thirds-based stimuli be told apart at 2–3 m? This will be tested with 5 users.</li>
+            <li>Will the advisor approve expanding NFR-01 to Ø 160 × 80 mm?</li>
+        </ul>
+
+        <h4>Main Strength</h4>
+        <p>A single pod design, made with materials available in Mexico, works on a wall, on the floor, and on a heavy bag with the same bayonet, and it measures force the same way in all three.</p>
+
+        <h4>Verdict</h4>
+        <p><strong>Ready for CAD with 3 adjustments</strong> (bayonet lock, pad gap and diaphragm, and a thermal charging test).</p>
+
+        <!-- Section 10: Concept Defense -->
+        <h2>10. Concept Defense (3 Minutes)</h2>
+
+        <h3>Script</h3>
+        <ol>
+            <li><strong>Concept (1 min):</strong> Fixed Reflex is a 16 cm luminous target mounted on the wall at the opponent's height. It tells you where to punch with a light arc at the top and measures how fast and how hard you did it. Its concave faux leather pad centers the punch, the rigid rim protects it, and with the same bayonet it can also go on the floor or on a heavy bag.</li>
+            <li><strong>Why it won (1 min):</strong> it scored +44, versus +22 for Fixed Strike and −18 for Reflex. It wins on striking at a realistic height (D1, 12 pts), visibility (D2), and punch safety (D3), which Fixed Strike lacked; and it wins on mounting-independent measurement (T1, 14 pts) and protection (T2, 12 pts), which Reflex lacked.</li>
+            <li><strong>Main risk and mitigation (1 min):</strong> that the plate or the bayonet will not survive real punches. This is mitigated with a static load test (≥ 3,500 N in compression <strong>[Hypothesis]</strong>) and 1,000 real punches on a test wall, starting with an MDF or acrylic plate and moving to steel only if needed.</li>
+        </ol>
+
+        <h3>Self-Assessment Questions</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Answer</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Can it be described in one sentence without jargon?</strong></td><td style="padding: 10px;">Yes: "A luminous target on the wall that tells you where to punch and measures how fast and how hard you did it."</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Why this one and not the other two?</strong></td><td style="padding: 10px;">It combines D1–D3 from Reflex with T1–T2 from Fixed Strike; it is the only concept that is positive on both desirability and feasibility at the same time.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What is the most critical parameter, and what happens if it changes?</strong></td><td style="padding: 10px;">Mounting. If the bayonet does not hold and the pod goes back to the floor, D1 is lost and it no longer works for boxing punches; the measurement is preserved thanks to the load cells.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Which desirability criterion carries the most weight, and how do we know it is met?</strong></td><td style="padding: 10px;">D1 (12 pts). Today it is a <strong>hypothesis</strong> based on the interview with the boxing athlete; it will be validated by mounting 2 pods at chin height and observing 5 users at a boxing gym in Week 7.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 11: Reflection -->
+        <h2>11. Reflection and Key Takeaways</h2>
+        <p>
+            This week we moved from knowing <em>what</em> the device is built with to deciding <em>how it looks, how it is installed, and how it is used</em>. The morphological chart opened up the solution space, but checking it against the PDS showed us that a variant can be perfectly manufacturable and still be wrong for the product: a capacitive interface cannot reliably sense through a boxing glove, and a resin-potted housing makes it impossible to replace the battery. The technology analogies were the biggest surprise, because solutions borrowed from a camera lens bayonet or an electronic drum pad addressed exactly the weak points we had identified.
+        </p>
+        <p>
+            The AI renders were useful for visualizing and communicating the concepts, but we learned to read them critically, since the AI casually draws things that would never survive a punch, like the action-camera mount on the Reflex concept. That is why the Pugh matrix was essential: the concept we liked most, Reflex, came in last as originally drawn, while Fixed Strike had the best engineering but in a position that makes little sense for boxing. Combining the two, together with the new component list, let us keep what makes the product attractive and give it a solid technical foundation.
+        </p>
+        <p>
+            The final review also taught us that small details can change feasibility a lot. Replacing printed TPU with faux leather over foam, as in a focus mitt, means the pad can be built from materials we can buy locally and swapped out in minutes, and reducing the full LED ring to a top arc not only saves components but also defines the pod's orientation and lets it signal direction. Selecting a concept is not about picking the prettiest image; it is about justifying every decision with measurable criteria and being willing to fix what does not work before reaching CAD.
+        </p>
+
+    </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

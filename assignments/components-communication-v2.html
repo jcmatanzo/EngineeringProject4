@@ -1,0 +1,604 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 5 Annex: Component List &amp; Communication Architecture (v2)</h1>
+        <p>
+            This annex updates the PDS with the technical detail behind it: force sensing, an impact-resistant structure, the striking pad, and the communication between the pods and the app. Each decision is backed by its calculations, the alternatives we evaluated, and the sources we consulted.
+        </p>
+        <p><a href="assignment5.html">← Back to PDS v1.0 (Assignment 5)</a> · This document is the technical annex to the PDS.</p>
+
+        <!-- ===================== PART 1: COMPONENTS V2 ===================== -->
+        <h2>1. Components v2</h2>
+
+        <h3>Component List v2: Impact Sensing and Impact-Resistant Structure</h3>
+        <p><strong>Supplement to the technical design and the critical review of the boxing pod</strong> · Lookup date: October 8, 2026</p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Tags:</strong> <strong>[Confirmed]</strong> = verified at the stated source. <strong>[Quoted]</strong> = price the team already had. <strong>[Estimated]</strong> = our own calculation or range. <strong>[Hypothesis]</strong> = assumption to be validated on the test bench. <strong>[Pending]</strong> = still to be verified.</em><br><br>
+            <em><strong>What does not change:</strong> cylindrical pod <strong>Ø140 × 75 mm</strong> (Week 6 Fixed Reflex concept; previously Ø130 × 70), ESP32-WROOM-32E, ADXL375 as the direct acceleration measurement, BLE gateway + ESP-NOW, stacking with a recessed magnetic pogo connector at the 6 o'clock position, AP2112K LDO, TP4056 with protection, 18650 with tabs, and the React Native app. This document only changes the <strong>force sensing subsystem</strong>, the <strong>mechanical structure</strong> that receives the punch, and the <strong>pad</strong>.</em>
+        </blockquote>
+
+        <h3>1.1 Short Answer</h3>
+        <p><strong>Recommendation: ADXL375 accelerometer + 4 flat load cells (bathroom-scale type, 50 kg) under a floating aluminum plate + a fast ADS1220 ADC. The piezo is removed and the HX711 is not used.</strong></p>
+        <ul>
+            <li><strong>A loose strain gauge glued to a sheet?</strong> Not for these 8 weeks. A scale-type load cell <strong>already is exactly that</strong>: a machined aluminum beam with bonded gauges, calibrated, for $22 <strong>[Confirmed]</strong>. Gluing our own BF350 gauges costs the same in material, but adds bonding, curing, thermal compensation, and the risk of detachment under impacts.</li>
+            <li><strong>Load cell + HX711?</strong> Not inside the pod. The HX711 delivers at most 80 samples/s: a ~10 ms punch lands on one sample or none.</li>
+            <li><strong>Accelerometer only?</strong> It works and it is the simplest option, but the "force" comes from F = m·a and depends on whether the pod is on the floor, on the wall, or stacked (contradiction C2). It is kept as the <strong>fallback configuration</strong>.</li>
+            <li><strong>Plates?</strong> Yes, but as <strong>structure</strong>: a 3 mm aluminum plate spreads the punch toward the cells and toward rigid stops, so neither the cells nor the electronics take the overload.</li>
+        </ul>
+
+        <h3>1.2 Design Loads</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Data</th><th style="padding: 10px;">Value</th><th style="padding: 10px;">Source</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Peak force, elite amateur boxers (vertical force plate)</strong></td><td style="padding: 10px;">Jab ≈ 1,645 ± 537 N · cross ≈ 2,425 ± 545 N · rear-hand hook ≈ 2,624 ± 581 N</td><td style="padding: 10px;">Finlay et al., PLOS ONE 2023 <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Rate of force development (RFD)</strong></td><td style="padding: 10px;">≈ 117,000 (jab) to ≈ 296,000 N/s (rear hook)</td><td style="padding: 10px;">Same source <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Peak rise time (F / RFD)</strong></td><td style="padding: 10px;">≈ 9–14 ms</td><td style="padding: 10px;"><strong>[Estimated]</strong> from the two rows above</td></tr>
+                <tr><td style="padding: 10px;"><strong>Target users (gym, recreational)</strong></td><td style="padding: 10px;">Probably below elite values</td><td style="padding: 10px;"><strong>[Hypothesis]</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Design consequences:</strong></p>
+        <ol>
+            <li><strong>Survival load:</strong> the structure must withstand ≥ 3,500 N without damage (elite + 1 σ + margin) <strong>[Estimated]</strong>. This load is absorbed by the stops and the chassis, not by the sensors.</li>
+            <li><strong>Measurement range:</strong> 4 × 50 kg cells add up to ≈ 1,960 N nominal. Stops are set at ≈ 90% (≈ 1,750–1,800 N). Above that, the cells report <code>saturated</code> and the app uses the accelerometer index. This covers most recreational users <strong>[Hypothesis]</strong>; elite hooks will saturate.</li>
+            <li><strong>Sampling:</strong> with a 9–14 ms rise, ≥ 1 kSPS is needed to capture the peak with 10+ points.</li>
+        </ol>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">ADC</th><th style="padding: 10px;">Samples/s</th><th style="padding: 10px;">Points on the Rise (9–14 ms)</th><th style="padding: 10px;">Verdict</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>HX711</strong></td><td style="padding: 10px;">10 / 80</td><td style="padding: 10px;">0–1</td><td style="padding: 10px;"><strong>Discarded</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADS1115 (Unit module, $47)</strong></td><td style="padding: 10px;">860</td><td style="padding: 10px;">≈ 8–12</td><td style="padding: 10px;">Plan B (underestimates the peak)</td></tr>
+                <tr><td style="padding: 10px;"><strong>ADS1220</strong></td><td style="padding: 10px;">Up to 2,000 (turbo mode), PGA ×128</td><td style="padding: 10px;">≈ 18–28</td><td style="padding: 10px;"><strong>Chosen</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>1.3 Comparison of Sensing Paths</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Criterion</th><th style="padding: 10px;">A. ADXL375 Only</th><th style="padding: 10px;">B. ADXL375 + 4 Cells + ADS1220</th><th style="padding: 10px;">C. Custom BF350 Gauges on a Plate</th><th style="padding: 10px;">D. Cell + HX711</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What it measures</strong></td><td style="padding: 10px;">Acceleration (direct); estimated force</td><td style="padding: 10px;">Acceleration <strong>and transmitted force</strong> (both direct)</td><td style="padding: 10px;">Force (if the bonding goes well)</td><td style="padding: 10px;">Static force</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Depends on mounting (floor/wall/stacked)?</strong></td><td style="padding: 10px;"><strong>Yes</strong></td><td style="padding: 10px;"><strong>No</strong></td><td style="padding: 10px;">No</td><td style="padding: 10px;">No</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Captures the punch peak</strong></td><td style="padding: 10px;">Yes</td><td style="padding: 10px;">Yes (2 kSPS)</td><td style="padding: 10px;">Depends on the ADC</td><td style="padding: 10px;"><strong>No</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Durability</strong></td><td style="padding: 10px;">High (10,000 g)</td><td style="padding: 10px;">High if stops are used</td><td style="padding: 10px;">Medium (detachment, adhesive fatigue)</td><td style="padding: 10px;">Medium</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Space in Ø140 mm (Ø100 plate)</strong></td><td style="padding: 10px;">Minimal</td><td style="padding: 10px;">4 × (34 × 34 × 7 mm) within a Ø≈80 mm circle</td><td style="padding: 10px;">Similar to B</td><td style="padding: 10px;">Similar to B</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Extra cost per pod</strong></td><td style="padding: 10px;">$0</td><td style="padding: 10px;">≈ $270–400 <strong>[Estimated]</strong></td><td style="padding: 10px;">≈ $60–120 + hours of work</td><td style="padding: 10px;">≈ $110</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Risk for 8 weeks</strong></td><td style="padding: 10px;">Low</td><td style="padding: 10px;">Medium</td><td style="padding: 10px;"><strong>High</strong></td><td style="padding: 10px;">Does not meet requirements</td></tr>
+                <tr><td style="padding: 10px;"><strong>Verdict</strong></td><td style="padding: 10px;">Fallback</td><td style="padding: 10px;"><strong>Recommended</strong></td><td style="padding: 10px;">Future version</td><td style="padding: 10px;">Discarded</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>1.4 Mechanical Architecture: Floating Plate with Stops</h3>
+        <h4>4.1 Cross-Section (Top to Bottom)</h4>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; line-height: 1.3; white-space: pre; background: none; border: none;">   (punch →)  pod front, from the outside toward the wall · depth measured from the wall
+   ┌────────── Ø140 with weatherstrip (body Ø134) ──────────┐
+   │ Pad Ø100: faux leather 1 mm + EVA 12 mm + EVA ring 4 mm│ 57–74 mm  ← concave, sag ≈ 4 mm
+   │ Lip R51.5–67: 120° arc of 15 LEDs on top, pogo at 6    │           ← bike inner-tube diaphragm in the 1.5 mm gap
+   │══ Aluminum floating plate Ø100 × 3 mm ═════════════════│ 54–57 mm
+   │  [cell]   [stop]          [stop]  [cell]               │ 44–52 mm  ← 4 cells at 90°, 4 M4 stops
+   │▓▓ Chassis cover (PETG, ribs) ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓│ 40–44 mm  ← ADXL375 bolted here, at the center
+   │  18650 in a foam cradle                                │ 19–37 mm
+   │  PCB (ESP32, ADS1220, TP4056, AP2112K) on isolators    │ ≈ 10 mm
+   │  Back cover Ø112 + O-ring + ¼-turn bayonet             │ 0–7 mm    ← recessed 3 mm wall plate
+   └────────────────────────────────────────────────────────┘ ≈ 75 mm total (max. 78 in CAD)</pre>
+        </div>
+        <p>Height <strong>[Estimated]</strong>: ≈ 75 mm (78 mm maximum in CAD), within NFR-01 / PR-04 (≤ 80 mm). Dimensions are aligned with the Week 6 CAD specification.</p>
+
+        <h4>4.2 Parts and Their Function</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Part</th><th style="padding: 10px;">Specification</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Floating plate</strong></td><td style="padding: 10px;">5052 or 6061 aluminum, Ø100 × 3 mm, with 4 holes</td><td style="padding: 10px;">Distributes the load of the fist among the 4 cells and the stops; protects everything below it. Cheap alternative: 2 bonded 1.6 mm FR4 plates, less rigid</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4 × 50 kg cells</strong></td><td style="padding: 10px;">Half bridge, 34 × 34 × 7 mm, 1.0 mV/V</td><td style="padding: 10px;">Gauges already bonded and factory-calibrated <strong>[Confirmed: Unit SEN-10245]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4 adjustable stops</strong></td><td style="padding: 10px;">M4 screw with lock nut, head under the plate</td><td style="padding: 10px;">The gap is set with a <strong>feeler gauge</strong> (≈ 0.2–0.3 mm <strong>[Hypothesis: measure the actual cell deflection at 45 kg]</strong>). At 90% load the plate touches the stops and the rest of the load goes to the chassis</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Lateral guide</strong></td><td style="padding: 10px;">Radial clearance ≈ 0.5 mm + O-ring or PTFE ring</td><td style="padding: 10px;">Hooks arrive at an angle; the cells must not receive lateral loads</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Anti-lift retention</strong></td><td style="padding: 10px;">4 shoulder screws with rubber washers</td><td style="padding: 10px;">The plate does not come off when the pod is lifted or flipped</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Chassis</strong></td><td style="padding: 10px;">PETG or ASA, 5 perimeters, 40–50% gyroid, <strong>radial ribs under the stops and cells</strong></td><td style="padding: 10px;">The stops unload here; the ribs carry the load toward the wall and the base</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Brass threaded inserts</strong></td><td style="padding: 10px;">M3/M4, heat-set</td><td style="padding: 10px;">A screw driven directly into printed plastic loosens under repeated impacts</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Perimeter bumper</strong></td><td style="padding: 10px;">EPDM rubber weatherstrip in a groove, front half of the edge</td><td style="padding: 10px;">Protects against punches that land on the edge and against drops</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADXL375</strong></td><td style="padding: 10px;">Bolted to the chassis, at the center, with no foam</td><td style="padding: 10px;">Measures the pod's acceleration (the required direct measurement)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PCB</strong></td><td style="padding: 10px;">On 4 M3 silicone isolators</td><td style="padding: 10px;">The electronics do not take the direct shock</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Battery</strong></td><td style="padding: 10px;">Foam cradle, under the cover, outside the load path</td><td style="padding: 10px;">Impact safety</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Connectors</strong></td><td style="padding: 10px;">Locking JST-PH; strain relief on the cell wires</td><td style="padding: 10px;">Vibration</td></tr>
+                <tr><td style="padding: 10px;"><strong>Threadlocker</strong></td><td style="padding: 10px;">Medium strength (243 type)</td><td style="padding: 10px;">Keeps the screws from loosening after thousands of punches</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>4.3 Why It Works in a Small Pod</h4>
+        <ul>
+            <li><strong>The structure is oversized in the cheap parts</strong> (aluminum, ribs, stops), not in the sensors.</li>
+            <li><strong>Stiffness:</strong> if each cell deflects ≈ 0.2–0.3 mm at 50 kg, the natural frequency of the plate with the pad (≈ 0.15 kg) is close to 1 kHz <strong>[Estimated]</strong>, well above the frequency content of a punch (≈ 100 Hz).</li>
+            <li><strong>Mounting independence:</strong> the cells measure the force between the plate and the chassis, which is the punch force minus the plate's inertia, <strong>wherever the pod is mounted</strong>.</li>
+        </ul>
+
+        <h4>4.4 Pad (Striking Surface): Decision</h4>
+        <p><strong>Prototype: faux leather stretched over high-density EVA</strong> (Week 6 decision, "Fixed Reflex"). It is built like a focus mitt or a drumhead: every material can be bought in Mexico without a flexible-filament printer, and the cover can be replaced in minutes. Printed TPU 95A remains as an alternative.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Layer</th><th style="padding: 10px;">Specification</th><th style="padding: 10px;">Supplier</th><th style="padding: 10px;">Cost per Pod</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Skin</strong></td><td style="padding: 10px;">Upholstery faux leather ≈ 1 mm, stretched with a <strong>PETG tension ring</strong> (Ø100/Ø90 × 4 mm, 6 × M3 screws to the plate)</td><td style="padding: 10px;">Fabric and upholstery stores</td><td style="padding: 10px;">≈ $10–20 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Core</strong></td><td style="padding: 10px;">12 mm high-density EVA disc + 4 mm EVA <strong>ring</strong> at the edge: when the faux leather is tensioned, the center sits ≈ 4 mm lower (a concave pad without a mold)</td><td style="padding: 10px;">Interlocking gym floor mats (supermarkets, Mercado Libre)</td><td style="padding: 10px;">≈ $15–30 <strong>[Estimated]</strong></td></tr>
+                <tr><td style="padding: 10px;"><strong>Seal</strong></td><td style="padding: 10px;">Bicycle inner-tube diaphragm in the 1.5 mm gap between the pad and the lip</td><td style="padding: 10px;">Bicycle parts shop</td><td style="padding: 10px;">≈ $5–10 <strong>[Estimated]</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total pad</strong></td><td style="padding: 10px;"></td><td style="padding: 10px;"></td><td style="padding: 10px;"><strong>≈ $30–60</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Conditional upgrade: cast polyether polyurethane.</strong> A Shore 60–70A skin + a Shore 20–30A core (or EVA), cast in two stages in the same mold so they bond without adhesive, and anchored to the plate through holes. Polyether resists hydrolysis (sweat and water cleaning) and impact wear better than polyester. <strong>It only goes in if a supplier confirms delivery in &lt; 2 weeks during Week 1</strong>; it is then compared against TPU + EVA on the Week 2–3 test bench.</p>
+        <p><strong>Discarded:</strong></p>
+        <ul>
+            <li><strong>High-density mattress foam:</strong> 25–40 kg/m³ and ≈ 2–3 kPa at 40% compression, versus the ≈ 125–330 kPa a fist exerts <strong>[Estimated]</strong>. It bottoms out at the start of the punch, leaves the hand against the aluminum, absorbs sweat, and flattens with use.</li>
+            <li><strong>Memory foam:</strong> recovers its shape slowly; unsuitable for repeated punches.</li>
+            <li><strong>Sorbothane:</strong> flows under load (the signal varies with temperature) and must be imported.</li>
+            <li><strong>17–25 lb/ft³ cast PU foam:</strong> technically valid as a core, but imported with an uncertain lead time.</li>
+        </ul>
+        <p><strong>Bench comparison criteria:</strong> peak repeatability, punch duration, "bottoming out" signal, height loss after 1,000 punches, signal change between 20 °C and 35 °C, and comfort (3–5 people).</p>
+
+        <h3>1.5 Component List v2 (1 Pod)</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">#</th><th style="padding: 10px;">Component</th><th style="padding: 10px;">Change</th><th style="padding: 10px;">Supplier</th><th style="padding: 10px;">Price (MXN)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">1</td><td style="padding: 10px;">ESP32-WROOM-32E</td><td style="padding: 10px;">Kept (a local DevKit as a cheaper alternative <strong>[Pending]</strong>)</td><td style="padding: 10px;">Mouser MX</td><td style="padding: 10px;">281 <strong>[Quoted]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">2</td><td style="padding: 10px;">ADXL375 module</td><td style="padding: 10px;">Kept; <strong>mounted on the chassis</strong></td><td style="padding: 10px;">Amazon MX</td><td style="padding: 10px;">344 <strong>[Quoted]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">3</td><td style="padding: 10px;"><strong>50 kg load cell SEN-10245 × 4</strong></td><td style="padding: 10px;"><strong>New</strong></td><td style="padding: 10px;">Unit</td><td style="padding: 10px;">88 (22 each) <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">4</td><td style="padding: 10px;"><strong>ADS1220IPWR</strong> (24-bit, 2 kSPS, PGA ×128, SPI)</td><td style="padding: 10px;"><strong>New</strong></td><td style="padding: 10px;">Unit (outlet)</td><td style="padding: 10px;">95.40 <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>TSSOP-16 → DIP adapter</strong></td><td style="padding: 10px;"><strong>New</strong>: the ADS1220 has a 0.65 mm pitch; it goes on the adapter so the main PCB keeps a ≥ 0.8 mm pitch</td><td style="padding: 10px;">Local</td><td style="padding: 10px;">15–40 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">6</td><td style="padding: 10px;">Piezo disc + LM393</td><td style="padding: 10px;"><strong>Removed</strong>: the load cell detects light touches better than the piezo</td><td style="padding: 10px;">—</td><td style="padding: 10px;">−10</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">7</td><td style="padding: 10px;">Protected 18650 cell with tabs</td><td style="padding: 10px;">Kept</td><td style="padding: 10px;">Steren / Mercado Libre</td><td style="padding: 10px;">125 <strong>[Quoted]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">8</td><td style="padding: 10px;">120° arc with 15 WS2812B LEDs (144 LED/m strip, 3 segments of 5) + PETG diffuser</td><td style="padding: 10px;"><strong>Changed</strong> (Week 6): top arc instead of a full ring</td><td style="padding: 10px;">Unit / Mercado Libre</td><td style="padding: 10px;">40–70 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">9</td><td style="padding: 10px;">TP4056 USB-C with protection</td><td style="padding: 10px;">Kept</td><td style="padding: 10px;">Unit</td><td style="padding: 10px;">9 <strong>[Quoted]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">10</td><td style="padding: 10px;">AP2112K-3.3</td><td style="padding: 10px;">Kept (replaces the AMS1117)</td><td style="padding: 10px;">—</td><td style="padding: 10px;">10–20 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">11</td><td style="padding: 10px;">Magnetic pogo connector (pair, front and back, at 6 o'clock) + Hall sensor</td><td style="padding: 10px;">Kept; <strong>purchase deferred to Week 4–5</strong></td><td style="padding: 10px;">Amazon / Mercado Libre</td><td style="padding: 10px;">≈ 150 <strong>[Quoted]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">12</td><td style="padding: 10px;"><strong>Aluminum plate Ø100 × 3 mm</strong></td><td style="padding: 10px;"><strong>New</strong></td><td style="padding: 10px;">Cutting shop / lathe</td><td style="padding: 10px;">60–150 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">13</td><td style="padding: 10px;"><strong>M4 stops, shoulder screws, brass inserts, rubber washers, threadlocker</strong></td><td style="padding: 10px;"><strong>New</strong></td><td style="padding: 10px;">Hardware store / Unit</td><td style="padding: 10px;">50–90 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">14</td><td style="padding: 10px;">Passives, JST-PH connectors, silicone isolators, programmer</td><td style="padding: 10px;">Adjusted</td><td style="padding: 10px;">Unit</td><td style="padding: 10px;">80–130 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">15</td><td style="padding: 10px;">2-layer PCB</td><td style="padding: 10px;">Kept</td><td style="padding: 10px;">Lab / external</td><td style="padding: 10px;">30–120 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">16</td><td style="padding: 10px;">PETG/ASA enclosure (body, lip, cover, tension ring, diffuser) + EPDM weatherstrip + wall plate</td><td style="padding: 10px;">Adjusted (Ø140 × 75)</td><td style="padding: 10px;">Filament, hardware store, MDF/acrylic</td><td style="padding: 10px;">140–280 <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">17</td><td style="padding: 10px;"><strong>Ø100 pad: stretched faux leather + 12 mm high-density EVA + 4 mm EVA ring + diaphragm</strong></td><td style="padding: 10px;"><strong>Decided</strong> (see 4.4; Week 6)</td><td style="padding: 10px;">Upholstery / EVA mats / bicycle shop</td><td style="padding: 10px;">30–60 <strong>[Estimated]</strong></td></tr>
+                <tr><td style="padding: 10px;">—</td><td style="padding: 10px;">HX711</td><td style="padding: 10px;"><strong>Not used</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">0</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>5.1 Totals</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Scenario</th><th style="padding: 10px;">Estimated Total (MXN)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B without pogo</strong> (pogo deferred to Week 4–5)</td><td style="padding: 10px;"><strong>≈ $1,400–1,900</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">B with pogo</td><td style="padding: 10px;">≈ $1,550–2,050</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">A (ADXL375 + piezo only, with inserts, isolators, and bumper)</td><td style="padding: 10px;">≈ $1,130–1,500 without pogo</td></tr>
+                <tr><td style="padding: 10px;">Incremental cost of the force path (B − A)</td><td style="padding: 10px;"><strong>≈ $270–400</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Honest reading:</strong> configuration B <strong>fits within $1,500 only at the low end</strong> and with the pogo pair deferred. Levers to get there:</p>
+        <ol>
+            <li>A local ESP32 DevKit instead of the $281 module (likely savings ≈ $80–130 <strong>[Pending: get a quote]</strong>).</li>
+            <li>A laminated FR4 plate instead of aluminum for the prototype (≈ −$50), with aluminum in the final version.</li>
+            <li>Mechanical items at the low end of their range (our own filament, bulk hardware).</li>
+        </ol>
+        <p>If it still does not fit, the force path is presented as an <strong>upgrade with a separate budget of ≈ $300–400</strong>, without changing the rest of the pod: the plate, the stops, and the reinforced chassis are built the same way, and the cells are added later.</p>
+
+        <h3>1.6 Force Channel Electronics</h3>
+        <ul>
+            <li><strong>Bridge:</strong> the 4 half-bridge cells are wired as a full bridge (the standard scale configuration). Full-load output ≈ 1 mV/V × 3.3 V ≈ 3.3 mV <strong>[Estimated]</strong>.</li>
+            <li><strong>ADS1220:</strong> differential input AIN0–AIN1, PGA ×128, with a <strong>ratiometric reference</strong> taken from the bridge excitation (REFP0/REFN0) so that battery noise cancels out. Turbo mode, 2,000 SPS. Expected resolution on the order of a few newtons <strong>[Estimated; measure the noise on the bench]</strong>.</li>
+            <li><strong>Power saving:</strong> the ADS1220's internal low-side switch cuts the bridge excitation outside of sessions. The channel draws ≈ 3–4 mA during a session <strong>[Estimated]</strong>, negligible next to the pod's ≈ 215 mA.</li>
+            <li><strong>Bus:</strong> the ADS1220 and the ADXL375 share the ESP32's SPI bus with separate CS lines. The ADS1220 uses SPI mode 1 and the ADXL375 uses mode 3, so the mode is configured per device in ESP-IDF. The ADS1220's <strong>DRDY</strong> pin goes to an interrupt-capable GPIO.</li>
+            <li><strong>Protection:</strong> an anti-aliasing RC filter at the input (cutoff ≈ 1 kHz <strong>[Estimated]</strong>) and a TVS diode if the cell wires are long.</li>
+        </ul>
+
+        <h3>1.7 Firmware and Data Fusion</h3>
+        <ol>
+            <li><strong>Contact detection (<code>t1</code>):</strong> whichever of two events comes first: the ADXL375 threshold interrupt or a force above a low threshold (≈ 20–30 N <strong>[Hypothesis]</strong>) on the ADS1220. This replaces the piezo.</li>
+            <li><strong>Punch force:</strong> <code>F ≈ F_cells + m_plate · a</code>. The plate inertia correction (≈ 0.15 kg × 100 g ≈ 150 N) is not negligible <strong>[Estimated]</strong>, so it is computed with the ADXL375.</li>
+            <li><strong>Saturation:</strong> if <code>F_cells</code> reaches the stop level, the event is flagged <code>saturated</code> and the app shows the accelerometer index with the label "≥ X N".</li>
+            <li><strong>Automatic tare</strong> at the start of every session (the weight of the pad and plate, or of a stacked pod, is excluded).</li>
+            <li><strong>New event fields:</strong> <code>force_peak_N</code> (u16), <code>force_impulse</code> (u32), and the <code>force_sat</code> flag. The packet still fits in ≈ 50 bytes.</li>
+            <li><strong>Stacking detection:</strong> a pod on top produces a static load of ≈ 5 N per pod <strong>[Estimated]</strong> if it rests on the plate; if it rests on the chassis shoulder, the Hall sensor detects it as originally planned.</li>
+        </ol>
+
+        <h3>1.8 Validation (Added to the Test Plan, Section I)</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Test</th><th style="padding: 10px;">Procedure</th><th style="padding: 10px;">Proposed Criterion</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Static calibration</strong></td><td style="padding: 10px;">Known weights or dumbbells (5–40 kg) on the plate, centered and 25 mm off-center</td><td style="padding: 10px;">Error ≤ ±3% centered; ≤ ±8% off-center <strong>[Hypothesis]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Dynamic</strong></td><td style="padding: 10px;">Pendulum or known-mass drop; compare the cells' impulse against m·Δv</td><td style="padding: 10px;">Peak error ≤ ±15%; CV &lt; 10% <strong>[Hypothesis]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Mounting independence</strong></td><td style="padding: 10px;">Same series on the floor, on the wall, and on top of another pod</td><td style="padding: 10px;">Difference between mountings ≤ 10%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Stops</strong></td><td style="padding: 10px;">Increasing load past the stop; verify return to zero</td><td style="padding: 10px;">No zero drift &gt; 1% FS afterward</td></tr>
+                <tr><td style="padding: 10px;"><strong>Durability</strong></td><td style="padding: 10px;">10,000 impacts with an inspection every 1,000</td><td style="padding: 10px;">No loose screws, no cracked ribs, and no gain change &gt; 5%</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>1.9 Schedule Changes</h3>
+        <ul>
+            <li><strong>Week 1:</strong> order the cells, the ADS1220, the faux leather, and the EVA along with everything else (electronics from Unit; pad materials from local stores).</li>
+            <li><strong>Week 2:</strong> load cell bench: test plate + 4 cells + ADS1220 on a breadboard; measure the real deflection, the noise, and the sampling rate. This moves up a decision that used to sit in Weeks 5–6, because the v2 enclosure CAD and PCB v1 (Week 4) depend on whether the cells go in or not.</li>
+            <li><strong>Week 3:</strong> the pod 1.0 demo can be shown with or without cells; if the bench test went well, they are integrated.</li>
+            <li><strong>Week 4:</strong> freeze the geometry of the plate, stops, and chassis; PCB v1 includes the footprint for the ADS1220 adapter.</li>
+            <li><strong>Week 6:</strong> calibration using measured force instead of the index.</li>
+        </ul>
+        <p><strong>Go/no-go criterion at the end of Week 3:</strong> if the noise exceeds ±20 N, the peak is lost, or the assembly does not fit within 80 mm, configuration A stays and the plate is fixed without cells.</p>
+
+        <h3>1.10 New Risks</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Risk</th><th style="padding: 10px;">Mitigation</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Generic cells with different gains</strong></td><td style="padding: 10px;">Calibrate the whole set, not each cell; verify with off-center loads</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Poorly adjusted stop gap</strong></td><td style="padding: 10px;">Adjust with a feeler gauge and lock nut; stop test on the bench</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cell wires break from vibration</strong></td><td style="padding: 10px;">Strain relief with adhesive and cable ties; JST-PH connector</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Angled punches introduce lateral load</strong></td><td style="padding: 10px;">Radial guide with 0.5 mm clearance and an O-ring; test with off-center punches</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADS1220 on an adapter takes up space</strong></td><td style="padding: 10px;">Mount the adapter flat on the PCB, or use the ADS1115 (plan B)</td></tr>
+                <tr><td style="padding: 10px;"><strong>Elite hooks saturate the cells</strong></td><td style="padding: 10px;">Saturation flag + accelerometer index; for v2, 100 kg cells <strong>[Pending: find a flat format]</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Decisions That Update "Current Decisions"</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Topic</th><th style="padding: 10px;">Proposed Decision</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Force sensing</strong></td><td style="padding: 10px;">ADXL375 (acceleration) + 4 × 50 kg cells under a floating plate + ADS1220 at 2 kSPS. Force measured in N, with declared saturation</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Piezo</strong></td><td style="padding: 10px;">Removed</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>HX711</strong></td><td style="padding: 10px;">Not used</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Size</strong></td><td style="padding: 10px;">Ø140 × 75 mm (78 mm maximum in CAD), mass ≈ 0.5 kg</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Structure</strong></td><td style="padding: 10px;">Ø100 × 3 mm aluminum plate, 4 adjustable stops, ribbed chassis with brass inserts, EPDM weatherstrip</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pad</strong></td><td style="padding: 10px;">Faux leather stretched with a ring over high-density EVA (concave Ø100 pad) + diaphragm; TPU 95A as an alternative; cast polyether PU as an upgrade if local delivery takes &lt; 2 weeks; mattress foam discarded</td></tr>
+                <tr><td style="padding: 10px;"><strong>Milestone</strong></td><td style="padding: 10px;">Load cell bench in Week 2; decision at the end of Week 3; fallback: ADXL375 only</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Sources Consulted (October 8, 2026)</h3>
+        <ul>
+            <li>Finlay, Page, Greig, and Bridge (2023). <em>Test-retest reliability and sensitivity of senior elite amateur boxers maximal punch force, as quantified by a vertically mounted force plate.</em> PLOS ONE 18(8): e0289791.</li>
+            <li>Texas Instruments, ADS1220 (ti.com/product/ADS1220): 24-bit, up to 2,000 SPS, PGA 1–128, TSSOP-16 and VQFN-16 packages.</li>
+            <li>Unit Electronics: 50 kg load cell SEN-10245 ($22); ADS1220IPWR ($95.40, outlet); ADS1115 module ($47); TPU 95A 0.8 kg ($813).</li>
+            <li>Polyurethane: Gantrade and Gallagher (polyether vs. polyester); Smooth-On (VytaFlex 50, FlexFoam-iT! 25); mattress foam patents (density and CLD).</li>
+            <li><strong>Not verified:</strong> the actual deflection of the SEN-10245 cell, the local price of the TSSOP→DIP adapter and of the aluminum plate, the price of a local ESP32 DevKit, and the typical punch forces of recreational users.</li>
+        </ul>
+
+        <!-- ===================== PART 2: COMMUNICATION V2 ===================== -->
+        <h2>2. Communication v2</h2>
+
+        <h3>Communication Architecture v2: Pods ↔ Pods ↔ App</h3>
+        <p><strong>Supplement to the critical review (Steps 3 and 5) and to the v2 component list</strong> · Lookup date: October 8, 2026</p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Tags:</strong> <strong>[Confirmed]</strong> = verified in the Espressif documentation (ESP-IDF v6.1). <strong>[Estimated]</strong> = our own calculation or range. <strong>[Hypothesis]</strong> = to be validated on the test bench. <strong>[Pending]</strong> = still to be verified.</em><br><br>
+            <em><strong>Unchanged hardware:</strong> ESP32-WROOM-32E in every pod, and a phone running the React Native app.</em>
+        </blockquote>
+
+        <h3>2.1 Decision</h3>
+        <p><strong>We keep BLE (phone ↔ one pod) + ESP-NOW (between pods). What changes is who is in charge.</strong></p>
+        <p>In the previous version, the app directed the routine and the gateway only relayed messages. In v2, <strong>the gateway pod is the session director</strong>: it holds the full routine, decides which pod lights up and when, collects the results, and passes them to the phone. The phone only loads the routine, shows the results live, and stores the history.</p>
+        <p><strong>Why this is the best option:</strong></p>
+        <ol>
+            <li><strong>The slowest link stays out of the game loop.</strong> BLE with an iPhone has a connection interval of ≥ 15 ms <strong>[Pending: confirm in Apple's accessory design guidelines]</strong>, while ESP-NOW between pods takes on the order of a few ms <strong>[Estimated]</strong>. If the gateway makes the decisions, each stimulus only pays the ESP-NOW cost.</li>
+            <li><strong>The session survives anything that happens on the phone:</strong> a locked screen, the app going to the background, an incoming call, or a disconnection.</li>
+            <li><strong>Only one pod runs BLE and Wi-Fi at the same time.</strong> The ESP32 has a single 2.4 GHz radio that it time-shares between Wi-Fi and Bluetooth <strong>[Confirmed]</strong>. The other pods turn Bluetooth off.</li>
+            <li><strong>It does not depend on iOS.</strong> The phone keeps a single BLE connection, no matter how many pods there are.</li>
+        </ol>
+
+        <h3>2.2 Topology</h3>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; line-height: 1.3; white-space: pre; background: none; border: none;">                 ┌───────────────┐
+                 │  App (RN)     │  local SQLite ── HTTPS (later) ──► Supabase
+                 └──────┬────────┘
+                        │ BLE GATT (1 connection)
+                        │ loads routine · receives events · ACK
+                 ┌──────▼────────┐
+                 │  GATEWAY POD  │  "Session director"
+                 │  BLE + ESP-NOW│  routine engine · master clock · event queue
+                 └──┬───┬───┬────┘
+          ESP-NOW   │   │   │   fixed Wi-Fi channel, STA mode with no AP connection
+         (encrypted │   │   │
+          unicast)  │   │   │
+              ┌─────▼┐ ┌▼────┐ ┌▼────┐
+              │Pod 2 │ │Pod 3│ │Pod N│   Bluetooth OFF · ESP-NOW only
+              └──────┘ └─────┘ └─────┘</pre>
+        </div>
+        <ul>
+            <li><strong>Gateway:</strong> any pod can take this role; the app picks the one with the highest battery at startup.</li>
+            <li><strong>Followers:</strong> execute commands, measure locally (reaction time, acceleration, force), and report back.</li>
+            <li><strong>Pod limit:</strong> ESP-NOW supports up to 20 peers, of which at most 17 can be encrypted (7 by default, configurable) <strong>[Confirmed]</strong>. More than enough for a 4–12 pod kit.</li>
+        </ul>
+
+        <h3>2.3 Radio Configuration</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Rule</th><th style="padding: 10px;">Reason</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway in STA mode, not connected to any network</strong></td><td style="padding: 10px;">ESP-NOW reception alongside BLE is only stable in STA mode <strong>[Confirmed: coexistence table, ESP-IDF]</strong>. In SoftAP mode, coexistence with BLE is unstable</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Fixed channel for the whole kit (1, 6, or 11), chosen during pairing</strong></td><td style="padding: 10px;">All pods must be on the same channel, otherwise sending fails <strong>[Confirmed]</strong>. The app can suggest the least congested channel</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Wi-Fi stack and Bluetooth stack on different cores</strong></td><td style="padding: 10px;">Espressif's recommendation for coexistence <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Default ESP-NOW power-saving parameters on the gateway</strong></td><td style="padding: 10px;">Custom values can degrade Bluetooth <strong>[Confirmed]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>NimBLE BLE stack (not Bluedroid)</strong></td><td style="padding: 10px;">Uses less memory; leaves room for Wi-Fi + BLE + the routine <strong>[Estimated]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Followers without Bluetooth during the session</strong></td><td style="padding: 10px;">No coexistence to manage; the radio is dedicated to ESP-NOW</td></tr>
+                <tr><td style="padding: 10px;"><strong>Header with <code>kit_id</code> in every message</strong></td><td style="padding: 10px;">Two kits in the same gym do not get mixed up</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>2.4 How a Routine Runs</h3>
+        <h4>4.1 Before the Session</h4>
+        <ol>
+            <li>The app connects to the gateway via BLE and sends it the full routine (blocks, duration, pods, colors, rules).</li>
+            <li>The gateway distributes the routine and the configuration (thresholds, brightness) to each follower via ESP-NOW. ESP-NOW v2 supports up to 1470 bytes per packet <strong>[Confirmed]</strong>; even so, packets of ≤ 250 B are used for compatibility with v1.</li>
+            <li>Clock synchronization (Section 2.5). The gateway confirms to the app that every pod is ready.</li>
+        </ol>
+
+        <h4>4.2 During the Session</h4>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; line-height: 1.3; white-space: pre; background: none; border: none;">Gateway                       Pod 3                          App
+   │ decides: "pod 3, red"      │                              │
+   │── STIM(id=57, t_on=T) ────►│                              │
+   │                            │ lights LED at T, local t0    │
+   │                            │ ... punch ... local t1       │
+   │                            │ RT, peak g, force N          │
+   │◄─────── EVT(seq=57, ...) ──│                              │
+   │── ACK(seq=57) ────────────►│ (clears event from buffer)   │
+   │ decides the next stimulus                                 │
+   │── EVT via BLE notification ──────────────────────────────►│
+   │◄────────────────────────────────────── ACK(seq up to 57) ─│</pre>
+        </div>
+        <ul>
+            <li><strong><code>t_on</code> scheduled ahead of time:</strong> the gateway schedules the turn-on ≈ 20 ms in the future using the synchronized clock <strong>[Hypothesis: tune on the bench]</strong>. ESP-NOW jitter is absorbed, and multi-pod patterns light up together.</li>
+            <li><strong>Reaction time does not depend on the network:</strong> <code>t0</code> and <code>t1</code> are taken on the same pod.</li>
+            <li><strong>Reactive routines</strong> ("the next pod lights up when the current one is hit") wait for the <code>EVT</code>, which takes a few ms over ESP-NOW <strong>[Estimated]</strong>.</li>
+        </ul>
+
+        <h4>4.3 At the End</h4>
+        <p>The gateway sends a summary, the app confirms it has every <code>seq</code>, and it tells the pods to return to idle.</p>
+
+        <h3>2.5 Clock Synchronization</h3>
+        <ul>
+            <li>The gateway broadcasts a <strong><code>SYNC</code> beacon every 500 ms</strong> with its time in µs. It also serves as a heartbeat.</li>
+            <li>Each follower calculates its offset and drift with a simple filter (moving average, discarding outliers).</li>
+            <li><strong>Expected precision: on the order of 1 ms</strong> <strong>[Hypothesis: measure with a logic analyzer]</strong>. This is enough for simultaneous turn-ons and for ordering events.</li>
+            <li>ESP-NOW broadcasts <strong>cannot be encrypted</strong> <strong>[Confirmed]</strong>. That is why <code>SYNC</code> carries the <code>kit_id</code> and a truncated HMAC using the kit key.</li>
+        </ul>
+
+        <h3>2.6 Reliable Delivery (Zero Lost Events)</h3>
+        <p>ESP-NOW's send confirmation <strong>only indicates reception at the MAC layer, not that the application received the data</strong>. Espressif recommends a custom ACK and sequence numbers to discard duplicates <strong>[Confirmed]</strong>. This is applied across two hops:</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Hop</th><th style="padding: 10px;">Mechanism</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Follower → gateway</strong></td><td style="padding: 10px;"><code>EVT</code> with <code>seq</code>; the gateway replies with <code>ACK</code>; with no ACK within ≈ 30 ms <strong>[Hypothesis]</strong>, it retries (up to 5 times). The follower keeps the event until it receives the ACK</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway → app</strong></td><td style="padding: 10px;">BLE notification; the app replies with the last contiguously received <code>seq</code>. The gateway keeps the events until that confirmation arrives</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Reconnection</strong></td><td style="padding: 10px;">The app requests "resend from <code>seq = N</code>" for each pod</td></tr>
+                <tr><td style="padding: 10px;"><strong>Duplicates</strong></td><td style="padding: 10px;">Key (<code>dev_id</code>, <code>boot_id</code>, <code>seq</code>), unchanged from Step 3</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>2.7 Messages</h3>
+        <h4>7.1 ESP-NOW (Common Header: ver, kit_id, type, src, seq)</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Type</th><th style="padding: 10px;">Direction</th><th style="padding: 10px;">Content</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>SYNC</code></td><td style="padding: 10px;">Gateway → all (broadcast)</td><td style="padding: 10px;">Master time, session state, current gateway, HMAC</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>CFG</code> / <code>ROUTINE</code></td><td style="padding: 10px;">Gateway → pod</td><td style="padding: 10px;">Thresholds, brightness, routine fragment</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>STIM</code></td><td style="padding: 10px;">Gateway → pod</td><td style="padding: 10px;"><code>stim_id</code>, color/pattern, <code>t_on</code>, time limit</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>CANCEL</code></td><td style="padding: 10px;">Gateway → pod</td><td style="padding: 10px;">Turns off the stimulus (timeout, end of block)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>EVT</code></td><td style="padding: 10px;">Pod → gateway</td><td style="padding: 10px;">Impact event: RT, peak g, force in N, flags, battery</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>ACK</code></td><td style="padding: 10px;">Gateway → pod</td><td style="padding: 10px;">Last confirmed <code>seq</code></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>STATUS</code></td><td style="padding: 10px;">Pod → gateway (every ~5 s)</td><td style="padding: 10px;">Battery, temperature, resets, RSSI</td></tr>
+                <tr><td style="padding: 10px;"><code>ELECT</code></td><td style="padding: 10px;">Any pod → all</td><td style="padding: 10px;">Election of a new gateway (Section 2.8)</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>7.2 BLE GATT (Gateway ↔ App)</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Characteristic</th><th style="padding: 10px;">Properties</th><th style="padding: 10px;">Use</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>Control</code></td><td style="padding: 10px;">Write with response</td><td style="padding: 10px;">Start/pause/stop, load routine, resend from <code>seq</code>, pair pods</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>Events</code></td><td style="padding: 10px;">Notify</td><td style="padding: 10px;">Events from every pod (<code>dev_id</code> + event)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>Ack</code></td><td style="padding: 10px;">Write without response</td><td style="padding: 10px;">Last <code>seq</code> received per pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><code>Status</code></td><td style="padding: 10px;">Read + notify</td><td style="padding: 10px;">Pod list, battery, RSSI, current gateway</td></tr>
+                <tr><td style="padding: 10px;"><code>Bulk</code></td><td style="padding: 10px;">Notify</td><td style="padding: 10px;">Waveforms in diagnostic mode, session summary</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>BLE parameters:</strong> request a high MTU (≥ 185 B) to fit several events into one notification; a 15–30 ms connection interval during the session and a longer one when idle <strong>[Pending: verify what iOS and Android accept]</strong>. Pairing uses LE Secure Connections with a passkey printed on the label.</p>
+
+        <h3>2.8 If the Gateway Fails</h3>
+        <ol>
+            <li>Every follower has <strong>the full routine</strong> from the start.</li>
+            <li>If the gateway's <code>SYNC</code> is missing for &gt; 1.5 s <strong>[Hypothesis]</strong>, the followers start an election: the pod with the <strong>highest battery</strong> wins and, in a tie, the lowest MAC address. Every pod applies the same rule, so no negotiation is needed.</li>
+            <li>The new gateway resumes the routine at the next stimulus, turns on its BLE, and advertises with a "gateway" flag.</li>
+            <li>The app detects the drop, looks for the advertisement with that flag, and reconnects. Pending events are recovered with "resend from <code>seq</code>".</li>
+        </ol>
+
+        <h3>2.9 Power</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Role</th><th style="padding: 10px;">Estimated Radio Consumption</th><th style="padding: 10px;">Note</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Follower</strong></td><td style="padding: 10px;">Continuous Wi-Fi reception ≈ 100 mA <strong>[Estimated]</strong></td><td style="padding: 10px;">Already included in the battery calculation (≈ 215 mA total, 3 h with margin)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway</strong></td><td style="padding: 10px;">Wi-Fi + BLE connected, somewhat more than a follower <strong>[Pending: measure]</strong></td><td style="padding: 10px;">The pod with the highest battery is chosen, and the role rotates between sessions</td></tr>
+                <tr><td style="padding: 10px;"><strong>Idle (no session)</strong></td><td style="padding: 10px;">Wi-Fi off; BLE only advertising every 1 s on the pod waiting for the app</td><td style="padding: 10px;">The other pods sleep and wake on motion (accelerometer)</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p>ESP-NOW allows sleep windows in STA mode <strong>[Confirmed]</strong>, but they are not advisable during a session because they add latency to the stimuli.</p>
+
+        <h3>2.10 Alternatives Evaluated</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Option</th><th style="padding: 10px;">Verdict</th><th style="padding: 10px;">Reason</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BLE gateway + ESP-NOW, gateway as director</strong></td><td style="padding: 10px;"><strong>Chosen</strong></td><td style="padding: 10px;">Low game latency, session independent of the phone, a single BLE connection</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BLE gateway + ESP-NOW, app as director (previous version)</strong></td><td style="padding: 10px;">Replaced</td><td style="padding: 10px;">Every stimulus pays the BLE latency; the session stops if the phone disconnects</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Phone connected via BLE to every pod</strong></td><td style="padding: 10px;">Discarded</td><td style="padding: 10px;">iOS handles multiple simultaneous connections poorly</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BLE between pods</strong></td><td style="padding: 10px;"><strong>Plan B</strong></td><td style="padding: 10px;">More robust against interference, but worse synchronization and more complex firmware; maximum of 3–4 followers</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway in SoftAP + WebSocket to the app, ESP-NOW between pods</strong></td><td style="padding: 10px;"><strong>Plan C</strong></td><td style="padding: 10px;">Does not use BLE, so there is no coexistence issue; the app already works without internet. Downside: the phone loses internet access during the session</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BLE Mesh</strong></td><td style="padding: 10px;">Discarded</td><td style="padding: 10px;">High latency and complexity</td></tr>
+                <tr><td style="padding: 10px;"><strong>Gym Wi-Fi (MQTT/UDP)</strong></td><td style="padding: 10px;">Discarded</td><td style="padding: 10px;">Client isolation, passwords, and captive portals</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>2.11 Validation (Week 2)</h3>
+        <p>Coexistence is the biggest risk of this architecture, and testing it only requires <strong>2–3 ESP32 DevKits</strong>. The test originally planned for Week 4 is moved up to <strong>Week 2</strong>.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Test</th><th style="padding: 10px;">Setup</th><th style="padding: 10px;">Proposed Criterion</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Coexistence</strong></td><td style="padding: 10px;">Gateway with BLE connected to an iPhone and an Android phone + 2 followers sending 5 events/s for 30 min</td><td style="padding: 10px;">Application-layer loss = 0; retries &lt; 2% <strong>[Hypothesis]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ESP-NOW latency</strong></td><td style="padding: 10px;">GPIO toggled on the sender and the receiver, measured with a logic analyzer</td><td style="padding: 10px;">Median &lt; 5 ms, p99 &lt; 20 ms <strong>[Hypothesis]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Synchronization</strong></td><td style="padding: 10px;">Two pods light an LED at the same <code>t_on</code>; measure the difference</td><td style="padding: 10px;">&lt; 2 ms in 95% of cases <strong>[Hypothesis]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway drop</strong></td><td style="padding: 10px;">Turn off the gateway mid-routine</td><td style="padding: 10px;">New gateway in &lt; 3 s; 0 lost events after reconnection</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Real gym</strong></td><td style="padding: 10px;">30 min with Wi-Fi networks and phones nearby, pods at 5–10 m</td><td style="padding: 10px;">Same loss criteria</td></tr>
+                <tr><td style="padding: 10px;"><strong>Power</strong></td><td style="padding: 10px;">Measure the current of the gateway and of a follower</td><td style="padding: 10px;">Confirm ≥ 3 h for both roles</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>If coexistence fails:</strong> switch to plan C (SoftAP), which reuses the entire ESP-NOW protocol and only changes the link to the phone.</p>
+
+        <h3>Decisions That Update "Current Decisions"</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Topic</th><th style="padding: 10px;">Proposed Decision</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Communication</strong></td><td style="padding: 10px;">BLE gateway + ESP-NOW, <strong>with the gateway as session director</strong>; the app loads routines, displays results, and stores them</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Radio</strong></td><td style="padding: 10px;">Gateway in STA mode without an AP, fixed channel per kit, stacks on separate cores, NimBLE; followers without Bluetooth</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Synchronization</strong></td><td style="padding: 10px;"><code>SYNC</code> broadcast every 500 ms with HMAC; turn-ons scheduled with <code>t_on</code></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Delivery</strong></td><td style="padding: 10px;">Application-level ACK on both hops, <code>seq</code>, and resend</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gateway drop</strong></td><td style="padding: 10px;">Full routine on every pod; election by highest battery and lowest MAC</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Plan B / C</strong></td><td style="padding: 10px;">B: BLE between pods (≤ 4). C: gateway in SoftAP + WebSocket</td></tr>
+                <tr><td style="padding: 10px;"><strong>Milestone</strong></td><td style="padding: 10px;">Coexistence test in <strong>Week 2</strong> with DevKits</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Sources Consulted (October 8, 2026)</h3>
+        <ul>
+            <li>Espressif, ESP-IDF v6.1, <em>RF Coexistence</em>: single 2.4 GHz radio shared through time-division multiplexing; ESP-NOW/BLE coexistence table; core and power-saving recommendations.</li>
+            <li>Espressif, ESP-IDF v6.1, <em>ESP-NOW</em>: peer and encryption limits, v1/v2 packet sizes, no encryption for multicast, MAC-layer ACK and the recommendation for an application-level ACK, power saving only in STA mode.</li>
+            <li><strong>Not verified:</strong> the minimum BLE connection interval accepted by iOS, the actual ESP-NOW latency under coexistence, and the gateway's power consumption.</li>
+        </ul>
+
+    </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

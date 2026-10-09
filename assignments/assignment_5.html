@@ -1,0 +1,865 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 5: PDS, System Architecture &amp; BOM</h1>
+        <p>
+            This is the final version of the Week 5 deliverable, reviewed against the course rubric and aligned with the <strong>Fixed Reflex</strong> concept from Week 6 (Ø 140 × 75 mm). It includes the one-page PDS, the 3-layer architecture diagram, the AI decision, the critical components, the BOM at 10 units, and the defense of a key design decision.
+        </p>
+
+        <!-- Section 1: Compliance Review -->
+        <h2>1. Compliance Review</h2>
+
+        <h3>What Week 5 Requires vs. What We Had</h3>
+        <p>
+            <em><strong>Tags:</strong> <strong>[Confirmed]</strong> = verified at the source on October 8, 2026. <strong>[Estimated]</strong> = our own calculation or range. <strong>[Hypothesis]</strong> = assumption to be validated on the test bench. <strong>[Verify]</strong> = check before purchasing. Assumed exchange rate: 18.5 MXN/USD.</em>
+        </p>
+
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Course Requirement</th>
+                        <th style="padding: 10px;">Original Week 5</th>
+                        <th style="padding: 10px;">This Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>PDS with header (product, version, team, date)</strong></td>
+                        <td style="padding: 10px; color: #DC3545;">🔴 Missing</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: header in the PDS v1.0 section</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>FR, PR, IR, and CR, 4 of each, phrased "The system shall…" with a verification method</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: 20 FRs and 6 NFRs, no PR, IR, or CR categories; several criteria without numbers</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: 16 requirements, each with a figure, an instrument, and a sample size</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>One-page PDS that references the diagram and the BOM</strong></td>
+                        <td style="padding: 10px;"><span style="color: #DC3545;">🔴 No</span>: the document is long and mixes the PDS with research</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: the PDS fits on one page; everything else moves to the annex</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Diagram in draw.io or Miro: 3 layers, protocol on every arrow, AI layer marked, bidirectional flows, external dependencies and their failure behavior</strong></td>
+                        <td style="padding: 10px;"><span style="color: #DC3545;">🔴 Missing</span>: only a text list of blocks</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: <code>lumetriq-arquitectura.drawio</code> file + view on this page</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>BOM with source, price, and lead time</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: estimated prices and no lead times</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: confirmed prices where possible and a lead time per line</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>AI decision (edge, cloud, or hybrid) in 3 points</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: Step 2 table, no summarized decision</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>3 critical components: ≥ 10 units in Mexico with delivery &lt; 2 weeks, JLCPCB, and plan B</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: ADXL375, ESP32, and 18650 with stock "pending"; with the v2 list they are no longer the most critical</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: ADXL375, ADS1220, and load cells, with stock and JLCPCB availability verified today</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Cost at 10 units and price = BOM / 0.30</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Outdated</span>: $815 BOM without the force path and with the ADXL375 at USD 6.38 (now USD 22.73)</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: $1,390 BOM → $4,633 reference price</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Manufacturing: no BGA, pitch ≥ 0.8 mm</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Risk</span>: the ADS1220 (TSSOP, 0.65 mm) and the ADXL375 (LGA) were not reviewed</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Resolved</span>: JLCPCB assembles both (Extended parts); only parts with ≥ 0.8 mm pitch are hand-soldered</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Answers to the 4 questions and defense of one decision</strong></td>
+                        <td style="padding: 10px; color: #DC3545;">🔴 Missing</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Verifiable by a third party</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: many "[Hypothesis]" tags used as criteria</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: each requirement states what to measure, with what, and how many times</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Describes a first-iteration product, not an exploration prototype</strong></td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: module-based architecture</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: custom PCB for a batch of 5–10 units; modules are used only on the test bench</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Size: One Single Dimension Across All Weeks</h3>
+        <p>
+            <strong>Decision: we adopt Ø 140 × 75 mm</strong> (78 mm maximum in CAD), the dimension already set by the Week 6 Fixed Reflex concept. This way, Week 5 adapts to Week 6 and not the other way around, because the sketch, the CAD specification, and the render were already made with that size.
+        </p>
+        <ul>
+            <li><strong>Ø 140 is the PDS maximum</strong> (PR-04), so the pod does not grow any further.</li>
+            <li><strong>The pad goes from Ø 90 to Ø 100 mm:</strong> +23% striking area (vs. 95 mm) and room for the tension ring and the diaphragm.</li>
+            <li><strong>75 mm depth:</strong> 5 mm more to fit the 17 mm faux leather + EVA pad and the 3D-printing tolerances, without exceeding 80 mm.</li>
+            <li><strong>The floating plate becomes Ø 100 × 3 mm</strong>, and the 4 load cells still fit within a Ø ≈ 80 mm circle.</li>
+        </ul>
+        <p>
+            <strong>What to change in <code>week5.html</code></strong> so it does not contradict this version: sections C.3, E, and K.1 (they say Ø 130 × 70); C.1 and D.10 (they say Flutter, but the current decision is React Native); the piezo and the HX711 (no longer used); and FR-19 (iOS 14, while React Native requires iOS 15.1 or later). The v2 component list and the v2 communication architecture are already updated with Ø 140 × 75 mm, the faux leather + EVA pad, the 15-LED arc, and the magnetic pogo connector.
+        </p>
+
+        <!-- Section 2: PDS -->
+        <h2>2. PDS v1.0</h2>
+
+        <h3>Product Design Specification (One Page)</h3>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Product</strong></td>
+                        <td style="padding: 10px;"><strong>LUMETRIQ "Fixed Reflex"</strong>: reaction and force training pod for boxing, mountable on a wall, floor, or heavy bag</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Version</strong></td>
+                        <td style="padding: 10px;">1.0 (first iteration: batch of 5–10 units)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Team</strong></td>
+                        <td style="padding: 10px;">Kamil Gallardo Toledo [add team members]</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Date</strong></td>
+                        <td style="padding: 10px;">October 8, 2026</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>References</strong></td>
+                        <td style="padding: 10px;">Diagram: <code>lumetriq-arquitectura.drawio</code> (Section 3) · BOM: Section 6 · <a href="components-communication-v2.html">Annex: v2 component list and v2 communication architecture</a> · Week 6 technical sketch</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>FR: Functional Requirements</h4>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">ID</th>
+                        <th style="padding: 10px;">Requirement</th>
+                        <th style="padding: 10px;">Verification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>FR-01</strong></td>
+                        <td style="padding: 10px;">The system shall light the LED arc stimulus on the pod and at the instant set by the routine, with an inter-pod offset ≤ 10 ms.</td>
+                        <td style="padding: 10px;">Photodiode on 2 pods + logic analyzer; 200 stimuli; p95 offset ≤ 10 ms.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>FR-02</strong></td>
+                        <td style="padding: 10px;">The system shall measure, inside the pod, the reaction time between LED turn-on and impact, with an error ≤ ±5 ms.</td>
+                        <td style="padding: 10px;">Bench with a photodiode on the LED and a reference contact on the striker; ≥ 200 trials; ≥ 90% within ±5 ms.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>FR-03</strong></td>
+                        <td style="padding: 10px;">The system shall measure the transmitted force of each punch between 50 and 1,750 N with a peak error ≤ ±15%, flag "saturated" above that range, and give the same result on a wall, floor, or heavy bag.</td>
+                        <td style="padding: 10px;">Static: 5–40 kg weights, error ≤ ±3%. Dynamic: known-mass drop (impulse vs. m·Δv), 30 hits per mounting; difference between mountings ≤ 10%.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>FR-04</strong></td>
+                        <td style="padding: 10px;">The system shall deliver 100% of a session's events to the app even if the BLE connection is lost for up to 60 s.</td>
+                        <td style="padding: 10px;">100-punch session with 4 pods and 3 forced 60 s dropouts; compare <code>seq</code> on the pods and in SQLite; 0 missing and 0 duplicates.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>PR: Performance Requirements</h4>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">ID</th>
+                        <th style="padding: 10px;">Requirement</th>
+                        <th style="padding: 10px;">Verification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>PR-01</strong></td>
+                        <td style="padding: 10px;">The system shall run ≥ 3 h per charge under the usage profile: 15 LEDs at 40% with a 30% duty cycle, active radio, and ADC at 2 kSPS.</td>
+                        <td style="padding: 10px;">Discharge from 4.2 V to cutoff with current logging; 3 units; minimum ≥ 3 h.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>PR-02</strong></td>
+                        <td style="padding: 10px;">The pod shall withstand ≥ 10,000 punches of ≈ 1,500 N with no cracks, no loose screws, and a gain drift ≤ 5%, and withstand 3,500 N static load without damage.</td>
+                        <td style="padding: 10px;">Pendulum or actuator with inspection every 1,000 hits and recalibration at the end; press with a reference cell at 3,500 N.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>PR-03</strong></td>
+                        <td style="padding: 10px;">The system shall distinguish real punches from touches, vibration, drops, and stacking with F1 ≥ 0.90.</td>
+                        <td style="padding: 10px;">300 video-labeled events, split by user; confusion matrix.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>PR-04</strong></td>
+                        <td style="padding: 10px;">The pod shall measure Ø ≤ 140 mm and ≤ 78 mm deep, weigh ≤ 0.6 kg, and its stimulus shall be visible at 3 m.</td>
+                        <td style="padding: 10px;">Caliper and scale on 5 units; 5 users identify the lit third at 3 m under gym lighting (≥ 9 of 10 correct).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>IR: Interface Requirements</h4>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">ID</th>
+                        <th style="padding: 10px;">Requirement</th>
+                        <th style="padding: 10px;">Verification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>IR-01</strong></td>
+                        <td style="padding: 10px;">The gateway pod shall communicate with the app via BLE 5 GATT (custom service with Control, Events, Ack, Status, and Bulk characteristics), with LE Secure Connections pairing and MTU ≥ 185 B.</td>
+                        <td style="padding: 10px;">nRF Connect shows the service and its characteristics; pairing on 1 Android phone and 1 iPhone.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>IR-02</strong></td>
+                        <td style="padding: 10px;">The pods shall communicate with each other via ESP-NOW on a fixed channel, up to 8 pods, with SYNC, CFG, STIM, CANCEL, EVT, ACK, STATUS, and ELECT messages, numbered (<code>seq</code>) and HMAC-signed; loss &lt; 1% after ACK.</td>
+                        <td style="padding: 10px;">1 h with 4 pods at 5 m; send, retransmission, and loss counters.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>IR-03</strong></td>
+                        <td style="padding: 10px;">The app shall sync with the cloud via HTTPS/REST with JWT, using idempotent insertion by (<code>dev_id</code>, <code>boot_id</code>, <code>seq</code>), and send only aggregated metrics with no personal data to the LLM.</td>
+                        <td style="padding: 10px;">Send the same batch twice → 0 duplicates; inspect the payload sent to the LLM.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>IR-04</strong></td>
+                        <td style="padding: 10px;">The pod shall charge via USB-C (5 V, 1 A) or via the magnetic pogo connector at the 6 o'clock position, and mount with a quarter-turn locking bayonet (wall, floor, or heavy bag).</td>
+                        <td style="padding: 10px;">Full charge ≤ 3 h; 500 mounting cycles; 1,000 punches while wall-mounted without the bayonet rotating.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>CR: Constraints</h4>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">ID</th>
+                        <th style="padding: 10px;">Constraint</th>
+                        <th style="padding: 10px;">Verification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>CR-01 Manufacturing</strong></td>
+                        <td style="padding: 10px;">The system shall use a 2-layer PCB with no BGA. Everything hand-soldered shall have a pitch ≥ 0.8 mm; the two fine-pitch ICs (ADS1220 and ADXL375) are assembled only by JLCPCB. FDM enclosure (PETG/ASA) and assembly time ≤ 1.5 h per unit.</td>
+                        <td style="padding: 10px;">DRC; list of hand-soldered parts with their pitch; time 3 assemblies.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>CR-02 Regulatory</strong></td>
+                        <td style="padding: 10px;">The system shall radiate only through the certified ESP32-WROOM-32E module, use a protected 18650 cell, and not be presented as a medical device. It is an academic prototype, not for sale.</td>
+                        <td style="padding: 10px;">Document review: module certificates and cell datasheet. Certification for commercial sale remains <strong>[Verify]</strong>.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>CR-03 Time &amp; Cost</strong></td>
+                        <td style="padding: 10px;">Critical components shall arrive in Mexico within ≤ 2 weeks; 5 units shall be working by Week 13; the prototype shall cost ≤ $3,000 MXN (target ≈ $1,500–1,900) and the 10-unit BOM ≤ $1,400 MXN per pod.</td>
+                        <td style="padding: 10px;">Purchase orders with order and arrival dates; invoices.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>CR-04 Compatibility</strong></td>
+                        <td style="padding: 10px;">The app shall work on Android 8 or later and on iOS 15.1 or later (React Native minimum <strong>[Verify with the chosen version]</strong>).</td>
+                        <td style="padding: 10px;">One full session on ≥ 1 real device per platform.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 3: Architecture Diagram -->
+        <h2>3. System Architecture Diagram</h2>
+
+        <h3>Three Layers, Protocols, and Failure Behavior</h3>
+        <p>
+            The editable file is <code>lumetriq-arquitectura.drawio</code> (open it at app.diagrams.net via <em>File → Open</em>). The same view is shown below:
+        </p>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+            <svg viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LUMETRIQ three-layer architecture diagram" style="width: 100%; min-width: 760px; height: auto;">
+                <style>
+                    .lt { font: bold 14px Arial, sans-serif; fill: #1b1f2a; }
+                    .bx { font: 12px Arial, sans-serif; fill: #1b1f2a; }
+                    .bb { font: bold 12px Arial, sans-serif; fill: #1b1f2a; }
+                    .pr { font: 11px Arial, sans-serif; fill: #032472; }
+                    .fl { font: 10.5px Arial, sans-serif; fill: #6b4e00; }
+                    .n  { fill: #dae8fc; stroke: #6c8ebf; }
+                    .ia { fill: #ffe6cc; stroke: #d79b00; stroke-width: 2.5; }
+                    .ex { fill: #f5f5f5; stroke: #666; stroke-dasharray: 5 3; }
+                    .ar { stroke: #032472; stroke-width: 1.6; fill: none; marker-end: url(#a); marker-start: url(#a); }
+                    .ar1 { stroke: #032472; stroke-width: 1.6; fill: none; marker-end: url(#a); }
+                    .ad { stroke: #666; stroke-width: 1.3; fill: none; stroke-dasharray: 5 3; marker-end: url(#a); marker-start: url(#a); }
+                </style>
+                <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#032472"></path></marker></defs>
+
+                <!-- layers -->
+                <rect x="10" y="10" width="740" height="150" rx="10" fill="#f8cecc" opacity="0.35"></rect>
+                <text class="lt" x="22" y="30">LAYER 3 · CLOUD</text>
+                <rect x="10" y="175" width="740" height="150" rx="10" fill="#d5e8d4" opacity="0.45"></rect>
+                <text class="lt" x="22" y="195">LAYER 2 · MOBILE</text>
+                <rect x="10" y="340" width="740" height="285" rx="10" fill="#dae8fc" opacity="0.35"></rect>
+                <text class="lt" x="22" y="360">LAYER 1 · DEVICE (edge)</text>
+
+                <!-- cloud -->
+                <rect class="n" x="40" y="50" width="220" height="70" rx="8"></rect>
+                <text class="bb" x="52" y="72">Supabase</text>
+                <text class="bx" x="52" y="90">Auth + Postgres (RLS)</text>
+                <text class="bx" x="52" y="106">devices · sessions · impacts</text>
+                <rect class="ia" x="380" y="50" width="240" height="70" rx="8"></rect>
+                <text class="bb" x="392" y="72">[AI] Edge Function</text>
+                <text class="bx" x="392" y="90">LLM-based recommendations</text>
+                <text class="bx" x="392" y="106">input: aggregated JSON only</text>
+                <path class="ar" d="M262 85 L378 85"></path><text class="pr" x="272" y="78">internal</text>
+
+                <!-- mobile -->
+                <rect class="n" x="40" y="215" width="220" height="80" rx="8"></rect>
+                <text class="bb" x="52" y="237">React Native App</text>
+                <text class="bx" x="52" y="255">live session, routines,</text>
+                <text class="bx" x="52" y="271">history and charts</text>
+                <rect class="n" x="300" y="215" width="190" height="80" rx="8"></rect>
+                <text class="bb" x="312" y="237">SQLite + outbox</text>
+                <text class="bx" x="312" y="255">unique key</text>
+                <text class="bx" x="312" y="271">(dev_id, boot_id, seq)</text>
+                <rect class="ia" x="525" y="215" width="210" height="80" rx="8"></rect>
+                <text class="bb" x="537" y="237">[AI] Rules &amp; statistics</text>
+                <text class="bx" x="537" y="255">fatigue, asymmetry, trends;</text>
+                <text class="bx" x="537" y="271">offline templates</text>
+                <path class="ar" d="M262 255 L298 255"></path>
+                <path class="ar" d="M492 255 L523 255"></path>
+                <path class="ar" d="M150 213 L150 122"></path>
+                <text class="pr" x="158" y="160">HTTPS / REST + JWT</text>
+                <text class="pr" x="158" y="174">idempotent sync</text>
+
+                <!-- device -->
+                <rect class="n" x="40" y="385" width="250" height="85" rx="8"></rect>
+                <text class="bb" x="52" y="407">Follower pods ×N (ESP32)</text>
+                <text class="bx" x="52" y="425">local routine, t0/t1 in µs,</text>
+                <text class="bx" x="52" y="441">impact detection &amp; force fusion</text>
+                <text class="bx" x="52" y="457">(no AI: deterministic rules)</text>
+                <rect class="n" x="420" y="385" width="290" height="85" rx="8"></rect>
+                <text class="bb" x="432" y="407">Gateway pod (session director)</text>
+                <text class="bx" x="432" y="425">NimBLE on core 0, ESP-NOW;</text>
+                <text class="bx" x="432" y="441">SYNC every 500 ms with HMAC;</text>
+                <text class="bx" x="432" y="457">also measures like any other pod</text>
+                <path class="ar" d="M292 427 L418 427"></path>
+                <text class="pr" x="298" y="490">ESP-NOW 2.4 GHz, fixed channel</text>
+                <text class="pr" x="298" y="504">↓ SYNC/CFG/STIM/CANCEL</text>
+                <text class="pr" x="298" y="518">↑ EVT/ACK/STATUS · ELECT</text>
+                <path class="ar" d="M565 383 L565 340 L150 340 L150 297"></path>
+                <text class="pr" x="330" y="333">BLE 5 GATT (LESC) · ↓ Control · ↑ Events/Status/Bulk + ACK</text>
+
+                <rect class="n" x="40" y="540" width="250" height="65" rx="8"></rect>
+                <text class="bb" x="52" y="562">Sensors</text>
+                <text class="bx" x="52" y="580">ADXL375 ±200 g + 4× 50 kg cells</text>
+                <text class="bx" x="52" y="596">→ ADS1220 24-bit, 2 kSPS</text>
+                <path class="ar" d="M165 538 L165 472"></path>
+                <text class="pr" x="172" y="520">SPI + INT/DRDY</text>
+                <rect class="n" x="420" y="540" width="140" height="65" rx="8"></rect>
+                <text class="bb" x="432" y="562">120° Arc</text>
+                <text class="bx" x="432" y="580">15× WS2812B LEDs</text>
+                <path class="ar1" d="M490 472 L490 538"></path>
+                <text class="pr" x="496" y="520">RMT</text>
+                <rect class="n" x="575" y="540" width="172" height="65" rx="8"></rect>
+                <text class="bb" x="592" y="562">Power</text>
+                <text class="bx" x="592" y="578">18650 + TP4056 USB-C</text>
+                <text class="bx" x="592" y="594">AP2112K · magnetic pogo</text>
+                <path class="ar1" d="M660 538 L660 472"></path>
+
+                <!-- external dependencies -->
+                <text class="lt" x="770" y="30">EXTERNAL DEPENDENCIES</text>
+                <rect class="ex" x="770" y="50" width="215" height="75" rx="18"></rect>
+                <text class="bb" x="782" y="70">LLM API</text>
+                <text class="fl" x="782" y="88">On failure: the app shows</text>
+                <text class="fl" x="782" y="102">template-based recommendations.</text>
+                <path class="ad" d="M622 70 L768 70"></path><text class="pr" x="640" y="64">HTTPS · JSON</text>
+                <rect class="ex" x="770" y="140" width="215" height="75" rx="18"></rect>
+                <text class="bb" x="782" y="160">Internet / Supabase</text>
+                <text class="fl" x="782" y="178">On failure: all runs locally;</text>
+                <text class="fl" x="782" y="192">the outbox retries later.</text>
+                <rect class="ex" x="770" y="230" width="215" height="95" rx="18"></rect>
+                <text class="bb" x="782" y="250">Phone BLE</text>
+                <text class="fl" x="782" y="268">If dropped: pods keep running</text>
+                <text class="fl" x="782" y="282">the routine, store events in</text>
+                <text class="fl" x="782" y="296">flash, and resend by seq.</text>
+                <path class="ad" d="M567 340 L755 340 L768 318"></path>
+                <rect class="ex" x="770" y="385" width="215" height="85" rx="18"></rect>
+                <text class="bb" x="782" y="405">Gateway down</text>
+                <text class="fl" x="782" y="423">Pods elect a new one (ELECT:</text>
+                <text class="fl" x="782" y="437">highest battery, lowest MAC);</text>
+                <text class="fl" x="782" y="451">the app reconnects on its own.</text>
+                <path class="ad" d="M712 427 L768 427"></path>
+            </svg>
+            <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
+                <em>Orange: layers where AI runs (rules and statistics on the phone; LLM in the cloud). Double-headed arrows: bidirectional flows. Gray dashed: external dependencies and what the system does if they fail.</em>
+            </p>
+        </div>
+
+        <!-- Section 4: AI Decision -->
+        <h2>4. AI Decision</h2>
+
+        <h3>Hybrid: Measure on the Pod, Analyze on the Phone, Write in the Cloud</h3>
+        <ol>
+            <li><strong>Measurement runs on the pod (edge), without AI.</strong> Reaction time, punch detection, and force need microsecond precision and cannot depend on a network. They are deterministic calculations verified against an instrument (FR-02, FR-03).</li>
+            <li><strong>Analysis runs on the phone, using rules and statistics.</strong> Fatigue (first vs. last third), asymmetry between pods, and trends across sessions work without Internet, and every figure can be explained. A trained model is not justified in the first iteration because there is not enough user data yet.</li>
+            <li><strong>Only text generation goes to the cloud.</strong> A Supabase Edge Function calls the LLM with aggregated metrics (no names, no raw series), and the API key lives on the server. A verifier checks that every figure in the generated text exists in the input JSON. If the service fails, the app falls back to templates. This keeps cost, latency (2–10 s, asynchronous), and privacy risk bounded.</li>
+        </ol>
+
+        <!-- Section 5: Critical Components -->
+        <h2>5. Critical Components</h2>
+
+        <h3>The Three That Could Stop the Project</h3>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Component</th>
+                        <th style="padding: 10px;">Why It's Critical</th>
+                        <th style="padding: 10px;">≥ 10 Units in Mexico, Delivery &lt; 2 Weeks</th>
+                        <th style="padding: 10px;">JLCPCB</th>
+                        <th style="padding: 10px;">Plan B</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADXL375BCCZ (±200 g accelerometer)</strong></td>
+                        <td style="padding: 10px;">Single manufacturer (Analog Devices); the most expensive part of the BOM (≈ 30%)</td>
+                        <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Via import.</span> LCSC: 64 in stock, USD 23.80 (1) and 22.73 (10+) <strong>[Confirmed]</strong>; shipping to Mexico ≈ 5–10 days <strong>[Estimated]</strong>. Module on Amazon MX at $344 <strong>[Quoted]</strong>; stock of 10 <strong>[Verify]</strong></td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes</span>, C662206, Extended part <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">H3LIS331DL (±100/200/400 g) on a module <strong>[Verify availability]</strong>. If nothing arrives, force is still measured by the load cells and the ADXL375 is kept in only 1–2 units</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADS1220IPWR (24-bit ADC, 2 kSPS)</strong></td>
+                        <td style="padding: 10px;">Without it, force cannot be measured at punch speed; 0.65 mm pitch</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes.</span> Unit Electronics (outlet): 83 pieces at $95.40 <strong>[Confirmed]</strong>; local delivery in 1–3 days <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes</span>, C48263, Extended part <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">ADS1115 module from Unit ($47, 860 SPS): it works, but underestimates the peak (≈ 8–12 samples on the rising edge)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>50 kg load cell SEN-10245 (×4 per pod)</strong></td>
+                        <td style="padding: 10px;">40 are needed for 10 pods, all from the same batch so their gains are similar</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes.</span> Unit Electronics: 191 available; $22 (1), $18.76 (10+), and $14.97 (35+) <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">N/A (mechanical part, wired to a JST-PH connector)</td>
+                        <td style="padding: 10px;">Generic 50 kg half-bridge scale cells in the same 34 × 34 mm format (Mercado Libre or Amazon); recalibrate the set</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>
+            <strong>The hardest one to source is the ADXL375:</strong> there is no confirmed stock in Mexican stores, and its price on LCSC rose from USD 6.38 to USD 22.73 (at 10 units) since the original Week 5 lookup. That's why it is ordered on day 1, from two suppliers, with 12 units (10 + 2 spares).
+        </p>
+
+        <!-- Section 6: BOM -->
+        <h2>6. BOM &amp; Cost at 10 Units</h2>
+
+        <h3>Per-Pod BOM in a Batch of 10</h3>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">#</th>
+                        <th style="padding: 10px;">Component</th>
+                        <th style="padding: 10px;">Source</th>
+                        <th style="padding: 10px;">Unit Price (MXN)</th>
+                        <th style="padding: 10px;">× 10</th>
+                        <th style="padding: 10px;">Lead Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">1</td>
+                        <td style="padding: 10px;">ESP32-WROOM-32E-N4 (module)</td>
+                        <td style="padding: 10px;">LCSC / JLCPCB (C701341)</td>
+                        <td style="padding: 10px;">60 <strong>[Confirmed, Wk 5]</strong></td>
+                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">5–10 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">2</td>
+                        <td style="padding: 10px;">ADXL375BCCZ (IC, assembled by JLCPCB)</td>
+                        <td style="padding: 10px;">LCSC / JLCPCB (C662206)</td>
+                        <td style="padding: 10px;">420 <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">4,200</td>
+                        <td style="padding: 10px;">5–10 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">3</td>
+                        <td style="padding: 10px;">ADS1220IPWR (IC, assembled by JLCPCB or on an adapter)</td>
+                        <td style="padding: 10px;">Unit Electronics</td>
+                        <td style="padding: 10px;">95 <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">950</td>
+                        <td style="padding: 10px;">1–3 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">4</td>
+                        <td style="padding: 10px;">4× 50 kg load cells SEN-10245 (35+ unit price)</td>
+                        <td style="padding: 10px;">Unit Electronics</td>
+                        <td style="padding: 10px;">60 <strong>[Confirmed]</strong></td>
+                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">1–3 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">5</td>
+                        <td style="padding: 10px;">Passives, TP4056/MCP73831, AP2112K-3.3, USB-C, TVS, fuse, JST-PH, Hall sensor</td>
+                        <td style="padding: 10px;">Unit / LCSC</td>
+                        <td style="padding: 10px;">70 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">700</td>
+                        <td style="padding: 10px;">1–10 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">6</td>
+                        <td style="padding: 10px;">15-LED WS2812B arc (144 LED/m strip) + diffuser</td>
+                        <td style="padding: 10px;">Unit / Mercado Libre</td>
+                        <td style="padding: 10px;">50 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">500</td>
+                        <td style="padding: 10px;">1–5 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">7</td>
+                        <td style="padding: 10px;">Protected 18650 cell with tabs</td>
+                        <td style="padding: 10px;">Steren / Mercado Libre</td>
+                        <td style="padding: 10px;">150 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">1,500</td>
+                        <td style="padding: 10px;">1–5 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">8</td>
+                        <td style="padding: 10px;">Magnetic pogo connector (front and back)</td>
+                        <td style="padding: 10px;">Amazon MX / Mercado Libre</td>
+                        <td style="padding: 10px;">80 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">800</td>
+                        <td style="padding: 10px;">2–7 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">9</td>
+                        <td style="padding: 10px;">2-layer PCB + partial assembly (2 Extended ICs), prorated with shipping</td>
+                        <td style="padding: 10px;">JLCPCB</td>
+                        <td style="padding: 10px;">90 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">900</td>
+                        <td style="padding: 10px;">7–12 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">10</td>
+                        <td style="padding: 10px;">Aluminum floating plate Ø 100 × 3 mm</td>
+                        <td style="padding: 10px;">Local cutting shop</td>
+                        <td style="padding: 10px;">60 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">3–7 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">11</td>
+                        <td style="padding: 10px;">M4 stops, shoulder screws, brass inserts, rubber washers, threadlocker</td>
+                        <td style="padding: 10px;">Hardware store / Unit</td>
+                        <td style="padding: 10px;">60 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">1–3 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">12</td>
+                        <td style="padding: 10px;">PETG/ASA enclosure (body, lip, cover, tension ring) ≈ 250 g</td>
+                        <td style="padding: 10px;">Filament (Unit / Amazon MX)</td>
+                        <td style="padding: 10px;">90 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">900</td>
+                        <td style="padding: 10px;">1–5 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">13</td>
+                        <td style="padding: 10px;">Pad: faux leather + high-density EVA + inner-tube diaphragm</td>
+                        <td style="padding: 10px;">Upholstery shop / EVA mats / auto parts store</td>
+                        <td style="padding: 10px;">45 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">450</td>
+                        <td style="padding: 10px;">Same day</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">14</td>
+                        <td style="padding: 10px;">EPDM weatherstrip + button</td>
+                        <td style="padding: 10px;">Hardware store / Unit</td>
+                        <td style="padding: 10px;">20 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">200</td>
+                        <td style="padding: 10px;">Same day</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">15</td>
+                        <td style="padding: 10px;">Wall plate (6 mm MDF or acrylic)</td>
+                        <td style="padding: 10px;">Local laser cutting</td>
+                        <td style="padding: 10px;">40 <strong>[Estimated]</strong></td>
+                        <td style="padding: 10px;">400</td>
+                        <td style="padding: 10px;">2–5 days</td>
+                    </tr>
+                    <tr style="background-color: #f4f4f4;">
+                        <td style="padding: 10px;"><strong>Total</strong></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"></td>
+                        <td style="padding: 10px;"><strong>1,390</strong></td>
+                        <td style="padding: 10px;"><strong>13,900</strong></td>
+                        <td style="padding: 10px;"><strong>≤ 12 days</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Lead times are <strong>[Estimated]</strong> based on domestic shipping and DHL from China; they will be confirmed when quoting the exact quantities.</p>
+
+        <h3>Reference Price (BOM ≤ 30% of Price)</h3>
+        <ul>
+            <li>1,390 / 0.30 ≈ <strong>$4,633 MXN before VAT</strong> (≈ $5,375 MXN with 16% VAT).</li>
+            <li>Using the Amazon ADXL375 module ($344) instead of the IC: BOM ≈ $1,314 → ≈ $4,380.</li>
+            <li>Using the H3LIS331DL (≈ $200 <strong>[Estimated]</strong>): BOM ≈ $1,170 → ≈ $3,900.</li>
+            <li>Excludes labor, packaging, warranty, and cloud services (≈ USD 25/month for Supabase Pro during the pilot).</li>
+        </ul>
+        <p>
+            <strong>Why it rose compared to the original Week 5 ($815 → $1,390):</strong> the force path is added (load cells + ADS1220 + plate ≈ $215), the ADXL375 now costs 3.6 times more, and the wall plate, weatherstrip, and magnetic connector from the Week 6 concept are included.
+        </p>
+        <p>
+            <strong>Prototype (1 unit, built with modules):</strong> ≈ $1,400–1,900 MXN according to the v2 component list; it fits within the course's $3,000 reference, and within $1,500 only at the low end.
+        </p>
+
+        <!-- Section 7: Manufacturing -->
+        <h2>7. Manufacturing</h2>
+
+        <h3>Pitch ≥ 0.8 mm and No-BGA Rule</h3>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Part</th>
+                        <th style="padding: 10px;">Package</th>
+                        <th style="padding: 10px;">Compliant?</th>
+                        <th style="padding: 10px;">How It's Handled</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ESP32-WROOM-32E</strong></td>
+                        <td style="padding: 10px;">Castellated module, 1.27 mm</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
+                        <td style="padding: 10px;">Hand soldering</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>TP4056 / AP2112K / 0603+ passives</strong></td>
+                        <td style="padding: 10px;">SOP-8 1.27 mm / SOT-23-5 0.95 mm</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
+                        <td style="padding: 10px;">Hand soldering</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADS1220IPWR</strong></td>
+                        <td style="padding: 10px;">TSSOP-16, 0.65 mm</td>
+                        <td style="padding: 10px; color: #DC3545;">🔴 No</td>
+                        <td style="padding: 10px;">Assembled by JLCPCB (C48263). On the test bench it goes on a TSSOP → DIP adapter</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADXL375BCCZ</strong></td>
+                        <td style="padding: 10px;">LGA-14, 3 × 5 mm, no visible leads</td>
+                        <td style="padding: 10px; color: #ff9900;">🟡 Not suitable for hand soldering</td>
+                        <td style="padding: 10px;">Assembled by JLCPCB (C662206). The breakout module is used on the test bench</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>BGA</strong></td>
+                        <td style="padding: 10px;">—</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 None</td>
+                        <td style="padding: 10px;">—</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>
+            With this approach, the rule is met for everything the team solders. If the professor also requires it for parts assembled by a third party, plan B is to put both sensors on modules mounted on connectors (BOM ≈ +$60 MXN per pod <strong>[Estimated]</strong>).
+        </p>
+
+        <!-- Section 8: Weekly Questions -->
+        <h2>8. Weekly Questions</h2>
+
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Question</th>
+                        <th style="padding: 10px;">Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Where does the AI run, and why?</strong></td>
+                        <td style="padding: 10px;">In two places: rules and statistics on the phone (works without Internet and explains every figure), and LLM text generation in the cloud (aggregated metrics only, with a template fallback). The pod does not run AI: it measures with deterministic calculations because it needs microsecond precision and verification against an instrument.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Which protocol, and why?</strong></td>
+                        <td style="padding: 10px;"><strong>BLE 5 GATT</strong> between the app and a single gateway pod, because it is native on Android and iOS, doesn't change the phone's network, and the phone doesn't have to maintain N connections. <strong>ESP-NOW</strong> between pods, because it provides millisecond latency without a router and lets the gateway synchronize the stimuli. <strong>HTTPS</strong> to the cloud, with deferred sync. Reaction time does not depend on any of them: it is measured inside the pod.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Hardest component to source, and plan B?</strong></td>
+                        <td style="padding: 10px;">The <strong>ADXL375</strong>: single manufacturer, no confirmed stock in Mexican stores, 64 pieces on LCSC, and a price of USD 22.73 at 10 units. Plan B: an H3LIS331DL on a module; if that doesn't arrive either, force is still measured by the load cells and the accelerometer stays in only 1–2 units.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>What is the difference between the Week 13 deliverable and an exploration prototype?</strong></td>
+                        <td style="padding: 10px;">An exploration prototype is <strong>one</strong> unit built with modules and a breadboard to answer a technical question (do the load cells capture the peak?). The Week 13 deliverable is a <strong>first product iteration</strong>: 5 identical units with our custom PCB, frozen and versioned firmware, per-unit calibration and end-of-line testing, a BOM backed by invoices, and use by a third party without the team present, verified against the 16 requirements in this PDS.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Section 9: Decision Defense -->
+        <h2>9. Defense of a Design Decision</h2>
+
+        <h3>Measuring Force with 4 Load Cells Under a Floating Plate, Not Just the Accelerometer</h3>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>"If the pod is mounted on a wall, floor, or heavy bag, the acceleration changes with the mounting; the force between the plate and the chassis does not."</em>
+        </blockquote>
+
+        <ol>
+            <li><strong>Problem:</strong> with only an accelerometer, F = m·a depends on the effective mass and on whatever is behind the pod. The same punch gives different numbers on a wall and on the floor (contradiction C2 from Week 5), and Fixed Reflex mounts in three different ways.</li>
+            <li><strong>Decision:</strong> 4 × 50 kg load cells under a Ø 100 × 3 mm aluminum plate, read by an ADS1220 at 2 kSPS (≈ 18–28 samples during the 9–14 ms rise of a punch), with hard stops at 90% load and a saturation flag. The ADXL375 is kept for impact detection and for the range above 1,750 N.</li>
+            <li><strong>Cost and risk:</strong> ≈ $215 MXN per pod at 10 units and a medium schedule risk. It is mitigated with a load cell test bench in Week 2 and a go/no-go decision at the end of Week 3; the fallback is the ADXL375 alone with the calibrated index.</li>
+            <li><strong>How it is proven:</strong> FR-03. Weights of 5–40 kg (±3%), a known-mass drop (±15% at the peak), and the same series on wall, floor, and heavy bag (difference ≤ 10%).</li>
+        </ol>
+
+        <!-- Section 10: Annex -->
+        <h2>10. Annex: Components &amp; Communication v2</h2>
+
+        <h3>Technical Detail Behind This PDS</h3>
+        <p>
+            The PDS summarizes; the annex explains each decision with its calculations, alternatives, and sources. It is updated with the Week 6 dimensions (Ø 140 × 75 mm).
+        </p>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Annex Section</th>
+                        <th style="padding: 10px;">Contents</th>
+                        <th style="padding: 10px;">PDS Requirements Supported</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>v2 Component List</strong></td>
+                        <td style="padding: 10px;">Punch design loads, comparison of sensing paths, pod cross-section with heights, floating plate with stops, faux leather + EVA pad, list of 17 components with prices, force-fusion firmware, validation plan, and risks</td>
+                        <td style="padding: 10px;">FR-02, FR-03, PR-01, PR-02, PR-04, CR-01, CR-03</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>v2 Communication Architecture</strong></td>
+                        <td style="padding: 10px;">Gateway pod as session director, synchronization via SYNC and scheduled triggers, ESP-NOW messages, GATT service, two-hop ACK, gateway election, and plans B and C</td>
+                        <td style="padding: 10px;">FR-01, FR-04, IR-01, IR-02</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align: center; margin-top: 18px;">
+            <a href="components-communication-v2.html" class="button">Open Annex: Components &amp; Communication v2</a>
+        </p>
+
+        <!-- Section 11: Reflection -->
+        <h2>11. Reflection and Key Takeaways</h2>
+        <p>
+            Reviewing our first version against the rubric made us realize that a PDS is not a long document holding everything we researched; it is a single page that someone outside the team can pick up and use to check whether the product actually meets its goals. Rewriting every requirement as "The system shall…", with a concrete figure and a verification method, forced us to commit to values we had previously left open as hypotheses, and it exposed how many of our original criteria could not really be tested.
+        </p>
+        <p>
+            The second lesson was that cost is a moving target. The accelerometer's price more than tripled in a single week, which pushed our BOM from $815 to $1,390 MXN and our reference price above $4,600 MXN. From now on, critical components are verified on the day of purchase, ordered early from more than one supplier, and always paired with a plan B. Aligning Week 5 with the Week 6 dimensions also showed us that keeping one consistent source of truth across deliverables saves far more time than it costs.
+        </p>
+
+    </div>
+</div>
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

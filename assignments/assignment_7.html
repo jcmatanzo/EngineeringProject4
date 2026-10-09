@@ -1,0 +1,534 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 7: Technical &amp; Economic Viability</h1>
+        <p>
+            Lumetriq is already desirable (Weeks 2–4) and buildable (Weeks 5–6). This week answers whether the business works: revenue model benchmarking, a D/F/S cost inventory, the real cost of the AI, and the first three steps of the economic model (unit cost, selling price, and break-even point) for the <strong>Fixed Reflex</strong> concept.
+        </p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>How to read this page:</strong> <strong>[Confirmed]</strong> = verified at the source on October 8, 2026. <strong>[Estimated]</strong> = our own calculation or range. <strong>[Hypothesis]</strong> = assumption to be validated with customers. <strong>[Verify]</strong> = check before deciding. Prices in MXN <strong>before VAT</strong>. Exchange rate: we keep the <strong>18.5 MXN/USD</strong> from Week 5 (today's FIX rate is around 18.1–18.2) because it is the least favorable scenario for a BOM with imported parts. Technical baseline: <strong>PDS v1.0 and the Week 5 BOM</strong> (Ø 140 × 75 mm, BOM of $1,390 per pod at 10 units).</em>
+        </blockquote>
+
+        <!-- Section 1: Viability -->
+        <h2>1. Relevance, Feasibility &amp; Viability</h2>
+
+        <h3>Where Lumetriq Stands on the Three Questions</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Evidence So Far</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Relevance: is it worth it?</strong></td><td style="padding: 10px;">Week 4 interviews: nobody pays to measure reaction time today; the boxing athlete gets it as part of the coach's monthly fee. Verbal interest in training daily and in a more fun way.</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: we still need to know who pays (gym or athlete) and how much</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Feasibility: how is it built?</strong></td><td style="padding: 10px;">PDS v1.0 with 16 verifiable requirements, a 3-layer architecture, a BOM with sources, and the Fixed Reflex concept ready for CAD.</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Answered</span>, with technical risks mitigated (bayonet, floating plate, heat)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Economic viability</strong></td><td style="padding: 10px;">This page: unit cost, price, and break-even point.</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Works only under conditions</span> (see Summary)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Operational viability</strong></td><td style="padding: 10px;">Assembly ≤ 1.5 h per pod (CR-01); JLCPCB assembles the two fine-pitch ICs; FDM housing. A batch of 40 pods is ≈ 60 h of assembly and testing.</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Viable</span> at 10–100 pods per year; beyond that, a mold or contract manufacturing is needed</td></tr>
+                <tr><td style="padding: 10px;"><strong>Legal viability</strong></td><td style="padding: 10px;">The radio is in the certified ESP32-WROOM-32E module; the product is not presented as a medical device; the app handles personal data (privacy notice under the personal data protection law reformed in 2025).</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 To be verified</span>: which NOM standards and which module certification apply to <em>selling</em> in Mexico <strong>[Verify]</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 2: Benchmarking -->
+        <h2>2. Revenue Model Benchmarking</h2>
+
+        <h3>Perplexity Prompt: Three Similar Offerings</h3>
+        <p><strong>Method:</strong> we used the week's prompt with Lumetriq as the product and boxing gyms as the segment. Prices were checked on each company's website and in recent reviews, and converted at 18.5 MXN/USD.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Similar Product or Service</th><th style="padding: 10px;">Revenue Model (Who Pays, When)</th><th style="padding: 10px;">Price Range</th><th style="padding: 10px;">Notes: Friction and Other Stakeholders</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BlazePod</strong><br><em>floor reaction pods, no force measurement</em></td><td style="padding: 10px;">One-time hardware payment + <strong>freemium</strong>: free app (BlazePod Go) and a monthly Pro membership with analytics and multi-athlete features.</td><td style="padding: 10px;">4-pod kits ≈ USD 389–534 (≈ $7,200–9,900) <strong>[Confirmed]</strong>; Pro ≈ USD 9.99/month (≈ $185) <strong>[Confirmed in reviews]</strong></td><td style="padding: 10px;"><strong>Friction:</strong> reviews complain that basic features sit behind the Pro paywall after paying for the hardware. <strong>Stakeholders:</strong> physical therapy, clubs, and schools through "Team" and "PT Clinic" bundles.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>FightCamp</strong><br><em>punch sensors + boxing classes</em></td><td style="padding: 10px;">Hardware (paid upfront or financed) + a <strong>mandatory subscription</strong>: without an active membership, the sensors do not work.</td><td style="padding: 10px;">Equipment USD 199–899 (≈ $3,700–16,600); membership USD 39.99/month (≈ $740) <strong>[Confirmed]</strong></td><td style="padding: 10px;"><strong>Friction:</strong> the mandatory subscription is perceived as a hidden cost; the real first year is ≈ USD 780–1,380. <strong>Stakeholders:</strong> financing companies (installment payments) and households with multiple profiles.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Liteboxer</strong><br><em>wall board with 6 light-up targets and force sensors</em></td><td style="padding: 10px;">One-time hardware payment + content subscription; its Go version gives away the sensors with a 1–2 year contract.</td><td style="padding: 10px;">Equipment ≈ USD 1,495–1,795 (≈ $27,700–33,200); membership ≈ USD 29.99/month (≈ $555) <strong>[Confirmed in reviews]</strong></td><td style="padding: 10px;"><strong>Friction:</strong> high entry price and installation space; that is why it moved to a subsidized-hardware model. <strong>Stakeholders:</strong> connected-fitness investors; it does not sell to gyms.</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Which model dominates, and why?</strong> <strong>Hardware + subscription</strong> in all three. The hardware covers manufacturing, and the subscription pays for keeping the service alive (content, app, cloud). Those that charge a mandatory subscription (FightCamp) generate more complaints; the freemium ones (BlazePod) have more non-paying users.</p>
+        <p><strong>Which stakeholder is nobody charging?</strong> All three sell mainly to the <strong>home user</strong>. Nobody is charging the <strong>boxing gym</strong> well, even though it benefits when its members stay longer and could sell a "reaction and force assessment." Also untapped: <strong>amateur boxing schools and leagues</strong> (selection testing) and <strong>boxing equipment brands</strong>, which could sponsor challenges and leaderboards. Lumetriq goes after the gym.</p>
+
+        <!-- Section 3: Revenue Model -->
+        <h2>3. Chosen Revenue Model</h2>
+
+        <h3>Hardware + Per-Location Subscription (B2B)</h3>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>"The gym buys the pod kit and pays a monthly subscription per location; its members use the app at no cost."</em>
+        </blockquote>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Layer</th><th style="padding: 10px;">What Is Charged</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1. Hardware (one-time payment)</strong></td><td style="padding: 10px;"><strong>Studio Kit:</strong> 4 Fixed Reflex pods with 4 wall plates and a case, at full price (cost + margin)</td><td style="padding: 10px;">Subsidizing doesn't work: recovering the kit through the subscription would push it to ≈ $1,500/month (see Step 2)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2. Software (subscription)</strong></td><td style="padding: 10px;"><strong>Studio:</strong> group sessions, history, gym leaderboard, AI recommendations, and reports for the coach</td><td style="padding: 10px;">Covers cloud, AI, and support, and it is the recurring revenue</td></tr>
+                <tr><td style="padding: 10px;"><strong>Free for members</strong></td><td style="padding: 10px;">Viewing their own history and recommendations within the gym</td><td style="padding: 10px;">The anchor from the interviews was $60–100/month for an individual user: too low to sustain the product, but a useful reason for members to ask their gym for the system</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Design challenge:</strong> if the pods measure and light up without paying, why renew? The value of the subscription has to be visible <strong>in class</strong>: the gym leaderboard on screen, a monthly report the owner can show members, and assessments with history. Without a subscription, the pods stay in "local reaction" mode (basic routines on the phone, with no cloud history and no AI). The paywall kicks in at the end of the first month, when there are already 4 weeks of data to lose.</p>
+
+        <!-- Section 4: D/F/S Costs -->
+        <h2>4. D/F/S Cost Inventory</h2>
+
+        <h3>Creating and Distributing the Offering</h3>
+        <p><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #0078D7; border-radius: 4px; padding: 0 4px;">D</span> differentiating (untouchable), <span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span> flexible (can be reduced or deferred), <span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span> standard (non-negotiable). Costs are per pod at 10 units unless otherwise stated.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Cost</th><th style="padding: 10px;">D/F/S</th><th style="padding: 10px;">Estimated Cost</th><th style="padding: 10px;">Unit</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="background-color: #f4f4f4;"><td colspan="5" style="padding: 10px;"><strong>CREATING the offering</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4 load cells + ADS1220 + aluminum plate</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #0078D7; border-radius: 4px; padding: 0 4px;">D</span></td><td style="padding: 10px;">$215</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">This is what measures force in N the same way on a wall, floor, or heavy bag; no competing pod does this</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADXL375 (±200 g accelerometer)</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$420</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">It is the most expensive part (30% of the BOM). With the load cells, force is already covered; it can switch to an H3LIS331DL or stay only in a Pro version</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>LED arc + diffuser + faux leather pad</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #0078D7; border-radius: 4px; padding: 0 4px;">D</span></td><td style="padding: 10px;">$95</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">It is the punching experience and the "hit here" signal</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ESP32, 18650 cell, charging, and passives</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$280</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">Interchangeable with equivalents</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Magnetic pogo connector</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$80</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">Can be deferred: USB-C is enough for the first version</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PCB + assembly of 2 ICs at JLCPCB</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">$90</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">Market price, no negotiation</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PETG housing, hardware, weatherstrip, wall plate</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$210</td><td style="padding: 10px;">per pod</td><td style="padding: 10px;">FDM for now; a mold only with volume</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Assembly, calibration, and testing</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$120</td><td style="padding: 10px;">per pod (1.5 h × $80)</td><td style="padding: 10px;">Drops to ≈ 1 h with jigs and practice</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cloud (Supabase Pro)</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">$463</td><td style="padding: 10px;">per month (USD 25)</td><td style="padding: 10px;">List price; the free plan pauses inactive projects and has no backups</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>AI (Claude Haiku 5.5)</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #0078D7; border-radius: 4px; padding: 0 4px;">D</span></td><td style="padding: 10px;">$4.5</td><td style="padding: 10px;">per gym per month</td><td style="padding: 10px;">Recommendations written in a coach's voice are part of the value proposition (see AI Cost)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Developer accounts (Apple, Google), domain</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">$2,894</td><td style="padding: 10px;">first year</td><td style="padding: 10px;">Apple USD 99/year, Google USD 25 one-time, domain and email ≈ $600</td></tr>
+                <tr style="background-color: #f4f4f4;"><td colspan="5" style="padding: 10px;"><strong>DISTRIBUTING the offering</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Kit packaging (box + foam)</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$160</td><td style="padding: 10px;">per 4-pod kit</td><td style="padding: 10px;">Can be simplified</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Domestic shipping</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">$250</td><td style="padding: 10px;">per kit</td><td style="padding: 10px;">Courier rate</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Payment gateway fee</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">≈ 4.2%</td><td style="padding: 10px;">of each charge</td><td style="padding: 10px;">≈ 3.6% + VAT on the fee <strong>[Verify with the chosen gateway]</strong>. Payments are collected via the web or by invoice, not inside the app, to avoid app store fees</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Technical support</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$80</td><td style="padding: 10px;">per gym per month (1 h)</td><td style="padding: 10px;">Drops with a good installation guide</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Replacement pad covers</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$13</td><td style="padding: 10px;">per gym per month</td><td style="padding: 10px;">4 covers at ≈ $10 each every 3 months</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Demos (demo kit) and digital marketing</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #ff9900; border-radius: 4px; padding: 0 4px;">F</span></td><td style="padding: 10px;">$18,200</td><td style="padding: 10px;">first year</td><td style="padding: 10px;">Demo kit at direct cost ($6,200) + $1,000/month in ads</td></tr>
+                <tr><td style="padding: 10px;"><strong>Privacy notice, SaaS contract, accountant</strong></td><td style="padding: 10px;"><span style="display: inline-block; min-width: 1.6em; text-align: center; font-weight: bold; color: #fff; background-color: #6c757d; border-radius: 4px; padding: 0 4px;">S</span></td><td style="padding: 10px;">$17,000</td><td style="padding: 10px;">first year</td><td style="padding: 10px;">$5,000 legal + $1,000/month for accounting <strong>[Estimated]</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Takeaway:</strong> the D costs are few and cheap (load cells, arc, pad, AI ≈ $315 per pod). The largest cost, the ADXL375, is <strong>F</strong>, not D: it is the first lever to pull if the price doesn't work.</p>
+
+        <!-- Section 5: AI Cost -->
+        <h2>5. Monthly AI Cost</h2>
+
+        <h3>Tokens Measured on the Product's Actual Prompt</h3>
+        <p>The Week 5 architecture only sends the <strong>writing</strong> of the recommendation to the cloud: one call per session from the Edge Function, with aggregated metrics. This is the actual prompt that would be sent (shown here in English; the production prompt is in Spanish):</p>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre-wrap; background: none; border: none;">You are the LUMETRIQ training assistant, a system of light-up pods for boxing. Write a short recommendation for the athlete based on their session metrics.
+
+Rules:
+1. Use only the figures in the JSON. Do not make up data or compare with other people.
+2. Write in Mexican Spanish, in the second person, with a coach's tone.
+3. Maximum 120 words, in 3 parts: what improved, what needs work, and one concrete exercise for the next session.
+4. Do not give medical advice. If "pain_reported" is true, recommend resting and seeing a professional.
+5. If a metric is null, do not mention it.
+
+Session metrics (JSON):
+{"session_id":"s_2026_10_08_03","routine":"combos_1","duration_min":18,"total_punches":124,"valid_punches":118,
+"reaction_ms":{"mean":312,"p50":298,"p90":401,"first_third":289,"last_third":341},
+"force_n":{"mean":640,"max":1180,"first_third":702,"last_third":571,"saturated":0},
+"per_pod":[{"pod":1,"pos":"left","reaction_ms":295,"force_n":688}, ... 4 pods],
+"fatigue_pct":{"reaction":18.0,"force":-18.7},"left_right_asymmetry_pct":{"reaction":16.6,"force":17.2},
+"trend_4_sessions":{"reaction_ms":[338,329,321,312],"force_n":[598,611,627,640]},
+"user_goal":"improve right hook speed","pain_reported":false}</pre>
+        </div>
+        <ul>
+            <li><strong>Input:</strong> 1,471 characters in the original Spanish prompt. At 3–4 characters per token, that is 370–490 tokens; JSON tokenizes worse than plain text and recent models use ≈ 30% more tokens, so we take <strong>600 tokens</strong> <strong>[Estimated by Claude]</strong>.</li>
+            <li><strong>Output:</strong> 120 words in Spanish ≈ 160–200 tokens; we take <strong>250</strong> with margin.</li>
+            <li><strong>Price:</strong> Claude Haiku 5.5: USD 0.10 per million input tokens and USD 0.50 per million output tokens <strong>[Confirmed, anthropic.com/pricing, Oct 8, 2026]</strong>.</li>
+            <li><strong>Usage:</strong> a gym with 40 sessions per day × 30 days, plus 10% retries when the verifier rejects a figure = <strong>1,320 calls per month</strong> <strong>[Hypothesis]</strong>.</li>
+        </ul>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Cost per call = 600 × 0.10/1,000,000 + 250 × 0.50/1,000,000
+              = 0.000060 + 0.000125 = USD 0.000185
+
+Monthly cost per gym = 0.000185 × 1,320 = USD 0.244 × 18.5 = $4.52 MXN/month
+Monthly cost per pod (4 per kit)                        = $1.13 MXN/month
+Monthly cost per individual user (2 per day) = 0.000185 × 66 × 18.5 = $0.23 MXN/month</pre>
+        </div>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Model</th><th style="padding: 10px;">Cost per Gym per Month</th><th style="padding: 10px;">% of a $499 Subscription</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Haiku 5.5 (chosen)</strong></td><td style="padding: 10px;">$4.52</td><td style="padding: 10px;">0.9%</td></tr>
+                <tr><td style="padding: 10px;"><strong>Sonnet 5.5 (USD 2 / 10 per million)</strong></td><td style="padding: 10px;">$90.35</td><td style="padding: 10px;">18%</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Conclusion:</strong> with the hybrid architecture, the AI does not threaten the margin. What keeps it cheap is the Week 5 decision to measure on the pod, analyze on the phone, and send only the writing to the cloud. If we used Sonnet "because it writes better," the AI would eat almost a fifth of the subscription. Before production, the exact value will be measured with <code>usage.input_tokens</code> in the API responses.</p>
+
+        <!-- Section 6: Step 1 -->
+        <h2>6. Step 1: Real Unit Cost</h2>
+
+        <h3>Claude Prompt: Economic Model (Steps 1 to 3)</h3>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Prompt inputs:</strong> product Lumetriq Fixed Reflex; hardware + per-location subscription model; Week 5 BOM; AI with Haiku 5.5; Supabase Pro cloud; volume of <strong>10 gyms (40 pods) in year 1</strong> and <strong>25 gyms (100 pods) in year 2</strong>. This is more conservative than the Week 4 SOM (15 and 30 customers) because the team does not have a salesperson yet. 15% overhead and 25% contingency, both on direct cost (BOM + labor + packaging).</em>
+        </blockquote>
+
+        <h4>BOM per Pod at 10 and 100 Units</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Component</th><th style="padding: 10px;">At 10</th><th style="padding: 10px;">At 100</th><th style="padding: 10px;">Why It Drops at 100</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADXL375BCCZ</strong></td><td style="padding: 10px;">420</td><td style="padding: 10px;">390</td><td style="padding: 10px;">LCSC price break <strong>[Verify]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Protected 18650 cell</strong></td><td style="padding: 10px;">150</td><td style="padding: 10px;">120</td><td style="padding: 10px;">Bought by the box</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADS1220</strong></td><td style="padding: 10px;">95</td><td style="padding: 10px;">80</td><td style="padding: 10px;">LCSC instead of a local store</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PCB + JLCPCB assembly</strong></td><td style="padding: 10px;">90</td><td style="padding: 10px;">45</td><td style="padding: 10px;">The setup cost is spread over more boards</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PETG housing</strong></td><td style="padding: 10px;">90</td><td style="padding: 10px;">85</td><td style="padding: 10px;">Filament by the kilo</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Magnetic pogo connector</strong></td><td style="padding: 10px;">80</td><td style="padding: 10px;">60</td><td style="padding: 10px;">AliExpress/LCSC batch</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Passives, charging, USB-C, Hall sensor</strong></td><td style="padding: 10px;">70</td><td style="padding: 10px;">55</td><td style="padding: 10px;">Reels</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ESP32-WROOM-32E</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">55</td><td style="padding: 10px;">100-unit price break</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4 load cells</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">55</td><td style="padding: 10px;">Batch of 400</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Aluminum plate</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">40</td><td style="padding: 10px;">Batch cutting</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Screws and inserts</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">45</td><td style="padding: 10px;">By the box</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>LED arc + diffuser</strong></td><td style="padding: 10px;">50</td><td style="padding: 10px;">40</td><td style="padding: 10px;">Full reels</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pad (faux leather + EVA + diaphragm)</strong></td><td style="padding: 10px;">45</td><td style="padding: 10px;">35</td><td style="padding: 10px;">Faux leather roll</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Wall plate</strong></td><td style="padding: 10px;">40</td><td style="padding: 10px;">25</td><td style="padding: 10px;">Laser cutting by the sheet</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Weatherstrip + button</strong></td><td style="padding: 10px;">20</td><td style="padding: 10px;">15</td><td style="padding: 10px;">By the meter</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>BOM per pod</strong></td><td style="padding: 10px;"><strong>$1,390</strong></td><td style="padding: 10px;"><strong>$1,145</strong></td><td style="padding: 10px;">−18%; the prices at 100 are <strong>[Estimated]</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Full Unit Cost</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Item</th><th style="padding: 10px;">At 10 Pods</th><th style="padding: 10px;">At 100 Pods</th><th style="padding: 10px;">Calculation</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>BOM</strong></td><td style="padding: 10px;">1,390.00</td><td style="padding: 10px;">1,145.00</td><td style="padding: 10px;">Previous table</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Assembly, calibration, and testing</strong></td><td style="padding: 10px;">120.00</td><td style="padding: 10px;">80.00</td><td style="padding: 10px;">1.5 h and 1.0 h × $80/h</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Packaging (4-pod kit)</strong></td><td style="padding: 10px;">40.00</td><td style="padding: 10px;">25.00</td><td style="padding: 10px;">$160 and $100 per kit ÷ 4</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Direct cost</strong></td><td style="padding: 10px;"><strong>1,550.00</strong></td><td style="padding: 10px;"><strong>1,250.00</strong></td><td style="padding: 10px;"></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Overhead (15%)</strong></td><td style="padding: 10px;">232.50</td><td style="padding: 10px;">187.50</td><td style="padding: 10px;">0.15 × direct</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Contingency (25%)</strong></td><td style="padding: 10px;">387.50</td><td style="padding: 10px;">312.50</td><td style="padding: 10px;">0.25 × direct</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Hardware cost per pod</strong></td><td style="padding: 10px;"><strong>2,170.00</strong></td><td style="padding: 10px;"><strong>1,750.00</strong></td><td style="padding: 10px;"></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cloud share (12 months)</strong></td><td style="padding: 10px;">138.75</td><td style="padding: 10px;">55.50</td><td style="padding: 10px;">$462.50/month ÷ 10 or 25 gyms ÷ 4 pods × 12</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>AI share (12 months)</strong></td><td style="padding: 10px;">13.56</td><td style="padding: 10px;">13.56</td><td style="padding: 10px;">$4.52/month ÷ 4 pods × 12</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total first-year unit cost</strong></td><td style="padding: 10px;"><strong>$2,322</strong></td><td style="padding: 10px;"><strong>$1,819</strong></td><td style="padding: 10px;"></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>4-pod kit cost (hardware only)</strong></td><td style="padding: 10px;"><strong>$8,680</strong></td><td style="padding: 10px;"><strong>$7,000</strong></td><td style="padding: 10px;">4 × hardware cost</td></tr>
+            </tbody>
+        </table>
+</div>
+        <ul>
+            <li><strong>Highest-cost component:</strong> the ADXL375, $420 = 30% of the BOM and 18% of the total unit cost at 10 pods.</li>
+            <li><strong>The AI represents</strong> 0.6% of the unit cost at 10 pods. The cloud weighs 10 times more than the AI while there are few customers, because it is a fixed cost spread over 10 gyms.</li>
+            <li><strong>If the 160 mm diameter</strong> from the latest Week 6 revision is kept instead of the 140 mm in PDS v1.0: ≈ +$60–80 per pod and ≈ +$85–110 in hardware cost once overhead and contingency are included.</li>
+        </ul>
+
+        <!-- Section 7: Step 2 -->
+        <h2>7. Step 2: Selling Price</h2>
+
+        <h3>Floor (Cost-Plus), Ceiling (Value-Based), and Recommended Price</h3>
+
+        <h4>Method 1: Cost-Plus with a 40% Margin</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">HARDWARE (4-pod kit)
+  At 10:  8,680 × 1.40 = $12,152      At 100:  7,000 × 1.40 = $9,800
+
+PER-LOCATION SUBSCRIPTION, monthly cost per gym (10 gyms):
+  Cloud             462.50 ÷ 10  = 46.25
+  AI (Haiku 5.5)                 =  4.52
+  Support (1 h × $80)            = 80.00
+  Replacement covers             = 13.33
+  Subtotal                       = 144.10
+  + payment gateway fee of 4.2% of the price P
+  P = 1.40 × (144.10 + 0.042 P)  →  P = 201.74 / 0.9412 = $214 → floor $219/month</pre>
+        </div>
+        <p><strong>Subsidized-hardware variant</strong> (the method from class: the subscription recovers the kit in 12 months with a 20% financing cost):</p>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Kit recovery: 8,680 × 1.20 ÷ 12 = 868.00/month
++ operating costs                = 144.10/month
+P = 1.40 × (1,012.10 + 0.042 P) → P ≈ $1,505/month</pre>
+        </div>
+        <p>$1,505 per month is far above what FightCamp ($740) or Liteboxer ($555) charge, and above the $899 Studio Pro proposed in Week 4. <strong>Subsidizing doesn't work; the kit is sold at full price.</strong></p>
+
+        <h4>Method 2: Value-Based (the Ceiling)</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Value for the gym [Hypothesis: validate with 3 owners]
+  Members it stops losing each month thanks to leaderboards and assessments:  2
+  Monthly fee at a boxing gym in Puebla:                                  $850 [Verify]
+  Monthly value:                                           2 × 850 = $1,700
+  Spending the owner can justify if recovered in 12 months:          $20,400
+
+First-year ceiling (kit + 12 months of subscription) = $20,400
+With a $499 subscription: kit ceiling = 20,400 − 12 × 499 = $14,412</pre>
+        </div>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+            <svg viewBox="0 0 900 245" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kit price range between the cost-plus floor and the value-based ceiling, with market references" style="width: 100%; min-width: 700px; height: auto;">
+                <style>
+                    .ax { stroke: #9aa3b5; stroke-width: 1; }
+                    .lb { font: 12px Arial, sans-serif; fill: #1b1f2a; }
+                    .lbs { font: 11px Arial, sans-serif; fill: #5a5a5a; }
+                    .lbb { font: bold 12px Arial, sans-serif; fill: #032472; }
+                </style>
+                <!-- scale: x = 40 + (MXN/30000)*820 -->
+                <line class="ax" x1="40" y1="120" x2="860" y2="120"></line>
+                <text class="lbs" x="36" y="140">$0</text>
+                <text class="lbs" x="304" y="140">$10k</text>
+                <text class="lbs" x="577" y="140">$20k</text>
+                <text class="lbs" x="840" y="140">$30k</text>
+                <line class="ax" x1="313" y1="115" x2="313" y2="125"></line><line class="ax" x1="587" y1="115" x2="587" y2="125"></line><line class="ax" x1="860" y1="115" x2="860" y2="125"></line>
+                <!-- floor-ceiling range -->
+                <rect x="372" y="98" width="62" height="22" fill="#0d48d2" opacity="0.18"></rect>
+                <line x1="372" y1="92" x2="372" y2="126" stroke="#0b7a3b" stroke-width="3"></line>
+                <text class="lb" x="292" y="86">Floor $12,152</text>
+                <line x1="434" y1="92" x2="434" y2="126" stroke="#b10a0a" stroke-width="3"></line>
+                <text class="lb" x="440" y="86">Ceiling $14,412</text>
+                <circle cx="395" cy="109" r="7" fill="#0d48d2"></circle>
+                <text class="lbb" x="320" y="60">Recommended $12,990</text>
+                <line x1="395" y1="64" x2="395" y2="101" stroke="#0d48d2"></line>
+                <!-- market -->
+                <rect x="237" y="155" width="74" height="14" fill="#c9cfdc"></rect>
+                <text class="lbs" x="190" y="186">BlazePod 4 pods $7.2–9.9k</text>
+                <rect x="141" y="198" width="352" height="6" fill="#e6c79b"></rect>
+                <text class="lbs" x="141" y="219">FightCamp $3.7–16.6k</text>
+                <rect x="797" y="155" width="10" height="14" fill="#c9cfdc"></rect>
+                <text class="lbs" x="720" y="186">Liteboxer $27.7k+</text>
+                <text class="lbs" x="40" y="240">4-pod kit price, MXN before VAT. Gray and ochre bars: competitor hardware (without subscription).</text>
+            </svg>
+            <p style="margin-top: 12px; margin-bottom: 0; text-align: center;">
+                <em>The price sits between the cost-plus floor at 10 units and the value-based ceiling. The range is narrow: only $2,260.</em>
+            </p>
+        </div>
+
+        <h4>Recommended Price</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Product</th><th style="padding: 10px;">Cost-Plus Floor</th><th style="padding: 10px;">Value-Based Ceiling</th><th style="padding: 10px;">Recommended</th><th style="padding: 10px;">Why</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Studio Kit (4 pods + plates + case)</strong></td><td style="padding: 10px;">$12,152</td><td style="padding: 10px;">$14,412</td><td style="padding: 10px;"><strong>$12,990</strong></td><td style="padding: 10px;">33% gross margin at 10 pods and 46% at 100. More expensive than BlazePod, but it is the only one that measures force and mounts on the wall; less than half the price of Liteboxer</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Per-location Studio subscription</strong></td><td style="padding: 10px;">$219/month</td><td style="padding: 10px;">≈ $1,000/month*</td><td style="padding: 10px;"><strong>$499/month</strong> or $4,990/year</td><td style="padding: 10px;">Below FightCamp and Liteboxer, which are priced per household; leaves a 67% margin after cloud, AI, support, and fees</td></tr>
+                <tr><td style="padding: 10px;"><strong>First year for the gym</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">$20,400</td><td style="padding: 10px;"><strong>$18,978</strong></td><td style="padding: 10px;">Recovered in ≈ 11 months if the 2 retained members materialize</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p style="font-size: 0.9em;">* Ceiling if the gym already had the hardware: ≈ 60% of the $1,700 monthly value.</p>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Correction to Week 4:</strong> the 6-pod Studio package at $7,990 ($1,332 per pod) comes in <strong>below the BOM</strong> ($1,390). That price is withdrawn. For 6 pods, the cost-plus floor at 10 units is $18,228.</em>
+        </blockquote>
+
+        <!-- Section 8: Step 3 -->
+        <h2>8. Step 3: Break-Even Point</h2>
+
+        <h3>How Many Gyms Do We Need to Close in Year 1?</h3>
+        <h4>Contribution Margin per Gym</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">HARDWARE (kit at $12,990)
+  Variable cash cost: direct cost 6,200 + gateway 546 + shipping 250 = $6,996
+  Kit contribution margin = 12,990 − 6,996                           = $5,994
+  (overhead and contingency are not per-unit outflows: they are reserves)
+
+SUBSCRIPTION ($499/month)
+  Variable cost: AI 4.52 + support 80 + covers 13.33 + gateway 20.96 = $118.81/month
+  Contribution margin = 499 − 118.81                                 = $380.19/month
+  Average months in year 1 (sign-ups spread across the year):          6
+  Subscription contribution in year 1 = 380.19 × 6                   = $2,281
+
+Contribution margin per gym in year 1 = 5,994 + 2,281 = $8,275</pre>
+        </div>
+
+        <h4>First-Year Fixed Costs and Break-Even</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Fixed Cost</th><th style="padding: 10px;">A. Operating</th><th style="padding: 10px;">B. + Part-Time Staff</th><th style="padding: 10px;">C. + Development</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Cloud (12 × $462.50)</strong></td><td style="padding: 10px;">5,550</td><td style="padding: 10px;">5,550</td><td style="padding: 10px;">5,550</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>App store accounts, domain, and email</strong></td><td style="padding: 10px;">2,894</td><td style="padding: 10px;">2,894</td><td style="padding: 10px;">2,894</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Tooling: calibration bench and assembly jigs</strong></td><td style="padding: 10px;">3,000</td><td style="padding: 10px;">3,000</td><td style="padding: 10px;">3,000</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Demo kit + digital marketing</strong></td><td style="padding: 10px;">18,200</td><td style="padding: 10px;">18,200</td><td style="padding: 10px;">18,200</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Legal and accounting</strong></td><td style="padding: 10px;">17,000</td><td style="padding: 10px;">17,000</td><td style="padding: 10px;">17,000</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>One part-time person for sales and support (20 h/week × $80)</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">83,136</td><td style="padding: 10px;">83,136</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Recovering development: 5 learning cycles × $22,276</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">—</td><td style="padding: 10px;">111,378</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Year 1 fixed costs</strong></td><td style="padding: 10px;"><strong>$46,644</strong></td><td style="padding: 10px;"><strong>$129,780</strong></td><td style="padding: 10px;"><strong>$241,158</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Break-even point (÷ $8,275)</strong></td><td style="padding: 10px;">5.6 → <strong>6 gyms</strong></td><td style="padding: 10px;">15.7 → <strong>16 gyms</strong></td><td style="padding: 10px;">29.1 → <strong>30 gyms</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Pods</strong></td><td style="padding: 10px;">24</td><td style="padding: 10px;">64</td><td style="padding: 10px;">120</td></tr>
+                <tr><td style="padding: 10px;"><strong>Achievable with the 10-gym plan?</strong></td><td style="padding: 10px;"><span style="color: #28A745;">✅ Yes</span></td><td style="padding: 10px;"><span style="color: #ff9900;">⚠️ Only with the Week 4 SOM</span></td><td style="padding: 10px;"><span style="color: #DC3545;">❌ Not in year 1</span></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Cost of One Learning Cycle (Method from Class)</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Direct fixed:      120 h of engineering × $80 + licenses $300        =  9,900
+Direct variable:   2 prototypes × $1,900 + test PCB $900
+                   + consumables $300                                =  5,000
+Indirect (15%):    (9,900 + 5,000) × 0.15                            =  2,235
+Cycle base                                                           = 17,135
+Contingency (30%)                                                    =  5,141
+COST PER CYCLE                                                       = $22,276
+
+Minimum 3 cycles = $66,827 · Average 5 = $111,378 · Maximum 8 = $178,204</pre>
+        </div>
+        <p>We use 120 h per cycle instead of the 80 h in the class example because each Lumetriq cycle touches hardware, firmware, the app, and the cloud <strong>[Estimated]</strong>.</p>
+
+        <p><strong>Reading the break-even:</strong></p>
+        <ul>
+            <li><strong>A:</strong> if the team does not pay itself a salary (the student scenario), 6 gyms cover the fixed operating costs. With 10 gyms, ≈ $36,000 of contribution is left over.</li>
+            <li><strong>B:</strong> paying one part-time person requires 16 gyms, more than the plan and at the limit of the Week 4 SOM (15 in year 1).</li>
+            <li><strong>C:</strong> recovering development in the first year requires 30 gyms. That is not realistic: development is recovered in year 2, when the subscription is collected for a full 12 months per customer ($4,562 per gym per year) and the kit cost drops to $7,000.</li>
+            <li><strong>Key sensitivity:</strong> if the kit were sold at $9,900 (BlazePod's price), the kit margin would fall to ≈ $3,034 and scenario A would require 9 gyms instead of 6.</li>
+        </ul>
+
+        <!-- Section 9: Summary -->
+        <h2>9. Economic Model Summary (Steps 1 to 3)</h2>
+
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">════════════════════════════════════════════════════════
+ECONOMIC MODEL
+Product: Lumetriq Fixed Reflex · Revenue model: hardware + per-location subscription (B2B)
+════════════════════════════════════════════════════════
+
+UNIT COST (per pod, first year)
+At 10 units: $2,322 · At 100 units: $1,819
+Highest-cost component: ADXL375 ($420, 30% of the BOM, 18% of total cost)
+AI cost represents: 0.6% of the unit cost
+
+SELLING PRICE
+Cost-plus (40%): $12,152 for a 4-pod kit + $219/month subscription
+Value-based: up to $14,412 for the kit + ≈ $1,000/month subscription
+Recommended price: $12,990 + $499/month — the kit stays above the floor
+  and the subscription pays for cloud, AI, and support with a 67% margin
+
+BREAK-EVEN POINT
+Gyms needed in year 1: 6 (operating) · 16 (with part-time staff)
+Achievable? ✅ operating / ⚠️ with a salary — the plan is 10 gyms
+
+────────────────────────────────────────────────────────
+ALERTS:
+· The hardware margin at 10 units is thin (33%); the Week 4
+  Studio package price ($7,990 for 6 pods) is below the BOM
+  and is withdrawn.
+· The value-based ceiling depends on an unvalidated hypothesis
+  (2 retained members per month). With 1 member, the first-year
+  ceiling drops to $10,200 and the price no longer works.
+· Subsidizing the hardware doesn't work: it would push the
+  subscription to ≈ $1,505/month.
+· Development (≈ $111,000) is not recovered in year 1.
+
+AVAILABLE LEVERS:
+· A "Reaction" version without the ADXL375: −$420 per pod; force
+  is still measured by the load cells.
+· Defer the pogo connector (−$80 per pod) and bring assembly
+  down to 1 h with jigs (−$40 per pod).
+· Validate the value before producing: pre-sell 3 kits with a
+  30% deposit to gyms in Puebla.
+════════════════════════════════════════════════════════</pre>
+        </div>
+        <p>Steps 4 (12-month cash flow) and 5 (NPV at 15%) are built on these numbers.</p>
+
+        <h3>Sources Consulted (October 8, 2026)</h3>
+        <ul>
+            <li>Anthropic, API pricing: <a href="https://claude.com/pricing" target="_blank">claude.com/pricing</a></li>
+            <li>Supabase, Free and Pro plans: <a href="https://supabase.com/pricing" target="_blank">supabase.com/pricing</a></li>
+            <li>BlazePod, bundles and membership: <a href="https://www.blazepod.com/products/ultimate-pt-bundle" target="_blank">blazepod.com</a> · <a href="https://www.blazepod.com/pages/membership" target="_blank">memberships</a></li>
+            <li>FightCamp, equipment and membership: <a href="https://fightcamp.com/shop" target="_blank">fightcamp.com/shop</a></li>
+            <li>Liteboxer, price reviews: <a href="https://www.thezoereport.com/wellness/liteboxer-at-home-boxing-gym-review" target="_blank">The Zoe Report</a> · <a href="https://connectthewatts.com/?p=12012" target="_blank">Connect The Watts</a></li>
+            <li>Reference exchange rate (DOF/SAT ≈ 18.13): <a href="https://playersoflife.com/saltillo/peso-mexicano-se-fortalece-cual-es-el-precio-del-dolar-en-mexico-hoy-6-de-octubre/" target="_blank">article from October 6, 2026</a></li>
+            <li>BOM, PDS v1.0, and concept: Weeks 5 and 6 of this site</li>
+        </ul>
+
+        <!-- Section 10: Reflection -->
+        <h2>10. Reflection and Key Takeaways</h2>
+        <p>
+            This week showed us that a good design can still be a bad business. Once we ran the numbers with the real BOM, the 6-pod price we had proposed in Week 4 turned out to be below what it costs just to manufacture the pods, something we could not see until we added overhead and contingency. We were also surprised that the AI, which looked like the riskiest cost, ends up being less than 1% of the unit cost thanks to the architectural decision to measure on the pod and send only the writing to the cloud; the fixed cloud cost and the team's hours weigh far more.
+        </p>
+        <p>
+            Calculating the floor and ceiling of the price made it clear how little room we have to maneuver, and that this room depends on a hypothesis we have not validated yet: how much Lumetriq is actually worth to a gym owner. For that reason, our next step is not to build more units, but to go out, ask, and try to close a pre-sale with a real deposit.
+        </p>
+
+    </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
