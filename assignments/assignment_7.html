@@ -348,8 +348,115 @@ With a $499 subscription: kit ceiling = 20,400 − 12 × 499 = $14,412</pre>
             <em><strong>Correction to Week 4:</strong> the 6-pod Studio package at $7,990 ($1,332 per pod) comes in <strong>below the BOM</strong> ($1,390). That price is withdrawn. For 6 pods, the cost-plus floor at 10 units is $18,228.</em>
         </blockquote>
 
-        <!-- Section 8: Step 3 -->
-        <h2>8. Step 3: Break-Even Point</h2>
+        <!-- Section 8: Development Cycles by Subsystem -->
+        <h2>8. Development Cost: Learning Cycles by Subsystem</h2>
+
+        <h3>How Much Does It Cost to Reach the First Sellable Unit?</h3>
+        <p>The previous version used a single generic cycle (120 h × $80/h) repeated 5 times: <strong>$111,378</strong>. That is equivalent to 600 hours of engineering for the entire product, about 3.4 person-months. Here, Lumetriq is divided into <strong>15 subsystems</strong>, each with its own cycles, and the hourly rate is based on what an engineer in Mexico earns on average.</p>
+
+        <h4>1. Cost of an Engineering Hour</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Average monthly salary in the field "Electronics, automation,
+and electromechanical applications" (IMCO, Compara Carreras)       = $25,203   [Confirmed]
+Hours worked: 40.3 h/week × 52 / 12 (Data México, ENOE 2026-Q1)   = 174.6 h/month
+Hourly wage = 25,203 / 174.6                                      = $144.3/h
+Employer cost × 1.35 (IMSS, INFONAVIT, SAR, year-end bonus,
+vacation premium, and state payroll tax)                          = $194.8/h  [Estimated]
+RATE USED                                                         = <strong>$195/h</strong>  (2.4 × the previous $80)</pre>
+        </div>
+        <ul>
+            <li><strong>Why this field:</strong> IMCO groups mechatronics under "Electronics, automation, and electromechanical applications." Software development ($24,063) and mechanical engineering ($24,140) are within 5% of it, so a single rate works for hardware, firmware, and the app.</li>
+            <li><strong>Why not Data México:</strong> it reports $13.7k per month for the "electronics engineers" occupation (2026-Q1), but that figure includes people working without a degree, and the source itself warns about low statistical precision. It is used as a floor, not as the baseline.</li>
+            <li><strong>The 1.35 factor:</strong> the usual range for employer cost over salary is 1.30–1.40 <strong>[Estimated]</strong>. It is what a company would pay for each hour; the 15% indirect costs from class cover something else (space, electricity, internet, shared tools).</li>
+        </ul>
+
+        <h4>2. Subsystems and Their Components</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Subsystem</th><th style="padding: 10px;">Components</th><th style="padding: 10px;">What Each Cycle Must Prove</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S1. Pod structure</strong></td><td style="padding: 10px;"><strong>Housing</strong> Ø 140 × 75 (body, rim, back cover) · <strong>impact structure</strong> (Ø 100 × 3 aluminum floating plate, 4 M4 stops, lateral guide, anti-lift retention) · <strong>striking surface</strong> (faux leather, 12 mm EVA + 4 mm ring, tension ring, diaphragm) · <strong>hardpoints</strong> (radial ribs, brass inserts, battery cradle, ADXL375 mount, PCB standoffs) · <strong>damping</strong> (silicone isolators, battery foam, EPDM weatherstrip) · <strong>closure</strong> (quarter-turn bayonet, O-ring, threadlocker)</td><td style="padding: 10px;">That it withstands ≥ 3,500 N and 10,000 punches without loosening, measures ≤ 80 mm deep, and that the pad does not bottom out</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S2. Mounting and fastening</strong></td><td style="padding: 10px;">Recessed wall plate · bayonet socket · non-slip floor base · wall anchors and hardware · installation template</td><td style="padding: 10px;">That the pod does not rotate or come loose when punched on a wall or floor, and that it installs in under 10 min</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S3. Impact sensing</strong></td><td style="padding: 10px;">ADXL375 · 4 × 50 kg load cells in a full bridge · ADS1220 + TSSOP adapter · RC filter and TVS · wiring with strain relief · calibration bench (weights and pendulum)</td><td style="padding: 10px;">Noise &lt; ±20 N, peak captured at 2 kSPS, difference between mountings ≤ 10%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S4. Light interface</strong></td><td style="padding: 10px;">15 WS2812B LED arc · PETG diffuser · data line and logic level · brightness limit</td><td style="padding: 10px;">Visibility under gym lighting, diffuser uniformity, and power draw</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S5. Control electronics</strong></td><td style="padding: 10px;">ESP32-WROOM-32E · 2-layer PCB · AP2112K LDO · passives and JST-PH connectors · switch · programming port</td><td style="padding: 10px;">That the PCB boots without rework and does not reset from punches or voltage drops</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S6. Battery and power</strong></td><td style="padding: 10px;">Protected 18650 cell · resettable fuse · TVS · voltage measurement · sleep modes</td><td style="padding: 10px;">Battery life ≥ 3 h, actual cell capacity, and safety under impacts</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S7. Charger and stacking</strong></td><td style="padding: 10px;">TP4056 USB-C with protection (500 mA) · multi-port USB charger · magnetic pogo connector + magnets · Hall sensor · current-limited switch · mechanical shoulder · charging base</td><td style="padding: 10px;">Stable charging for ≥ 30 min with 2–3 stacked pods, contacts &lt; 45 °C, 500 connections</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S8. Pod firmware</strong></td><td style="padding: 10px;">SPI drivers (ADXL375 and ADS1220) · impact detection and reaction time in µs · force fusion and saturation · LEDs via RMT · gateway routine engine · sleep · logging in LittleFS · diagnostics · OTA updates</td><td style="padding: 10px;">Reaction time within ±5 ms, 0 lost events, and no resets over 3 h</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S9. Communication</strong></td><td style="padding: 10px;">ESP-NOW (messages, ACK, <code>seq</code>) · BLE GATT with NimBLE · <code>SYNC</code> synchronization with HMAC · gateway election · pairing and encryption · Wi-Fi/BLE coexistence</td><td style="padding: 10px;">Zero application-layer loss, median latency &lt; 5 ms, new gateway in &lt; 3 s</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S10. Mobile app</strong></td><td style="padding: 10px;">BLE connection and pairing · live session · routine library and editor · history and charts · SQLite + sync queue · member and coach profiles · leaderboard and rewards · publishing on Android and iOS</td><td style="padding: 10px;">That a coach can build and run a routine without help, even offline</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S11. Backend and cloud</strong></td><td style="padding: 10px;">Supabase: authentication, Postgres with RLS, <code>devices</code>/<code>sessions</code>/<code>impacts</code> tables, deduplication, firmware storage, backups</td><td style="padding: 10px;">Idempotent sync, data isolated per gym, and cloud cost within budget</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S12. Analytics and AI</strong></td><td style="padding: 10px;">Rules and statistics engine on the phone · LLM prompt · Edge Function with Claude Haiku · offline templates · text quality review</td><td style="padding: 10px;">That the summary is correct (the figures come from the code, not the LLM) and useful for the coach</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S13. Website</strong></td><td style="padding: 10px;">Static site (React/Vite) · value proposition and video · form and WhatsApp · pre-sale or waitlist · privacy notice · domain and analytics</td><td style="padding: 10px;">How many visitors request contact or reserve a kit</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S14. Packaging, manual, and installation</strong></td><td style="padding: 10px;">Kit box · pod protection · quick-start and installation guide · label with the BLE passkey</td><td style="padding: 10px;">That the kit arrives undamaged and can be installed without calling support</td></tr>
+                <tr><td style="padding: 10px;"><strong>S15. Kit integration and validation</strong></td><td style="padding: 10px;">Assembled 4-pod kit · 10,000-impact test · 3 h battery life · Android/iOS compatibility · test in a real gym</td><td style="padding: 10px;">That everything works together and outside the lab</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p>The criteria come from PDS v1.0, the v2 component list, and the v2 communication architecture (Week 5).</p>
+
+        <h4>3. Cost per Cycle for Each Subsystem</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Cost per cycle = (hours × $195 + materials) × 1.15 (indirect) × (1 + contingency)
+Contingency: 30% for high-risk subsystems (structure, sensing, PCB, battery,
+charging, firmware, communication, integration) and 25% for the rest.</pre>
+        </div>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Subsystem</th><th style="padding: 10px;">h/Cycle</th><th style="padding: 10px;">Materials/Cycle</th><th style="padding: 10px;">What the Materials Include</th><th style="padding: 10px;">Contingency</th><th style="padding: 10px;">Cost per Cycle</th><th style="padding: 10px;">Cycles Min · <strong>Avg</strong> · Max</th><th style="padding: 10px;">Average Total</th><th style="padding: 10px;">% of Total</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S1. Pod structure</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">900</td><td style="padding: 10px;">2 PETG housings, 2 aluminum plates, 2 pads, screws and inserts</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">18,837</td><td style="padding: 10px;">3 · <strong>5</strong> · 7</td><td style="padding: 10px;"><strong>94,185</strong></td><td style="padding: 10px;">10.4%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S2. Mounting and fastening</strong></td><td style="padding: 10px;">20</td><td style="padding: 10px;">300</td><td style="padding: 10px;">Plates, printed bases, wall anchors</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">6,038</td><td style="padding: 10px;">2 · <strong>3</strong> · 4</td><td style="padding: 10px;"><strong>18,112</strong></td><td style="padding: 10px;">2.0%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S3. Impact sensing</strong></td><td style="padding: 10px;">50</td><td style="padding: 10px;">1,500</td><td style="padding: 10px;">2 sensor sets + weights and pendulum</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">16,819</td><td style="padding: 10px;">3 · <strong>4</strong> · 6</td><td style="padding: 10px;"><strong>67,275</strong></td><td style="padding: 10px;">7.4%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S4. Light interface</strong></td><td style="padding: 10px;">20</td><td style="padding: 10px;">250</td><td style="padding: 10px;">LED strips and printed diffusers</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">5,966</td><td style="padding: 10px;">2 · <strong>3</strong> · 4</td><td style="padding: 10px;"><strong>17,897</strong></td><td style="padding: 10px;">2.0%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S5. Control electronics</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">1,700</td><td style="padding: 10px;">5 fabricated PCBs with shipping + components for 2 boards</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">20,033</td><td style="padding: 10px;">3 · <strong>4</strong> · 5</td><td style="padding: 10px;"><strong>80,132</strong></td><td style="padding: 10px;">8.8%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S6. Battery and power</strong></td><td style="padding: 10px;">25</td><td style="padding: 10px;">500</td><td style="padding: 10px;">2 18650 cells + protection</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">8,036</td><td style="padding: 10px;">2 · <strong>3</strong> · 4</td><td style="padding: 10px;"><strong>24,107</strong></td><td style="padding: 10px;">2.7%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S7. Charger and stacking</strong></td><td style="padding: 10px;">40</td><td style="padding: 10px;">900</td><td style="padding: 10px;">2 pogo pairs, magnets, Hall sensor, multi-port charger, printed base</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">13,006</td><td style="padding: 10px;">3 · <strong>4</strong> · 6</td><td style="padding: 10px;"><strong>52,026</strong></td><td style="padding: 10px;">5.7%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S8. Pod firmware</strong></td><td style="padding: 10px;">80</td><td style="padding: 10px;">300</td><td style="padding: 10px;">ESP32 DevKits and consumables</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">23,770</td><td style="padding: 10px;">4 · <strong>6</strong> · 8</td><td style="padding: 10px;"><strong>142,623</strong></td><td style="padding: 10px;">15.7%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S9. Communication</strong></td><td style="padding: 10px;">50</td><td style="padding: 10px;">450</td><td style="padding: 10px;">3 ESP32 DevKits</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">15,249</td><td style="padding: 10px;">3 · <strong>4</strong> · 6</td><td style="padding: 10px;"><strong>60,996</strong></td><td style="padding: 10px;">6.7%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S10. Mobile app</strong></td><td style="padding: 10px;">100</td><td style="padding: 10px;">200</td><td style="padding: 10px;">Incentives for user testing</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">28,319</td><td style="padding: 10px;">4 · <strong>6</strong> · 8</td><td style="padding: 10px;"><strong>169,912</strong></td><td style="padding: 10px;">18.7%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S11. Backend and cloud</strong></td><td style="padding: 10px;">30</td><td style="padding: 10px;">460</td><td style="padding: 10px;">1 month of Supabase Pro</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">9,071</td><td style="padding: 10px;">2 · <strong>3</strong> · 5</td><td style="padding: 10px;"><strong>27,212</strong></td><td style="padding: 10px;">3.0%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S12. Analytics and AI</strong></td><td style="padding: 10px;">30</td><td style="padding: 10px;">100</td><td style="padding: 10px;">Test tokens</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">8,553</td><td style="padding: 10px;">3 · <strong>4</strong> · 6</td><td style="padding: 10px;"><strong>34,212</strong></td><td style="padding: 10px;">3.8%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S13. Website</strong></td><td style="padding: 10px;">25</td><td style="padding: 10px;">100</td><td style="padding: 10px;">Photos and test hosting</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">7,152</td><td style="padding: 10px;">2 · <strong>3</strong> · 4</td><td style="padding: 10px;"><strong>21,455</strong></td><td style="padding: 10px;">2.4%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S14. Packaging, manual, and installation</strong></td><td style="padding: 10px;">20</td><td style="padding: 10px;">400</td><td style="padding: 10px;">Box samples and manual printing</td><td style="padding: 10px;">25%</td><td style="padding: 10px;">6,181</td><td style="padding: 10px;">2 · <strong>2</strong> · 3</td><td style="padding: 10px;"><strong>12,362</strong></td><td style="padding: 10px;">1.4%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>S15. Kit integration and validation</strong></td><td style="padding: 10px;">80</td><td style="padding: 10px;">3,100</td><td style="padding: 10px;">4 pods (50% reused parts) + transport to the gym</td><td style="padding: 10px;">30%</td><td style="padding: 10px;">27,956</td><td style="padding: 10px;">2 · <strong>3</strong> · 5</td><td style="padding: 10px;"><strong>83,870</strong></td><td style="padding: 10px;">9.3%</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total min · avg · max</strong></td><td colspan="5" style="padding: 10px;"></td><td style="padding: 10px;">—</td><td style="padding: 10px;"><strong>$626,646 · $906,377 · $1,282,943</strong></td><td style="padding: 10px;"><strong>100%</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Engineering hours</strong></td><td colspan="5" style="padding: 10px;"></td><td style="padding: 10px;">—</td><td style="padding: 10px;"><strong>2,030 · 2,940 · 4,150 h</strong></td><td style="padding: 10px;">—</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Person-months (174.6 h)</strong></td><td colspan="5" style="padding: 10px;"></td><td style="padding: 10px;">—</td><td style="padding: 10px;"><strong>11.6 · 16.8 · 23.8</strong></td><td style="padding: 10px;">—</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p>Hours, materials, and number of cycles are <strong>[Estimated]</strong>. The app store accounts, the domain, and the calibration bench are not counted here because they are already in the Step 3 fixed costs.</p>
+        <p><strong>Why each subsystem has a different number of cycles:</strong></p>
+        <ul>
+            <li><strong>Firmware and app (6 cycles):</strong> software is iterated in 1–2 week sprints, and every test with a coach generates changes. These are the two most expensive items: together they account for 34% of development.</li>
+            <li><strong>Structure (5 cycles):</strong> each cycle means printing, punching 1,000–10,000 times, and fixing. Its failures (poorly adjusted stops, inserts that loosen, a pad that bottoms out) only show up under real punches.</li>
+            <li><strong>PCB, sensing, charging, and communication (4 cycles):</strong> perfboard, PCB v1, PCB v2, and final tuning. Charging and communication have go/no-go milestones (Weeks 2 and 5), so they may require a plan B.</li>
+            <li><strong>Integration (3 cycles):</strong> the full kit is assembled and tested in a gym; every cycle finds problems that no subsystem bench reveals.</li>
+            <li><strong>Mounting, lights, battery, cloud, and website (3 cycles) and packaging (2):</strong> well-known, low-risk technology.</li>
+        </ul>
+
+        <h4>4. What Changed from the Previous Calculation</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Previous calculation: 5 cycles × (120 h × $80 + materials)     = $  111,378
+Same method with the new $195/h rate                           = $  214,532   (× 1.9 due to the rate)
+By subsystem, average scenario (2,940 h)                       = $  906,377   (× 4.2 due to the hours)</pre>
+        </div>
+        <ul>
+            <li><strong>The biggest jump is not the rate, but the hours.</strong> 600 hours were not enough for a product with hardware, firmware, an app, a cloud backend, and a website. 2,940 hours are ≈ 17 person-months: a team of 4 engineers for a little over 4 months.</li>
+            <li><strong>Half of development is software.</strong> Firmware, communication, app, cloud, AI, and website add up to 50%; the physical subsystems (S1–S7) account for 39%. The BOM is hardware, but development is not.</li>
+        </ul>
+
+        <h4>5. Cash vs. Opportunity Cost</h4>
+        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Average scenario                                      = $  906,377
+  Labor (with indirect costs and contingency)         = $  845,366   (93%)
+  Materials and services (with indirect + contingency) = $   61,010   (7%)</pre>
+        </div>
+        <p>As long as the team is made up of unpaid students, the money that actually goes out is ≈ <strong>$61,010</strong>; the rest is the value of their time. For an investor, for a fair price, and for the Step 5 NPV, it counts in full, because that time would have to be paid for if the project becomes a company.</p>
+
+        <!-- Section 9: Step 3 -->
+        <h2>9. Step 3: Break-Even Point</h2>
 
         <h3>How Many Gyms Do We Need to Close in Year 1?</h3>
         <h4>Contribution Margin per Gym</h4>
@@ -379,39 +486,27 @@ Contribution margin per gym in year 1 = 5,994 + 2,281 = $8,275</pre>
                 <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Demo kit + digital marketing</strong></td><td style="padding: 10px;">18,200</td><td style="padding: 10px;">18,200</td><td style="padding: 10px;">18,200</td></tr>
                 <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Legal and accounting</strong></td><td style="padding: 10px;">17,000</td><td style="padding: 10px;">17,000</td><td style="padding: 10px;">17,000</td></tr>
                 <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>One part-time person for sales and support (20 h/week × $80)</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">83,136</td><td style="padding: 10px;">83,136</td></tr>
-                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Recovering development: 5 learning cycles × $22,276</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">—</td><td style="padding: 10px;">111,378</td></tr>
-                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Year 1 fixed costs</strong></td><td style="padding: 10px;"><strong>$46,644</strong></td><td style="padding: 10px;"><strong>$129,780</strong></td><td style="padding: 10px;"><strong>$241,158</strong></td></tr>
-                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Break-even point (÷ $8,275)</strong></td><td style="padding: 10px;">5.6 → <strong>6 gyms</strong></td><td style="padding: 10px;">15.7 → <strong>16 gyms</strong></td><td style="padding: 10px;">29.1 → <strong>30 gyms</strong></td></tr>
-                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Pods</strong></td><td style="padding: 10px;">24</td><td style="padding: 10px;">64</td><td style="padding: 10px;">120</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Recovering development: cycles by subsystem, average scenario</strong></td><td style="padding: 10px;">—</td><td style="padding: 10px;">—</td><td style="padding: 10px;">906,377</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Year 1 fixed costs</strong></td><td style="padding: 10px;"><strong>$46,644</strong></td><td style="padding: 10px;"><strong>$129,780</strong></td><td style="padding: 10px;"><strong>$1,036,157</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Break-even point (÷ $8,275)</strong></td><td style="padding: 10px;">5.6 → <strong>6 gyms</strong></td><td style="padding: 10px;">15.7 → <strong>16 gyms</strong></td><td style="padding: 10px;">125.2 → <strong>126 gyms</strong></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Pods</strong></td><td style="padding: 10px;">24</td><td style="padding: 10px;">64</td><td style="padding: 10px;">504</td></tr>
                 <tr><td style="padding: 10px;"><strong>Achievable with the 10-gym plan?</strong></td><td style="padding: 10px;"><span style="color: #28A745;">✅ Yes</span></td><td style="padding: 10px;"><span style="color: #ff9900;">⚠️ Only with the Week 4 SOM</span></td><td style="padding: 10px;"><span style="color: #DC3545;">❌ Not in year 1</span></td></tr>
             </tbody>
         </table>
 </div>
 
-        <h4>Cost of One Learning Cycle (Method from Class)</h4>
-        <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
-<pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">Direct fixed:      120 h of engineering × $80 + licenses $300        =  9,900
-Direct variable:   2 prototypes × $1,900 + test PCB $900
-                   + consumables $300                                =  5,000
-Indirect (15%):    (9,900 + 5,000) × 0.15                            =  2,235
-Cycle base                                                           = 17,135
-Contingency (30%)                                                    =  5,141
-COST PER CYCLE                                                       = $22,276
-
-Minimum 3 cycles = $66,827 · Average 5 = $111,378 · Maximum 8 = $178,204</pre>
-        </div>
-        <p>We use 120 h per cycle instead of the 80 h in the class example because each Lumetriq cycle touches hardware, firmware, the app, and the cloud <strong>[Estimated]</strong>.</p>
+        <p>Column C uses the development cost from the average scenario in the section <strong>Development Cost: Learning Cycles by Subsystem</strong>: $906,377 with engineering hours at $195. The part-time person (column B) stays at $80/h because the role is sales and support, not engineering.</p>
 
         <p><strong>Reading the break-even:</strong></p>
         <ul>
             <li><strong>A:</strong> if the team does not pay itself a salary (the student scenario), 6 gyms cover the fixed operating costs. With 10 gyms, ≈ $36,000 of contribution is left over.</li>
             <li><strong>B:</strong> paying one part-time person requires 16 gyms, more than the plan and at the limit of the Week 4 SOM (15 in year 1).</li>
-            <li><strong>C:</strong> recovering development in the first year requires 30 gyms. That is not realistic: development is recovered in year 2, when the subscription is collected for a full 12 months per customer ($4,562 per gym per year) and the kit cost drops to $7,000.</li>
+            <li><strong>C:</strong> recovering all of development in the first year requires 126 gyms, more than 8 times the Week 4 SOM. Even spread over 3 years (≈ $302,126 per year), it requires 53 gyms per year. <strong>Development is not paid for by sales in the first years:</strong> it needs outside investment or entrepreneurship funds <strong>[Hypothesis]</strong>, or for the team to contribute its time as equity and put in only ≈ $61,010 in cash.</li>
             <li><strong>Key sensitivity:</strong> if the kit were sold at $9,900 (BlazePod's price), the kit margin would fall to ≈ $3,034 and scenario A would require 9 gyms instead of 6.</li>
         </ul>
 
-        <!-- Section 9: Summary -->
-        <h2>9. Economic Model Summary (Steps 1 to 3)</h2>
+        <!-- Section 10: Summary -->
+        <h2>10. Economic Model Summary (Steps 1 to 3)</h2>
 
         <div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
 <pre style="margin: 0; font-family: monospace; font-size: 0.9em; line-height: 1.5; white-space: pre; background: none; border: none;">════════════════════════════════════════════════════════
@@ -432,6 +527,7 @@ Recommended price: $12,990 + $499/month — the kit stays above the floor
 
 BREAK-EVEN POINT
 Gyms needed in year 1: 6 (operating) · 16 (with part-time staff)
+  · 126 if all of development is recovered ($906,377)
 Achievable? ✅ operating / ⚠️ with a salary — the plan is 10 gyms
 
 ────────────────────────────────────────────────────────
@@ -444,7 +540,9 @@ ALERTS:
   ceiling drops to $10,200 and the price no longer works.
 · Subsidizing the hardware doesn't work: it would push the
   subscription to ≈ $1,505/month.
-· Development (≈ $111,000) is not recovered in year 1.
+· Development costs ≈ $906k at $195 per engineering hour
+  (2,940 h across 15 subsystems); only ≈ $61k is cash. It is
+  not recovered with year 1 sales (it would take 126 gyms).
 
 AVAILABLE LEVERS:
 · A "Reaction" version without the ADXL375: −$420 per pod; force
@@ -466,10 +564,12 @@ AVAILABLE LEVERS:
             <li>Liteboxer, price reviews: <a href="https://www.thezoereport.com/wellness/liteboxer-at-home-boxing-gym-review" target="_blank">The Zoe Report</a> · <a href="https://connectthewatts.com/?p=12012" target="_blank">Connect The Watts</a></li>
             <li>Reference exchange rate (DOF/SAT ≈ 18.13): <a href="https://playersoflife.com/saltillo/peso-mexicano-se-fortalece-cual-es-el-precio-del-dolar-en-mexico-hoy-6-de-octubre/" target="_blank">article from October 6, 2026</a></li>
             <li>BOM, PDS v1.0, and concept: Weeks 5 and 6 of this site</li>
+            <li>IMCO, Compara Carreras (salaries by field of study), cited in <a href="https://www.luznoticias.mx/2026-08-25/mexico/las-10-carreras-mejor-pagadas-en-mexico-este-2026-conoce-el-ranking/302315" target="_blank">Luz Noticias, August 25, 2026</a> and <a href="https://expansion.mx/carrera/2026/02/08/carreras-mejor-pagadas-del-ipn-2026" target="_blank">Expansión, February 8, 2026</a> (accessed October 9, 2026)</li>
+            <li>Data México (Ministry of Economy, ENOE 2026-Q1): <a href="https://www.economia.gob.mx/datamexico/es/profile/occupation/ingenieros-electronicos" target="_blank">electronics engineers</a> · <a href="https://www.economia.gob.mx/datamexico/es/profile/occupation/ingenieros-mecanicos" target="_blank">mechanical engineers</a></li>
         </ul>
 
-        <!-- Section 10: Reflection -->
-        <h2>10. Reflection and Key Takeaways</h2>
+        <!-- Section 11: Reflection -->
+        <h2>11. Reflection and Key Takeaways</h2>
         <p>
             This week showed us that a good design can still be a bad business. Once we ran the numbers with the real BOM, the 6-pod price we had proposed in Week 4 turned out to be below what it costs just to manufacture the pods, something we could not see until we added overhead and contingency. We were also surprised that the AI, which looked like the riskiest cost, ends up being less than 1% of the unit cost thanks to the architectural decision to measure on the pod and send only the writing to the cloud; the fixed cloud cost and the team's hours weigh far more.
         </p>
