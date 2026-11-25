@@ -47,12 +47,13 @@
 			</ul>
 		</nav>
 
+
 <div id="main">
     <div class="inner">
         <!-- Main Title -->
-        <h1>Assignment 5: PDS, System Architecture &amp; BOM</h1>
+        <h1>Assignment 5 (v1.2): PDS, System Architecture &amp; BOM</h1>
         <p>
-            This is the final version of the Week 5 deliverable, reviewed against the course rubric and aligned with the <strong>Fixed Reflex</strong> concept from Week 6 (Ø 140 × 75 mm). It includes the one-page PDS, the 3-layer architecture diagram, the AI decision, the critical components, the BOM at 10 units, and the defense of a key design decision.
+            This is the final version of the Week 5 deliverable, reviewed against the course rubric and aligned with the <strong>Fixed Reflex</strong> concept from Week 6 (Ø 160 × 75 mm). It includes the one-page PDS, the 3-layer architecture diagram, the AI decision, the critical components, the BOM, and the defense of a key design decision. <strong>v1.1 (November 22, 2026):</strong> CR-01, PR-04, and IR-04 updated to match the current prototype. <strong>v1.2 (November 25, 2026):</strong> CR-03 and the BOM updated to match the business case ($1,000 per pod, 4-pod package).
         </p>
 
         <!-- Section 1: Compliance Review -->
@@ -76,7 +77,7 @@
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>PDS with header (product, version, team, date)</strong></td>
                         <td style="padding: 10px; color: #DC3545;">🔴 Missing</td>
-                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: header in the PDS v1.0 section</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: header in the PDS section</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>FR, PR, IR, and CR, 4 of each, phrased "The system shall…" with a verification method</strong></td>
@@ -109,14 +110,14 @@
                         <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: ADXL375, ADS1220, and load cells, with stock and JLCPCB availability verified today</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Cost at 10 units and price = BOM / 0.30</strong></td>
+                        <td style="padding: 10px;"><strong>Cost per unit and price = BOM / 0.30</strong></td>
                         <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Outdated</span>: $815 BOM without the force path and with the ADXL375 at USD 6.38 (now USD 22.73)</td>
-                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: $1,390 BOM → $4,633 reference price</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: $1,000 BOM per pod (batch of 100) → $3,333 reference price, compared with the business case price</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>Manufacturing: no BGA, pitch ≥ 0.8 mm</strong></td>
                         <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Risk</span>: the ADS1220 (TSSOP, 0.65 mm) and the ADXL375 (LGA) were not reviewed</td>
-                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Resolved</span>: JLCPCB assembles both (Extended parts); only parts with ≥ 0.8 mm pitch are hand-soldered</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Resolved</span>: in v1.1 both go on modules with 2.54 mm pins; only parts with ≥ 0.8 mm pitch are hand-soldered</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>Answers to the 4 questions and defense of one decision</strong></td>
@@ -131,7 +132,7 @@
                     <tr>
                         <td style="padding: 10px;"><strong>Describes a first-iteration product, not an exploration prototype</strong></td>
                         <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Partial</span>: module-based architecture</td>
-                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: custom PCB for a batch of 5–10 units; modules are used only on the test bench</td>
+                        <td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span>: custom PCB for a batch of 5–10 units, with the modules mounted on removable sockets</td>
                     </tr>
                 </tbody>
             </table>
@@ -139,20 +140,31 @@
 
         <h3>Size: One Single Dimension Across All Weeks</h3>
         <p>
-            <strong>Decision: we adopt Ø 140 × 75 mm</strong> (78 mm maximum in CAD), the dimension already set by the Week 6 Fixed Reflex concept. This way, Week 5 adapts to Week 6 and not the other way around, because the sketch, the CAD specification, and the render were already made with that size.
+            <strong>Decision: we adopt Ø 160 × 75 mm</strong> (78 mm maximum in CAD), the dimension from the latest revision of the Week 6 Fixed Reflex concept. Week 5 adapts to Week 6, because the sketch and the CAD specification were already made with that size. <strong>This changes the PDS size limit</strong> (PR-04) from Ø ≤ 140 to Ø ≤ 160 mm.
         </p>
         <ul>
-            <li><strong>Ø 140 is the PDS maximum</strong> (PR-04), so the pod does not grow any further.</li>
-            <li><strong>The pad goes from Ø 90 to Ø 100 mm:</strong> +23% striking area (vs. 95 mm) and room for the tension ring and the diaphragm.</li>
+            <li><strong>The pad becomes Ø 120 mm:</strong> +44% striking area compared with Ø 100 mm; a badly placed fist still lands on the pad and not on the lip.</li>
+            <li><strong>The body (Ø 154 without the weatherstrip) fits on a 220 × 220 mm print bed;</strong> it doesn't grow any further because it would no longer fit.</li>
             <li><strong>75 mm depth:</strong> 5 mm more to fit the 17 mm faux leather + EVA pad and the 3D-printing tolerances, without exceeding 80 mm.</li>
-            <li><strong>The floating plate becomes Ø 100 × 3 mm</strong>, and the 4 load cells still fit within a Ø ≈ 80 mm circle.</li>
+            <li><strong>The floating plate becomes Ø 118 × 3 mm</strong> (≈ 89 g), with the 4 load cells at R ≈ 40 mm; the light arc becomes 18 LEDs (3 segments of 6).</li>
+            <li><strong>Cost:</strong> ≈ +$70 per pod at 10 units (larger plate, housing, pad, arc, and wall plate).</li>
         </ul>
         <p>
-            <strong>What to change in <code>week5.html</code></strong> so it does not contradict this version: sections C.3, E, and K.1 (they say Ø 130 × 70); C.1 and D.10 (they say Flutter, but the current decision is React Native); the piezo and the HX711 (no longer used); and FR-19 (iOS 14, while React Native requires iOS 15.1 or later). The v2 component list and the v2 communication architecture are already updated with Ø 140 × 75 mm, the faux leather + EVA pad, the 15-LED arc, and the magnetic pogo connector.
+            <strong>What to change in <code>week5.html</code></strong> so it does not contradict this version: sections C.3, E, and K.1 (they say Ø 130 × 70); C.1 and D.10 (they say Flutter, but the current decision is React Native); the piezo and the HX711 (no longer used); and FR-19 (iOS 14, while React Native requires iOS 15.1 or later). The v2 component list and the v2 communication architecture are already updated with Ø 160 × 75 mm, the Ø 120 faux leather + EVA pad, the 18-LED arc, and the magnetic pogo connector.
         </p>
 
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>Changes in v1.1 (November 22, 2026).</strong> The real prototype changed from the October concept, and three requirements were adjusted so that the PDS describes what is actually being built:</em>
+            <ul style="margin-top: 10px; margin-bottom: 10px;">
+                <li><em><strong>CR-01:</strong> the electronics use commercial modules (ESP32 DevKit, ADXL375, and ADS1220) on female headers over a single-sided PCB, instead of a 2-layer PCB with the chips assembled by JLCPCB.</em></li>
+                <li><em><strong>PR-04:</strong> the maximum weight goes up from 0.7 to 1.6 kg because the three internal plates are steel (≈ 1.05 kg). The pod is fixed to the wall, so the weight does not affect use.</em></li>
+                <li><em><strong>IR-04:</strong> the magnetic pogo connector, stacking, and the bayonet are removed. The pod charges via USB-C and is fixed to the wall with its steel wall plate.</em></li>
+            </ul>
+            <em><strong>Changes in v1.2 (November 25, 2026).</strong> CR-03 and the BOM are adjusted to the Week 7 business case: the product is sold in 4-pod packages, and the component cost is $1,000 per pod in batches of 100.</em>
+        </blockquote>
+
         <!-- Section 2: PDS -->
-        <h2>2. PDS v1.0</h2>
+        <h2>2. PDS v1.2</h2>
 
         <h3>Product Design Specification (One Page)</h3>
         <div class="table-wrapper">
@@ -164,7 +176,7 @@
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>Version</strong></td>
-                        <td style="padding: 10px;">1.0 (first iteration: batch of 5–10 units)</td>
+                        <td style="padding: 10px;">1.2 (first iteration: batch of 5–10 units; production in batches of 100). CR-01, PR-04, IR-04, and CR-03 updated</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>Team</strong></td>
@@ -172,7 +184,7 @@
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>Date</strong></td>
-                        <td style="padding: 10px;">October 8, 2026</td>
+                        <td style="padding: 10px;">October 8, 2026 · updated November 25, 2026</td>
                     </tr>
                     <tr>
                         <td style="padding: 10px;"><strong>References</strong></td>
@@ -230,7 +242,7 @@
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>PR-01</strong></td>
-                        <td style="padding: 10px;">The system shall run ≥ 3 h per charge under the usage profile: 15 LEDs at 40% with a 30% duty cycle, active radio, and ADC at 2 kSPS.</td>
+                        <td style="padding: 10px;">The system shall run ≥ 3 h per charge under the usage profile: 18 LEDs at 40% with a 30% duty cycle, active radio, and ADC at 2 kSPS.</td>
                         <td style="padding: 10px;">Discharge from 4.2 V to cutoff with current logging; 3 units; minimum ≥ 3 h.</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
@@ -244,8 +256,8 @@
                         <td style="padding: 10px;">300 video-labeled events, split by user; confusion matrix.</td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px;"><strong>PR-04</strong></td>
-                        <td style="padding: 10px;">The pod shall measure Ø ≤ 140 mm and ≤ 78 mm deep, weigh ≤ 0.6 kg, and its stimulus shall be visible at 3 m.</td>
+                        <td style="padding: 10px;"><strong>PR-04</strong> <span style="color: #ff9900;">(v1.1)</span></td>
+                        <td style="padding: 10px;">The pod shall measure Ø ≤ 160 mm and ≤ 78 mm deep, weigh ≤ 1.6 kg, and its stimulus shall be visible at 3 m. <em>The weight goes up from 0.7 to 1.6 kg because the wall, base, and floating plates are steel (≈ 1.05 kg); since the pod is fixed to the wall, the weight does not affect use.</em></td>
                         <td style="padding: 10px;">Caliper and scale on 5 units; 5 users identify the lit third at 3 m under gym lighting (≥ 9 of 10 correct).</td>
                     </tr>
                 </tbody>
@@ -279,9 +291,9 @@
                         <td style="padding: 10px;">Send the same batch twice → 0 duplicates; inspect the payload sent to the LLM.</td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px;"><strong>IR-04</strong></td>
-                        <td style="padding: 10px;">The pod shall charge via USB-C (5 V, 1 A) or via the magnetic pogo connector at the 6 o'clock position, and mount with a quarter-turn locking bayonet (wall, floor, or heavy bag).</td>
-                        <td style="padding: 10px;">Full charge ≤ 3 h; 500 mounting cycles; 1,000 punches while wall-mounted without the bayonet rotating.</td>
+                        <td style="padding: 10px;"><strong>IR-04</strong> <span style="color: #ff9900;">(v1.1)</span></td>
+                        <td style="padding: 10px;">The pod shall charge via USB-C (5 V, 1 A) through the protected TP4056 charger, with the switch off, and be fixed to the wall with its steel wall plate (Ø 146 × 1.9 mm) joined to the 4 M3 posts of the internal frame.</td>
+                        <td style="padding: 10px;">Full charge of the 2,200 mAh cell ≤ 3 h; 1,000 punches while mounted on a test wall without the pod rotating, loosening, or bending the posts.</td>
                     </tr>
                 </tbody>
             </table>
@@ -299,9 +311,9 @@
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>CR-01 Manufacturing</strong></td>
-                        <td style="padding: 10px;">The system shall use a 2-layer PCB with no BGA. Everything hand-soldered shall have a pitch ≥ 0.8 mm; the two fine-pitch ICs (ADS1220 and ADXL375) are assembled only by JLCPCB. FDM enclosure (PETG/ASA) and assembly time ≤ 1.5 h per unit.</td>
-                        <td style="padding: 10px;">DRC; list of hand-soldered parts with their pitch; time 3 assemblies.</td>
+                        <td style="padding: 10px;"><strong>CR-01 Manufacturing</strong> <span style="color: #ff9900;">(v1.1)</span></td>
+                        <td style="padding: 10px;">The system shall use commercial modules (30-pin ESP32 DevKit, ADXL375, and ADS1220) mounted on 2.54 mm female headers over a custom single-sided 88.4 × 65 mm PCB, with no BGA. Everything hand-soldered shall have a pitch ≥ 0.8 mm (1206 SMD passives and through-hole parts). FDM housing (PETG) and assembly time ≤ 1.5 h per unit.</td>
+                        <td style="padding: 10px;">PCB DRC; list of hand-soldered parts with their pitch; time 3 assemblies.</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>CR-02 Regulatory</strong></td>
@@ -309,9 +321,9 @@
                         <td style="padding: 10px;">Document review: module certificates and cell datasheet. Certification for commercial sale remains <strong>[Verify]</strong>.</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>CR-03 Time &amp; Cost</strong></td>
-                        <td style="padding: 10px;">Critical components shall arrive in Mexico within ≤ 2 weeks; 5 units shall be working by Week 13; the prototype shall cost ≤ $3,000 MXN (target ≈ $1,500–1,900) and the 10-unit BOM ≤ $1,400 MXN per pod.</td>
-                        <td style="padding: 10px;">Purchase orders with order and arrival dates; invoices.</td>
+                        <td style="padding: 10px;"><strong>CR-03 Time &amp; Cost</strong> <span style="color: #ff9900;">(v1.2)</span></td>
+                        <td style="padding: 10px;">Critical components shall arrive in Mexico within ≤ 2 weeks; 5 units shall be working by Week 13; the prototype shall cost ≤ $3,000 MXN, and the BOM in batches of 100 shall be ≤ $1,000 MXN per pod ($4,000 per 4-pod package).</td>
+                        <td style="padding: 10px;">Purchase orders with order and arrival dates; invoices; sum of the per-pod BOM sheet.</td>
                     </tr>
                     <tr>
                         <td style="padding: 10px;"><strong>CR-04 Compatibility</strong></td>
@@ -411,13 +423,13 @@
                 <text class="pr" x="172" y="520">SPI + INT/DRDY</text>
                 <rect class="n" x="420" y="540" width="140" height="65" rx="8"></rect>
                 <text class="bb" x="432" y="562">120° Arc</text>
-                <text class="bx" x="432" y="580">15× WS2812B LEDs</text>
+                <text class="bx" x="432" y="580">18× WS2812B LEDs</text>
                 <path class="ar1" d="M490 472 L490 538"></path>
                 <text class="pr" x="496" y="520">RMT</text>
                 <rect class="n" x="575" y="540" width="172" height="65" rx="8"></rect>
                 <text class="bb" x="592" y="562">Power</text>
                 <text class="bx" x="592" y="578">18650 + TP4056 USB-C</text>
-                <text class="bx" x="592" y="594">AP2112K · magnetic pogo</text>
+                <text class="bx" x="592" y="594">MT3608 + AMS1117 (DevKit)</text>
                 <path class="ar1" d="M660 538 L660 472"></path>
 
                 <!-- external dependencies -->
@@ -477,7 +489,7 @@
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;"><strong>ADXL375BCCZ (±200 g accelerometer)</strong></td>
-                        <td style="padding: 10px;">Single manufacturer (Analog Devices); the most expensive part of the BOM (≈ 30%)</td>
+                        <td style="padding: 10px;">Single manufacturer (Analog Devices); the most expensive part of the BOM (34%)</td>
                         <td style="padding: 10px;"><span style="color: #ff9900;">🟡 Via import.</span> LCSC: 64 in stock, USD 23.80 (1) and 22.73 (10+) <strong>[Confirmed]</strong>; shipping to Mexico ≈ 5–10 days <strong>[Estimated]</strong>. Module on Amazon MX at $344 <strong>[Quoted]</strong>; stock of 10 <strong>[Verify]</strong></td>
                         <td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes</span>, C662206, Extended part <strong>[Confirmed]</strong></td>
                         <td style="padding: 10px;">H3LIS331DL (±100/200/400 g) on a module <strong>[Verify availability]</strong>. If nothing arrives, force is still measured by the load cells and the ADXL375 is kept in only 1–2 units</td>
@@ -504,9 +516,9 @@
         </p>
 
         <!-- Section 6: BOM -->
-        <h2>6. BOM &amp; Cost at 10 Units</h2>
+        <h2>6. BOM &amp; Cost per Pod</h2>
 
-        <h3>Per-Pod BOM in a Batch of 10</h3>
+        <h3>Per-Pod BOM in a Production Batch of 100</h3>
         <div class="table-wrapper">
             <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
                 <thead>
@@ -514,163 +526,155 @@
                         <th style="padding: 10px;">#</th>
                         <th style="padding: 10px;">Component</th>
                         <th style="padding: 10px;">Source</th>
-                        <th style="padding: 10px;">Unit Price (MXN)</th>
-                        <th style="padding: 10px;">× 10</th>
+                        <th style="padding: 10px;">Cost per Pod (MXN)</th>
+                        <th style="padding: 10px;">× 100 Pods</th>
                         <th style="padding: 10px;">Lead Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">ESP32-WROOM-32E-N4 (module)</td>
-                        <td style="padding: 10px;">LCSC / JLCPCB (C701341)</td>
-                        <td style="padding: 10px;">60 <strong>[Confirmed, Wk 5]</strong></td>
-                        <td style="padding: 10px;">600</td>
-                        <td style="padding: 10px;">5–10 days</td>
+                        <td style="padding: 10px;">30-pin ESP32 DevKit (WROOM-32)</td>
+                        <td style="padding: 10px;">AG Electrónica</td>
+                        <td style="padding: 10px;">82.00</td>
+                        <td style="padding: 10px;">8,200</td>
+                        <td style="padding: 10px;">1–3 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">ADXL375BCCZ (IC, assembled by JLCPCB)</td>
-                        <td style="padding: 10px;">LCSC / JLCPCB (C662206)</td>
-                        <td style="padding: 10px;">420 <strong>[Confirmed]</strong></td>
-                        <td style="padding: 10px;">4,200</td>
-                        <td style="padding: 10px;">5–10 days</td>
+                        <td style="padding: 10px;">ADXL375 module (±200 g accelerometer)</td>
+                        <td style="padding: 10px;">Amazon México</td>
+                        <td style="padding: 10px;">344.00</td>
+                        <td style="padding: 10px;">34,400</td>
+                        <td style="padding: 10px;">2–5 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">3</td>
-                        <td style="padding: 10px;">ADS1220IPWR (IC, assembled by JLCPCB or on an adapter)</td>
-                        <td style="padding: 10px;">Unit Electronics</td>
-                        <td style="padding: 10px;">95 <strong>[Confirmed]</strong></td>
-                        <td style="padding: 10px;">950</td>
-                        <td style="padding: 10px;">1–3 days</td>
+                        <td style="padding: 10px;">ADS1220 module (24-bit ADC)</td>
+                        <td style="padding: 10px;">Amazon México</td>
+                        <td style="padding: 10px;">95.00</td>
+                        <td style="padding: 10px;">9,500</td>
+                        <td style="padding: 10px;">2–5 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">4</td>
                         <td style="padding: 10px;">4× 50 kg load cells SEN-10245 (35+ unit price)</td>
                         <td style="padding: 10px;">Unit Electronics</td>
-                        <td style="padding: 10px;">60 <strong>[Confirmed]</strong></td>
-                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">59.88</td>
+                        <td style="padding: 10px;">5,988</td>
                         <td style="padding: 10px;">1–3 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;">Passives, TP4056/MCP73831, AP2112K-3.3, USB-C, TVS, fuse, JST-PH, Hall sensor</td>
-                        <td style="padding: 10px;">Unit / LCSC</td>
-                        <td style="padding: 10px;">70 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">700</td>
-                        <td style="padding: 10px;">1–10 days</td>
+                        <td style="padding: 10px;">Power: 2,200 mAh battery, TP4056 USB-C, MT3608, KCD11 switch, and PTC fuse</td>
+                        <td style="padding: 10px;">AG Electrónica / Unit Electronics</td>
+                        <td style="padding: 10px;">60.86</td>
+                        <td style="padding: 10px;">6,086</td>
+                        <td style="padding: 10px;">1–3 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">6</td>
-                        <td style="padding: 10px;">15-LED WS2812B arc (144 LED/m strip) + diffuser</td>
-                        <td style="padding: 10px;">Unit / Mercado Libre</td>
-                        <td style="padding: 10px;">50 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">500</td>
-                        <td style="padding: 10px;">1–5 days</td>
+                        <td style="padding: 10px;">18-LED WS2812B arc (144 LED/m strip: 8 arcs per meter)</td>
+                        <td style="padding: 10px;">AliExpress</td>
+                        <td style="padding: 10px;">21.25</td>
+                        <td style="padding: 10px;">2,125</td>
+                        <td style="padding: 10px;">10–14 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">7</td>
-                        <td style="padding: 10px;">Protected 18650 cell with tabs</td>
-                        <td style="padding: 10px;">Steren / Mercado Libre</td>
-                        <td style="padding: 10px;">150 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">1,500</td>
-                        <td style="padding: 10px;">1–5 days</td>
+                        <td style="padding: 10px;">Resistors, capacitors, and TVS</td>
+                        <td style="padding: 10px;">Unit Electronics / LCSC</td>
+                        <td style="padding: 10px;">15.92</td>
+                        <td style="padding: 10px;">1,592</td>
+                        <td style="padding: 10px;">1–10 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">8</td>
-                        <td style="padding: 10px;">Magnetic pogo connector (front and back)</td>
-                        <td style="padding: 10px;">Amazon MX / Mercado Libre</td>
-                        <td style="padding: 10px;">80 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">800</td>
-                        <td style="padding: 10px;">2–7 days</td>
+                        <td style="padding: 10px;">Single-sided phenolic PCB, pin headers, JST connectors, and wire</td>
+                        <td style="padding: 10px;">Unit Electronics / AliExpress</td>
+                        <td style="padding: 10px;">35.26</td>
+                        <td style="padding: 10px;">3,526</td>
+                        <td style="padding: 10px;">1–14 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">9</td>
-                        <td style="padding: 10px;">2-layer PCB + partial assembly (2 Extended ICs), prorated with shipping</td>
-                        <td style="padding: 10px;">JLCPCB</td>
-                        <td style="padding: 10px;">90 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">900</td>
-                        <td style="padding: 10px;">7–12 days</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">10</td>
-                        <td style="padding: 10px;">Aluminum floating plate Ø 100 × 3 mm</td>
-                        <td style="padding: 10px;">Local cutting shop</td>
-                        <td style="padding: 10px;">60 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">Steel plates: Ø 146 wall plate, Ø 128 base, and Ø 118 floating plate</td>
+                        <td style="padding: 10px;">SIMSA cortes</td>
+                        <td style="padding: 10px;">110.00</td>
+                        <td style="padding: 10px;">11,000</td>
                         <td style="padding: 10px;">3–7 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;">10</td>
+                        <td style="padding: 10px;">M3 brass standoffs (12) and M3 heat-set inserts (8)</td>
+                        <td style="padding: 10px;">AliExpress</td>
+                        <td style="padding: 10px;">42.40</td>
+                        <td style="padding: 10px;">4,240</td>
+                        <td style="padding: 10px;">10–14 days</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">11</td>
-                        <td style="padding: 10px;">M4 stops, shoulder screws, brass inserts, rubber washers, threadlocker</td>
-                        <td style="padding: 10px;">Hardware store / Unit</td>
-                        <td style="padding: 10px;">60 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">600</td>
+                        <td style="padding: 10px;">Screws and fasteners (box price)</td>
+                        <td style="padding: 10px;">Industrial fastener supplier</td>
+                        <td style="padding: 10px;">44.82</td>
+                        <td style="padding: 10px;">4,482</td>
                         <td style="padding: 10px;">1–3 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">12</td>
-                        <td style="padding: 10px;">PETG/ASA enclosure (body, lip, cover, tension ring) ≈ 250 g</td>
-                        <td style="padding: 10px;">Filament (Unit / Amazon MX)</td>
-                        <td style="padding: 10px;">90 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">900</td>
-                        <td style="padding: 10px;">1–5 days</td>
+                        <td style="padding: 10px;">PETG housing: 205 g + 10% waste</td>
+                        <td style="padding: 10px;">Amazon México</td>
+                        <td style="padding: 10px;">60.89</td>
+                        <td style="padding: 10px;">6,089</td>
+                        <td style="padding: 10px;">1–3 days</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">13</td>
-                        <td style="padding: 10px;">Pad: faux leather + high-density EVA + inner-tube diaphragm</td>
-                        <td style="padding: 10px;">Upholstery shop / EVA mats / auto parts store</td>
-                        <td style="padding: 10px;">45 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">450</td>
+                        <td style="padding: 10px;">Ø 120 pad: faux leather + EVA + inner-tube diaphragm</td>
+                        <td style="padding: 10px;">Upholstery shop / EVA distributor / auto parts store</td>
+                        <td style="padding: 10px;">15.72</td>
+                        <td style="padding: 10px;">1,572</td>
                         <td style="padding: 10px;">Same day</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 10px;">14</td>
-                        <td style="padding: 10px;">EPDM weatherstrip + button</td>
-                        <td style="padding: 10px;">Hardware store / Unit</td>
-                        <td style="padding: 10px;">20 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">200</td>
+                        <td style="padding: 10px;">Consumables: threadlocker, epoxy, and contact cement</td>
+                        <td style="padding: 10px;">Hardware store</td>
+                        <td style="padding: 10px;">12.00</td>
+                        <td style="padding: 10px;">1,200</td>
                         <td style="padding: 10px;">Same day</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">15</td>
-                        <td style="padding: 10px;">Wall plate (6 mm MDF or acrylic)</td>
-                        <td style="padding: 10px;">Local laser cutting</td>
-                        <td style="padding: 10px;">40 <strong>[Estimated]</strong></td>
-                        <td style="padding: 10px;">400</td>
-                        <td style="padding: 10px;">2–5 days</td>
                     </tr>
                     <tr style="background-color: #f4f4f4;">
                         <td style="padding: 10px;"><strong>Total</strong></td>
                         <td style="padding: 10px;"></td>
                         <td style="padding: 10px;"></td>
-                        <td style="padding: 10px;"><strong>1,390</strong></td>
-                        <td style="padding: 10px;"><strong>13,900</strong></td>
-                        <td style="padding: 10px;"><strong>≤ 12 days</strong></td>
+                        <td style="padding: 10px;"><strong>1,000.00</strong></td>
+                        <td style="padding: 10px;"><strong>100,000</strong></td>
+                        <td style="padding: 10px;"><strong>≤ 14 days</strong></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>Lead times are <strong>[Estimated]</strong> based on domestic shipping and DHL from China; they will be confirmed when quoting the exact quantities.</p>
+        <p>The detail of all 40 lines (quantity per pod, yield of each part, purchase presentation, and price) is in the <strong>BOM per pod</strong> sheet of the Week 7 business case. A sales package includes 4 pods: <strong>$4,000 in components per package</strong>.</p>
 
         <h3>Reference Price (BOM ≤ 30% of Price)</h3>
         <ul>
-            <li>1,390 / 0.30 ≈ <strong>$4,633 MXN before VAT</strong> (≈ $5,375 MXN with 16% VAT).</li>
-            <li>Using the Amazon ADXL375 module ($344) instead of the IC: BOM ≈ $1,314 → ≈ $4,380.</li>
-            <li>Using the H3LIS331DL (≈ $200 <strong>[Estimated]</strong>): BOM ≈ $1,170 → ≈ $3,900.</li>
-            <li>Excludes labor, packaging, warranty, and cloud services (≈ USD 25/month for Supabase Pro during the pilot).</li>
+            <li>1,000 / 0.30 = <strong>$3,333 per pod before VAT</strong> ($13,333 per 4-pod package).</li>
+            <li><strong>Business case price (Week 7):</strong> a 4-pod package at $6,000 with VAT, with the subscription included ($250 per pod). That is <strong>$1,293.10 per pod before VAT</strong> in year 1, so the BOM is <strong>77% of the price</strong>, not 30%.</li>
+            <li><strong>Why it was chosen this way:</strong> Week 4 showed that the most dangerous competitor is the manual circuit with cones and a whistle, which costs almost nothing, and that an accessible entry price is a blue ocean advantage. The cost of that decision is a thin margin: the markup over unit cost is 11.6% in year 1 and reaches 23.8% in year 5 as the price goes up.</li>
+            <li>The BOM does not include salaries or advertising; those costs are in the business case. The cloud server is paid for by the subscription already included in the price ($250 per pod).</li>
         </ul>
         <p>
-            <strong>Why it rose compared to the original Week 5 ($815 → $1,390):</strong> the force path is added (load cells + ADS1220 + plate ≈ $215), the ADXL375 now costs 3.6 times more, and the wall plate, weatherstrip, and magnetic connector from the Week 6 concept are included.
+            <strong>Why it dropped compared with the previous version ($1,460 → $1,000):</strong> the electronics moved to modules on a single-sided PCB (no JLCPCB assembly and no pogo connector), and purchases are calculated in batches of 100: LED strip, standoffs, inserts, and passives bought in volume.
         </p>
         <p>
-            <strong>Prototype (1 unit, built with modules):</strong> ≈ $1,400–1,900 MXN according to the v2 component list; it fits within the course's $3,000 reference, and within $1,500 only at the low end.
+            <strong>Prototype (1 unit, built with modules):</strong> ≈ $1,984 MXN, within the course's $3,000 reference.
         </p>
 
         <!-- Section 7: Manufacturing -->
         <h2>7. Manufacturing</h2>
 
-        <h3>Pitch ≥ 0.8 mm and No-BGA Rule</h3>
+        <h3>Pitch ≥ 0.8 mm and No-BGA Rule (v1.1: Module-Based Configuration)</h3>
         <div class="table-wrapper">
             <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
                 <thead>
@@ -683,28 +687,28 @@
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>ESP32-WROOM-32E</strong></td>
-                        <td style="padding: 10px;">Castellated module, 1.27 mm</td>
+                        <td style="padding: 10px;"><strong>ESP32 DevKit (WROOM-32, 30 pins)</strong></td>
+                        <td style="padding: 10px;">Module on 2 × 15 female headers, 2.54 mm pitch</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
+                        <td style="padding: 10px;">Hand soldering of the headers; the DevKit stays removable</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADS1220 module (CJMCU-1220 type)</strong></td>
+                        <td style="padding: 10px;">16-pin module on 1 × 8 female headers, 2.54 mm pitch</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
+                        <td style="padding: 10px;">Hand soldering of the headers; the 0.65 mm TSSOP comes already soldered on the module</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>ADXL375 module (9 pins)</strong></td>
+                        <td style="padding: 10px;">Module with 2.54 mm pins, wired to J12</td>
+                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
+                        <td style="padding: 10px;">The LGA-14 comes already soldered on the module; the module is screwed to the plate</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>TP4056, MT3608, 1206 SMD passives, KCD11 switch</strong></td>
+                        <td style="padding: 10px;">Modules and 1206 SMD / through-hole</td>
                         <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
                         <td style="padding: 10px;">Hand soldering</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>TP4056 / AP2112K / 0603+ passives</strong></td>
-                        <td style="padding: 10px;">SOP-8 1.27 mm / SOT-23-5 0.95 mm</td>
-                        <td style="padding: 10px; color: #28A745;">🟢 Yes</td>
-                        <td style="padding: 10px;">Hand soldering</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>ADS1220IPWR</strong></td>
-                        <td style="padding: 10px;">TSSOP-16, 0.65 mm</td>
-                        <td style="padding: 10px; color: #DC3545;">🔴 No</td>
-                        <td style="padding: 10px;">Assembled by JLCPCB (C48263). On the test bench it goes on a TSSOP → DIP adapter</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>ADXL375BCCZ</strong></td>
-                        <td style="padding: 10px;">LGA-14, 3 × 5 mm, no visible leads</td>
-                        <td style="padding: 10px; color: #ff9900;">🟡 Not suitable for hand soldering</td>
-                        <td style="padding: 10px;">Assembled by JLCPCB (C662206). The breakout module is used on the test bench</td>
                     </tr>
                     <tr>
                         <td style="padding: 10px;"><strong>BGA</strong></td>
@@ -716,7 +720,7 @@
             </table>
         </div>
         <p>
-            With this approach, the rule is met for everything the team solders. If the professor also requires it for parts assembled by a third party, plan B is to put both sensors on modules mounted on connectors (BOM ≈ +$60 MXN per pod <strong>[Estimated]</strong>).
+            With modules, the rule is met for everything the team solders, without depending on external assembly. The PCB is single-sided (88.4 × 65 mm) and can be milled in the lab for the prototype or sent out for fabrication for the batch.
         </p>
 
         <!-- Section 8: Weekly Questions -->
@@ -762,8 +766,8 @@
 
         <ol>
             <li><strong>Problem:</strong> with only an accelerometer, F = m·a depends on the effective mass and on whatever is behind the pod. The same punch gives different numbers on a wall and on the floor (contradiction C2 from Week 5), and Fixed Reflex mounts in three different ways.</li>
-            <li><strong>Decision:</strong> 4 × 50 kg load cells under a Ø 100 × 3 mm aluminum plate, read by an ADS1220 at 2 kSPS (≈ 18–28 samples during the 9–14 ms rise of a punch), with hard stops at 90% load and a saturation flag. The ADXL375 is kept for impact detection and for the range above 1,750 N.</li>
-            <li><strong>Cost and risk:</strong> ≈ $215 MXN per pod at 10 units and a medium schedule risk. It is mitigated with a load cell test bench in Week 2 and a go/no-go decision at the end of Week 3; the fallback is the ADXL375 alone with the calibrated index.</li>
+            <li><strong>Decision:</strong> 4 × 50 kg load cells under a Ø 118 × 1.9 mm steel plate, read by an ADS1220 at 2 kSPS (≈ 18–28 samples during the 9–14 ms rise of a punch), with hard stops at 90% load and a saturation flag. The ADXL375 is kept for impact detection and for the range above 1,750 N.</li>
+            <li><strong>Cost and risk:</strong> ≈ $155 MXN per pod (load cells and ADS1220, batch of 100) and a medium schedule risk. It is mitigated with a load cell test bench in Week 2 and a go/no-go decision at the end of Week 3; the fallback is the ADXL375 alone with the calibrated index.</li>
             <li><strong>How it is proven:</strong> FR-03. Weights of 5–40 kg (±3%), a known-mass drop (±15% at the peak), and the same series on wall, floor, and heavy bag (difference ≤ 10%).</li>
         </ol>
 
@@ -772,7 +776,7 @@
 
         <h3>Technical Detail Behind This PDS</h3>
         <p>
-            The PDS summarizes; the annex explains each decision with its calculations, alternatives, and sources. It is updated with the Week 6 dimensions (Ø 140 × 75 mm).
+            The PDS summarizes; the annex explains each decision with its calculations, alternatives, and sources. It is updated with the Week 6 dimensions (Ø 160 × 75 mm).
         </p>
         <div class="table-wrapper">
             <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
@@ -788,6 +792,11 @@
                         <td style="padding: 10px;"><strong>v2 Component List</strong></td>
                         <td style="padding: 10px;">Punch design loads, comparison of sensing paths, pod cross-section with heights, floating plate with stops, faux leather + EVA pad, list of 17 components with prices, force-fusion firmware, validation plan, and risks</td>
                         <td style="padding: 10px;">FR-02, FR-03, PR-01, PR-02, PR-04, CR-01, CR-03</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 10px;"><strong>Prototype Shopping List</strong></td>
+                        <td style="padding: 10px;">Every component for 2 pods and the test bench, with the store in Mexico, price, lead time, alternative, and purchase order (<a href="lista-compras-prototipo.html">open</a>)</td>
+                        <td style="padding: 10px;">CR-01, CR-03</td>
                     </tr>
                     <tr>
                         <td style="padding: 10px;"><strong>v2 Communication Architecture</strong></td>
@@ -807,11 +816,13 @@
             Reviewing our first version against the rubric made us realize that a PDS is not a long document holding everything we researched; it is a single page that someone outside the team can pick up and use to check whether the product actually meets its goals. Rewriting every requirement as "The system shall…", with a concrete figure and a verification method, forced us to commit to values we had previously left open as hypotheses, and it exposed how many of our original criteria could not really be tested.
         </p>
         <p>
-            The second lesson was that cost is a moving target. The accelerometer's price more than tripled in a single week, which pushed our BOM from $815 to $1,390 MXN and our reference price above $4,600 MXN. From now on, critical components are verified on the day of purchase, ordered early from more than one supplier, and always paired with a plan B. Aligning Week 5 with the Week 6 dimensions also showed us that keeping one consistent source of truth across deliverables saves far more time than it costs.
+            The second lesson was that cost is a moving target. The accelerometer's price more than tripled in a single week, so critical components are now verified on the day of purchase, ordered early from more than one supplier, and always paired with a plan B. Later, when the real prototype moved to commercial modules and we priced purchases in batches of 100, the BOM dropped to $1,000 per pod, and we learned that a PDS has to be revised whenever the product it describes changes. Aligning Week 5 with the Week 6 dimensions also showed us that keeping one consistent source of truth across deliverables saves far more time than it costs.
         </p>
 
     </div>
 </div>
+
+
 		<!-- Footer -->
 		<footer id="footer">
 			<div class="inner">

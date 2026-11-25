@@ -1,0 +1,605 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 8: Prototyping &amp; Design for Manufacturing</h1>
+        <p>
+            Lumetriq already has a concept (Week 6) and an economic model that works over 5 years (Week 7). This week defines which assumption to test first and with which prototype, reports on the prototype we have already built, applies the 5-step DFM process to the <strong>Fixed Reflex</strong> pod (Ø 160 × 77 mm), and reviews it against Mexico's General Law on the Circular Economy.
+        </p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>How to read this page:</strong> version from November 25, 2026. Prices in MXN, per pod and in batches of 100, matching the Week 7 BOM ($1,000 per pod, $4,000 per 4-pod package). <strong>[Estimated]</strong> = our own calculation that still needs to be measured; <strong>[Verify]</strong> = data to be confirmed with the supplier or at the official source; <strong>[To Fill In]</strong> = evidence captured in this week's tests. An assembly hour is valued at <strong>$77.32</strong>: the salary of the employee in the business case ($10,000 per month ÷ 174.6 h × 1.35 for benefits).</em>
+        </blockquote>
+
+        <!-- Section 1: Why Prototype -->
+        <h2>1. Why Prototype</h2>
+
+        <h3>The Business Blueprint as a Map of What to Prototype</h3>
+        <p>A prototype is not an early version of the pod: it is the cheapest question we can ask the real world. Before deciding what to build, we reviewed which block of the blueprint has the most uncertainty today.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Block</th><th style="padding: 10px;">What We Already Know</th><th style="padding: 10px;">What We Don't Know</th><th style="padding: 10px;">Uncertainty</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Customers</strong></td><td style="padding: 10px;">Boxing, HIIT, and functional coaches and gyms; 1,131 establishments in the SAM (Week 4)</td><td style="padding: 10px;">None of the interviews was with the person who pays: the gym owner</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 High</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Revenue model and price</strong></td><td style="padding: 10px;">A 4-pod package at $6,000 with the app included (Week 7)</td><td style="padding: 10px;">Whether anyone will pay that price. The Week 4 quote: "It's free. Everything is free"</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 High</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Channels</strong></td><td style="padding: 10px;">Direct sales with an in-gym demo; the landing page is already built</td><td style="padding: 10px;">How many demos it takes to close a sale</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 High</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Value proposition</strong></td><td style="padding: 10px;">Version 3: a challenge students want to repeat, with a leaderboard week after week</td><td style="padding: 10px;">Whether the leaderboard changes what students do (H2 from Week 4)</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Medium</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Offering</strong></td><td style="padding: 10px;">PCB designed, modules purchased, steel plates being cut, LED arc measured</td><td style="padding: 10px;">Whether the floating plate measures within ±15% on the wall (FR-03) and withstands 10,000 punches (PR-02)</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Medium</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Costs</strong></td><td style="padding: 10px;">BOM quoted at $1,000 per pod</td><td style="padding: 10px;">How long real assembly takes (see the DFM review)</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Medium</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Partners</strong></td><td style="padding: 10px;">Suppliers in Mexico and a cutting shop</td><td style="padding: 10px;">The ADXL375 is only available on Amazon or from U.S. distributors</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Medium</span></td></tr>
+                <tr><td style="padding: 10px;"><strong>Team and resources</strong></td><td style="padding: 10px;">Three founders, 2 3D printers, and a soldering station</td><td style="padding: 10px;">Two printers produce ≈ 1,000 pods per year, and the year 1 plan calls for 1,200</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Low</span>: already calculated</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Takeaway:</strong> the three blocks with high uncertainty are about the business, not the device. That is why the first prototype this week is a <strong>business prototype</strong>; the experience prototype (the pod on the wall with a coach) is the next hypothesis.</p>
+
+        <h3>Exploration Prototype vs. First-Iteration Product</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;"></th><th style="padding: 10px;">Exploration Prototype (Now)</th><th style="padding: 10px;">First-Iteration Product (Final)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What it is for Lumetriq</strong></td><td style="padding: 10px;">A landing page with the price, the LED arc on the bench, a pod with exposed wiring</td><td style="padding: 10px;">A 4-pod package that a coach installs and uses without the team present</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Success</strong></td><td style="padding: 10px;">Learning something we didn't know</td><td style="padding: 10px;">The coach installs it and uses it on their own</td></tr>
+                <tr><td style="padding: 10px;"><strong>PDS requirement</strong></td><td style="padding: 10px;">Each prototype answers one (FR-03, PR-01, PR-02)</td><td style="padding: 10px;">CR-03: 5 working units by Week 13</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 2: Prototype Types -->
+        <h2>2. Prototype Types</h2>
+
+        <h3>The Four Types Applied to Lumetriq</h3>
+        <p>The rule from class: use the minimum resolution that answers the question.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Type</th><th style="padding: 10px;">Lumetriq's Question</th><th style="padding: 10px;">What Is Built</th><th style="padding: 10px;">Resolution</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Form</strong></td><td style="padding: 10px;">Does the glove land fully inside the Ø 120 mm pad, and is the arc visible at 3 m?</td><td style="padding: 10px;">The Week 6 cardboard test: Ø 100, 120, and 140 mm circles on the wall with a lit light arc above them</td><td style="padding: 10px;">Low</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Function</strong></td><td style="padding: 10px;">Can a single 18650 cell power the 18-LED arc without a boost converter?</td><td style="padding: 10px;">An 18-LED WS2812B strip in cyan at 100% with a multimeter in series</td><td style="padding: 10px;">Low</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Done</span> (report below)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Function</strong></td><td style="padding: 10px;">Do the 4 load cells under the 1.9 mm steel plate read the same at the center, at R30, and at R45?</td><td style="padding: 10px;">The steel frame with load cells and the ADS1220 on the bench, with weights</td><td style="padding: 10px;">High</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Under construction</span>: plates being cut</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Experience</strong></td><td style="padding: 10px;">Can a coach place 4 pods, pair them, and start "Follow the Light" in under 5 minutes without instructions?</td><td style="padding: 10px;">A complete pod + a basic app in a boxing gym</td><td style="padding: 10px;">High</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Next hypothesis</span></td></tr>
+                <tr><td style="padding: 10px;"><strong>Business</strong></td><td style="padding: 10px;">Will a gym owner leave their contact details for a demo after seeing the $6,000 price?</td><td style="padding: 10px;">A landing page with the real price and a pre-registration form</td><td style="padding: 10px;">High in the message, low in the product</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 First</span> (plan below)</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>The business prototype is the most underestimated:</strong> the complete pod takes weeks; the landing page is already done and can answer, in one week, the question the entire business case depends on: will anyone pay $6,000 for 4 pods?</p>
+
+        <!-- Section 3: Assumptions -->
+        <h2>3. Assumptions and Questions: Question → Prototype → Evidence</h2>
+
+        <h3>Step 1: The Assumptions to Test First</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Criterion</th><th style="padding: 10px;">Lumetriq's Assumption</th><th style="padding: 10px;">If It Turns Out to Be False</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Highest risk</strong></td><td style="padding: 10px;">A boxing or HIIT gym owner will pay $6,000 for a 4-pod package with the app included</td><td style="padding: 10px;">There is no business: the year 1 plan is 300 packages, and the markup over cost is already only 11.6%</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Most undefined</strong></td><td style="padding: 10px;">The 1.9 mm steel floating plate with 4 load cells measures force with an error ≤ ±15% on the wall (FR-03)</td><td style="padding: 10px;">We lose the metric no competitor has (force), and we're left with just another light pod</td></tr>
+                <tr><td style="padding: 10px;"><strong>Most controversial</strong></td><td style="padding: 10px;">The ADXL375 stays: 34% of the BOM to measure peak acceleration</td><td style="padding: 10px;">If the force from the load cells is enough, $344 per pod is unnecessary (see the DFM review)</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Poorly Framed vs. Well-Framed Questions</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Poorly Framed</th><th style="padding: 10px;">Well-Framed</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>"Does the pod work?"</strong></td><td style="padding: 10px;">"Can a coach place 4 pods on their plates, pair them, and start 'Follow the Light' in under 5 minutes without instructions?"</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>"Is the design good?"</strong></td><td style="padding: 10px;">"Does the student know which pod to hit, from 3 m away and without the coach saying anything?"</td></tr>
+                <tr><td style="padding: 10px;"><strong>"Is the business viable?"</strong></td><td style="padding: 10px;">"Will a boxing gym owner in Puebla who sees the $6,000 price for 4 pods leave their name and phone number for a demo?"</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>The four rules applied:</strong> it can be done in a day (the landing page already exists; only the form is missing), faking is allowed (the pod on the landing page is an animated drawing, not a photo), there are variations (two price cards), and it is designed for the owner to <strong>act</strong> (leave their details), not to give an opinion.</p>
+
+        <!-- Section 4: Plan -->
+        <h2>4. Prototyping Plan</h2>
+
+        <h3>Workshop Part A: Business Prototype</h3>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">PROTOTYPING PLAN
+Team: Lumetriq · Concept: Fixed Reflex
+
+ASSUMPTION TO VALIDATE:
+A boxing or HIIT gym owner in Puebla would pay $6,000 for a
+4-pod package with the app included.
+
+PRECISE QUESTION:
+After seeing the landing page with the price, will a boxing gym
+owner in Puebla request a demo by leaving their name and phone
+number, without the team asking them to?
+
+PROTOTYPE TYPE:
+[ ] Form  [ ] Function  [ ] Experience  [x] Business
+Resolution: [x] High in the message and price  [x] Low in the product
+Why this resolution: the question is about price and message. A
+finished pod doesn't change what the owner sees on the landing page;
+the price and the value proposition, however, must be the real ones.
+
+WHAT WE WILL BUILD:
+· The Lumetriq landing page (already built), published on GitHub Pages.
+· Replace the email button with a Tally or Google Forms form
+  (name, gym, phone, number of students per class) so pre-registrations
+  can be counted.
+· Two printed cards with a QR code, as a variation:
+  A) "4-pod package: $6,000, app included"
+  B) "12-pod circuit: $18,000, less than what 2 students pay
+     in a year"
+· Time: 1 h for the form, 1 h for the cards, 1 day of visits.
+
+HOW WE WILL CAPTURE EVIDENCE:
+· Visit 10 boxing and HIIT gyms in Puebla (list from DENUE).
+  5 get card A and 5 get card B.
+· 3 minutes with the owner: show them the landing page on the phone
+  and leave the card. We do not ask them to register.
+· We record: whether they ask about the price before we mention it,
+  their objections word for word, and whether they leave their
+  details on the form within 7 days.
+· Metric: owners who leave their details ÷ owners visited, per card.
+
+SUCCESS THRESHOLD:
+If 3 of 10 owners leave their details on the form and at least 1
+books a demo within 7 days, the assumption is validated and we move
+on to the pilot. With 0 or 1 registrations: we revise the offer (for
+example, a single trial package) before touching the design.</pre>
+</div>
+
+        <h4>Next Hypothesis: Experience Prototype</h4>
+        <ul>
+            <li><strong>Question:</strong> can a coach place 4 pods on their plates, pair them, and start "Follow the Light" in under 5 minutes without instructions?</li>
+            <li><strong>What is built:</strong> 1 complete pod + 3 printed mock-ups with the same weight, the app with the Week 6 installation flow, and the plates mounted on a board.</li>
+            <li><strong>Threshold:</strong> 3 of 5 coaches manage it in under 5 minutes, without help.</li>
+            <li><strong>Why afterwards:</strong> if nobody pays, there is no product to install; if they do pay, this is the next risk.</li>
+        </ul>
+
+        <!-- Section 5: Report -->
+        <h2>5. Prototype Report</h2>
+
+        <h3>Function Prototype Already Built: The 18-LED Arc</h3>
+        <p>This prototype was built before this class and answered a question that the battery design depended on. Since it is a function prototype, the evidence is a measurement, not an observation of users.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">PROTOTYPE REPORT — Week 8
+Team: Lumetriq · Concept: Fixed Reflex
+
+PROTOTYPE TYPE: Function
+RESOLUTION: Low (loose strip, no housing or diffuser)
+MATERIALS AND TIME: an 18-LED WS2812B segment (144 LED/m strip),
+a ≈ 5 V power supply, and a multimeter in series. Less than 1 h.
+
+QUESTION IT ANSWERED:
+Can a single 18650 cell power the 18-LED arc directly, without a
+boost converter, and deliver the 3 h of use required by the PDS (PR-01)?
+
+EVIDENCE COLLECTED (a measurement, not an opinion):
+· 18 LEDs in cyan at 100% (green + blue), at 4.927 V: 0.326 A (1.61 W).
+· This is the worst case: ≈ 18 mA per LED, two channels at maximum.
+· With the PDS profile (40% brightness, on 30% of the time), the
+  arc averages ≈ 0.04 A [Estimated].
+
+WAS THE ASSUMPTION VALIDATED? Partially.
+Why: the draw is low for an 18650, and the calculated battery life
+is ≈ 5.7 h with the 1,800 mAh cell (see test T4 in Week 9). We still
+need to check that blue and white look right at 3.5–3.7 V, which is
+what the cell delivers when it is almost empty.
+
+KEY LEARNING:
+The pod's real load is the LEDs and the ESP32. The sensors add up to
+less than 3 mA.
+
+DESIGN CHANGE:
+A single 18650; the LEDs run directly from the battery, and only the
+ESP32 goes through the MT3608 boost converter at 5 V. Low-battery
+warning at 3.55 V and shutdown at 3.40 V.
+
+NEXT HYPOTHESIS TO PROTOTYPE:
+The price: will a gym owner leave their details after seeing $6,000?</pre>
+</div>
+
+        <h4>Template to Fill In After the Business Prototype Visits</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Owner</th><th style="padding: 10px;">Card</th><th style="padding: 10px;">Did They Ask About the Price Before We Did?</th><th style="padding: 10px;">Objection (Word for Word)</th><th style="padding: 10px;">Did They Leave Their Details Within 7 Days?</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1</strong></td><td style="padding: 10px;">A</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2</strong></td><td style="padding: 10px;">B</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3</strong></td><td style="padding: 10px;">A</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td><td style="padding: 10px;">[To Fill In]</td></tr>
+                <tr><td style="padding: 10px;"><strong>4–10</strong></td><td style="padding: 10px;">A/B</td><td colspan="3" style="padding: 10px;">Same table; we record behavior, not whether they "liked it"</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 6: DFM -->
+        <h2>6. DFM Review of the Concept</h2>
+
+        <h3>Workshop Part B: The 5-Step Process Applied to the Pod</h3>
+        <p><strong>Method:</strong> the prompt from class (a manufacturing engineer following Ulrich and Eppinger's process) with our data: the Fixed Reflex concept, the Week 7 BOM, a PETG housing printed in 5 parts, a frame of three steel plates, and a single-sided PCB milled in the lab. Volume: <strong>100 pods (25 packages)</strong>, the BOM batch. The output was checked against the project's current decisions, and assembly times were estimated operation by operation.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">════════════════════════════════════════════════════════
+DFM REVIEW
+Concept: Fixed Reflex · Volume: 100 units (25 packages)
+════════════════════════════════════════════════════════
+
+ESTIMATED UNIT COST (current):
+· Electronic BOM (modules, load cells, power, LEDs,
+  passives, pin headers, and wire):                  $706.37
+· PCB (single-sided phenolic, monoFab):              $7.80
+· Housing (PETG, 205 g + 10% waste):                 $60.89
+· Mechanical (plates, standoffs, screws, pad):       $224.94
+· Manual assembly (4.1 h × $77.32):                  $315.72
+· Overhead (15%):                                    $197.36
+Current total:                                       $1,513.08/pod
+
+────────────────────────────────────────────────────────
+COST REDUCTION OPPORTUNITIES:
+
+Component 1 — ADXL375 module ($344, 34% of the BOM):
+Problem: the 4 load cells already measure force; the module is only
+available on Amazon or from U.S. distributors.
+Alternative: (a) remove it and detect the impact with the load cells
+(ADS1220 at 2 kSPS: one sample every 0.5 ms); (b) with PCBA, the bare
+chip [Verify availability and price at jlcpcb.com/parts].
+Estimated savings: $344/pod with (a).
+
+Component 2 — Steel plates ($110 + ≈ 1 h of shop work):
+Problem: ≈ 28 drilled holes and 14 threads tapped by hand in steel,
+with cobalt drill bits and M3 taps that break. The 6.35 mm base
+weighs 0.64 kg.
+Alternative: fiber laser cutting with all the holes in the same pass
+(net shape) and nuts instead of tapped threads [Verify quote].
+Option: a 1/4" aluminum base (−0.42 kg).
+Estimated savings: ≈ 45 min of assembly = $58/pod.
+
+Component 3 — ADS1220 module ($95):
+Problem: there is no cheap substitute that works: the HX711 delivers
+10–80 samples per second and misses the punch peak.
+Alternative: it stays; with PCBA, the bare chip [Verify at
+jlcpcb.com/parts].
+Estimated savings: to be verified.
+
+────────────────────────────────────────────────────────
+ASSEMBLY:
+Current design: ≈ 119 mechanical parts (94 fasteners)
+                · Time: ~245 min/pod
+Proposal:       ≈ 94 parts · Time: ~105 min/pod
+Recommended changes: shoulder screws for the guides and pivot pins,
+remove the PETG back cover, plates with holes made during cutting,
+standardized fasteners, and cables with connectors (details below).
+
+────────────────────────────────────────────────────────
+ESTIMATED UNIT COST (with DFM improvements):
+Assembly and fasteners only:     $1,334.36/pod (−11.8%)
+Assembly + no ADXL375:           $938.76/pod (−38.0%)
+
+────────────────────────────────────────────────────────
+TRADE-OFFS TO EVALUATE:
+· Without the ADXL375, we lose the acceleration in g promised on the
+  landing page and a signal for telling punches from touches (PR-03,
+  F1 ≥ 0.90). Decide only after testing PR-03 with the load cells alone.
+· Shoulder screws cost more per piece and are harder to find in Mexico
+  [Verify]: +$30 per pod was budgeted.
+· Laser cutting with holes may cost more than waterjet [Verify]; the
+  tolerance works for clearance holes, not for threads.
+· Without the PETG cover, the steel wall plate is the only back cover:
+  we lose the O-ring and need another way to seal it.
+
+JLCPCB PCBA COMPATIBILITY: ⚠️
+The current PCB mounts modules on female headers (CR-01), which PCBA
+does not place as modules. 1206 passives ✅ (pitch ≥ 0.8 mm). The
+ESP32-WROOM, ADS1220, and ADXL375 as bare chips are probably Extended
+parts, not Basic [Verify]. Recommendation: for 5–20 pods, a PCB made
+by JLCPCB (PCB only) with the same modules; PCBA once the design is
+frozen for the batch of 100.
+════════════════════════════════════════════════════════</pre>
+</div>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<svg viewBox="0 0 780 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Unit cost per pod: current 1,513, with assembly improvements 1,334, and without the ADXL375 939 pesos" style="width: 100%; min-width: 620px; height: auto;">
+            <style>
+                .lb { font: 13px Arial, sans-serif; fill: #1b1f2a; }
+                .lbb { font: bold 13px Arial, sans-serif; fill: #032472; }
+                .lg { font: 12px Arial, sans-serif; fill: #4d5a78; }
+            </style>
+            <text class="lbb" x="10" y="22">Unit cost per pod, batch of 100 (MXN)</text>
+            <text class="lb" x="10" y="70">Current</text>
+            <rect x="250" y="52" width="300.0" height="28" fill="#0d48d2"></rect>
+            <rect x="550.0" y="52" width="94.7" height="28" fill="#a86400"></rect>
+            <rect x="644.7" y="52" width="59.2" height="28" fill="#9aa3b5"></rect>
+            <text class="lbb" x="710" y="71">$1,513</text>
+            <text class="lb" x="10" y="120">Assembly and fasteners</text>
+            <rect x="250" y="102" width="307.5" height="28" fill="#0d48d2"></rect>
+            <rect x="557.5" y="102" width="40.6" height="28" fill="#a86400"></rect>
+            <rect x="598.1" y="102" width="52.2" height="28" fill="#9aa3b5"></rect>
+            <text class="lbb" x="656" y="121">$1,334</text>
+            <text class="lb" x="10" y="170">Assembly + no ADXL375</text>
+            <rect x="250" y="152" width="204.3" height="28" fill="#0d48d2"></rect>
+            <rect x="454.3" y="152" width="40.6" height="28" fill="#a86400"></rect>
+            <rect x="494.9" y="152" width="36.7" height="28" fill="#9aa3b5"></rect>
+            <text class="lbb" x="538" y="171">$939</text>
+            <rect x="250" y="208" width="14" height="14" fill="#0d48d2"></rect><text class="lg" x="270" y="220">Components</text>
+            <rect x="370" y="208" width="14" height="14" fill="#a86400"></rect><text class="lg" x="390" y="220">Assembly</text>
+            <rect x="470" y="208" width="14" height="14" fill="#9aa3b5"></rect><text class="lg" x="490" y="220">Overhead (15%)</text>
+        </svg>
+<p style="margin-top: 12px; margin-bottom: 0; text-align: center;"><em>Assembly weighs almost as much as the ADXL375. Together, the two levers lower the cost by 38%. [Estimated]</em></p>
+</div>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>What this review tells the business case:</strong> Week 7 uses $1,000 in components per pod and a payroll that, spread out, comes to ≈ $60 per pod in year 2. The current assembly costs ≈ $316 per pod: the payroll is not enough to assemble 2,000 pods per year. With the assembly improvements, it drops to ≈ $135 per pod. This is the next adjustment to the model: measure the real assembly time with the first batch of 5 and, with that data, update salaries or volume.</em>
+        </blockquote>
+
+        <!-- Section 7: DFA -->
+        <h2>7. Assembly (DFA)</h2>
+
+        <h3>Step 3: Counting Parts and Operations</h3>
+        <p>Of the pod's ≈ 119 mechanical parts, <strong>94 are fasteners</strong> (screws, nuts, washers, standoffs, and inserts), across ≈ 20 different part numbers. That is where the assembly time and the inventory cost are.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Subassembly</th><th style="padding: 10px;">Parts Today</th><th style="padding: 10px;">DFA Change</th><th style="padding: 10px;">Parts After</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Plate guides (×4): M3 × 20 screw, M3 × 14 standoff, rubber washer, and flat washer</strong></td><td style="padding: 10px;">16</td><td style="padding: 10px;">A shoulder screw with the rubber washer: the shoulder acts as the standoff</td><td style="padding: 10px;">8</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pivot pins (×4): M3 × 12 screw, M3 × 4 standoff, flat washer, and fender washer</strong></td><td style="padding: 10px;">16</td><td style="padding: 10px;">A shoulder screw with a fender washer</td><td style="padding: 10px;">8</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PETG back cover: cover, 4 flat-head screws, and 4 inserts</strong></td><td style="padding: 10px;">9</td><td style="padding: 10px;">Removed: the steel wall plate already closes the pod from behind</td><td style="padding: 10px;">0</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Stops (×4): M4 × 12 screw and lock nut</strong></td><td style="padding: 10px;">8</td><td style="padding: 10px;">They stay: the 0.2–0.3 mm adjustment protects the load cells</td><td style="padding: 10px;">8</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Everything else: plates, posts, housing, pad, load cells, PCB, and their screws</strong></td><td style="padding: 10px;">70</td><td style="padding: 10px;">Same quantity; fasteners standardized to M3 × 8 and M3 × 12 button-head</td><td style="padding: 10px;">70</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total</strong></td><td style="padding: 10px;"><strong>119</strong></td><td style="padding: 10px;">Fastener part numbers: ≈ 20 → ≈ 12</td><td style="padding: 10px;"><strong>94</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Assembly Time per Pod [Estimated]</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Operation</th><th style="padding: 10px;">Today (min)</th><th style="padding: 10px;">Change</th><th style="padding: 10px;">With DFA (min)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Drill and tap the 3 steel plates</strong></td><td style="padding: 10px;">60</td><td style="padding: 10px;">Holes made during cutting; nuts instead of threads</td><td style="padding: 10px;">15</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Glue the supports and load cells with epoxy</strong></td><td style="padding: 10px;">15</td><td style="padding: 10px;">A printed support that centers the load cell</td><td style="padding: 10px;">10</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Frame: posts, stops set with a feeler gauge, guides, and plate</strong></td><td style="padding: 10px;">30</td><td style="padding: 10px;">Shoulder screws; a height jig for the stops</td><td style="padding: 10px;">20</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Solder the PCB (1206 passives, headers, and pins)</strong></td><td style="padding: 10px;">45</td><td style="padding: 10px;">A JLCPCB-made PCB; with PCBA for the batch of 100</td><td style="padding: 10px;">10</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Wire the load cells, ADXL375, LEDs, battery, and MT3608</strong></td><td style="padding: 10px;">30</td><td style="padding: 10px;">Pre-assembled cables with JST connectors; MT3608 adjusted per batch</td><td style="padding: 10px;">15</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pad: EVA, faux leather, and tension ring</strong></td><td style="padding: 10px;">30</td><td style="padding: 10px;">EVA and faux leather die-cut by the supplier</td><td style="padding: 10px;">15</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Housing: inserts, bezel, diffuser, and closing</strong></td><td style="padding: 10px;">20</td><td style="padding: 10px;">No back cover</td><td style="padding: 10px;">10</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Calibration and testing</strong></td><td style="padding: 10px;">15</td><td style="padding: 10px;">An automatic firmware routine with a known weight</td><td style="padding: 10px;">10</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total</strong></td><td style="padding: 10px;"><strong>245 (4.1 h)</strong></td><td style="padding: 10px;"></td><td style="padding: 10px;"><strong>105 (1.75 h)</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Compared with the PDS:</strong> CR-01 requires assembly ≤ 1.5 h per pod. With the improvements, it comes to 1.75 h: still above the limit. The rest will come from the first batch of 5, when every operation is timed with a stopwatch. <strong>Snap-fit:</strong> it was ruled out for the body and the bezel, because the PETG takes the punches and a printed clip fatigues; the class rule (2 parts with snap-fit) applies better to the battery cover, if it is brought back.</p>
+
+        <!-- Section 8: Economies of Scale -->
+        <h2>8. Economies of Scale</h2>
+
+        <h3>Which Process Makes Sense at Each Volume</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Volume</th><th style="padding: 10px;">When for Lumetriq</th><th style="padding: 10px;">PCB</th><th style="padding: 10px;">Housing</th><th style="padding: 10px;">Plates</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1–3 pods</strong></td><td style="padding: 10px;">Today: function and experience prototypes</td><td style="padding: 10px;">Phenolic board milled on the monoFab, hand soldering</td><td style="padding: 10px;">PETG printed in the lab</td><td style="padding: 10px;">Waterjet + bench drill</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>5–20 pods</strong></td><td style="padding: 10px;">CR-03: 5 pods by Week 13; a pilot of 2–3 packages</td><td style="padding: 10px;">JLCPCB, PCB only, with the same modules</td><td style="padding: 10px;">2 printers: 12–15 h per pod, ≈ 3 days for 8 pods</td><td style="padding: 10px;">Laser with holes and nuts</td></tr>
+                <tr><td style="padding: 10px;"><strong>20–100 pods</strong></td><td style="padding: 10px;">Year 1 of the business case (1,200 pods)</td><td style="padding: 10px;">JLCPCB + PCBA with bare chips</td><td style="padding: 10px;">Printing: 2 printers produce ≈ 1,000 pods per year; an injection mold if the sales are confirmed <strong>[Verify quote]</strong></td><td style="padding: 10px;">Laser by batch</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p>Using the ESP32 DevKit and standard modules at this stage is not a limitation: it is the right DFM decision for 5–20 pods. Switching to bare chips with PCBA is only worth it once the design stops changing.</p>
+
+        <!-- Section 9: Circular Economy -->
+        <h2>9. Circular Economy</h2>
+
+        <h3>The Pod Against the General Law on the Circular Economy (DOF, January 19, 2026)</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Principle</th><th style="padding: 10px;">Current State</th><th style="padding: 10px;">Design Change</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Are the components accessible for repair?</strong></td><td style="padding: 10px;">Repairability</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes</span> for the housing (screws and inserts) and the pad (cover with a tension ring). <span style="color: #ff9900;">🟡 No</span> for the battery: the 18650 has soldered tabs</td><td style="padding: 10px;">An 18650 battery holder (+$15 per pod) so the cell can be replaced without soldering</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Can the modules be replaced separately?</strong></td><td style="padding: 10px;">Modularity</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Yes</span>: the DevKit and ADS1220 sit on female headers; the load cells have pins. <span style="color: #ff9900;">🟡 No</span>: the ADXL375 has soldered wires, and the load cells are glued with epoxy</td><td style="padding: 10px;">A connector for the ADXL375; a printed support that holds the load cell without glue</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Are the materials identified for recycling?</strong></td><td style="padding: 10px;">Life cycle</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 No</span>: no part is marked. The faux leather is PVC, which is hard to recycle</td><td style="padding: 10px;">Emboss "&gt;PETG&lt;" on the body, bezel, and ring when printing; mark the steel; look for a PVC-free skin for v2</td></tr>
+                <tr><td style="padding: 10px;"><strong>Can it be updated without being replaced?</strong></td><td style="padding: 10px;">Timelessness</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 No</span>: the firmware is loaded through the DevKit's USB port, inside the pod</td><td style="padding: 10px;">OTA updates over BLE from the app (the ESP32 supports this with two partitions)</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Extended Producer Responsibility: What Lumetriq Would Do</h4>
+        <ul>
+            <li><strong>Take-back:</strong> at the end of its life, the gym returns the pods and gets a discount on a new package.</li>
+            <li><strong>Recovery:</strong> the steel plates (≈ 1.05 kg per pod), modules, and PCB are tested and reused; the battery goes to a battery collection center.</li>
+            <li><strong>Spare parts:</strong> the pad cover, battery, and diffuser are sold separately; the pod is not replaced because of a $5–10 part.</li>
+            <li><strong>When it applies:</strong> EPR will be applied through SEMARNAT agreements by sector, and electronic products are among the first. Designing for it today avoids a redesign later.</li>
+        </ul>
+
+        <!-- Section 10: Defense -->
+        <h2>10. Defense of the Plan (4 Minutes)</h2>
+
+        <h3>Script</h3>
+        <ol>
+            <li><strong>The riskiest assumption:</strong> "The assumption we need to validate first is that a boxing gym owner will pay $6,000 for 4 pods with the app included. If it turns out to be false, there is no business: the plan calls for 300 packages in the first year, and the markup over cost is already 11.6%."</li>
+            <li><strong>The prototype:</strong> "We are going to build a business prototype: the landing page with the real price and a pre-registration form, high-resolution in the message and low-resolution in the product. The question it answers is: will a boxing gym owner in Puebla leave their details for a demo after seeing the price?"</li>
+            <li><strong>The evidence:</strong> "We'll know it worked when 3 of 10 owners leave their details and at least 1 books a demo within 7 days, without us asking them to."</li>
+            <li><strong>DFM:</strong> "The DFM review tells us that the highest-cost component is the ADXL375 module: $344, 34% of the BOM. If we remove it and simplify assembly, the unit cost drops from $1,513 to $939 per pod."</li>
+        </ol>
+
+        <h4>The Instructor's Questions, Answered</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Answer</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Why that assumption and not whether the pod can withstand punches?</strong></td><td style="padding: 10px;">If the pod can't take it, we redesign it; if nobody pays, there is no product to redesign. The 1,000-punch test is still part of the experience prototype plan.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>If the owner doesn't leave their details, what do you change?</strong></td><td style="padding: 10px;">The offer before the design: a trial package, payment in two installments, or seasonal rental. The pod doesn't change because of a price objection.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Is it low-resolution because the question allows it or because of a lack of time?</strong></td><td style="padding: 10px;">Because the question allows it: the owner decides based on the price and the promise they see on the landing page. The real pod is shown during the demo, which is the next step.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 11: Assignment -->
+        <h2>11. Assignment: Updated BOM</h2>
+
+        <h3>Components per Pod with the DFM Improvements (Batch of 100)</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Component</th><th style="padding: 10px;">Week 7 BOM</th><th style="padding: 10px;">With DFM</th><th style="padding: 10px;">With DFM, No ADXL375</th><th style="padding: 10px;">Change</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ESP32 DevKit (WROOM-32)</strong></td><td style="padding: 10px;">$82.00</td><td style="padding: 10px;">$82.00</td><td style="padding: 10px;">$82.00</td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADXL375 module</strong></td><td style="padding: 10px;">$344.00</td><td style="padding: 10px;">$344.00</td><td style="padding: 10px;">$0.00</td><td style="padding: 10px;">Removed if PR-03 passes with the load cells alone</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>ADS1220 module</strong></td><td style="padding: 10px;">$95.00</td><td style="padding: 10px;">$95.00</td><td style="padding: 10px;">$95.00</td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4× 50 kg load cells</strong></td><td style="padding: 10px;">$59.88</td><td style="padding: 10px;">$59.88</td><td style="padding: 10px;">$59.88</td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Power (battery, TP4056, MT3608, switch, fuse)</strong></td><td style="padding: 10px;">$60.86</td><td style="padding: 10px;">$75.86</td><td style="padding: 10px;">$75.86</td><td style="padding: 10px;">+ 18650 battery holder ($15)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>18-LED arc</strong></td><td style="padding: 10px;">$21.25</td><td style="padding: 10px;">$21.25</td><td style="padding: 10px;">$21.25</td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Passives, PCB, pin headers, connectors, and wire</strong></td><td style="padding: 10px;">$51.18</td><td style="padding: 10px;">$51.18</td><td style="padding: 10px;">$51.18</td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Steel plates</strong></td><td style="padding: 10px;">$110.00</td><td style="padding: 10px;">$110.00</td><td style="padding: 10px;">$110.00</td><td style="padding: 10px;">Cut with holes <strong>[Verify cost]</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Standoffs, inserts, and fasteners</strong></td><td style="padding: 10px;">$87.22</td><td style="padding: 10px;">$97.22</td><td style="padding: 10px;">$97.22</td><td style="padding: 10px;">+ shoulder screws ($30), − back cover ($20)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>PETG housing, pad, and consumables</strong></td><td style="padding: 10px;">$88.61</td><td style="padding: 10px;">$88.61</td><td style="padding: 10px;">$88.61</td><td style="padding: 10px;">—</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Components per pod</strong></td><td style="padding: 10px;"><strong>$1,000.00</strong></td><td style="padding: 10px;"><strong>$1,025.00</strong></td><td style="padding: 10px;"><strong>$681.00</strong></td><td style="padding: 10px;"></td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Unit cost (+ assembly + 15% overhead)</strong></td><td style="padding: 10px;"><strong>$1,513.08</strong></td><td style="padding: 10px;"><strong>$1,334.36</strong></td><td style="padding: 10px;"><strong>$938.76</strong></td><td style="padding: 10px;">Assembly: 4.1 h → 1.75 h</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Decision:</strong> the official BOM stays at <strong>$1,000</strong> until the bench test confirms PR-03 without the ADXL375. The assembly improvements are applied right away in the batch of 5 pods for Week 13.</p>
+
+        <h4>Assignment Status</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Task</th><th style="padding: 10px;">Deliverable</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Build the first prototype according to the plan (2 h)</strong></td><td style="padding: 10px;">Landing page published with the form and cards A and B</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 In progress</span>: landing page done; the form and publishing are still missing</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Test with 3 users from the segment (1 h)</strong></td><td style="padding: 10px;">Visit table filled in</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span> [To Fill In]</td></tr>
+                <tr><td style="padding: 10px;"><strong>Apply the DFM improvements and update the BOM (1 h)</strong></td><td style="padding: 10px;">New BOM and unit cost</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Done</span> (table above)</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 12: Exit Questions -->
+        <h2>12. What the Team Should Be Able to Answer</h2>
+
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Answer</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What is the riskiest assumption, and which prototype validates it?</strong></td><td style="padding: 10px;">That a gym owner will pay $6,000 for 4 pods. It is validated by a business prototype: the landing page with the real price and a form, shown to 10 owners in Puebla.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What behavioral evidence will you capture?</strong></td><td style="padding: 10px;">How many owners leave their details within 7 days without us asking, how many book a demo, and whether they ask about the price before we bring it up. Threshold: 3 of 10 and 1 demo.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What is the highest-cost component, and what is its DFM alternative?</strong></td><td style="padding: 10px;">The ADXL375 module ($344, 34% of the BOM). Alternative: detect the impact with the load cells at 2 kSPS. With the assembly improvements, the unit cost drops from $1,513 to $939.</td></tr>
+                <tr><td style="padding: 10px;"><strong>How many parts does the housing have, and how are they reduced?</strong></td><td style="padding: 10px;">5 printed parts (body, bezel, cover, tension ring, and diffuser) within ≈ 119 mechanical parts. The back cover is removed, and the shoulder screws cut the 32 guide and pivot parts to 16: ≈ 94 remain. Snap-fit was ruled out for the parts that take punches.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Sources Consulted</h3>
+        <ul>
+            <li>Course instructions: <a href="https://aristarco.github.io/Proyectos4/semana8/" target="_blank">Week 8 — Prototyping and Design for Manufacturing</a></li>
+            <li>Ulrich, K. T., Eppinger, S. D., and Yang, M. C. (2026). <em>Product Design and Development</em> (7th ed.), ch. 13: Design for Manufacturing.</li>
+            <li>IDEO U. <em>Business Design</em>: a three-step prototyping process.</li>
+            <li>Chamber of Deputies (2026). General Law on the Circular Economy, DOF of January 19, 2026, articles 1–4 (cited on the course page).</li>
+            <li>Boothroyd, Dewhurst, and Knight (2010). <em>Product Design for Manufacture and Assembly</em> (3rd ed.).</li>
+            <li>Project documents: the Week 7 BOM and business case, the Week 5 PDS v1.2, plates v2.13, Option B costs, and the LED arc measurement (November 1, 2026).</li>
+        </ul>
+
+        <!-- Section 13: Reflection -->
+        <h2>13. Reflection and Key Takeaways</h2>
+        <p>
+            This week we realized that Lumetriq's most urgent prototype is not the pod. When we reviewed the blueprint, the blocks with the most uncertainty were all about the business: we have never spoken with the gym owner, who is the one who pays, and we don't know whether anyone will spend $6,000 on 4 pods. Building the perfect pod before knowing that would repeat the mistake described in class: reaching the end with something polished that nobody tested. That is why our first prototype is the landing page with the real price and a form, and the evidence we are after is not whether people like it, but whether they leave their details. We also noticed that we had already been prototyping without calling it that: measuring the LED arc answered a concrete question and changed the battery design.
+        </p>
+        <p>
+            The DFM review surprised us the most. We assumed the cost was in the components, but of the pod's 119 mechanical parts, 94 are screws, nuts, washers, and standoffs, and the estimated 4 hours of assembly cost almost as much as the accelerometer. That also exposed a gap in the business case: the planned payroll is not enough to assemble 2,000 pods a year with the current design.
+        </p>
+        <p>
+            Finally, the circular economy law made us see that, although the pod can be opened, the soldered battery, the unmarked materials, and firmware that can only be loaded from the inside make it a disposable product. These are cheap changes if we make them now, and much more expensive once the design is frozen.
+        </p>
+
+    </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

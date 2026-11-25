@@ -1,0 +1,698 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Jose Carlos Matanzo Perez - Engineering Project 4</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="description" content="Engineering Project 4 documentation site for Jose Carlos Matanzo Perez" />
+	<link rel="icon" type="image/jpg" href="../assets/images/favicon.ico" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" />
+	</noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+
+				<!-- Logo -->
+				<a href="../index.html" class="logo">
+					<span class="symbol"><img src="../assets/images/logo.svg" alt="" /></span><span class="title">JOSE CARLOS MATANZO PEREZ - ENGINEERING PROJECT 4</span>
+				</a>
+
+				<!-- Nav -->
+				<nav>
+					<ul>
+						<li><a href="#menu">Menu</a></li>
+					</ul>
+				</nav>
+
+			</div>
+		</header>
+
+		<!-- Menu -->
+		<nav id="menu">
+			<h2>Menu</h2>
+			<ul>
+				<li><a href="../index.html">Assignments</a></li>
+				<li><a href="../midtermproject.html">Midterm Project</a></li>
+				<li><a href="../finalproject.html">Final Project</a></li>
+				<li><a href="../about.html">About Me</a></li>
+			</ul>
+		</nav>
+
+
+<div id="main">
+    <div class="inner">
+        <!-- Main Title -->
+        <h1>Assignment 9: Integration, Go-to-Market &amp; Pitch</h1>
+        <p>
+            This was the last content class. This week decides how Lumetriq will use the two working weeks before the evaluation: what gets integrated and how it is tested, who it is tested with, how it is launched, how much it costs to win a gym, what is needed to sell legally, and how all of it is told in a 3-minute pitch and a 7-minute demo.
+        </p>
+
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em><strong>How to read this page:</strong> version from November 25, 2026. The business figures come from the Week 7 business case (a 4-pod package at $6,000 with VAT, $5,172.41 before VAT; components at $1,000 per pod), and the engineering figures come from the Week 5 PDS v1.2. <strong>[Estimated]</strong> = our own calculation; <strong>[Assumption]</strong> = data to be measured in the pilot; <strong>PENDING</strong> = a claim without evidence yet. Lumetriq does not charge a monthly fee, so the unit economics formulas from class are adapted to a one-time payment with repeat purchases (Section 5).</em>
+        </blockquote>
+
+        <!-- Section 1: Boundaries -->
+        <h2>1. Integration: Failures Live at the Boundaries</h2>
+
+        <h3>Lumetriq's Boundaries</h3>
+        <p>The example from class has four boundaries. Lumetriq has five, because there are two radio hops between the sensor and the app: the pods talk to each other over ESP-NOW, and only one of them, the gateway, talks to the phone over BLE (Week 5 architecture).</p>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<svg viewBox="0 0 960 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chain of five boundaries: sensors, follower pod, gateway pod, app, cloud with AI, and the user screen" style="width: 100%; min-width: 720px; height: auto;">
+            <style>
+                .bx { fill: #eef1f7; stroke: #4d5a78; stroke-width: 1.5; }
+                .bt { font: bold 13px Arial, sans-serif; fill: #032472; }
+                .bs { font: 11.5px Arial, sans-serif; fill: #4d5a78; }
+                .fl { font: bold 13px Arial, sans-serif; fill: #b10a0a; }
+                .fs { font: 11px Arial, sans-serif; fill: #b10a0a; }
+                .ar { stroke: #b10a0a; stroke-width: 2; fill: none; }
+            </style>
+            <defs><marker id="m9" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b10a0a"></path></marker></defs>
+            <rect class="bx" x="10" y="60" width="150" height="80" rx="10"></rect>
+            <text class="bt" x="85" y="90" text-anchor="middle">Sensors</text>
+            <text class="bs" x="85" y="108" text-anchor="middle">4 load cells + ADS1220</text>
+            <text class="bs" x="85" y="124" text-anchor="middle">ADXL375</text>
+            <rect class="bx" x="205" y="60" width="150" height="80" rx="10"></rect>
+            <text class="bt" x="280" y="90" text-anchor="middle">Follower pod</text>
+            <text class="bs" x="280" y="108" text-anchor="middle">ESP32: time,</text>
+            <text class="bs" x="280" y="124" text-anchor="middle">force, and punch</text>
+            <rect class="bx" x="400" y="60" width="150" height="80" rx="10"></rect>
+            <text class="bt" x="475" y="90" text-anchor="middle">Gateway pod</text>
+            <text class="bs" x="475" y="108" text-anchor="middle">runs the session</text>
+            <text class="bs" x="475" y="124" text-anchor="middle">and the routine</text>
+            <rect class="bx" x="595" y="60" width="150" height="80" rx="10"></rect>
+            <text class="bt" x="670" y="90" text-anchor="middle">App</text>
+            <text class="bs" x="670" y="108" text-anchor="middle">React Native</text>
+            <text class="bs" x="670" y="124" text-anchor="middle">+ SQLite</text>
+            <rect class="bx" x="790" y="60" width="160" height="80" rx="10"></rect>
+            <text class="bt" x="870" y="90" text-anchor="middle">Cloud</text>
+            <text class="bs" x="870" y="108" text-anchor="middle">Supabase + Edge</text>
+            <text class="bs" x="870" y="124" text-anchor="middle">Function → LLM</text>
+            <line class="ar" x1="160" y1="100" x2="203" y2="100" marker-end="url(#m9)"></line>
+            <text class="fl" x="182" y="50" text-anchor="middle">B1</text><text class="fs" x="182" y="160" text-anchor="middle">SPI</text>
+            <line class="ar" x1="355" y1="100" x2="398" y2="100" marker-end="url(#m9)"></line>
+            <text class="fl" x="377" y="50" text-anchor="middle">B2</text><text class="fs" x="377" y="160" text-anchor="middle">ESP-NOW</text>
+            <line class="ar" x1="550" y1="100" x2="593" y2="100" marker-end="url(#m9)"></line>
+            <text class="fl" x="572" y="50" text-anchor="middle">B3</text><text class="fs" x="572" y="160" text-anchor="middle">BLE</text>
+            <line class="ar" x1="745" y1="100" x2="788" y2="100" marker-end="url(#m9)"></line>
+            <text class="fl" x="767" y="50" text-anchor="middle">B4</text><text class="fs" x="767" y="160" text-anchor="middle">HTTPS</text>
+            <rect class="bx" x="595" y="200" width="355" height="60" rx="10"></rect>
+            <text class="bt" x="772" y="225" text-anchor="middle">Coach and students</text>
+            <text class="bs" x="772" y="244" text-anchor="middle">screen, leaderboard, and landing page with the price</text>
+            <line class="ar" x1="670" y1="140" x2="670" y2="198" marker-end="url(#m9)"></line>
+            <text class="fl" x="690" y="178">B5</text>
+            <text class="bs" x="10" y="200">Reaction time and force are calculated</text>
+            <text class="bs" x="10" y="216">inside the pod: they don't depend on</text>
+            <text class="bs" x="10" y="232">B2–B4. Only the wording of the</text>
+            <text class="bs" x="10" y="248">recommendation goes to the cloud.</text>
+        </svg>
+<p style="margin-top: 12px; margin-bottom: 0; text-align: center;"><em>Lumetriq's five boundaries. When something fails, look for the first boundary where the data already arrives wrong.</em></p>
+</div>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Boundary</th><th style="padding: 10px;">Question</th><th style="padding: 10px;">Log Set Up Before It Is Needed</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B1 · Sensors → ESP32 (SPI)</strong></td><td style="padding: 10px;">Is the reading reliable?</td><td style="padding: 10px;">Diagnostic mode: raw ADS1220 and ADXL375 signals with µs timestamps, through the <code>Bulk</code> characteristic</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B2 · Follower → gateway (ESP-NOW)</strong></td><td style="padding: 10px;">Does the event leave and arrive?</td><td style="padding: 10px;">Send, retry, and loss counters on each pod, carried in the <code>STATUS</code> message every 5 s</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B3 · Gateway → app (BLE)</strong></td><td style="padding: 10px;">Does the phone receive everything, with no duplicates?</td><td style="padding: 10px;">The last <code>seq</code> received per pod in SQLite vs. the last one sent by the pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B4 · App → cloud → LLM (HTTPS)</strong></td><td style="padding: 10px;">Is the recommendation usable?</td><td style="padding: 10px;">Raw input and output of every call in the Edge Function; the output is validated against a schema, and every figure is checked against the input JSON</td></tr>
+                <tr><td style="padding: 10px;"><strong>B5 · App → user</strong></td><td style="padding: 10px;">Does the user see the right thing, on time?</td><td style="padding: 10px;">Every piece of data on screen shows its timestamp; an "offline, last data N s ago" state</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>The Most Likely Bugs in Lumetriq</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Symptom</th><th style="padding: 10px;">Common Cause</th><th style="padding: 10px;">First Test</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The pod resets when the arc turns on or when transmitting</strong></td><td style="padding: 10px;">Voltage drop: the arc's 0.33 A (measured) plus the radio's ≈ 0.4 A peaks</td><td style="padding: 10px;">Measure VBAT and the 3.3 V rail with an oscilloscope during a stimulus; the design already has 470 µF on VBAT and 22 µF on 5 V</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The force reading is noisy or drifts</strong></td><td style="padding: 10px;">The MT3608 boost converter injects noise into the ADS1220 reference</td><td style="padding: 10px;">Read the plate with no load with the MT3608 on and off; criterion: noise ≤ ±20 N</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Punches are missing from the history</strong></td><td style="padding: 10px;">Relying on ESP-NOW's MAC-layer ACK, with no resend from <code>seq</code></td><td style="padding: 10px;">A 100-punch session: compare <code>seq</code> on the pods and in SQLite (FR-04)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The punch shows up late in the app</strong></td><td style="padding: 10px;">A long BLE connection interval, or one event per notification</td><td style="padding: 10px;">Timestamps on the pod, the gateway, and the app; MTU ≥ 185 B and several events per notification</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The app shows old data as current</strong></td><td style="padding: 10px;">There is no "offline" state</td><td style="padding: 10px;">Turn off the phone's Bluetooth for 20 s and see what the app says</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The recommendation arrives empty or with made-up figures</strong></td><td style="padding: 10px;">Timeout, API rate limit, or output in the wrong format</td><td style="padding: 10px;">Store the raw input and output; the Week 5 verifier rejects figures that are not in the JSON</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Two kits in the same gym get mixed up</strong></td><td style="padding: 10px;">Messages without a <code>kit_id</code>, or a shared channel</td><td style="padding: 10px;">Turn on two kits at once and check that each app sees only its own pods</td></tr>
+                <tr><td style="padding: 10px;"><strong>It works in the lab and fails at the gym</strong></td><td style="padding: 10px;">Wi-Fi and phones saturate 2.4 GHz; real punches; sweat</td><td style="padding: 10px;">3 h of real classes with 4 pods at 5–10 m (T6)</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 2: System Tests -->
+        <h2>2. Minimum System Tests (T1–T6)</h2>
+
+        <h3>From Cheapest to Most Expensive, with PDS Criteria</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">#</th><th style="padding: 10px;">Test</th><th style="padding: 10px;">What Is Measured</th><th style="padding: 10px;">Passes If</th><th style="padding: 10px;">Source of the Number</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T1</strong></td><td style="padding: 10px;">Installation without help</td><td style="padding: 10px;">A coach who doesn't know the product places 4 pods on their plates, turns them on, and pairs them</td><td style="padding: 10px;">Under 5 min without intervention</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Not in the PDS</span>: a proposal, like the example from class</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T2</strong></td><td style="padding: 10px;">End-to-end latency</td><td style="padding: 10px;">From the punch to the app showing time and force (240 fps video with the pod and the phone in the shot)</td><td style="padding: 10px;">p95 ≤ 1 s</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Missing from the PDS</span>: FR-01 (≤ 10 ms between pods) and FR-02 (±5 ms) are measured inside the pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T3</strong></td><td style="padding: 10px;">Disconnection and recovery</td><td style="padding: 10px;">100 punches with 4 pods and 3 BLE dropouts of 60 s; plus turning off the gateway in the middle of the routine</td><td style="padding: 10px;">0 missing events and 0 duplicates; new gateway in &lt; 3 s</td><td style="padding: 10px;">FR-04 and the Week 5 architecture</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T4</strong></td><td style="padding: 10px;">Battery life</td><td style="padding: 10px;">Average current with the PDS profile and a full discharge</td><td style="padding: 10px;">≥ 3 h per charge</td><td style="padding: 10px;">PR-01</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>T5</strong></td><td style="padding: 10px;">AI API failure</td><td style="padding: 10px;">What the app does if the Edge Function doesn't respond</td><td style="padding: 10px;">Within &lt; 3 s, it shows a template recommendation labeled "no AI," and the session doesn't stop</td><td style="padding: 10px;">Week 5 decision (templates); the 3 s are a proposal</td></tr>
+                <tr><td style="padding: 10px;"><strong>T6</strong></td><td style="padding: 10px;">Continuous operation at the gym</td><td style="padding: 10px;">3 h of real classes with 4 pods + 1,000 punches</td><td style="padding: 10px;">0 resets, 0 lost events, load cell gain change ≤ 5%</td><td style="padding: 10px;">PR-02 (partial) and IR-02</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>How T4 Is Calculated, with Our Numbers</h4>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">Assumptions (the team replaces them with the measured discharge):
+  1,800 mAh 18650 cell (the prototype's); usable down to the
+  3.40 V cutoff ≈ 1,500 mAh [Estimated]
+  PDS target (PR-01): ≥ 3 h  →  maximum draw = 1,500 / 3 = 500 mA
+
+PDS profile, gateway pod (the worst-case role):
+  LED arc: 326 mA measured (cyan at 100%) × 40% brightness
+           × 30% of the time on                              =  39 mA
+  LEDs off: 18 × ≈ 0.6 mA                                    =  11 mA [Estimated]
+  ESP32 with BLE + ESP-NOW + sensors: 133 mA at 3.3 V, going
+  through the AMS1117 (5 V) and the MT3608 from 3.7 V at 85% efficiency:
+           133 × 5 / (3.7 × 0.85)                            = 211 mA
+  Average draw                                               = 261 mA
+
+Battery life = 1,500 mAh / 261 mA = 5.7 h  →  complies (&gt; 3 h)
+With the batch cell (2,200 mAh, ≈ 1,830 mAh usable)          = 7.0 h</pre>
+</div>
+        <p><strong>Takeaway:</strong> the ESP32 accounts for 81% of the draw, and the MT3608 + AMS1117 path wastes energy. If T4 falls short, the first lever is a low-dropout regulator running straight from the battery, not a bigger cell.</p>
+
+        <h4>Definition of Done</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Condition</th><th style="padding: 10px;">How Lumetriq Meets It</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The hardware works without the laptop</strong></td><td style="padding: 10px;">Its own battery, and the gateway runs the session without the phone</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 To be tested</span> with the complete pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>App deployed or as an APK</strong></td><td style="padding: 10px;">Android APK built with EAS; iPhone via TestFlight if time allows</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Landing page published</strong></td><td style="padding: 10px;">GitHub Pages, on the same course site</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span>: built, not yet published</td></tr>
+                <tr><td style="padding: 10px;"><strong>Data flows from the sensor to the screen without intervention</strong></td><td style="padding: 10px;">Punch → pod → gateway → app, with ACK and resend</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span>: Week A checkpoint</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>If it doesn't fully integrate:</strong> we document what works, what doesn't, and at which boundary it fails, with that boundary's log.</p>
+
+        <h4>Prompt 1 with Our Data (Run at Home)</h4>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre-wrap; background: none; border: none;">Name and what it does: Lumetriq. Wall-mounted pods for boxing and HIIT
+  that light up, measure reaction time and the force of each punch,
+  and build a group leaderboard that carries over between classes.
+Architecture (Week 5): an ESP32 in each pod; 4 load cells + ADS1220 and
+  an ADXL375 over SPI; pods talk to each other over ESP-NOW on a fixed
+  channel; a gateway pod runs the session and talks to the app (React
+  Native + SQLite) over BLE GATT; the app syncs with Supabase over HTTPS,
+  and an Edge Function calls the LLM only to write the recommendation.
+PDS requirements: FR-01 inter-pod offset ≤ 10 ms; FR-02 reaction time
+  ±5 ms; FR-03 force 50–1,750 N with ±15%; FR-04 100% of events with
+  60 s BLE dropouts; PR-01 ≥ 3 h.
+What already works on its own: the 18-LED arc (measured draw); the
+  landing page; the PCB design; [the team fills in: ADS1220 with load cells].
+What we have never tested together: the complete pod with radio and LEDs
+  at the same time; ESP-NOW + BLE on the gateway; the app with real events.</pre>
+</div>
+
+        <!-- Section 3: User Testing -->
+        <h2>3. User Testing</h2>
+
+        <h3>The 30-Minute Protocol, Adapted to Lumetriq</h3>
+        <p><strong>Who:</strong> five people. Three from the segment (coaches or owners of boxing and HIIT gyms in Puebla; ideally the ones who left their details in the Week 8 business prototype) and two from another team in the course.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Min</th><th style="padding: 10px;">What Happens</th><th style="padding: 10px;">What Is Observed</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>0–3</strong></td><td style="padding: 10px;">Fixed script: "We're testing the product, not you. Please think out loud."</td><td style="padding: 10px;">Nothing about the product is explained</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3–10</strong></td><td style="padding: 10px;">Task 1: place 2 pods on their plates (already mounted on a board), turn them on, and pair them with the app</td><td style="padding: 10px;">Can they do it without help? Do they put the light arc on top? Time, errors, doubts</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>10–20</strong></td><td style="padding: 10px;">Task 2: run "Follow the Light" for one minute with another person and say who won and what the force means</td><td style="padding: 10px;">Do they understand the leaderboard and the newtons? Do they know which pod to hit without asking?</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>20–25</strong></td><td style="padding: 10px;">Task 3: find the price on the landing page and register their interest on the form</td><td style="padding: 10px;">Do they find the price? Do they complete the form?</td></tr>
+                <tr><td style="padding: 10px;"><strong>25–30</strong></td><td style="padding: 10px;">Closing interview</td><td style="padding: 10px;">What they expected, what was hard, how much they would pay, and which coach they would recommend it to</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Observer rules:</strong> don't help, don't explain, don't defend the design. If the user gets stuck, note the minute and wait 30 s. If they ask "what does this do?", answer "what did you expect it to do?". Ask about commitments, not opinions: "Did you leave your phone number for the pilot?" instead of "Would you like it?".</p>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Log per Task</th><th style="padding: 10px;">User 1</th><th style="padding: 10px;">User 2</th><th style="padding: 10px;">User 3</th><th style="padding: 10px;">User 4</th><th style="padding: 10px;">User 5</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Completed without help?</strong></td><td colspan="5" rowspan="5" style="padding: 10px; text-align: center; vertical-align: middle;">[To be filled in during Work Week B]</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Time</strong></td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Errors and doubts</strong></td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>SEQ (1–7)</strong></td></tr>
+                    <tr><td style="padding: 10px;"><strong>Verbatim quote</strong></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Severity:</strong> <span style="color: #DC3545;">🔴 critical</span> if it prevents finishing the task (for example, they can't pair the pods), and it is fixed first; <span style="color: #ff9900;">🟡 major</span> if they finish with help or with a recoverable error; <span style="color: #28A745;">🟢 minor</span> if it is an annoyance with no consequence. The synthesis is done with Prompt 2 from class: a table per task, findings by severity, three high-impact, low-effort changes, what the sample does not allow us to conclude, and the business signal, separating commitments from opinions.</p>
+
+        <!-- Section 4: Go-to-Market -->
+        <h2>4. Go-to-Market: Early Adopters and Channels</h2>
+
+        <h3>The First 20 Gyms</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Trait</th><th style="padding: 10px;">What It Looks Like for Lumetriq</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Has acute pain</strong></td><td style="padding: 10px;">A coach who owns a small boxing or HIIT gym, teaches the classes personally, and has lost members in recent months</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Has already tried to solve it</strong></td><td style="padding: 10px;">Uses cones, a whistle, timer apps, or runs challenges with prizes so members come back</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Has decision-making power</strong></td><td style="padding: 10px;">Is the owner or operator: buys without asking permission. That is why chains were left out of the SAM in Week 4</td></tr>
+                <tr><td style="padding: 10px;"><strong>Talks to others like them</strong></td><td style="padding: 10px;">Boxing coaches know each other through tournaments, exhibitions, and social media. The leaderboard across gyms is a reason to recommend it</td></tr>
+            </tbody>
+        </table>
+</div>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>Customer number 1: we can't name them yet. By the rule from class, today we have a market, not a launch strategy. The first name will come from the 10 visits of the Week 8 business prototype.</em>
+        </blockquote>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Channel</th><th style="padding: 10px;">When It Suits Lumetriq</th><th style="padding: 10px;">What We Learn</th><th style="padding: 10px;">Risk</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Direct sales with an in-gym demo</strong></td><td style="padding: 10px;">The first 20 gyms</td><td style="padding: 10px;">Objections, real installation, and which mode they use</td><td style="padding: 10px;">2.5 h per demo; it doesn't scale</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Boxing and fitness equipment store</strong></td><td style="padding: 10px;">When the gym already buys gloves and heavy bags there</td><td style="padding: 10px;">What the salesperson at the counter says</td><td style="padding: 10px;">They ask for a commission, and the year 1 margin is 11.6%: it doesn't stretch that far today</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Landing page with pre-registration</strong></td><td style="padding: 10px;">Starting now, before manufacturing</td><td style="padding: 10px;">Whether an owner leaves their details for a promise and a price</td><td style="padding: 10px;">Without a video of the working pod, it converts poorly</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Boxing tournaments and exhibitions</strong></td><td style="padding: 10px;">A strong visual demo: a reaction challenge with a live leaderboard</td><td style="padding: 10px;">Whether coaches recommend it to each other</td><td style="padding: 10px;">Requires rugged pods and a challenge that can be set up in minutes</td></tr>
+                <tr><td style="padding: 10px;"><strong>Crowdfunding</strong></td><td style="padding: 10px;">Not for now</td><td style="padding: 10px;">—</td><td style="padding: 10px;">Lumetriq sells to gyms, not to the public; it forces delivery by a fixed date</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Charging before delivering:</strong> during the course, we only measure intent (pre-registration with a visible price). A deposit creates tax and delivery obligations; we will get advice before asking for one.</p>
+
+        <!-- Section 5: Unit Economics -->
+        <h2>5. Unit Economics: CAC, LTV, Churn, and Payback</h2>
+
+        <h3>Prompt 3 with the Week 7 Numbers</h3>
+        <p><strong>Adaptation:</strong> the example from class charges a monthly fee and subsidizes the hardware. Lumetriq sells the package as a one-time payment with the subscription included, so (1) the customer is the gym, (2) the hardware is not subsidized, and the investment per customer is just the CAC, (3) the LTV comes from the initial purchase plus repeat purchases, and (4) "churn" is a gym that stops using the app and stops buying. Since the app keeps working without charging, the cloud and AI cost is subtracted over the customer's entire lifetime.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">DATA CARRIED OVER FROM WEEK 7 (year 1)
+  Price per package before VAT                                = $5,172.41
+  Components + equipment per package (4,000 + 36)             = $4,036.00
+  Cloud + AI per package per year (AI 54.84 + server 5,610/300) = $73.54
+  Typical purchase: 3 packages per gym (Week 4)
+  Advertising: 10% of the price = $600 per package
+  The team's hourly rate (Week 7)                             = $195/h
+
+ASSUMPTIONS (measured in the pilot)
+  Close rate: 1 in 3 demos
+  Each demo, including travel: 2.5 h
+  Travel expenses and samples per closed gym: $300
+  Annual churn (leaves the app and stops buying): 30%
+  Repeat purchase: 1 package per year while the gym stays active
+
+CALCULATION
+  Average lifetime = 1 ÷ 0.30                                 = 3.33 years
+  Service over the lifetime = 73.54 × 3.33                    = $245.13 per package
+  Contribution per package = 5,172.41 − 4,036 − 245.13        = $891.28
+  Packages per gym = 3 + (3.33 − 1)                           = 5.33
+  LTV = 891.28 × 5.33                                         = $4,753
+  CAC = 3 demos × 2.5 h × $195 + $300 + 3 × $600              = $3,562.50
+  Investment per customer = CAC (the gym pays for the hardware) = $3,562.50
+  LTV ÷ investment = 4,753 ÷ 3,562.50                         = 1.33
+  Payback: the initial purchase leaves 3 × 891.28 = $2,673.84; the
+  remaining $888.66 comes with the first repeat purchase (year 2) ≈ 12 months</pre>
+</div>
+        <p><strong>Takeaway:</strong> payback lands right at the 12-month limit, but the LTV ÷ investment ratio of 1.33 is far from 3. <span style="color: #DC3545;">With these assumptions, the model doesn't work.</span> This is the information we want to have before manufacturing 300 packages.</p>
+
+        <h4>Which Lever Moves It Most (Each Input Changed by 25% Separately)</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">25% Change</th><th style="padding: 10px;">LTV ÷ Investment</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Base case</strong></td><td style="padding: 10px;">1.33</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Price rises to $7,500 per package</strong></td><td style="padding: 10px;"><span style="color: #28A745;">2.90</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Price drops to $4,500</strong></td><td style="padding: 10px;"><span style="color: #DC3545;">−0.69</span> (every package loses money)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Churn drops from 30% to 22.5%</strong></td><td style="padding: 10px;">1.46</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Churn rises from 30% to 37.5%</strong></td><td style="padding: 10px;">1.23</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>CAC drops to $2,672</strong></td><td style="padding: 10px;">1.78</td></tr>
+                <tr><td style="padding: 10px;"><strong>CAC rises to $4,453</strong></td><td style="padding: 10px;">1.07</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Price</strong> moves everything, because the margin per package is thin; <strong>CAC</strong> comes next, and <strong>churn</strong> last. Churn matters little because every year the gym stays active also costs $73.54 in cloud and AI per package: the included subscription ($1,000) covers ≈ 13 years of that cost.</p>
+
+        <h4>Combined Levers, with Business Logic</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Scenario</th><th style="padding: 10px;">CAC</th><th style="padding: 10px;">LTV</th><th style="padding: 10px;">LTV ÷ Investment</th><th style="padding: 10px;">Payback</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Base case</strong></td><td style="padding: 10px;">$3,563</td><td style="padding: 10px;">$4,753</td><td style="padding: 10px;">1.33</td><td style="padding: 10px;">≈ 12 months</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Referrals between coaches: close 1 in 2 demos, $200 travel, 5% advertising</strong></td><td style="padding: 10px;">$2,075</td><td style="padding: 10px;">$4,753</td><td style="padding: 10px;">2.29</td><td style="padding: 10px;">At purchase: the initial purchase covers the CAC</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Less churn (30% → 20%) thanks to the leaderboard between classes</strong></td><td style="padding: 10px;">$3,563</td><td style="padding: 10px;">$5,381</td><td style="padding: 10px;">1.51</td><td style="padding: 10px;">≈ 24 months</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Referrals + less churn</strong></td><td style="padding: 10px;">$2,075</td><td style="padding: 10px;">$5,381</td><td style="padding: 10px;">2.59</td><td style="padding: 10px;">At purchase</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>$6,500 price (the business case's year 2 price) + referrals</strong></td><td style="padding: 10px;"><strong>$2,150</strong></td><td style="padding: 10px;"><strong>$7,052</strong></td><td style="padding: 10px;"><strong>3.28</strong></td><td style="padding: 10px;"><strong>At purchase</strong></td></tr>
+                <tr><td style="padding: 10px;"><strong>$6,500 price + referrals + less churn</strong></td><td style="padding: 10px;">$2,150</td><td style="padding: 10px;">$8,398</td><td style="padding: 10px;">3.91</td><td style="padding: 10px;">At purchase</td></tr>
+            </tbody>
+        </table>
+</div>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>What would have to be true for the business to work: a gym accepts $6,500 per package, and half of the sales come from another coach's recommendation. That is what the pilot measures; we did not tweak the numbers until they came out right.</em>
+        </blockquote>
+        <p><strong>Advantage of a one-time payment:</strong> with a monthly fee, payback depends on the customer not canceling. With a one-time payment, as soon as the initial purchase covers the CAC, the gym has paid for its own acquisition on the day it buys.</p>
+
+        <!-- Section 6: Landing -->
+        <h2>6. The Landing Page and Launch Content</h2>
+
+        <h3>Our Landing Page Against the Anatomy from Class</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Element</th><th style="padding: 10px;">Current State</th><th style="padding: 10px;">Status</th><th style="padding: 10px;">Change</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Headline</strong></td><td style="padding: 10px;">"Golpea cuando se encienda" ("Hit when it lights up"): it describes the action, not the value proposition</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Adjust</span></td><td style="padding: 10px;">"A reaction challenge your students want to repeat, with a leaderboard that keeps going week after week" (Week 4, version 3)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Main visual</strong></td><td style="padding: 10px;">An interactive drawing of the pod with a reaction test in the browser</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Adjust</span></td><td style="padding: 10px;">A photo of the pod mounted in a gym with someone punching it</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Three benefits</strong></td><td style="padding: 10px;">The circuit runs itself; time and force per punch; a leaderboard that carries over between classes</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span></td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Short demo</strong></td><td style="padding: 10px;">There is no video</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Missing</span></td><td style="padding: 10px;">A 30 s video: mount, turn on, punch, see the leaderboard</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Evidence</strong></td><td style="padding: 10px;">Two real quotes from the Week 4 interviews</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span></td><td style="padding: 10px;">Add a quote from the user tests</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Visible price</strong></td><td style="padding: 10px;">$6,000 for 4 pods with VAT and $18,000 for a 12-pod circuit</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Meets</span></td><td style="padding: 10px;">—</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>A single CTA</strong></td><td style="padding: 10px;">Three actions (book a demo, see how it works, get a quote), and the button opens email</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Adjust</span></td><td style="padding: 10px;">A single button, "I want a demo," that opens a Tally or Google Forms form</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Publishing</strong></td><td style="padding: 10px;">Only in the project files</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Missing</span></td><td style="padding: 10px;">GitHub Pages</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Metadata</strong></td><td style="padding: 10px;">Title and description</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Adjust</span></td><td style="padding: 10px;">Add Open Graph tags (og:title, og:description, og:image) for WhatsApp</td></tr>
+                <tr><td style="padding: 10px;"><strong>Measurement</strong></td><td style="padding: 10px;">No counter</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 Missing</span></td><td style="padding: 10px;">Visits, CTA clicks, and pre-registrations: the demand funnel</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Three Launch Posts</h4>
+        <ol>
+            <li><strong>The problem:</strong> a boxing coach describes how they act as the traffic light in class, with their verbatim quote (from the user tests).</li>
+            <li><strong>The product in use:</strong> the 30 s video: the pod is mounted, the light turns on, a student punches, and their name appears on the leaderboard.</li>
+            <li><strong>How it is built:</strong> the floating plate on 4 load cells, the steel plates, and the LED arc measured on the bench, including what failed.</li>
+        </ol>
+
+        <!-- Section 7: Regulation -->
+        <h2>7. Minimum Viable Regulation</h2>
+
+        <h3>Regulatory Checklist (Prompt 4)</h3>
+        <p>We are not lawyers: this table is a verification roadmap. <strong>VERIFIED</strong> items include a link to the source; <strong>TO VERIFY</strong> items must be confirmed before selling to a third party.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Topic</th><th style="padding: 10px;">Does It Apply?</th><th style="padding: 10px;">What It Requires and the Resulting Document</th><th style="padding: 10px;">Who Issues It</th><th style="padding: 10px;">Cost and Time</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Radio and certification</strong></td><td style="padding: 10px;">Yes: BLE and ESP-NOW at 2.4 GHz</td><td style="padding: 10px;">A certificate of conformity for the product and its marking. The certified ESP32-WROOM module makes the process easier but does not replace it. The authority is moving from the IFT to the Telecommunications Regulatory Commission (CRT); the IFT guidelines remain in force in the meantime</td><td style="padding: 10px;">CRT, with tests by a certification body</td><td style="padding: 10px;">No verified data</td><td style="padding: 10px;">TO VERIFY (<a href="https://tuv.com/ae-en/market-access-services/regulations-and-standards/mexico-instituto-federal-de-telecomunicaciones-ift-transition-to-comision-de-19451" target="_blank">IFT → CRT transition, TÜV</a>)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Personal data</strong></td><td style="padding: 10px;">Yes: the student's name, results, and the coach's contact details</td><td style="padding: 10px;">A privacy notice (full, plus a simplified one in the app) from the moment data is collected. Health data is sensitive: the pain-reported field requires explicit consent or is removed. Minors: consent from a guardian</td><td style="padding: 10px;">Lumetriq drafts it; authority: Ministry of Anti-Corruption and Good Governance</td><td style="padding: 10px;">No filing cost</td><td style="padding: 10px;">VERIFIED: <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank">LFPDPPP, DOF 03/20/2025</a></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Safety and labeling</strong></td><td style="padding: 10px;">Yes</td><td style="padding: 10px;">A label with the model, manufacturer, and warranty. The pod charges via USB-C at 5 V and does not connect to the grid: we need to confirm whether any electrical safety NOM applies</td><td style="padding: 10px;">Certification body</td><td style="padding: 10px;">No verified data</td><td style="padding: 10px;">TO VERIFY</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Lithium battery</strong></td><td style="padding: 10px;">Yes: an 18650 inside the pod</td><td style="padding: 10px;">Shipping conditions for lithium batteries contained in equipment, and a branded cell with protection (CR-02)</td><td style="padding: 10px;">Courier</td><td style="padding: 10px;">No verified data</td><td style="padding: 10px;">TO VERIFY</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Software and AI model licenses</strong></td><td style="padding: 10px;">Yes</td><td style="padding: 10px;">Commercial use of React Native, ESP-IDF or the Arduino core, NimBLE, and Supabase; commercial terms of the LLM API</td><td style="padding: 10px;">Each repository's license file and each API's terms</td><td style="padding: 10px;">No cost</td><td style="padding: 10px;">TO VERIFY (review the LICENSE file of each dependency)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Sales and consumer terms</strong></td><td style="padding: 10px;">Yes, even though the customer is a business</td><td style="padding: 10px;">Terms of service, a written warranty (6 months proposed), and a return policy</td><td style="padding: 10px;">Lumetriq; authority: PROFECO</td><td style="padding: 10px;">No filing cost</td><td style="padding: 10px;">TO VERIFY</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Circular economy</strong></td><td style="padding: 10px;">Yes, once SEMARNAT publishes the EPR agreement for electronics</td><td style="padding: 10px;">A management plan and producer responsibility through end of life (Week 8)</td><td style="padding: 10px;">SEMARNAT</td><td style="padding: 10px;">No verified data</td><td style="padding: 10px;">VERIFIED: <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGEC.pdf" target="_blank">General Law on the Circular Economy, DOF 01/19/2026</a></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Export</strong></td><td style="padding: 10px;">Not for now</td><td style="padding: 10px;">FCC (U.S.) and CE marking (European Union)</td><td style="padding: 10px;">—</td><td style="padding: 10px;">—</td><td style="padding: 10px;">Not applicable</td></tr>
+                <tr><td style="padding: 10px;"><strong>Trademark</strong></td><td style="padding: 10px;">Yes</td><td style="padding: 10px;">A phonetic search for "Lumetriq" and registration in the class for training equipment</td><td style="padding: 10px;">IMPI</td><td style="padding: 10px;">No verified data</td><td style="padding: 10px;">TO VERIFY</td></tr>
+            </tbody>
+        </table>
+</div>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Allowed During a 5–10 Pod Market Test</th>
+                        <th style="padding: 10px;">Must Be Resolved Before Selling to a Third Party</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding: 10px;">Lending pods to pilot gyms as an academic prototype, with no sale (CR-02)<br>A privacy notice and signed consent from each participant<br>Pre-registrations with no charge</td>
+                        <td style="padding: 10px;">Certification of the product with a radio<br>A privacy notice published in the app<br>Sales terms, warranty, and invoicing<br>Trademark registration in progress</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><em>No official source separates the two lists: the split is our own judgment, and we will confirm it with the certification body.</em></p>
+
+        <!-- Section 8: Pitch -->
+        <h2>8. The 3-Minute Pitch</h2>
+
+        <h3>Script (Prompt 5 with Our Material)</h3>
+        <p><strong>1. Impact and problem.</strong> Think of a boxing coach in Puebla, like the ones we interviewed. To train reflexes, he shouts, claps, and points at cones. While he's busy being the traffic light, he isn't correcting technique, and nobody takes a number home. Every student who gets bored and leaves costs the gym 850 pesos a month. The administrator we interviewed summed it up: today, everything is free. The problem isn't measuring: it's getting students to want to come back.</p>
+        <p><strong>2. Solution and why us.</strong> Lumetriq is a set of pods that bolt to the wall. The light tells you where to punch, and every punch gives you reaction time and force. The group leaderboard carries over from week to week, so it's worth coming back. Cones don't keep score, and the light pods that already exist don't measure force or keep a leaderboard between classes. In the demo, you'll see it react live.</p>
+        <p><strong>3. Market and model.</strong> In Mexico, there are 2,939 gyms and studios that could buy it, and 1,131 of them are within our reach. We sell 4-pod packages for 6,000 pesos, with the app included and no monthly fee. Three packages cost less than what two students pay in a year. With 800 packages in two years, the project is worth 1.4 million pesos today, and the investor gets back 2.1 times what they put in.</p>
+        <p><strong>4. Traction.</strong> We interviewed four people from gyms, and the same thing came up in all four interviews: making training more fun. The prototype already has its circuit board and a measured light arc, and at that draw, one battery lasts more than three hours. We don't have pre-registrations yet. Our per-customer economics come to 1.3 against a target of 3, and we know what moves it: price and referrals between coaches.</p>
+        <p><strong>5. Team.</strong> We are three engineering students at Ibero Puebla: hardware, app, and business. We designed, built, and calculated all of this, and we don't take a salary: we are partners.</p>
+        <p><strong>6. The ask and close.</strong> We're asking for three boxing gyms in Puebla for a 30-day pilot, with one package each. We'll measure the only thing we're still missing: how many buy after trying it and how many recommend us. The coach doesn't need another timer. He needs his students to want to come back.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Part</th><th style="padding: 10px;">Words</th><th style="padding: 10px;">Spoken Seconds (130 per Minute)</th><th style="padding: 10px;">Budget</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1. Impact and problem</strong></td><td style="padding: 10px;">74</td><td style="padding: 10px;">34.2</td><td style="padding: 10px;">35 s · 76</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2. Solution and why us</strong></td><td style="padding: 10px;">70</td><td style="padding: 10px;">32.3</td><td style="padding: 10px;">35 s · 76</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3. Market and model</strong></td><td style="padding: 10px;">67</td><td style="padding: 10px;">30.9</td><td style="padding: 10px;">35 s · 76</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4. Traction</strong></td><td style="padding: 10px;">71</td><td style="padding: 10px;">32.8</td><td style="padding: 10px;">35 s · 76</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>5. Team</strong></td><td style="padding: 10px;">25</td><td style="padding: 10px;">11.5</td><td style="padding: 10px;">15 s · 32</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>6. The ask and close</strong></td><td style="padding: 10px;">47</td><td style="padding: 10px;">21.7</td><td style="padding: 10px;">25 s · 54</td></tr>
+                <tr style="background-color: #f4f4f4;"><td style="padding: 10px;"><strong>Total</strong></td><td style="padding: 10px;"><strong>354</strong></td><td style="padding: 10px;"><strong>163.4 (2:43)</strong></td><td style="padding: 10px;"><strong>180 s · 390</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p style="font-size: 0.9em;"><em>Word counts are for the original Spanish script, which is the one delivered in the presentation.</em></p>
+        <p>That leaves ≈ 17 s of breathing room for pauses. The script avoids "innovative," "platform," "end-to-end solution," and "revolutionary"; it opens and closes with the same coach; and the only admission is the 1.3 per-customer economics.</p>
+
+        <h4>(a) Claims That Don't Have Evidence Yet</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Claim in the Script</th><th style="padding: 10px;">Status</th><th style="padding: 10px;">How It Gets Closed</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>"850 pesos a month" per student</strong></td><td style="padding: 10px;">PENDING: Week 7 assumption</td><td style="padding: 10px;">Ask about the monthly fee during the 10 visits in Week 8</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>"One battery lasts more than three hours"</strong></td><td style="padding: 10px;">PENDING: calculated from the measured draw</td><td style="padding: 10px;">T4 full-discharge test</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>"We don't have pre-registrations yet"</strong></td><td style="padding: 10px;">True today</td><td style="padding: 10px;">Replace it with the real figure after the visits</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Team roles</strong></td><td style="padding: 10px;">PENDING</td><td style="padding: 10px;">Confirm who handles hardware, app, and business</td></tr>
+                <tr><td style="padding: 10px;"><strong>"Three boxing gyms in Puebla"</strong></td><td style="padding: 10px;">PENDING</td><td style="padding: 10px;">Name them once there are letters of intent</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>(b) The Jury's Hardest Questions</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Where the Answer Is</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>How much does it cost to make a pod, and how do you know?</strong></td><td style="padding: 10px;">A $1,000 BOM quoted in batches of 100 (Week 7) and the DFM review: $1,513 with assembly and overhead (Week 8)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Why doesn't BlazePod do this?</strong></td><td style="padding: 10px;">The competitive map and Blue Ocean canvas (Week 4): BlazePod sells to the session and the individual user; measuring force requires a floating plate with load cells, which is a different mechanism</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What happens if the AI API price goes up?</strong></td><td style="padding: 10px;">Weeks 5 and 7: the AI only writes text, it is 1.2% of the unit cost, and the app falls back to templates if it fails</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>How many packages do you need to avoid losing money?</strong></td><td style="padding: 10px;">Break-even point (Week 7): 19 packages in year 1 and 174 in year 2</td></tr>
+                <tr><td style="padding: 10px;"><strong>What makes a gym buy again?</strong></td><td style="padding: 10px;">This week: an assumed 30% churn and a repeat purchase of 1 package per year; the pilot measures it</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Practice in pairs:</strong> parts 1, 2, and 6 out loud (≈ 90 s); the other team answers "what did I understand?" and "what didn't I believe?". The pitch is recorded on video during Week B and rewritten after watching it.</p>
+
+        <!-- Section 9: Demo -->
+        <h2>9. The 7-Minute Demo</h2>
+
+        <h3>A Single Path: Install, Train, Compete, and Buy</h3>
+        <p>The jury grades the physical product (30%), the connected app (25%), and the landing page (15%). The demo covers all three and ends with the purchase. The pods don't need internet; only the AI recommendation and the landing page use the phone's hotspot.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Time</th><th style="padding: 10px;">Who Operates</th><th style="padding: 10px;">What Is Done and Said</th><th style="padding: 10px;">Plan B</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>0:00 – 0:45</strong></td><td style="padding: 10px;">Narrator</td><td style="padding: 10px;">Holds up a pod. "Today, the coach acts as the traffic light. This runs the circuit and keeps score. I'm going to show you the full path: install, train, compete, and buy it."</td><td style="padding: 10px;">Photo of the mounted pod</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>0:45 – 3:15</strong></td><td style="padding: 10px;">Operator</td><td style="padding: 10px;">Places 2 pods on their plates, already mounted on a board; turns them on and pairs them by punching each one. Starts "Follow the Light," and a volunteer from the jury punches. The app, projected, shows time and force in under 1 s. Narrator: "in a class it's 12 pods; today we brought two."</td><td style="padding: 10px;">90 s backup video</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3:15 – 4:45</strong></td><td style="padding: 10px;">Operator</td><td style="padding: 10px;">Trigger the event: the volunteer punches softly and then hard. The newtons change, the leaderboard reorders, and the recommendation is written from those metrics. The input (the round's metrics) and the output (the recommendation) are shown.</td><td style="padding: 10px;">Preloaded data and video</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4:45 – 5:45</strong></td><td style="padding: 10px;">Operator</td><td style="padding: 10px;">Handled failure: turns off the phone's Bluetooth for 20 s while the volunteer keeps punching. The pods keep going, because the gateway runs the session. The app shows "offline, last data 20 s ago"; on reconnecting, it recovers the punches by <code>seq</code> without losing any.</td><td style="padding: 10px;">Video of test T3</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>5:45 – 6:30</strong></td><td style="padding: 10px;">Narrator</td><td style="padding: 10px;">Printed QR code: the jury opens the landing page on their phones and sees the proposition, the $6,000 price for 4 pods, and the button. A team member pre-registers, and the entry is shown arriving in the registration sheet.</td><td style="padding: 10px;">Screenshot of the landing page and the sheet</td></tr>
+                <tr><td style="padding: 10px;"><strong>6:30 – 7:00</strong></td><td style="padding: 10px;">Narrator</td><td style="padding: 10px;">"This is what works today. Still to come: the 10,000-punch test and validating the price with owners. Next step: the pilot at 3 gyms."</td><td style="padding: 10px;">None: voice only</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Shortcuts stated out loud:</strong> 2 pods instead of 12; the board stands in for the wall; the volunteer punches with a bag glove, not a fight glove.</p>
+
+        <h4>Checklist 15 Minutes Before</h4>
+        <ol>
+            <li>Pods and phone charged; a backup USB-C cable.</li>
+            <li>Plates mounted on the board and a glove for the volunteer.</li>
+            <li>Firmware frozen, with the version written down.</li>
+            <li>Test leaderboard cleared.</li>
+            <li>Phone hotspot tested (for the AI and the landing page).</li>
+            <li>App installed, with the session logged in.</li>
+            <li>Landing page open in a tab and QR code printed.</li>
+            <li>Backup videos on the phone and the laptop.</li>
+            <li>Phone projection tested and a visible timer.</li>
+        </ol>
+        <p><strong>What we don't do:</strong> depend on the room's Wi-Fi, configure things live, change firmware on evaluation day, open code unless asked, or fill time with secondary modes.</p>
+
+        <!-- Section 10: Closing Roadmap -->
+        <h2>10. Closing Roadmap</h2>
+
+        <h3>Backward Plan for the Two Working Weeks</h3>
+        <p>Owners by role: <strong>H</strong> = hardware and firmware, <strong>A</strong> = app and cloud, <strong>B</strong> = business and landing page. <em>[Assign each team member's name.]</em></p>
+        <div class="table-wrapper">
+            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
+                        <th style="padding: 10px;">Week</th><th style="padding: 10px;">Task</th><th style="padding: 10px;">Owner</th><th style="padding: 10px;">Reference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #eee;"><td rowspan="6" style="padding: 10px; vertical-align: top;"><strong>A: Build and connect</strong></td><td style="padding: 10px;">Complete pod assembled with the Week 8 assembly improvements</td><td style="padding: 10px;">H</td><td style="padding: 10px;">DFM, Week 8</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">App connected to the gateway and APK built</td><td style="padding: 10px;">A</td><td style="padding: 10px;">Prompt 6</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Landing page with a single CTA, form, and Open Graph, published on GitHub Pages</td><td style="padding: 10px;">B</td><td style="padding: 10px;">Prompt 6</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Tests T1 to T3 passed</td><td style="padding: 10px;">H + A</td><td style="padding: 10px;">Prompt 1</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Regulatory checklist delivered</td><td style="padding: 10px;">B</td><td style="padding: 10px;">Prompt 4</td></tr>
+                    <tr style="border-bottom: 1px solid #eee; background-color: #f4f8ff;"><td colspan="3" style="padding: 10px;"><strong>Checkpoint:</strong> the punch reaches the screen without anyone intervening</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td rowspan="6" style="padding: 10px; vertical-align: top;"><strong>B: Test, fix, and tell the story</strong></td><td style="padding: 10px;">5 user tests, 2 of them cross-tests with another team</td><td style="padding: 10px;">B</td><td style="padding: 10px;">Prompt 2</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Tests T4 to T6 and critical fixes</td><td style="padding: 10px;">H + A</td><td style="padding: 10px;">Prompt 1</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Pitch recorded, reviewed, and rewritten</td><td style="padding: 10px;">Everyone</td><td style="padding: 10px;">Prompt 5</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">Demo rehearsed 3 times with a timer and backup videos</td><td style="padding: 10px;">Everyone</td><td style="padding: 10px;">Section 9</td></tr>
+                    <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">README, updated architecture diagram, user manual, and sections 17 to 22 of the final page</td><td style="padding: 10px;">Everyone</td><td style="padding: 10px;">Final project guide</td></tr>
+                    <tr style="background-color: #f4f8ff;"><td colspan="3" style="padding: 10px;"><strong>Freeze:</strong> after the last rehearsal, only critical bugs are fixed</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Rules:</strong> one commit per work session in the repository, with a README; if we get stuck at a boundary, we ask for help with that boundary's log in hand.</p>
+
+        <!-- Section 11: Build Prompts -->
+        <h2>11. Build Prompts (Prompt 6)</h2>
+
+        <h3>The Real Data Format and the App's Build Order</h3>
+        <p>The format comes from the <code>EVT</code> message in the Week 5 architecture. It is the example pasted into every prompt so the coding model doesn't invent the format.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre; background: none; border: none;">{"kit_id":"A3F2","dev_id":"pod-3","boot_id":17,"seq":57,
+ "stim_id":57,"rt_ms":243,"peak_g":61.4,"force_n":812,
+ "flags":["ok"],"batt_v":3.86,"t_pod_us":184230117}</pre>
+</div>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">#</th><th style="padding: 10px;">Build Prompt (React Native)</th><th style="padding: 10px;">Criterion to Move On</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>1</strong></td><td style="padding: 10px;">Home screen with simulated data: reaction ring, punches, average force, and the pods with their status</td><td style="padding: 10px;">Shows all 5 states (loading, normal, alert, offline, error) with a test selector</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>2</strong></td><td style="padding: 10px;">Group leaderboard and history in SQLite, with simulated data</td><td style="padding: 10px;">The weekly leaderboard persists after closing the app</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>3</strong></td><td style="padding: 10px;">The 3-step installation flow from Week 6</td><td style="padding: 10px;">A person from another team follows it without asking</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>4</strong></td><td style="padding: 10px;">BLE connection to the gateway: reading <code>Status</code> and <code>Events</code> notifications, with an ESP32 sending fake events</td><td style="padding: 10px;">100 events arrive and 0 are duplicated by (dev_id, boot_id, seq)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>5</strong></td><td style="padding: 10px;">ACK, resend from <code>seq</code>, and the "last data N s ago" state</td><td style="padding: 10px;">With a 60 s dropout, no event is missing (FR-04)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>6</strong></td><td style="padding: 10px;">Sync with Supabase and the recommendation via the Edge Function, with a template if it fails</td><td style="padding: 10px;">T5 passed</td></tr>
+                <tr><td style="padding: 10px;"><strong>7</strong></td><td style="padding: 10px;">Connection to the real pod and the "Follow the Light" routine</td><td style="padding: 10px;">T2 and T3 passed with the pod</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Landing page (v0 or Framer):</strong> sections in this order: headline with version 3, 30 s video, three benefits, a real quote, the price, and a single CTA with a form; title, description, and Open Graph metadata. The value proposition is pasted as is, without rewriting it.</p>
+
+        <h4>Five Vibe-Coding Mistakes with Hardware, and How We Avoid Them</h4>
+        <ol>
+            <li><strong>Letting the model invent the data format:</strong> every prompt includes the real JSON above.</li>
+            <li><strong>Testing only with perfect data:</strong> the simulator sends duplicate and out-of-order events, and dropouts.</li>
+            <li><strong>Letting the app run the routine:</strong> in Lumetriq, the gateway runs it; the prompt says "the app does not send stimuli."</li>
+            <li><strong>Showing old data as current:</strong> every screen shows the data's timestamp and the offline state.</li>
+            <li><strong>Putting the AI key in the app:</strong> it goes in the Edge Function (Week 5), never on the phone.</li>
+        </ol>
+
+        <!-- Section 12: Deliverables -->
+        <h2>12. Deliverables</h2>
+
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Deliverable</th><th style="padding: 10px;">Where It Is</th><th style="padding: 10px;">Status</th></tr></thead>
+            <tbody>
+                <tr style="background-color: #f4f4f4;"><td colspan="3" style="padding: 10px;"><strong>By the end of class</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Unit economics with our own numbers</strong></td><td style="padding: 10px;">Section 5</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Done</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pitch outline with pending items marked</strong></td><td style="padding: 10px;">Section 8</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Done</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Demo script with a plan B for each segment</strong></td><td style="padding: 10px;">Section 9</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 Done</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Two-week roadmap with owners</strong></td><td style="padding: 10px;">Section 10</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Names still missing</span></td></tr>
+                <tr style="background-color: #f4f4f4;"><td colspan="3" style="padding: 10px;"><strong>Before the final evaluation</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Integrated system working</strong></td><td style="padding: 10px;">Tests T1–T6</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Report on 5 user tests</strong></td><td style="padding: 10px;">Section 3</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Landing page published</strong></td><td style="padding: 10px;">Section 6</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Regulatory checklist</strong></td><td style="padding: 10px;">Section 7</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 First version</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Pitch rehearsed and recorded</strong></td><td style="padding: 10px;">Section 8</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Demo rehearsed 3 times with a backup video</strong></td><td style="padding: 10px;">Section 9</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+                <tr><td style="padding: 10px;"><strong>Final project page, repository with README, and technical documentation</strong></td><td style="padding: 10px;">Section 10</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 Pending</span></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <!-- Section 13: Exit Questions -->
+        <h2>13. What the Team Should Be Able to Answer</h2>
+
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Question</th><th style="padding: 10px;">Answer</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>At which boundary is a failure most likely, and what log will you set up?</strong></td><td style="padding: 10px;">At the gateway, between B2 and B3: ESP-NOW and BLE share the ESP32's single radio. Log: retry counters in <code>STATUS</code> and the last <code>seq</code> per pod in SQLite.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What are your CAC, your LTV, and your LTV ÷ investment? Which lever moves it most?</strong></td><td style="padding: 10px;">CAC $3,562.50, LTV $4,753, and LTV ÷ investment of 1.33. Price is the strongest lever; at $6,500 per package and with half of the sales coming from referrals, it reaches 3.28.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Which regulatory issue could prevent you from selling, and what source confirms it?</strong></td><td style="padding: 10px;">Certification of the product with a radio, now before the CRT (TO VERIFY with a certification body). The privacy notice is VERIFIED in the LFPDPPP (DOF 03/20/2025).</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>What evidence backs each part of the pitch?</strong></td><td style="padding: 10px;">Problem and solution: the Week 4 interviews and competitive map. Market and model: Weeks 4 and 7. Traction: the interviews and the measurement of the arc. Pending: the $850 monthly fee, the measured battery life, pre-registrations, roles, and the pilot gyms.</td></tr>
+                <tr><td style="padding: 10px;"><strong>What is the demo path, which event do you trigger, and what is the plan B?</strong></td><td style="padding: 10px;">Install, train, compete, and buy. Event: a soft vs. hard punch from the jury, which changes the force, the leaderboard, and the recommendation. Failure: Bluetooth turned off for 20 s without losing punches. Plan B: backup videos for each segment.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Sources Consulted</h3>
+        <ul>
+            <li>Course instructions: <a href="https://aristarco.github.io/Proyectos4/semana9/" target="_blank">Week 9 — Integration, Go-to-Market, and Pitch</a></li>
+            <li>Chamber of Deputies: <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf" target="_blank">Federal Law on the Protection of Personal Data Held by Private Parties</a> (DOF 03/20/2025) and <a href="https://www.diputados.gob.mx/LeyesBiblio/pdf/LGEC.pdf" target="_blank">General Law on the Circular Economy</a> (DOF 01/19/2026).</li>
+            <li>IFT → CRT transition: <a href="https://tuv.com/ae-en/market-access-services/regulations-and-standards/mexico-instituto-federal-de-telecomunicaciones-ift-transition-to-comision-de-19451" target="_blank">TÜV Rheinland, market access note</a> · IFT certification guidelines: <a href="https://ift.org.mx/sites/default/files/upr-l-c-10-24.pdf" target="_blank">information sheet</a></li>
+            <li>Nielsen, J. (2000). <em>Why You Only Need to Test with 5 Users</em>. Nielsen Norman Group · Skok, D. <em>SaaS Metrics 2.0</em> · Fitzpatrick, R. (2013). <em>The Mom Test</em> · Moore, G. (1991). <em>Crossing the Chasm</em>.</li>
+            <li>Project documents: business case and BOM (Week 7), PDS v1.2 and v2 communication architecture (Week 5), concept and wireframes (Week 6), market and value proposition (Week 4), DFM review (Week 8), and the Lumetriq landing page.</li>
+        </ul>
+
+        <!-- Section 14: Reflection -->
+        <h2>14. Reflection and Key Takeaways</h2>
+        <p>
+            This week forced us to see Lumetriq as a system rather than a pod. When we drew the boundaries, we realized we have five, not four, because the pods talk to each other before they talk to the phone, and that the most fragile point is the gateway, where ESP-NOW and Bluetooth share the same radio. That is when the rule of setting up logs before you need them clicked for us: if a punch gets lost during the demo, without the sequence number we wouldn't know where. The battery life calculation with our measured draw was satisfying, because it confirms the PDS's 3 hours with our own data, and it also showed that the ESP32, not the LEDs, uses almost all the energy.
+        </p>
+        <p>
+            The unit economics were the most uncomfortable part. Adapting the formulas to a one-time payment showed us that, with our assumptions, a gym brings in 1.33 times what it costs to acquire it, far from the reference value of 3, and that the strongest lever is price, not retention. We didn't adjust the numbers until they looked good; what we learned instead is what would have to be true (a gym paying $6,500, and half of the sales coming from referrals), and that is exactly what the pilot has to measure.
+        </p>
+        <p>
+            Writing the pitch with a word limit also taught us to say only what we can back up: several good lines had to stay marked as pending because we don't have the evidence yet. Going into the final two weeks, the priority is clear: get a punch to travel from the pod to the screen on its own, and put the product in front of real gym owners.
+        </p>
+
+    </div>
+</div>
+
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				<section>
+					<h2>Get in touch</h2>
+					<form method="post" action="#">
+						<div class="fields">
+							<div class="field half">
+								<input type="text" name="name" id="name" placeholder="Name" />
+							</div>
+							<div class="field half">
+								<input type="email" name="email" id="email" placeholder="Email" />
+							</div>
+							<div class="field">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<ul class="actions">
+							<li><input type="submit" value="Send" class="primary" /></li>
+						</ul>
+					</form>
+				</section>
+				<section>
+					<h2>Follow</h2>
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/motanzo?igsh=cm8zM2NrbG1qeWJh" target="_blank" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="https://bit.ly/JoseCarlosMatanzo" target="_blank" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+						<li><a href="mailto:jcmatanzo@hotmail.com" target="_blank" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					
+				</section>
+				<ul class="copyright">
+					<li>&copy; Copyright 2026 Jose Carlos Matanzo Perez </li>
+					<li>Creative Commons Attribution Non Commercial</li>
+				</ul>
+			</div>
+		</footer>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>

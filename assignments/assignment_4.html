@@ -47,319 +47,759 @@
 			</ul>
 		</nav>
 
-		<!-- Main -->
+
 <div id="main">
     <div class="inner">
         <!-- Main Title -->
-        <h1>Assignment 4: Market Validation, Sizing & Blue Ocean Strategy</h1>
+        <h1>Assignment 4: Market, Value &amp; Value Proposition</h1>
         <p>
-            In this phase, we synthesized our user interviews to adjust our core hypotheses, mapped out the actionable market opportunity, evaluated our product using Bain's Value Pyramid, sized our market (TAM/SAM/SOM), and developed a Blue Ocean strategy canvas against our direct and indirect competitors.
+            In this phase, we synthesized our user interviews to adjust our core hypotheses, mapped out the actionable market opportunity, evaluated the product with Bain's Elements of Value pyramid, sized the market (TAM/SAM/SOM) using the 4-pod package from the Week 7 business case, built a competitive map and a Blue Ocean strategy canvas, wrote our value proposition, and critically reviewed whether our AI-generated concept actually looks like a device that can take a punch. Generative AI (Claude and Perplexity) helped us structure the analysis; every figure was checked against sources and interviews.
         </p>
 
         <!-- Section 1: Interview Conclusions -->
-        <h2>1. Interview Conclusions & Hypothesis Adjustments</h2>
-        
+        <h2>1. Interview Conclusions &amp; Hypothesis Adjustments</h2>
+
         <h3>Original Hypotheses</h3>
         <ul>
-            <li><strong>H1 (Business Model):</strong> HIIT/functional studio owners would pay $1,500-2,000 MXN/month for the software (buying pods at cost) because it automates circuit direction and increases retention. <strong>If false:</strong> the SaaS dies, and we get trapped in a hardware price war.</li>
-            <li><strong>H2 (User Experience):</strong> Group class clients prefer to be guided by LEDs and rank reaction times because gamification distracts from exhaustion better than a traditional circuit. <strong>If false:</strong> the lights add no value over a wall timer.</li>
-            <li><strong>H3 (Technical Viability):</strong> The ESP32 + tap sensors + accelerometer architecture withstands hundreds of daily impacts on walls, floors, and heavy bags without failing or losing connection over a month of commercial use. <strong>If false:</strong> the portable format is unviable, and we must revert to a fixed wired station.</li>
+            <li><strong>H1 (Business Model):</strong> HIIT/functional studio owners would pay $1,500–2,000 MXN/month for the software (buying the pods at cost) because it automates circuit direction and increases retention. <strong>If false:</strong> the SaaS dies, and we get trapped in a hardware price war.</li>
+            <li><strong>H2 (User Experience):</strong> Group class clients prefer to be guided by LEDs and to rank reaction times, because gamification distracts from exhaustion better than a traditional circuit. <strong>If false:</strong> the lights add no value over a wall timer.</li>
+            <li><strong>H3 (Technical Viability):</strong> The ESP32 + tap sensors + accelerometer architecture withstands hundreds of daily impacts on walls, floors, and heavy bags without failing or losing connection over a month of commercial use. <strong>If false:</strong> the portable format is unviable, and we must go back to a fixed wired station.</li>
         </ul>
 
         <h3>Reformulated Hypotheses</h3>
         <ul>
-            <li><strong>H1 Reformulated:</strong> "We believe a HIIT/functional studio owner currently pays for some tool or process to direct their circuits (extra instructor, timer, app) and recognizes an operational problem expensive enough to accept an institutional subscription of $X MXN/month above what an individual user would pay for a workout app. <br><strong>If false:</strong> there is no value differential between 'for the studio' and 'for me', and the price must anchor to the consumer app range (60-150 MXN), forcing a low-ticket B2C model instead of B2B."</li>
-            <li><strong>H2 Reformulated:</strong> "We believe adding visual stimuli and rankings to a reaction exercise increases motivation and the number of repetitions/touches compared to doing the same exercise without visual feedback—regardless of whether it's in a group, at home, or in a 1-on-1 session. <br><strong>If false:</strong> gamification doesn't change measurable behavior, reducing the product's value to a timer with lights."</li>
+            <li><strong>H1 Reformulated:</strong> "We believe a HIIT/functional studio owner currently pays for some tool or process to direct their circuits (an extra instructor, a timer, an app) and recognizes an operational problem expensive enough to accept an institutional subscription of $X MXN/month above what an individual user would pay for a training app.<br><strong>If false:</strong> there is no value differential between 'for the studio' and 'for me', and the price must anchor to the consumer app range (60–150 MXN), forcing a low-ticket B2C model instead of B2B."</li>
+            <li><strong>H2 Reformulated:</strong> "We believe adding visual stimuli and rankings to a reaction exercise increases motivation and the number of repetitions/touches compared with doing the same exercise without visual feedback, whether in a group, at home, or in a one-on-one session with a coach.<br><strong>If false:</strong> gamification doesn't change measurable behavior, and the product's value is reduced to a timer with lights."</li>
             <li><strong>H3:</strong> Remains unchanged.</li>
         </ul>
 
         <h3>New Hypothesis: Individual vs. Institutional Subscription Pricing</h3>
         <p>
-            <em>"We believe that if the product is sold as an individual subscription (not institutional), the price a gym user will accept is in the $79-149 MXN/month range—the same range they currently pay for Spotify, premium streaming apps (Peloton, Adidas), or wearable apps—and that a gym would be willing to subsidize or resell that subscription if the per-user price stays under that ceiling. <br><strong>If false:</strong> gym users don't value a reaction app at the same level as general fitness apps, and the real equilibrium price is lower (freemium with hardware upsell) or higher only if repositioned as a professional tool for the coach, not the student."</em>
+            <em>"We believe that if the product is sold as an individual subscription (not institutional), the price a gym user will accept is in the $79–149 MXN/month range, the same range they currently pay for Spotify, training streaming apps (like Peloton Digital or Adidas Training), or wearables with a premium app, and that a gym would be willing to subsidize or resell that subscription if the per-user price stays under that ceiling, or to pay a higher-priced subscription as long as the gym is the one offering the service.<br><strong>If false:</strong> gym users don't value a reaction app at the same level as a streaming or general fitness app, and the real equilibrium price is lower (freemium with a hardware upsell), or higher only if the product is repositioned as a professional tool for the coach rather than the student."</em>
         </p>
 
-        <h3>Validation Synthesis</h3>
+        <h3>Validation Synthesis (Questions and Answers)</h3>
         <ul>
-            <li><strong>What did we test?</strong> H1 (SaaS pricing), H2 (LED gamification UX), and H3 (hardware durability) through 4 validation interviews.</li>
-            <li><strong>What did we find?</strong> <br><strong>H1 pivots:</strong> the only available price data point (60-100 MXN) contradicts the $1,500-2,000 ticket, and no interviews were with the actual buyer (HIIT studio owner). <br><strong>H2 adjusted:</strong> genuine interest in gamification exists, but no specific evidence for "group classes" (interest skewed toward individual/home use). <br><strong>H3 untested:</strong> no interview evaluated durability.</li>
-            <li><strong>Crucial User Quote:</strong> <em>"It's free. Everything is free, there's no way to attach an economic part to it."</em> — Gym administrator, on the cost of not having a good reaction measurement solution.</li>
-            <li><strong>Concept Changes:</strong> Pivoted from "measuring reaction time" as the core value to "making a circuit more fun and motivating," with measurement as part of the game. The business model shifts from a high-ticket institutional SaaS toward hardware sales or a low-ticket individual subscription, pending validation with the correct buyer.</li>
+            <li><strong>1. Which hypotheses did we test?</strong> H1 (would a studio owner pay a $1,500–2,000 MXN/month SaaS subscription?), H2 (do LEDs and rankings improve the experience in group classes?), and H3 (does the hardware withstand daily commercial use?), through 4 validation interviews.</li>
+            <li><strong>2. What did we find: confirmed, adjusted, or pivoted?</strong><br><strong>H1 adjusted/pivoted:</strong> the only available price data point (60–100 MXN, like consumer apps) contradicts the $1,500–2,000 ticket, and none of the interviews was with the actual buyer (a HIIT studio owner).<br><strong>H2 partially adjusted:</strong> there is genuine interest in gamification, but no specific evidence for "group classes"; the interest showed up more for individual/home use.<br><strong>H3 untested:</strong> no interview could evaluate durability.</li>
+            <li><strong>3. The most important user quote:</strong> <em>"It's free. Everything is free, there's no way to put an economic part to it."</em> — the gym administrator, answering about the cost of not having a good reflex measurement solution.</li>
+            <li><strong>4. What changed in the concept (or why it stayed the same):</strong> <strong>The concept is adjusted:</strong> from "measuring reaction time" as the core value proposition to "making a circuit more fun and motivating," with measurement as part of the game rather than the main promise. The business model shifts from a high-ticket institutional SaaS toward hardware sales or a low-ticket individual subscription, until it is validated with the right buyer. The technology interaction (stimulus + touch + ranking) stays unchanged, because it still resonated in every interview.</li>
         </ul>
 
         <!-- Section 2: Market Opportunity -->
         <h2>2. Market Opportunity</h2>
-        
+
         <h3>Actionable Segment Profile</h3>
-        
-        <h4>Layer 1: Demographic (Who are they?)</h4>
+
+        <h4>Layer 1: Demographic (Who are they, in enough detail to find them?)</h4>
         <ul>
-            <li><strong>HYPOTHESIS:</strong> Boutique studios, HIIT gyms, CrossFit boxes, or functional training centers in Mexico.</li>
-            <li><strong>VERIFIED:</strong> Private fitness establishments identifiable by location, activity, and size in the DENUE database (>6 million economic units).</li>
-            <li><strong>Core Gap:</strong> The buyer persona is not yet precisely identified (owner, admin, head coach, or student).</li>
+            <li><strong>HYPOTHESIS:</strong> A boutique studio, HIIT gym, CrossFit box, or functional training center in Mexico. This is the segment the team defined, but no interview confirmed it as the priority buyer.</li>
+            <li><strong>HYPOTHESIS:</strong> A business offering high-intensity group classes, cardio-boxing, martial arts, agility, or circuits. The interviews mentioned boxing, martial arts, and agility as possible applications, but did not validate this combination as a homogeneous commercial niche.</li>
+            <li><strong>VERIFIED:</strong> A private fitness establishment identifiable by location, activity, and size in the DENUE database. This works as a location criterion, not as evidence of need. DENUE allows filtering establishments and reports more than 6 million economic units in total.</li>
+            <li><strong>HYPOTHESIS:</strong> A business located in a large city or an area with a concentration of premium studios. Secondary evidence shows boutique offerings and premium prices in CDMX, Monterrey, Guadalajara, and Mérida, but it does not prove those are the best markets for this product.</li>
+            <li><strong>HYPOTHESIS:</strong> An operation with enough classes or members to benefit from rankings. We still don't know the minimum number of members, classes, or coaches that makes the product economically attractive.</li>
+            <li><strong>Core Gap:</strong> The buyer role is not yet identified precisely enough: owner, administrator, head coach, coach, or member.</li>
         </ul>
 
-        <h4>Layer 2: Behavioral (What do they do today?)</h4>
+        <h4>Layer 2: Behavioral (What do they do today to solve the problem?)</h4>
         <ul>
-            <li><strong>VERIFIED:</strong> The interviewed coach uses traffic lights and whistles for reaction stimuli.</li>
-            <li><strong>VERIFIED:</strong> The boxer receives measurement as part of their coach's monthly fee.</li>
-            <li><strong>VERIFIED:</strong> The track athlete uses a Garmin watch but forgets to check the data.</li>
-            <li><strong>VERIFIED:</strong> The observable problem is friction in converting existing measurements into frequent training and motivation, not a lack of measuring instruments.</li>
+            <li><strong>VERIFIED:</strong> The interviewed coach uses a traffic light and whistles to work on stimuli and reaction.</li>
+            <li><strong>VERIFIED:</strong> The boxing athlete receives training and measurement as part of the coach's monthly fee; he does not pay for it separately.</li>
+            <li><strong>VERIFIED:</strong> The track athlete uses a Garmin watch that gives performance data, but often forgets to check it and has to ask the coach for it.</li>
+            <li><strong>VERIFIED:</strong> The administrator knows of free reaction speed tests and mentioned a sound-stimulus machine for taekwondo.</li>
+            <li><strong>VERIFIED:</strong> The administrator identified a similar Kigo device with rankings and code scanning at Plaza Solesta (requires direct follow-up verification).</li>
+            <li><strong>VERIFIED:</strong> The observable problem is the friction in turning existing measurements into frequent training, follow-up, and motivation, not a lack of measuring instruments.</li>
+            <li><strong>HYPOTHESIS:</strong> The target segment already uses wearables, screens, leaderboards, or performance software (only one Garmin in one athlete was confirmed, not a widespread B2B practice).</li>
+            <li><strong>HYPOTHESIS:</strong> The business takes measurements often enough to justify a dedicated device.</li>
+            <li><strong>HYPOTHESIS:</strong> The current solution includes reporting results to members, building rankings, or running challenges in class.</li>
+            <li><strong>HYPOTHESIS:</strong> The studio has a retention problem that it tries to solve through gamification and data.</li>
         </ul>
 
-        <h4>Layer 3: Psychographic (What moves them to change?)</h4>
+        <h4>Layer 3: Psychographic (What worries them, and what would move them to change?)</h4>
         <ul>
-            <li><strong>VERIFIED:</strong> <em>"What will truly generate change is daily training,"</em> not the device itself (Coach quote).</li>
-            <li><strong>VERIFIED:</strong> Motivation and engagement outweigh data precision.</li>
-            <li><strong>Core Gap:</strong> Insufficient evidence on trust criteria, AI perception, data privacy, or willingness to replace current processes.</li>
+            <li><strong>VERIFIED:</strong> <em>"What will truly generate change is daily training,"</em> not the device itself (coach quote).</li>
+            <li><strong>VERIFIED:</strong> <em>"How do I make it fun? How do I do it from an app?"</em> The administrator kept coming back to motivation and experience, not to precision.</li>
+            <li><strong>VERIFIED:</strong> Motivation and engagement seem to carry more weight than more precise data (preliminary pattern).</li>
+            <li><strong>HYPOTHESIS:</strong> The segment could value an experience that turns a measurement into daily practice, a challenge, or a ranking.</li>
+            <li><strong>HYPOTHESIS:</strong> The buyer would change if the system reduces the coach's work, makes results easy to check, and increases attendance.</li>
+            <li><strong>HYPOTHESIS:</strong> Technical accuracy alone would not be a strong enough reason to buy.</li>
+            <li><strong>EMERGING (commercial hypothesis):</strong> Including blind or visually impaired people could be a relevant value line (raised spontaneously by the administrator).</li>
+            <li><strong>Core Gap:</strong> There is not enough evidence on attitudes, trust criteria, perception of AI, data privacy, or willingness to replace current processes. We should not claim this segment is "innovative" or "premium" without observing concrete behavior.</li>
         </ul>
 
-        <h4>Layer 4: Economic (What does it cost and what will they pay?)</h4>
+        <h4>Layer 4: Economic (What does the problem cost, what could they pay, and who decides?)</h4>
         <ul>
-            <li><strong>VERIFIED:</strong> Interviewees do not currently pay specifically for reaction time measurement.</li>
-            <li><strong>VERIFIED:</strong> The only mentioned price anchor was 60–100 MXN/month (B2C personal expense perception).</li>
-            <li><strong>Core Gap:</strong> The economic cost of operational friction and the B2B willingness to pay are unknown.</li>
+            <li><strong>VERIFIED:</strong> Interviewees do not currently pay specifically to measure reaction time.</li>
+            <li><strong>VERIFIED:</strong> The boxing athlete has measurement included in the coach's monthly fee.</li>
+            <li><strong>VERIFIED:</strong> Using the Garmin and free tools lowers the direct monetary cost of the problem.</li>
+            <li><strong>VERIFIED:</strong> The current cost seems to be related more to time, forgetting, and manual follow-up than to buying measurement.</li>
+            <li><strong>VERIFIED:</strong> The only price anchor mentioned was 60–100 MXN per month (a B2C personal spending perception, not a business one).</li>
+            <li><strong>VERIFIED:</strong> A boutique class can cost approx. 250–300 MXN (secondary reference, not an available budget).</li>
+            <li><strong>HYPOTHESIS:</strong> The target studio has the budget to buy the device or pay for the app.</li>
+            <li><strong>HYPOTHESIS:</strong> The viable price is 60–100 MXN per user per month (not transferable to a B2B/HaaS scheme).</li>
+            <li><strong>HYPOTHESIS:</strong> The owner/administrator makes the purchase decision, and the coach influences it.</li>
+            <li><strong>HYPOTHESIS:</strong> The member would pay an individual subscription, or the business would pay per location/device.</li>
+            <li><strong>Critical Gap:</strong> We don't know the economic cost of the friction or the value of solving it (coach hours, affected members, retention, revenue per class, B2B willingness to pay).</li>
         </ul>
+
+        <h3>Level of Knowledge About the Segment</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Validation Status</th><th style="padding: 10px;">Layers and Observations</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Mostly VERIFIED</strong></td><td style="padding: 10px;"><strong>Layer 2 (Behavioral)</strong> and <strong>Layer 3 (Psychographic)</strong>, but <em>only</em> for the four people interviewed. Motivation, fun, and the use of current free tools are documented facts.<br>Some <strong>Layer 4</strong> data (no specific payment and the 60–100 MXN anchor).</td></tr>
+                <tr><td style="padding: 10px;"><strong>Mostly HYPOTHESES</strong></td><td style="padding: 10px;"><strong>Layer 1 (Demographic):</strong> it is not validated that boutique/HIIT studios are the buyer with the most pain.<br><strong>Layer 4 (Economic):</strong> no business willingness to pay and no quantified return.<br><strong>Layer 2:</strong> the real frequencies and operations of the B2B business are missing.</td></tr>
+            </tbody>
+        </table>
+</div>
 
         <h3>Priority Research Agenda</h3>
         <div class="table-wrapper">
-            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
-                <tbody>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Interview</strong></td>
-                        <td style="padding: 10px;">Owners and admins of at least three sub-segments separately: Box/CrossFit, Boxing/Martial Arts, and HIIT/Functional studios.</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee; background-color: #f9fff9;">
-                        <td style="padding: 10px;"><strong>Observe</strong></td>
-                        <td style="padding: 10px;">A full class to measure the current process: setup, stimuli application, data capture, and time invested.</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>B2B Metrics</strong></td>
-                        <td style="padding: 10px;">Ask about specific metrics: attendance, cancellations, retention, weekly classes, and monthly tech spend.</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee; background-color: #f9fff9;">
-                        <td style="padding: 10px;"><strong>Validate Payment</strong></td>
-                        <td style="padding: 10px;">Test a functional demo and request a verifiable action: paid pilot, deposit, or letter of intent.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Interview</strong></td><td style="padding: 10px;">Owners and administrators of at least three sub-segments separately: CrossFit boxes, boxing/martial arts, and HIIT/functional studios.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Observe</strong></td><td style="padding: 10px;">A full class, measuring the current process: setup, stimulus delivery, result capture, communication to the member, and time invested.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>B2B Metrics</strong></td><td style="padding: 10px;">Ask about concrete metrics: attendance, cancellations, retention, number of members, classes per week, and monthly technology spend.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Validate Payment</strong></td><td style="padding: 10px;">Test a working (not conceptual) demo and request a verifiable action: a paid pilot, a deposit, a letter of intent, or an introduction to the decision-maker.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Models</strong></td><td style="padding: 10px;">Compare three pricing schemes: per device, per-location subscription, and per-member subscription.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Inclusion</strong></td><td style="padding: 10px;">Research the opportunity with visually impaired people and specialized organizations separately (without mixing it into the fitness segment).</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>Critical Unverified Hypotheses</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Critical Hypothesis</th><th style="padding: 10px;">Status / Main Risk</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>The priority buyer is group fitness businesses</strong></td><td style="padding: 10px;">The interviews did not converge on HIIT/functional; nobody mentioned it spontaneously.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Gamification creates B2B economic value</strong></td><td style="padding: 10px;">Verbal interest in making training "fun" was validated, but not that it increases the studio's retention, revenue, or willingness to pay.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Clear differentiation from current solutions</strong></td><td style="padding: 10px;">Kigo, sound machines, and free apps already exist; "measuring with lights" is not yet a validated unique reason to buy.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Sustainable pricing model</strong></td><td style="padding: 10px;">The 60–100 MXN anchor is B2C. It has not been tested whether it can cover hardware, AI, support, installation, and margin.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>One-Sentence Profile &amp; Operative Conclusion</h3>
+        <p><strong>Provisional profile:</strong> A Mexican group training business that can currently handle measurement with free tools, a coach, whistles, traffic lights, or wearables, but could pay for a solution that turns that data into daily training, motivation, and follow-up within an app; <em>however, it is not yet verified that boutique, HIIT, CrossFit, or functional studios are the buying segment, or that there is business willingness to pay.</em></p>
 
         <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
-            <strong>Operative Conclusion:</strong> The hypothesized segment is not validated as a buying segment. What IS validated is a transversal problem of adoption and tracking, not measurement: <em>making training happen more frequently, making it more attractive, and requiring less manual labor.</em> The next experiment should sell an <strong>engagement and tracking pilot</strong> to a clearly identified business decision-maker.
+            <strong>Operative Conclusion:</strong> The hypothesized segment is not validated as a buying segment. What IS validated is a cross-cutting problem of adoption and follow-up, not of measurement: <em>making training happen more often, making it more attractive, and requiring less manual work.</em> The next experiment should sell an <strong>engagement and follow-up pilot</strong>, not a more precise sensor, to a clearly identified business decision-maker.
         </blockquote>
 
         <!-- Section 3: Bain's Pyramid -->
         <h2>3. Bain's Value Pyramid</h2>
-        
-        <div class="table-wrapper">
-            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
-                <thead>
-                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
-                        <th style="padding: 10px;">Level</th>
-                        <th style="padding: 10px;">Value</th>
-                        <th style="padding: 10px;">Beneficiary</th>
-                        <th style="padding: 10px;">Evidence</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Transformational</strong></td>
-                        <td style="padding: 10px;">Stimuli automation (replaces whistles)</td>
-                        <td style="padding: 10px;">Coach</td>
-                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Transformational</strong></td>
-                        <td style="padding: 10px;">Converting measurement to recurrent habit</td>
-                        <td style="padding: 10px;">Business / User</td>
-                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Emotional</strong></td>
-                        <td style="padding: 10px;">Motivation to train & Fun</td>
-                        <td style="padding: 10px;">End User</td>
-                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Emotional</strong></td>
-                        <td style="padding: 10px;">Sense of progress / Performance tracking</td>
-                        <td style="padding: 10px;">End User</td>
-                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;"><strong>Functional</strong></td>
-                        <td style="padding: 10px;">Reaction time & cadence measurement</td>
-                        <td style="padding: 10px;">User / Coach</td>
-                        <td style="padding: 10px; color: #28A745;">🟢 VERIFIED</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px;"><strong>Functional</strong></td>
-                        <td style="padding: 10px;">Portability / Ease of implementation</td>
-                        <td style="padding: 10px;">Business</td>
-                        <td style="padding: 10px; color: #ff9900;">🟡 HYPOTHESIS</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; font-family: monospace; text-align: center; line-height: 1.4; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
-                 ╔══════════════════════╗<br>
-                 ║    SOCIAL IMPACT     ║<br>
-                 ║  (hypothesis only —  ║<br>
-                 ║   no solid evidence  ║<br>
-                 ║   available yet)     ║<br>
-                 ╚══════════════════════╝<br>
-<br>
-              ╔════════════════════════════╗<br>
-              ║      TRANSFORMATIONAL      ║<br>
-              ║  Convert measurement into  ║<br>
-              ║     recurrent training     ║<br>
-              ║  (🟡 central hypothesis)   ║<br>
-              ╚════════════════════════════╝<br>
-<br>
-           ╔══════════════════════════════════╗<br>
-           ║             EMOTIONAL            ║<br>
-           ║   Motivation 🟢 · Fun 🟢         ║<br>
-           ║   Sense of progress 🟡           ║<br>
-           ╚══════════════════════════════════╝<br>
-<br>
-        ╔══════════════════════════════════════════╗<br>
-        ║                FUNCTIONAL                ║<br>
-        ║  Reaction/cadence measurement 🟢         ║<br>
-        ║  Rankings/visualization 🟡               ║<br>
-        ║  Portability 🟡                          ║<br>
-        ╚══════════════════════════════════════════╝
-        </div>
+        <h3>Bain's Elements of Value: Portable Gamification Ecosystem for HIIT</h3>
+
+        <h4>1. Segment Context (Critical Summary)</h4>
+        <p>The proposed segment (boutique studios, HIIT, CrossFit, functional) <strong>is not validated:</strong> of the 4 interviews conducted, none was with an owner or administrator of this type of business. The available evidence points to a broader problem of training adoption and follow-up, not to a lack of measuring instruments.</p>
+
+        <h4>2. Value Analysis by Level</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Level</th><th style="padding: 10px;">Value</th><th style="padding: 10px;">Beneficiary</th><th style="padding: 10px;">Evidence</th><th style="padding: 10px;">How It Is Generated</th><th style="padding: 10px;">What Still Needs Validation</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Social impact</strong></td><td style="padding: 10px;">Encouraging more frequent training habits</td><td style="padding: 10px;">End user</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 HYPOTHESIS</span></td><td style="padding: 10px;">By making measurement motivating, it would encourage training more regularly.</td><td style="padding: 10px;">That using the product actually increases training frequency, not just the perception of motivation.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Social impact</strong></td><td style="padding: 10px;">Greater access to structured training</td><td style="padding: 10px;">End user</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 NOT VALIDATED</span></td><td style="padding: 10px;">There is no direct evidence on accessibility in the interviews.</td><td style="padding: 10px;">No interview addressed access barriers; it would require specific research.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Transformational</strong></td><td style="padding: 10px;">Stimulus automation (replaces the traffic light/whistles)</td><td style="padding: 10px;">Coach</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 VERIFIED</span> (current method) / <span style="color: #ff9900;">🟡 HYPOTHESIS</span> (improvement)</td><td style="padding: 10px;">The coach already uses a traffic light and whistles manually; the product would automate that stimulus.</td><td style="padding: 10px;">That the coach perceives a real improvement (time, consistency) over the current method.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Transformational</strong></td><td style="padding: 10px;">Turning measurements into recurring training</td><td style="padding: 10px;">Business / User</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 HYPOTHESIS</span></td><td style="padding: 10px;">It is the central interpretation of the interviews: the problem is not measuring, it is sustaining the habit.</td><td style="padding: 10px;">That the product actually turns one-off measurements into recurring use (not just promises it).</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Transformational</strong></td><td style="padding: 10px;">Less manual work for the coach / serving more members</td><td style="padding: 10px;">Business / Coach</td><td style="padding: 10px;"><span style="color: #DC3545;">🔴 NOT VALIDATED</span></td><td style="padding: 10px;">There is no evidence that the coach wants or needs to delegate this task.</td><td style="padding: 10px;">No interview mentioned workload as a problem.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Emotional</strong></td><td style="padding: 10px;">Motivation to train</td><td style="padding: 10px;">End user</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 VERIFIED</span></td><td style="padding: 10px;">Motivation and fun came up as relevant themes in the interviews.</td><td style="padding: 10px;">That this specific product (not just the general idea) creates measurable motivation.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Emotional</strong></td><td style="padding: 10px;">Fun while training</td><td style="padding: 10px;">End user</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 VERIFIED</span></td><td style="padding: 10px;">Interviewees expressed interest in training being fun.</td><td style="padding: 10px;">That the product's gamification is perceived as fun, not as a gimmick.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Emotional</strong></td><td style="padding: 10px;">Sense of progress / performance tracking</td><td style="padding: 10px;">End user</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 HYPOTHESIS</span></td><td style="padding: 10px;">The track athlete uses a Garmin to see data, although he sometimes doesn't check it.</td><td style="padding: 10px;">That the product's visual tracking is used consistently, unlike the Garmin case.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Functional</strong></td><td style="padding: 10px;">Reaction time and cadence measurement</td><td style="padding: 10px;">User / Coach</td><td style="padding: 10px;"><span style="color: #28A745;">🟢 VERIFIED</span></td><td style="padding: 10px;">Similar solutions are already in use: traffic light, Garmin, free tests, Kigo device.</td><td style="padding: 10px;">That this measurement can be differentiated from the alternatives the interviewees already know.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Functional</strong></td><td style="padding: 10px;">Results visualization / rankings</td><td style="padding: 10px;">User / Business</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 HYPOTHESIS</span></td><td style="padding: 10px;">The Kigo device we identified already offers rankings and code scanning (market precedent).</td><td style="padding: 10px;">That rankings create economic value, not just functional value.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Functional</strong></td><td style="padding: 10px;">Portability / ease of implementation</td><td style="padding: 10px;">Business</td><td style="padding: 10px;"><span style="color: #ff9900;">🟡 HYPOTHESIS</span></td><td style="padding: 10px;">It is a product design attribute, with no direct evidence.</td><td style="padding: 10px;">That portability is a relevant factor for whoever makes the purchase decision.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>3. Building the Pyramid</h4>
+        <p>Only values with evidence (🟢) or a reasonable hypothesis (🟡) are placed in the pyramid; the 🔴 NOT VALIDATED ones are explicitly excluded.</p>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px; text-align: center;">
+<pre style="display: inline-block; text-align: left; margin: 0; font-family: monospace; line-height: 1.4; white-space: pre; background: none; border: none;">          ╔════════════════════════╗
+          ║     SOCIAL IMPACT      ║
+          ║   (hypothesis only —   ║
+          ║   no solid evidence    ║
+          ║          yet)          ║
+          ╚════════════════════════╝
+
+       ╔══════════════════════════════╗
+       ║       TRANSFORMATIONAL       ║
+       ║    Turn measurement into     ║
+       ║      recurring training      ║
+       ║   (🟡 central hypothesis)    ║
+       ╚══════════════════════════════╝
+
+    ╔════════════════════════════════════╗
+    ║             EMOTIONAL              ║
+    ║       Motivation 🟢 · Fun 🟢       ║
+    ║        Sense of progress 🟡        ║
+    ╚════════════════════════════════════╝
+
+╔════════════════════════════════════════════╗
+║                 FUNCTIONAL                 ║
+║      Reaction/cadence measurement 🟢       ║
+║         Rankings/visualization 🟡          ║
+║               Portability 🟡               ║
+╚════════════════════════════════════════════╝</pre>
+</div>
+        <p><em>Note: the social impact level does not have enough evidence to support any solid value; it is left empty by design, not filled in artificially.</em></p>
+
+        <h4>4. Value Prioritization</h4>
+        <p><strong>Top 3 Functional:</strong></p>
+        <ul>
+            <li><strong>Reaction time and cadence measurement:</strong> 🟢 VERIFIED (there is real use of alternatives: traffic light, Garmin, Kigo).</li>
+            <li><strong>Results visualization / rankings:</strong> 🟡 HYPOTHESIS (market precedent with Kigo, no evidence of payment).</li>
+            <li><strong>Portability / ease of implementation:</strong> 🟡 HYPOTHESIS (design attribute, not validated as a purchase criterion).</li>
+        </ul>
+        <p><strong>Top 3 Emotional:</strong></p>
+        <ul>
+            <li><strong>Motivation:</strong> 🟢 VERIFIED (mentioned directly by interviewees).</li>
+            <li><strong>Fun:</strong> 🟢 VERIFIED (mentioned directly by interviewees).</li>
+            <li><strong>Sense of progress:</strong> 🟡 HYPOTHESIS (mixed evidence: the Garmin case shows partial, inconsistent interest).</li>
+        </ul>
+        <p><strong>Greatest Transformational Potential:</strong></p>
+        <ul>
+            <li><strong>Turning measurements into recurring training:</strong> 🟡 HYPOTHESIS (it is the strongest reading of the interviews, but it is not proven with behavioral data).</li>
+        </ul>
+        <p><strong>Possible Social Impact Values:</strong></p>
+        <ul>
+            <li><strong>Encouraging more frequent training habits:</strong> 🟡 HYPOTHESIS (derived indirectly, not mentioned as such).</li>
+        </ul>
+
+        <h4>5. Critical Analysis</h4>
+        <p><strong>A. Where is the strongest value?</strong><br>
+        At the emotional level, specifically motivation and fun: these are the only values interviewees mentioned directly and repeatedly. The functional level shows that the problem (measuring reaction) is already solved in several ways (traffic light, Garmin, free tests, Kigo), which signals that measurement itself is not scarce. The transformational and social levels are, for now, interpretation.</p>
+
+        <p><strong>B. What seems to be the real problem?</strong><br>
+        The interviews suggest that the problem is not a lack of measurement, but the chain <strong>measurement → frequent training → motivation → follow-up</strong>: the athlete with the Garmin has data but sometimes doesn't check it; the boxer receives measurement as part of an existing service (the coach), not as something bought separately. This points to the real challenge being sustaining the habit and engagement, not instrumenting the measurement.</p>
+
+        <p><strong>C. Claims that are not yet proven:</strong></p>
+        <ul>
+            <li><strong>Retention:</strong> 🔴 There is no evidence that rankings increase retention or attendance.</li>
+            <li><strong>Churn:</strong> 🔴 No relevant dropout problem was identified in the interviews.</li>
+            <li><strong>Coach savings:</strong> 🔴 Not mentioned by any interviewee.</li>
+            <li><strong>Scalability:</strong> 🔴 Serving more members without hiring more staff is not validated.</li>
+            <li><strong>ROI and willingness to pay:</strong> 🔴 No B2B data. The 60–100 MXN range is personal spending, not an institutional price.</li>
+            <li><strong>Buying segment:</strong> 🟡 Unvalidated hypothesis (no interviewee was an owner/administrator of a HIIT studio).</li>
+            <li><strong>Differentiation:</strong> 🔴 At least one competitor has been identified (Kigo), and differentiation from it has not been proven.</li>
+        </ul>
+
+        <p><strong>D. Which value proposition should be tested first?</strong><br>
+        The hypothesis <em>"the business doesn't need more precision; it needs to turn measurement into a frequent, motivating, easy-to-follow training experience"</em> has moderate support. It rests on the motivation/fun themes that came up and on the pattern of underused data (the Garmin case). But it is still a hypothesis: we lack direct evidence from a HIIT gym owner confirming this is their priority problem, and evidence that solving it creates willingness to pay.</p>
+
+        <p><strong>E. What should the next commercial experiment test?</strong><br>
+        The experiment should aim directly at closing the gaps in section C, focusing on <strong>who buys and how much economic value they perceive</strong>, not only on validating the user experience. Stronger options than an opinion interview:</p>
+        <ol>
+            <li>A low-cost paid pilot (or a refundable deposit) with 2–3 real HIIT/CrossFit studios, to test whether the owner/administrator is willing to commit money.</li>
+            <li>A letter of intent signed by the purchase decision-maker, conditional on the pilot's results.</li>
+            <li>Testing two pricing models in parallel (per location vs. per device) to see which one reduces decision friction the most.</li>
+        </ol>
+        <p><em>The goal of this experiment is not to confirm that people "like" the product, but to find out whether there is a real buyer willing to pay to solve the measurement → habit → motivation chain, and at what price.</em></p>
 
         <!-- Section 4: TAM / SAM / SOM -->
         <h2>4. Market Sizing (TAM/SAM/SOM)</h2>
-        
-        <h3>TAM (Total Addressable Market)</h3>
-        <p>Starting universe: 30,242 private fitness establishments in Mexico (INEGI DENUE 05/2026).</p>
-        <ul>
-            <li>Filtered for in-person training: 18,145</li>
-            <li>Filtered for HIIT/Functional/CrossFit affinity: 8,165</li>
-            <li>Filtered for utility in group classes: 4,899</li>
-            <li>Filtered for willingness to pay (HW MXN 4,490–7,990 + B2B SW): <strong>1,715 establishments</strong></li>
-        </ul>
-        <p><strong>Annual TAM Value:</strong> MXN 30,407,520 (Hardware: ~MXN 11.9M + Recurring SaaS: ~MXN 18.5M).</p>
-
-        <h3>SAM (Serviceable Available Market)</h3>
-        <ul>
-            <li>Filtered for initial geography (CDMX, Edomex, GDL, MTY, PUE): 943</li>
-            <li>Filtered for recurrent group operations: 472</li>
-            <li>Filtered for commercial accessibility: 330</li>
-            <li>Filtered for actual payment capacity: <strong>198 establishments</strong></li>
-        </ul>
-        <p><strong>Annual SAM Value:</strong> MXN 3,510,144.</p>
-
-        <h3>SOM (Serviceable Obtainable Market - Years 1-2)</h3>
-        <p><strong>Goal:</strong> 45 paying gyms/studios (22.7% of SAM) via direct sales, demos, and coach alliances.</p>
-        <p><strong>Annual SOM Value:</strong> MXN 797,760 in gross revenue.</p>
-        
-        <p><strong>Viability Signal:</strong> Marginal. MXN 797,760 likely does not cover four salaries, app development, inventory, sales, support, and logistics. Lumetriq must reach 75-100 locations or increase the B2B SaaS price to MXN 1,199–1,499/month to be sustainable.</p>
-
-        <!-- Section 5: Competitive Analysis & Blue Ocean -->
-        <h2>5. Competitive Analysis & Blue Ocean Strategy</h2>
-        
-        <h3>The Most Dangerous Competitor</h3>
-        <p>
-            The most dangerous competitor is not BlazePod; it is the <strong>manual circuit with cones and a whistle</strong>. It has zero marginal cost, is the default language of training, and requires no budget approvals, connectivity, or charging. A high-tech app cannot easily displace a method a coach can improvise in seconds.
-        </p>
-        <p>
-            To win, Lumetriq must position itself as a class assistant that frees up the coach, not just another sports evaluation tool. The pitch is: <em>"The circuit runs itself, the athletes compete, and the coach goes back to focusing on correcting technique."</em>
-        </p>
-
-        <h3>Blue Ocean Strategy Canvas</h3>
-        
-        <div class="table-wrapper">
-            <table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
-                <thead>
-                    <tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;">
-                        <th style="padding: 10px;">Attribute (Score 1-5)</th>
-                        <th style="padding: 10px;">BlazePod</th>
-                        <th style="padding: 10px;">FITLIGHT</th>
-                        <th style="padding: 10px;">Manual Circuit (Cones)</th>
-                        <th style="padding: 10px;">Lumetriq</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">1. Hardware entry price (Accessibility)</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">2. Recurring software cost (Accessibility)</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">3. Speed & autonomy of setup</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">4. Advanced analytics depth <strong>[ELIMINATED]</strong></td>
-                        <td style="padding: 10px;">4</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;"><strong>0</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">5. Multimodal impact measurement <strong>[CREATED]</strong></td>
-                        <td style="padding: 10px;">0</td>
-                        <td style="padding: 10px;">0</td>
-                        <td style="padding: 10px;">0</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">6. Localization for Mexico</td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 10px;">7. Initial kit scalability</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">2</td>
-                        <td style="padding: 10px;">5</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 10px;">8. Persistent social progress <strong>[CREATED]</strong></td>
-                        <td style="padding: 10px;">1</td>
-                        <td style="padding: 10px;">0</td>
-                        <td style="padding: 10px;">0</td>
-                        <td style="padding: 10px;"><strong>4</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
         <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
-            <strong>The Winning Value Proposition:</strong><br>
-            "For HIIT, boxing, and functional coaches in Mexico: Lumetriq turns every reaction drill into a challenge your students want to repeat, with a leaderboard that fosters competition week after week—not just on the day of class."
+            <em><strong>Updated on November 25, 2026</strong> to match the Week 7 business case. The offering moved from the Starter (3 pods) and Studio (6 pods) packages with a monthly fee to <strong>a single 4-pod package with the subscription included in the price</strong>. This is the one-time payment that Week 4 itself recommended under "Pricing Implication." That is why the market is measured in <strong>packages</strong> and not only in gyms.</em>
         </blockquote>
 
-        <!-- Section 6: Reflection -->
-        <h2>6. Reflection and Key Takeaways</h2>
+        <h3>The Offering Being Sized</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Item</th><th style="padding: 10px;">Value (Year 1)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Lumetriq package (4 pods + subscription)</strong></td><td style="padding: 10px;">$6,000 with VAT · <strong>$5,172.41 before VAT</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Price per pod</strong></td><td style="padding: 10px;">$1,500 with VAT = $1,250 in hardware + $250 in subscription ($1,000 ÷ 4), which pays for the cloud server</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Packages per establishment</strong></td><td style="padding: 10px;"><strong>3 on average</strong>: 12 pods, a 12-station circuit for a group class</td></tr>
+                <tr><td style="padding: 10px;"><strong>Purchase per establishment</strong></td><td style="padding: 10px;">$18,000 with VAT · $15,517 before VAT</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h3>TAM (Total Addressable Market)</h3>
+        <p><strong>Starting universe:</strong> 30,242 private fitness establishments in Mexico (DENUE 05/2026, SCIAN class 713943). DENUE 05/2026 reports 6,138,075 establishments in total and allows filtering them by activity, location, and size.</p>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Filter Applied</th><th style="padding: 10px;">Resulting Establishments</th><th style="padding: 10px;">Justification</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>In-person training (60%)</strong></td><td style="padding: 10px;">18,145</td><td style="padding: 10px;">First-principles assumption; there is no specific public percentage.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Affinity with HIIT, functional, CrossFit, combat sports, and track (45%)</strong></td><td style="padding: 10px;">8,165</td><td style="padding: 10px;">First-principles assumption.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Usefulness of the system in group classes or sessions (60%)</strong></td><td style="padding: 10px;">4,899</td><td style="padding: 10px;">First-principles assumption.</td></tr>
+                <tr><td style="padding: 10px;"><strong>Willingness to pay for a $6,000 package with no monthly fee (60%)</strong></td><td style="padding: 10px;">2,939</td><td style="padding: 10px;">Higher than in the first version (35%) because there is no longer a monthly subscription, the barrier flagged by the interviews and the competitive analysis.</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Final TAM universe:</strong> 2,939 potential buying establishments × 3 packages = <strong>8,817 packages</strong></p>
+        <p><strong>TAM value:</strong> 8,817 × $5,172.41 = <strong>$45.6 million before VAT</strong> (initial purchase by the entire market)</p>
+
+        <h3>SAM (Serviceable Available Market)</h3>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Filter Applied</th><th style="padding: 10px;">Resulting Establishments</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Initial geography: CDMX, Edomex, Guadalajara, Monterrey, and Puebla (55%)</strong></td><td style="padding: 10px;">1,616</td></tr>
+                <tr><td style="padding: 10px;"><strong>Commercial accessibility: direct sales, social media, coaches, and partnerships (70%)</strong></td><td style="padding: 10px;">1,131</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>Final SAM universe:</strong> 1,131 establishments × 3 packages = <strong>3,393 packages</strong></p>
+        <p><strong>SAM value:</strong> 3,393 × $5,172.41 = <strong>$17.6 million before VAT</strong></p>
+        <p><em>Note: the SAM excludes public gyms, chains with corporate processes, centers without group classes, home users, and individual athletes. The group operation and payment capacity filters from the first version were moved into the TAM, so they are not counted twice.</em></p>
+
+        <h3>SOM (Serviceable Obtainable Market, Years 1–2)</h3>
+        <p><strong>Goal:</strong> <strong>800 packages</strong> in two years (300 in year 1 and 500 in year 2), ≈ <strong>267 gyms or studios</strong>. That is <strong>23.6% of the SAM</strong>, in line with the 22.7% of the first version.</p>
+        <p><strong>Go-to-market logic:</strong></p>
+        <ul>
+            <li><strong>Specific channel:</strong> in-person demos in functional, HIIT, and boxing classes; prospecting via Instagram and WhatsApp; and partnerships with coaches and distributors.</li>
+            <li><strong>Pilot geography:</strong> CDMX, Edomex, and Puebla in year 1; Guadalajara and Monterrey in year 2.</li>
+            <li><strong>Team capacity:</strong> in year 1, all 3 team members sell (100 establishments). With an 8% conversion rate, ≈ 1,250 demos per year are needed: 8 per person per week. From year 2, one employee joins for sales and support, and a second one in year 4.</li>
+            <li><strong>Commercial offer:</strong> a 4-pod package at $6,000 with VAT, subscription included; the typical gym buys 3 packages.</li>
+            <li><strong>Years 3–5:</strong> the plan reaches 3,700 packages in 5 years (42% of the TAM). To get there, we have to sell outside the 5 cities, and customers have to buy packages again to expand or replace pods.</li>
+        </ul>
+        <p><strong>SOM value:</strong> <strong>$4.35 million before VAT</strong> in years 1 and 2</p>
+        <ul>
+            <li><strong>Year 1:</strong> 300 × $5,172.41 = $1,551,724.</li>
+            <li><strong>Year 2:</strong> 500 × $5,603.45 = $2,801,724 (the price rises to $6,500 with VAT).</li>
+        </ul>
+
+        <h3>Viability Signal</h3>
+        <p><strong>SOM of 800 packages = $4.35 million in sales before VAT over 2 years</strong></p>
+        <ul>
+            <li><strong>Does it cover operating costs?</strong> <strong>Yes, but with a thin margin.</strong> The team draws no salary (it receives equity), and the employee only joins in year 2, so net income is positive from year 1: $112,647 in year 1 and $172,147 in year 2. The markup over unit cost is 11.6% in year 1 and 9.6% in year 2, when the first salary comes in. If components go up 10%, year 1 net income drops to $28,647.</li>
+            <li><strong>Strategic recommendation:</strong> Keep component costs under control ($1,000 per pod) and close sales of 3 packages per gym. Prices rise every year ($6,500 in year 2 and $8,500 in year 5), and with them the markup over cost reaches 24% in year 5. The investor gets back 214% of their investment in 5 years.</li>
+        </ul>
+
+        <h4>Plan Prices</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Product</th><th style="padding: 10px;">Price (MXN, with VAT)</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Lumetriq package: 4 pods + subscription ($1,000)</strong></td><td style="padding: 10px;">$6,000 (year 1) → $8,500 (year 5)</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Price per pod</strong></td><td style="padding: 10px;">$1,500 = $1,250 in hardware + $250 in subscription</td></tr>
+                <tr><td style="padding: 10px;"><strong>Average purchase per gym (3 packages)</strong></td><td style="padding: 10px;"><strong>$18,000</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>Sources Used</h4>
+        <ul>
+            <li><strong>INEGI, DENUE 05/2026:</strong> reports 6,138,075 total establishments and allows analyzing them by activity, location, and size. It defines the directory as the source for identifying active economic units.</li>
+            <li><strong>BlazePod:</strong> Starter Kit and Bundles (2024–2026). Reference for device packages, accessories, and international prices.</li>
+            <li><strong>BlazePod / Perform Better:</strong> app membership (2026). Reference for free and Pro plans.</li>
+            <li><strong>FITLIGHT:</strong> FITLIGHT System (2025–2026). Reference for a professional system and an app with no subscription.</li>
+            <li><strong>Lumetriq business case (Week 7):</strong> prices, packages sold per year, and net income.</li>
+        </ul>
+
+        <!-- Section 5: Competitive Analysis & Blue Ocean -->
+        <h2>5. Competitive Analysis &amp; Blue Ocean Strategy</h2>
+
+        <h3>Part 1: Competitive Positioning Map</h3>
+        <p><strong>Segment:</strong> Independent coaches and administrators of sports/university facilities in Mexico, especially for combat sports, track, and conditioning.</p>
+        <p><em>Criterion: "Direct" means it competes with app-controlled interactive lights/panels for reaction training. "Indirect" solves the same need (improving reaction, agility, or circuit autonomy) with another technology. Prices are public international references; they do not necessarily include import costs, VAT, distribution, or service in Mexico.</em></p>
+
+        <h4>Direct Competitors</h4>
+        <ul>
+            <li><strong>BlazePod:</strong> A system of wireless light pods controlled by an app, with random stimuli, configurable exercises, real-time data, and competitive dynamics. Operates globally; available for international purchase. Kits from US$439, with free app plans and Pro memberships around US$12.99/month.<br><strong>Specific weakness:</strong> the total cost in Mexico, adding import and the Pro subscription, is far above the segment's software anchor of MX$60–100 per month; in addition, the coach must manage the app and place several pods before class, so it does not fully eliminate operational friction.</li>
+            <li><strong>FITLIGHT:</strong> Wireless LED lights that turn off by touch or motion, with programmable exercises, results tracking, and individual or group use. Global, with direct shipping from the United States. System from US$999, with an app that has no subscription; each additional light is offered at around US$179.<br><strong>Specific weakness:</strong> it is designed and sold as professional/elite equipment, which makes it financially hard for a local gym or a Mexican university that prioritizes fun and competition over advanced neurocognitive analysis; shipping can also generate taxes and import costs, and the advertised warranty is one year.</li>
+            <li><strong>Lummic:</strong> A system of four to eight reaction lights with visual and auditory stimuli, touch sensors, games, and a free app with more than 40 programs. Global, mainly Europe; no documented local operation in Mexico. Four-light kits from approximately €241.88, six from €349.69, and eight from €459; the app is permanently free.<br><strong>Specific weakness:</strong> its proposal is broad and playful, but public information shows a multi-segment orientation (sports, children, and older adults) rather than a solution focused on combat or track circuits with class flow, group rankings, and quick setup for several athletes.</li>
+            <li><strong>ReactionX / VEGVISIR:</strong> Reaction pods with an app, touch, proximity, vibration, and sound sensors, battle modes, and an advertised precision of 0.01 seconds. Global; international distribution. Published packages from US$1,600 for four pods, although comparison distributors list some six-unit kits at roughly US$250–370, which suggests an inconsistent pricing/distribution structure.<br><strong>Specific weakness:</strong> the inconsistency between prices and channels makes institutional purchasing and budget comparison in Mexico difficult; there is also no localized offer for Mexican coaches who need support, local invoicing, Spanish content, and simple use during group classes.</li>
+        </ul>
+        <p><strong>Competitive reading:</strong> The first three are the benchmarks Lumetriq must beat in category perception. BlazePod is the closest rival because of its combination of hardware, app, randomness, and gamification; FITLIGHT dominates the professional perception; Lummic proves there is an alternative with a free app and less subscription friction.</p>
+
+        <h4>Indirect Competitors</h4>
+        <ul>
+            <li><strong>Quick Board:</strong> A pressure-sensitive physical board that provides real-time feedback to train reaction, speed, coordination, balance, and rehabilitation. Global, mainly the United States. Board from US$2,295–2,495, plus a software license of US$49.99 to US$199.99 per month depending on the number of athletes.<br><strong>Specific weakness:</strong> its fixed-board format concentrates training at one station and requires an investment and subscription incompatible with a Mexican gym that wants to move several athletes through a circuit; it is also geared more toward assessment, rehabilitation, and reporting than toward quick "first to touch wins" competition.</li>
+            <li><strong>Reaction Light Trainer / phone reaction apps:</strong> Apps that turn available smartphones or tablets into light stimuli and record performance without buying dedicated hardware. Global; available on the App Store and Google Play. Generally free or with in-app purchases.<br><strong>Specific weakness:</strong> it lowers the initial investment, but it does not solve Lumetriq's physical bottleneck well: athletes still have to approach a small screen or depend on strategically placed phones; in a combat or track class, the devices can move, get damaged, or be distracting, and they do not offer a rugged touch surface.</li>
+            <li><strong>QuickPLAY RXTR Pro Coach:</strong> A sports rebound panel with built-in visual lights and guided exercises, designed so the equipment "trains" the player without constant instructions from the coach. Global, mainly the UK/Europe. Around €129.99, with the option of connecting up to six reaction lights.<br><strong>Specific weakness:</strong> it focuses on passing, soccer, and rebound coordination, not on configurable spatial circuits for boxing, track, or institutional conditioning; in addition, a single panel limits the variety of paths and the simultaneous participation of a class.</li>
+            <li><strong>Cones and agility equipment with signals from a partner:</strong> Cone circuits where the coach or a partner shouts numbers, points at a cone, or uses a light/signal to indicate the next movement. Mexico, LATAM, and global; a widely accessible practice. Basic cones from a few hundred pesos per set.<br><strong>Specific weakness:</strong> cones are cheap and flexible, but they keep exactly the problem Lumetriq aims to eliminate: the coach must decide and communicate each stimulus, control the order, watch who responded first, and reset the circuit.</li>
+        </ul>
+
+        <h4>Substitutes</h4>
+        <ul>
+            <li><strong>Manual drill led by the coach (claps, whistle, shouting):</strong> The coach places cones, assigns zones, and gives an unpredictable auditory or verbal signal for the athlete to run, punch, block, or change direction. Low monetary cost (MX$100–500 for a whistle and cones); high operating cost (setup, voice, constant attention).<br><strong>Weakness against Lumetriq:</strong> it is the most deeply rooted substitute, but the coach becomes the system's "controller" and cannot simultaneously direct technique, safety, intensity, and individual correction.</li>
+            <li><strong>Tennis balls, reaction balls, or thrown stimuli:</strong> A coach or athlete throws objects irregularly to force catches, dodges, and quick decisions. Low monetary cost (MX$50–300 per object); operating cost depends on a partner.<br><strong>Weakness against Lumetriq:</strong> it produces a more realistic and cheaper reaction, but it does not generate a reproducible sequence, an automatic score, a ranking, or a progress history; nor does it let a single coach keep several circuits running.</li>
+            <li><strong>Interval timer or beep app:</strong> The coach uses a phone to generate intervals, sounds, or random signals while the athletes perform a previously explained pattern. Free or very low monetary cost.<br><strong>Weakness against Lumetriq:</strong> it automates timing, but not spatial direction, and it does not confirm who correctly deactivated the stimulus; the coach still has to call out the movement and settle disputes between athletes.</li>
+        </ul>
+
+        <h4>The Most Dangerous Competitor: The Manual Circuit with Cones and a Whistle</h4>
+        <p>The most dangerous competitor is not BlazePod: it is the current behavior of using cones, a ball, a whistle, and the coach's voice. It has an almost zero marginal cost, it is already part of the training language, it works with any sport, and it requires no budget approval, connectivity, battery charging, or technology training. An app can replace part of the randomness, but that is not enough to displace a method the coach already knows how to improvise in seconds.</p>
+        <p>To get users to switch, Lumetriq would have to sell less "advanced measurement" and more class flow:</p>
+        <ul>
+            <li>Set up a circuit in under a minute.</li>
+            <li>Let the coach pick a simple mode: "battle," "free-for-all," "defense," "change of direction," or "follow the light."</li>
+            <li>Trigger unpredictable stimuli without the coach having to shout instructions.</li>
+            <li>Automatically identify the correct touch and show who won each round.</li>
+            <li>Run small groups without each athlete needing an account.</li>
+            <li>Offer rankings, challenges, and basic progression without forcing an expensive B2B subscription.</li>
+            <li>Include Spanish content plus support, warranty, and invoicing suited to Mexico.</li>
+            <li>Keep an offline or low-internet-dependency experience.</li>
+        </ul>
+        <p>Lumetriq's opportunity, therefore, is to position itself as a class assistant that frees up the coach, not as another sports assessment system. Its advantage would have to be: <em>"the circuit runs itself, the athletes compete, and the coach goes back to focusing on correcting technique."</em></p>
+
+        <h4>Pricing Implication</h4>
+        <p>Lumetriq's price should not yet be set using only the cost of a MX$60–100 per month app as a reference. Direct competitors show that perceived value is concentrated mainly in the hardware, while the subscription can become a barrier: BlazePod charges for hardware plus a membership; FITLIGHT avoids the subscription but compensates with equipment costing approximately US$999; Lummic competes with a free app and lower-priced kits.</p>
+        <p>For this segment, the most coherent commercial hypothesis would be:</p>
+        <ul>
+            <li>A one-time payment for the physical kit as the main offer.</li>
+            <li>A free base app with routines, competition, and essential progress tracking.</li>
+            <li>Optional paid features, only if the customer sees them as useful: multiple groups, advanced history, an institutional dashboard, results export, or multi-location management.</li>
+            <li>A small, expandable starter kit, so a coach doesn't have to buy an 8–12 unit system from the start.</li>
+        </ul>
+        <p>That design would tackle both observable barriers at once: the rejection of expensive SaaS and the perception that imported systems are professional equipment outside a local gym's everyday budget.</p>
+
+        <span class="image fit"><img src="../assets/images/MAPA.jpeg" alt="Competitive positioning map for Lumetriq" /></span>
+
+        <h3>Part 2: Blue Ocean</h3>
+        <p><strong>Concept:</strong> Lumetriq<br>
+        <strong>Segment:</strong> Coaches and administrators of boutique, HIIT, CrossFit, and functional studios in Mexico, with high-intensity group classes, who currently direct their athletes' reaction training with manual methods (whistle, cones, timer) and refuse to pay for an expensive SaaS.</p>
+
+        <h4>Four Actions Framework</h4>
+        <p><strong>ELIMINATE: the concept will not offer</strong></p>
+        <ul>
+            <li><strong>Professional-level neurocognitive/sports analytics depth</strong> (scouting-style reports, clinical performance assessment). The segment's Layer 3 (psychographic) is explicit: they value motivation, variety, and competition ("first to touch wins") far above deep analysis. FITLIGHT already owns that professional/elite perception; competing there is a pure red ocean, and it also makes the product more expensive without the segment asking for it.</li>
+        </ul>
+        <p><strong>REDUCE: the concept will offer far below the industry standard</strong></p>
+        <ul>
+            <li><strong>Minimum starter kit size required to begin:</strong> the industry standard pushes kits of 4 to 8+ units (BlazePod sells in packs of 6, ReactionX from 4, FITLIGHT from 2 but with expensive additional units). The segment's Layer 4 (economic) rejects a high entry commitment and anchors its real willingness to buy to an accessible one-time payment, not to a complete system from day one.</li>
+        </ul>
+        <p><strong>RAISE: the concept will offer far above the industry standard</strong></p>
+        <ul>
+            <li><strong>Speed and autonomy of circuit setup</strong> (one-tap preset modes: "battle," "free-for-all," "change of direction"). The competitive map itself shows that neither BlazePod nor FITLIGHT removes the coach's operational friction: several pods have to be placed and the app managed before each class. Layer 2 (behavioral) confirms that the current method (claps, whistle) is already tedious; the goal is to free up the coach, not to give them another app to manage.</li>
+            <li><strong>Full localization for Mexico (language, support, warranty, invoicing):</strong> none of the four documented direct competitors operates locally in Mexico; all are global operations with no confirmed local presence. The team has direct knowledge of the target user (real Mexican coaches and gyms, interviewed) as a declared differentiating capability.</li>
+        </ul>
+        <p><strong>CREATE: the concept will introduce for the first time</strong></p>
+        <ul>
+            <li><strong>Multimodal impact measurement</strong> (force + acceleration/motion + proximity, not just binary reaction time). No competitor on the map measures punch intensity, only time/touch. It builds directly on the team's declared differentiating capability: integrated contact, force, accelerometer, and proximity sensors.</li>
+            <li><strong>Persistent social progress across sessions</strong> (comparison with group peers over time, not just within a single class or "battle mode"). Following Hevy's validated pattern, where sustained social comparison is what keeps the habit going, no documented reaction competitor offers this as a core product feature; BlazePod only offers competition within a session, not an accumulated social history.</li>
+        </ul>
+
+        <h4>Canvas Attributes &amp; Scoring Table (1 = very low · 5 = very high)</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Attribute</th><th style="padding: 10px;">BlazePod</th><th style="padding: 10px;">FITLIGHT</th><th style="padding: 10px;">Manual Circuit (Cones/Whistle)</th><th style="padding: 10px;">Lumetriq</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">1. Hardware entry price</td><td style="padding: 10px;">2</td><td style="padding: 10px;">1</td><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">2. Recurring software/subscription cost</td><td style="padding: 10px;">2</td><td style="padding: 10px;">5</td><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">3. Speed and autonomy of setup</td><td style="padding: 10px;">2</td><td style="padding: 10px;">2</td><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">4. Advanced analytics depth <strong>[ELIMINATED]</strong></td><td style="padding: 10px;">4</td><td style="padding: 10px;">5</td><td style="padding: 10px;">1</td><td style="padding: 10px;"><strong>0</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">5. Multimodal impact measurement <strong>[CREATED]</strong></td><td style="padding: 10px;">0</td><td style="padding: 10px;">0</td><td style="padding: 10px;">0</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">6. Localization for Mexico</td><td style="padding: 10px;">1</td><td style="padding: 10px;">1</td><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">7. Starter kit scalability</td><td style="padding: 10px;">2</td><td style="padding: 10px;">2</td><td style="padding: 10px;">5</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+                <tr><td style="padding: 10px;">8. Persistent social progress <strong>[CREATED]</strong></td><td style="padding: 10px;">1</td><td style="padding: 10px;">0</td><td style="padding: 10px;">0</td><td style="padding: 10px;"><strong>4</strong></td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><em>Note: attribute 4 is eliminated → 0 for Lumetriq. Attributes 5 and 8 are created → 0 for every competitor; attribute 8 was scored 1, not 0, for BlazePod because its product does explicitly mention "compete against others" within a session, although not a persistent social history across sessions like Hevy's. We document the difference instead of blindly forcing the rule.</em></p>
+
+        <h4>Strategy Canvas</h4>
+        <p>The previous table, plotted. Each line is one option's value curve; wherever the blue line separates from the others is where Lumetriq's advantage lies.</p>
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<svg viewBox="0 0 1000 585" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lumetriq strategy canvas against BlazePod, FITLIGHT, and the manual circuit across 8 attributes" style="width: 100%; min-width: 760px; height: auto;">
+<style>.ax{font:12px Arial,sans-serif;fill:#1b1f2a}.axb{font:bold 12px Arial,sans-serif;fill:#1b1f2a}.bl{font:bold 11px Arial,sans-serif;letter-spacing:.5px}.vl{font:bold 13px Arial,sans-serif;fill:#0d48d2}.cl{font:bold 11.5px Arial,sans-serif}.lg{font:12.5px Arial,sans-serif;fill:#1b1f2a}</style>
+<rect x="305.8" y="52" width="107.9" height="408" rx="6" fill="#e3ecff"></rect>
+<text class="bl" x="359.7" y="70" text-anchor="middle" fill="#032472">RAISE</text>
+<rect x="417.6" y="52" width="107.9" height="408" rx="6" fill="#fde2e2"></rect>
+<text class="bl" x="471.6" y="70" text-anchor="middle" fill="#b10a0a">ELIMINATE</text>
+<rect x="529.5" y="52" width="107.9" height="408" rx="6" fill="#dcf2e2"></rect>
+<text class="bl" x="583.4" y="70" text-anchor="middle" fill="#0b6b34">CREATE</text>
+<rect x="641.4" y="52" width="107.9" height="408" rx="6" fill="#e3ecff"></rect>
+<text class="bl" x="695.3" y="70" text-anchor="middle" fill="#032472">RAISE</text>
+<rect x="753.2" y="52" width="107.9" height="408" rx="6" fill="#fff1d6"></rect>
+<text class="bl" x="807.2" y="70" text-anchor="middle" fill="#8a5a00">REDUCE</text>
+<rect x="865.1" y="52" width="107.9" height="408" rx="6" fill="#dcf2e2"></rect>
+<text class="bl" x="919.1" y="70" text-anchor="middle" fill="#0b6b34">CREATE</text>
+<line x1="80" y1="460.0" x2="975" y2="460.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="464.0" text-anchor="end">0</text>
+<line x1="80" y1="393.0" x2="975" y2="393.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="397.0" text-anchor="end">1</text>
+<line x1="80" y1="326.0" x2="975" y2="326.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="330.0" text-anchor="end">2</text>
+<line x1="80" y1="259.0" x2="975" y2="259.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="263.0" text-anchor="end">3</text>
+<line x1="80" y1="192.0" x2="975" y2="192.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="196.0" text-anchor="end">4</text>
+<line x1="80" y1="125.0" x2="975" y2="125.0" stroke="#cfd5e0" stroke-width="1"></line>
+<text class="ax" x="70" y="129.0" text-anchor="end">5</text>
+<text class="axb" transform="translate(28,292) rotate(-90)" text-anchor="middle">Offering level (0 = not offered · 5 = very high)</text>
+<text class="axb" x="135.9" y="482" text-anchor="middle">1. Accessible</text>
+<text class="ax" x="135.9" y="498" text-anchor="middle">entry price</text>
+<text class="axb" x="247.8" y="482" text-anchor="middle">2. Low</text>
+<text class="ax" x="247.8" y="498" text-anchor="middle">recurring cost</text>
+<text class="axb" x="359.7" y="482" text-anchor="middle">3. Setup</text>
+<text class="ax" x="359.7" y="498" text-anchor="middle">speed</text>
+<text class="axb" x="471.6" y="482" text-anchor="middle">4. Advanced</text>
+<text class="ax" x="471.6" y="498" text-anchor="middle">analytics</text>
+<text class="axb" x="583.4" y="482" text-anchor="middle">5. Impact</text>
+<text class="ax" x="583.4" y="498" text-anchor="middle">measurement</text>
+<text class="axb" x="695.3" y="482" text-anchor="middle">6. Localization</text>
+<text class="ax" x="695.3" y="498" text-anchor="middle">for Mexico</text>
+<text class="axb" x="807.2" y="482" text-anchor="middle">7. Small starter</text>
+<text class="ax" x="807.2" y="498" text-anchor="middle">kit, expandable</text>
+<text class="axb" x="919.1" y="482" text-anchor="middle">8. Persistent</text>
+<text class="ax" x="919.1" y="498" text-anchor="middle">social progress</text>
+<polyline points="135.9,125.0 247.8,125.0 359.7,125.0 471.6,393.0 583.4,460.0 695.3,125.0 807.2,125.0 919.1,460.0" fill="none" stroke="#7a7a7a" stroke-width="2.2" stroke-dasharray="6 5" stroke-linejoin="round"></polyline>
+<rect x="130.4" y="119.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="242.3" y="119.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="354.2" y="119.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="466.1" y="387.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="577.9" y="454.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="689.8" y="119.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="801.7" y="119.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<rect x="913.6" y="454.5" width="11.0" height="11.0" fill="#7a7a7a"></rect>
+<polyline points="135.9,397.0 247.8,129.0 359.7,330.0 471.6,129.0 583.4,464.0 695.3,397.0 807.2,330.0 919.1,464.0" fill="none" stroke="#c62828" stroke-width="2.2" stroke-dasharray="2 4" stroke-linejoin="round"></polyline>
+<path d="M135.9 390.5 L142.4 402.5 L129.4 402.5 Z" fill="#c62828"></path>
+<path d="M247.8 122.5 L254.3 134.5 L241.3 134.5 Z" fill="#c62828"></path>
+<path d="M359.7 323.5 L366.2 335.5 L353.2 335.5 Z" fill="#c62828"></path>
+<path d="M471.6 122.5 L478.1 134.5 L465.1 134.5 Z" fill="#c62828"></path>
+<path d="M583.4 457.5 L589.9 469.5 L576.9 469.5 Z" fill="#c62828"></path>
+<path d="M695.3 390.5 L701.8 402.5 L688.8 402.5 Z" fill="#c62828"></path>
+<path d="M807.2 323.5 L813.7 335.5 L800.7 335.5 Z" fill="#c62828"></path>
+<path d="M919.1 457.5 L925.6 469.5 L912.6 469.5 Z" fill="#c62828"></path>
+<polyline points="135.9,322.0 247.8,322.0 359.7,322.0 471.6,188.0 583.4,456.0 695.3,389.0 807.2,322.0 919.1,389.0" fill="none" stroke="#e8833a" stroke-width="2.2" stroke-dasharray="10 4" stroke-linejoin="round"></polyline>
+<path d="M135.9 315.5 L142.4 322.0 L135.9 328.5 L129.4 322.0 Z" fill="#e8833a"></path>
+<path d="M247.8 315.5 L254.3 322.0 L247.8 328.5 L241.3 322.0 Z" fill="#e8833a"></path>
+<path d="M359.7 315.5 L366.2 322.0 L359.7 328.5 L353.2 322.0 Z" fill="#e8833a"></path>
+<path d="M471.6 181.5 L478.1 188.0 L471.6 194.5 L465.1 188.0 Z" fill="#e8833a"></path>
+<path d="M583.4 449.5 L589.9 456.0 L583.4 462.5 L576.9 456.0 Z" fill="#e8833a"></path>
+<path d="M695.3 382.5 L701.8 389.0 L695.3 395.5 L688.8 389.0 Z" fill="#e8833a"></path>
+<path d="M807.2 315.5 L813.7 322.0 L807.2 328.5 L800.7 322.0 Z" fill="#e8833a"></path>
+<path d="M919.1 382.5 L925.6 389.0 L919.1 395.5 L912.6 389.0 Z" fill="#e8833a"></path>
+<polyline points="135.9,192.0 247.8,192.0 359.7,192.0 471.6,460.0 583.4,192.0 695.3,192.0 807.2,192.0 919.1,192.0" fill="none" stroke="#0d48d2" stroke-width="4.5" stroke-linejoin="round"></polyline>
+<circle cx="135.9" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="247.8" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="359.7" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="471.6" cy="460.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="583.4" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="695.3" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="807.2" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<circle cx="919.1" cy="192.0" r="7.0" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<text class="vl" x="135.9" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="247.8" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="359.7" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="471.6" y="446.0" text-anchor="middle">0</text>
+<text class="vl" x="583.4" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="695.3" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="807.2" y="178.0" text-anchor="middle">4</text>
+<text class="vl" x="919.1" y="178.0" text-anchor="middle">4</text>
+<text class="cl" x="471.6" y="92" text-anchor="middle" fill="#b10a0a">Lumetriq drops to 0</text>
+<text class="cl" x="583.4" y="92" text-anchor="middle" fill="#0b6b34">Lumetriq only</text>
+<text class="cl" x="919.1" y="92" text-anchor="middle" fill="#0b6b34">almost only Lumetriq</text>
+<line x1="95" y1="560" x2="133" y2="560" stroke="#0d48d2" stroke-width="4.5"></line>
+<circle cx="114.0" cy="560.0" r="6.5" fill="#0d48d2" stroke="#fff" stroke-width="2"></circle>
+<text class="lg" x="141" y="564" font-weight="bold">Lumetriq</text>
+<line x1="245" y1="560" x2="283" y2="560" stroke="#e8833a" stroke-width="2.2" stroke-dasharray="10 4"></line>
+<path d="M264.0 554.0 L270.0 560.0 L264.0 566.0 L258.0 560.0 Z" fill="#e8833a"></path>
+<text class="lg" x="291" y="564">BlazePod</text>
+<line x1="395" y1="560" x2="433" y2="560" stroke="#c62828" stroke-width="2.2" stroke-dasharray="2 4"></line>
+<path d="M414.0 554.0 L420.0 565.0 L408.0 565.0 Z" fill="#c62828"></path>
+<text class="lg" x="441" y="564">FITLIGHT</text>
+<line x1="540" y1="560" x2="578" y2="560" stroke="#7a7a7a" stroke-width="2.2" stroke-dasharray="6 5"></line>
+<rect x="554.0" y="555.0" width="10" height="10" fill="#7a7a7a"></rect>
+<text class="lg" x="586" y="564">Manual circuit (cones and whistle)</text>
+</svg>
+<p style="margin-top: 12px; margin-bottom: 0;"><em><strong>How to read it.</strong> The colored columns are the four actions: <strong>eliminate</strong> (4), <strong>reduce</strong> (7), <strong>raise</strong> (3 and 6), and <strong>create</strong> (5 and 8). Lumetriq separates from BlazePod and FITLIGHT right there: it drops to 0 on advanced analytics and is the only one that rises on impact measurement and social progress. On price, setup, localization, and kit size, its curve gets closer to the manual circuit, the most dangerous competitor. For attributes 1, 2, and 7, the scale measures how favorable it is for the gym (5 = cheaper or easier to get started). Attribute 5 is the one Week 5 turned into a measurable requirement: the force of each punch with ≤ ±15% error (FR-03), using load cells under a floating plate.</em></p>
+</div>
+
+        <h4>Reading the Canvas</h4>
+        <p>Lumetriq's curve differs from the competitors' in:</p>
+        <ul>
+            <li><strong>Attribute 4 (Advanced analytics):</strong> it drops to 0 while BlazePod and FITLIGHT compete there; this is the clearest sign that Lumetriq is not playing the same game they are.</li>
+            <li><strong>Attribute 5 (Multimodal measurement):</strong> the only point where nobody else scores above 0; it is the real technical differentiator.</li>
+            <li><strong>Attribute 8 (Persistent social progress):</strong> also unique, and it is the product/experience differentiator (not just a hardware one).</li>
+            <li><strong>Attributes 1, 3, 6, and 7:</strong> Lumetriq gets closer to the manual circuit (the most dangerous competitor) rather than to BlazePod/FITLIGHT; the curve bends toward "simple and accessible" instead of "professional and expensive."</li>
+        </ul>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <strong>The blue ocean in one sentence:</strong><br>
+            Lumetriq does not compete to be the most precise or the cheapest reaction system, but to be the only one that combines real impact measurement (not just time), persistent social progress, and adoption friction close to that of the manual method the segment already uses, a space that no documented competitor occupies all at once today.
+        </blockquote>
+
+        <h4>Red Ocean Warning</h4>
+        <p>The scores of 4 on attributes 1, 2, 3, 6, and 7 are intentional design, not validated evidence: none of those numbers comes from a working prototype or from an interview with the real buyer (a HIIT/boutique studio owner). If, when building the product, the multimodal sensors make the hardware more expensive, or if the circuit takes more than a minute to set up in practice, those scores fall toward BlazePod's 2, and Lumetriq ends up competing on the same dimensions as its closest rival, without the price cushion of the manual circuit or FITLIGHT's professional reputation. In addition, the "Actionable Segment" itself points to an unresolved, contradictory hypothesis: that gyms "might be willing to pay a higher subscription." If that turns out to be true, attribute 2 moves toward BlazePod's SaaS model, the very model the segment's Layer 4 (economic) says it rejects.</p>
+
+        <h4>Key Question for the Team</h4>
+        <p><em>Will the real owner of a boutique/HIIT/CrossFit studio in Mexico (not a university gym administrator or an individual coach) pay an accessible one-time price for the hardware, and keep using the free app long enough to generate the persistent social progress (attribute 8) that sustains the habit? Or does their real willingness to pay lie, as the unresolved hypothesis suggests, in a higher institutional subscription in exchange for managing an on-screen leaderboard for the whole class?</em><br>
+        <strong>That answer decides whether Lumetriq looks more like the manual circuit with a technological leap, or ends up looking like BlazePod under another name.</strong></p>
+
+        <h3>Part 3: Value Proposition</h3>
+
+        <h4>Level in Bain's Pyramid</h4>
+        <ul>
+            <li><strong>Current level:</strong> <strong>Functional</strong></li>
+            <li><strong>Justification:</strong> the identified pain (monotony in reaction drills) and gain (gamifying the stimulus with lights, sound, and rankings) are described in terms of what the product does and what it solves, not in terms of how it makes the coach or athlete feel about themselves.</li>
+            <li><strong>Opportunity to move up:</strong> <strong>Yes, to Emotional</strong>, without exaggerating, because the segment's Layer 3 (psychographic) already opens the door: they value "competition" (first to touch wins) far above analytical data. That competitive drive and group pride are legitimate emotional material, not invented; moving up a level means naming that feeling, not promising life or identity transformation (that would skip a level without evidence).</li>
+        </ul>
+
+        <h4>IDEO Assessment</h4>
+        <ul>
+            <li><strong>Insightful ✅:</strong> no direct competitor (BlazePod, FITLIGHT) combines unpredictable stimuli + persistent social progress at an accessible entry price; the blue ocean gap already made this clear.</li>
+            <li><strong>Unique ⚠️:</strong> the real advantage (multimodal force/motion sensors) is hard to replicate, but the price of $1,500 per pod (a 4-pod package with the subscription included) has not yet been validated with the real buyer (a boutique/HIIT studio owner), so the uniqueness of "accessible" is a hypothesis, not a confirmed fact.</li>
+            <li><strong>Targeted ✅:</strong> the segment has all 4 layers well defined (who, what they do today, what they value, how much they pay), precisely enough to speak to them directly without sounding generic.</li>
+        </ul>
+
+        <h4>Developing the Value Proposition</h4>
+        <p><strong>VERSION 1: FUNCTIONAL</strong></p>
+        <p><em>"For HIIT, boxing, and functional coaches in Mexico: Lumetriq turns your reaction drills into a challenge with lights, sound, and rankings, without depending on a whistle or a timer."</em></p>
+        <ul>
+            <li><strong>Strength:</strong> it names the user, the result (a measurable challenge), and why not the current method (whistle/timer).</li>
+            <li><strong>Limitation:</strong> it stays at describing the product's mechanics; it doesn't convey why the athlete would care about playing again next week.</li>
+        </ul>
+        <p><strong>VERSION 2: EMOTIONAL</strong></p>
+        <p><em>"For HIIT, boxing, and functional coaches in Mexico: Lumetriq gets your students competing to be the fastest in the group, week after week, not just within one class."</em></p>
+        <ul>
+            <li><strong>Strength:</strong> it appeals directly to the "first to touch wins" that was already validated in the interviews; the hook is the pride of beating others, not just the exercise.</li>
+            <li><strong>Risk:</strong> if "week after week" is not backed by a real, visible progress history in the app, it sounds like an empty promise; it depends on the persistent ranking actually being built as a core feature, not as decoration.</li>
+        </ul>
+        <p><strong>VERSION 3: THE STRONGEST</strong></p>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <strong>"For HIIT, boxing, and functional coaches in Mexico: Lumetriq turns every reaction drill into a challenge your students want to repeat, with a leaderboard that keeps the competition going week after week, not just on the day of class."</strong>
+        </blockquote>
+        <p><strong>Why this is the strongest:</strong> it combines the functional (reaction drill, clear mechanics) with the emotional (wanting to repeat, competing across sessions) without losing either one. It also implicitly contrasts with the most dangerous competitor (the manual circuit generates no ranking or history) and with BlazePod (whose competition ends when the session ends), without naming them or sounding like a feature list.</p>
+
+        <h4>Offering vs. Value Proposition</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">Concept</th><th style="padding: 10px;">Definition for Lumetriq</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;"><strong>Product offering</strong><br><em>(What they sell)</em></td><td style="padding: 10px;">"Touch devices with contact, force, and accelerometer sensors, synchronized by an app through lights and sound, with reaction time metrics and a leaderboard, sold in 4-pod packages at $6,000 with the subscription included ($1,500 per pod)."</td></tr>
+                <tr><td style="padding: 10px;"><strong>Value proposition</strong><br><em>(Why they buy it)</em></td><td style="padding: 10px;">"For HIIT, boxing, and functional coaches in Mexico: Lumetriq turns every reaction drill into a challenge your students want to repeat, with a leaderboard that keeps the competition going week after week, not just on the day of class."</td></tr>
+            </tbody>
+        </table>
+</div>
+        <p><strong>The difference in one line:</strong> the offering describes sensors, price, and packages <em>from the manufacturer's point of view</em>; the proposition describes engagement and habit repetition <em>from the point of view of the coach and their students</em>. It moves from "what's in the box" to "why they'll want to use it again."</p>
+
+        <!-- Section 6: AI Concept Review -->
+        <h2>6. AI-Generated Concept: Does It Look Rugged?</h2>
+
+        <h3>Short Answer: No</h3>
+        <p>The images we got from Imagen 3 (Gemini) look good, but they show a <strong>consumer product</strong>, similar to a smart speaker. They don't look like gym equipment that takes punches from a boxer. The problem started with our prompt, not with the AI. This is what we asked for:</p>
+        <ul>
+            <li><em>"soft, biomorphic pebble-like dome"</em>: a soft, rounded stone.</li>
+            <li><em>"transitions seamlessly without visible joints into a smooth, glossy hard plastic outer shell"</em>: glossy plastic with no joints.</li>
+            <li><em>"two-prong quick-release mount… similar to action camera accessories"</em>: the mount of an action camera.</li>
+            <li><em>"exposed concentric copper metal contact rings"</em>: copper contacts in plain sight.</li>
+        </ul>
+        <p>Not a single word in the prompt mentioned loads, gloves, anchoring, or durability. The AI drew exactly what we asked for, and what we asked for can't take a punch.</p>
+        <blockquote style="border-left: 4px solid #0078D7; padding-left: 15px; background-color: #f4f8ff; padding: 15px; margin-top: 20px;">
+            <em>"The AI casually draws things that would never survive a punch." A pretty image does not validate the engineering; what makes the pod rugged are the Week 5 requirements.</em>
+        </blockquote>
+
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-top: 20px; margin-bottom: 20px;">
+<svg viewBox="0 0 2816 1536" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AI-generated triptych with 8 marked points that would not survive a punch" style="width: 100%; height: auto;">
+<image href="../assets/images/PRIMERA_PROPUESTA_DE_IMAGEN_SEGUN_PROMPT.jpg" x="0" y="0" width="2816" height="1536"></image>
+<line x1="95" y1="640" x2="205" y2="790" stroke="#ffffff" stroke-width="12"></line>
+<line x1="95" y1="640" x2="205" y2="790" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="205" cy="790" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="95" cy="640" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="95" y="659" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">1</text>
+<line x1="330" y1="1215" x2="430" y2="1045" stroke="#ffffff" stroke-width="12"></line>
+<line x1="330" y1="1215" x2="430" y2="1045" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="430" cy="1045" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="330" cy="1215" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="330" y="1234" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">2</text>
+<line x1="790" y1="560" x2="660" y2="700" stroke="#ffffff" stroke-width="12"></line>
+<line x1="790" y1="560" x2="660" y2="700" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="660" cy="700" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="790" cy="560" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="790" y="579" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">3</text>
+<line x1="1150" y1="1010" x2="1300" y2="885" stroke="#ffffff" stroke-width="12"></line>
+<line x1="1150" y1="1010" x2="1300" y2="885" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="1300" cy="885" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="1150" cy="1010" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="1150" y="1029" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">4</text>
+<line x1="1800" y1="1020" x2="1668" y2="920" stroke="#ffffff" stroke-width="12"></line>
+<line x1="1800" y1="1020" x2="1668" y2="920" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="1668" cy="920" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="1800" cy="1020" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="1800" y="1039" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">5</text>
+<line x1="1409" y1="1250" x2="1409" y2="1110" stroke="#ffffff" stroke-width="12"></line>
+<line x1="1409" y1="1250" x2="1409" y2="1110" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="1409" cy="1110" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="1409" cy="1250" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="1409" y="1269" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">6</text>
+<line x1="2600" y1="470" x2="2440" y2="560" stroke="#ffffff" stroke-width="12"></line>
+<line x1="2600" y1="470" x2="2440" y2="560" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="2440" cy="560" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="2600" cy="470" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="2600" y="489" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">7</text>
+<line x1="1990" y1="1090" x2="2110" y2="1005" stroke="#ffffff" stroke-width="12"></line>
+<line x1="1990" y1="1090" x2="2110" y2="1005" stroke="#d32f2f" stroke-width="6"></line>
+<circle cx="2110" cy="1005" r="12" fill="#d32f2f" stroke="#fff" stroke-width="4"></circle>
+<circle cx="1990" cy="1090" r="50" fill="#d32f2f" stroke="#fff" stroke-width="7"></circle>
+<text x="1990" y="1109" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="56" fill="#fff">8</text>
+</svg>
+<p style="margin-top: 12px; margin-bottom: 0; text-align: center;"><em>Triptych generated with Imagen 3 from our first prompt. The numbers mark what would not survive a punch; the table below explains each one.</em></p>
+</div>
+
+        <h4>What Fails and What Week 5 Requires</h4>
+        <div class="table-wrapper">
+<table class="alt" style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead><tr style="background-color: #f4f4f4; border-bottom: 2px solid #ccc;"><th style="padding: 10px;">#</th><th style="padding: 10px;">What the AI Drew</th><th style="padding: 10px;">Why It Wouldn't Survive a Punch</th><th style="padding: 10px;">Week 5 Requirement It Violates</th><th style="padding: 10px;">How the Design Solves It</th></tr></thead>
+            <tbody>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">1</td><td style="padding: 10px;">A small side mount (Reflex)</td><td style="padding: 10px;">A frontal punch of ≈ 1,500 N at ≈ 8 cm from the mount creates a lever of ≈ 120 N·m. With two screws ≈ 2.5 cm apart, the top one pulls with ≈ 4,800 N <strong>[Estimated]</strong>, more than a wall anchor can hold: the pod rotates or rips out of the wall.</td><td style="padding: 10px;">PR-02: 10,000 punches of ≈ 1,500 N and 3,500 N static without damage. IR-04: fixed to the wall without rotating or loosening.</td><td style="padding: 10px;">A steel wall plate almost the diameter of the pod (Ø 146 mm), joined to 4 M3 posts. The punch pushes the pod against the wall, with no lever.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">2</td><td style="padding: 10px;">A thin light strip on the edge, in the striking zone (Reflex)</td><td style="padding: 10px;">A glove that lands off-center hits the strip. A thin diffuser cracks, and the light can no longer be seen.</td><td style="padding: 10px;">PR-04: the stimulus must be visible at 3 m. That doesn't require the light to be where the punches land.</td><td style="padding: 10px;">An 18-LED arc behind a PETG diffuser, on the housing's lip and outside the Ø 120 mm pad.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">3</td><td style="padding: 10px;">A smooth, glossy dome with no cushioning thickness (Reflex and Fixed Strike)</td><td style="padding: 10px;">A convex face deflects the glove: punches glance off, and the same punch gives different readings. Glossy plastic scratches and cracks, and nothing visibly absorbs the impact.</td><td style="padding: 10px;">FR-03: force of each punch with ≤ ±15% error, and repeatable. PR-02.</td><td style="padding: 10px;">A flat faux leather pad over EVA (≈ 17 mm), like a focus mitt, mounted on the floating plate with the load cells.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">4</td><td style="padding: 10px;">A green light ring around the pad (Fixed Strike)</td><td style="padding: 10px;">It is exactly the edge that badly placed punches hit. It also leaves a groove where sweat and fingers get caught.</td><td style="padding: 10px;">PR-02 and PR-04.</td><td style="padding: 10px;">With a Ø 120 mm pad, a badly placed fist still lands on the pad and not on the light.</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">5</td><td style="padding: 10px;">An open slot on the side (all three concepts)</td><td style="padding: 10px;">Sweat and dust get into the electronics. A slot in a thin wall also concentrates stress: that is where the crack starts.</td><td style="padding: 10px;">PR-02. PETG housing with a 2.5–3 mm wall (Week 5, D.9).</td><td style="padding: 10px;">A closed housing. The only opening is the USB-C charging port (IR-04).</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">6</td><td style="padding: 10px;">A loose pod on the floor (Fixed Strike)</td><td style="padding: 10px;">Nothing holds it: a punch makes it slide or bounce. The measured force changes depending on where it ends up.</td><td style="padding: 10px;">FR-03: the same punch must give the same result regardless of mounting (difference ≤ 10%).</td><td style="padding: 10px;">The pod is anchored with its steel plate. That is why the final concept is wall-mounted (Fixed Reflex).</td></tr>
+                <tr style="border-bottom: 1px solid #eee;"><td style="padding: 10px;">7</td><td style="padding: 10px;">Exposed copper rings on the top face (Chain)</td><td style="padding: 10px;">They are electrical contacts on the face that gets punched: they take sweat and hits and can short-circuit.</td><td style="padding: 10px;">Week 5 contradiction C4: energized contacts on the striking surface.</td><td style="padding: 10px;">Stacking was removed; the pod charges via USB-C (IR-04).</td></tr>
+                <tr><td style="padding: 10px;">8</td><td style="padding: 10px;">A tower of three stacked pods (Chain)</td><td style="padding: 10px;">With no lock between modules, a punch knocks it over. The lights sit at the joints, which are the first thing to hit the floor in a fall.</td><td style="padding: 10px;">Week 5, change 5: stacking became optional because it was the riskiest subsystem.</td><td style="padding: 10px;">Each pod works on its own, fixed to the wall.</td></tr>
+            </tbody>
+        </table>
+</div>
+
+        <h4>What Makes an Object Look Rugged</h4>
+        <ul>
+            <li><strong>A shape with mass:</strong> a squat, heavy cylinder (Ø 160 × 75 mm, ≤ 1.6 kg), not a dome.</li>
+            <li><strong>Matte, textured materials:</strong> stitched faux leather and matte plastic with signs of use, not gloss.</li>
+            <li><strong>Visible hardware:</strong> it communicates that the pod is anchored and can be taken apart (NFR-06 from Week 5).</li>
+            <li><strong>Fragile parts, protected:</strong> the light and the port stay away from the striking zone.</li>
+            <li><strong>Human scale:</strong> a glove in the image shows the size and what it is for.</li>
+            <li><strong>Gym references:</strong> heavy bag mounts, racks, and focus mitts, not speakers or camera accessories.</li>
+        </ul>
+
+        <h4>Corrected Prompt (v2)</h4>
+        <p>This prompt translates the Week 5 requirements into visual language. It is written in English because the image generator interprets it better that way.</p>
+<div style="background-color: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #ddd; overflow-x: auto; margin-bottom: 20px;">
+<pre style="margin: 0; font-family: monospace; font-size: 0.85em; line-height: 1.5; white-space: pre-wrap; background: none; border: none;">Photorealistic product photo of a rugged smart boxing reaction pod bolted flat to a bare concrete gym wall, at the height of a boxer's head. A red 16 oz boxing glove is hitting the center of the pad, slight motion blur, for scale.
+
+Shape: a squat, heavy cylinder 160 mm in diameter and 75 mm deep. Not a dome, not a pebble.
+Striking pad: 120 mm diameter, flat, black stitched vinyl leather over dense foam about 17 mm thick, like a boxing focus mitt. The pad sits inside a raised protective lip of the housing.
+Housing: thick-walled matte charcoal polymer with a sandblasted texture, light scuffs and chalk marks from daily use.
+Mounting: the pod sits flush against the wall on a steel back plate almost its full diameter, with visible bolt heads, so it is obviously anchored. No side bracket, no quick-release clip.
+Light: a 120-degree arc of cyan LEDs recessed behind a thick frosted window in the housing lip, set back from the pad, glowing brightly.
+Ports: one USB-C charging port with a rubber cover on the side. No open slots, no vents, no exposed metal contacts.
+Style: industrial gym equipment, like heavy-bag mounts and squat-rack hardware. Even, realistic gym lighting.
+
+Avoid: glossy plastic, biomorphic or pebble shapes, seamless shells, thin light strips on the striking edge, copper contacts, stacked units, small side brackets.</pre>
+</div>
+
+        <h4>How to Evaluate the Next Render</h4>
+        <ol>
+            <li><strong>Where does a badly placed glove land?</strong> It must land on the pad or the lip, never on the light.</li>
+            <li><strong>How does the force travel to the wall?</strong> A direct path must be visible: pad, body, plate, and screws.</li>
+            <li><strong>What would break first?</strong> If the answer is "the light" or "the mount," the render is no good.</li>
+            <li><strong>Is the size clear?</strong> There must be a glove or a hand in the image.</li>
+        </ol>
+        <p><strong>Correct use of the image:</strong> the render is useful for communicating the product's intent. It is not useful for deciding the design. That decision is made with the requirements and their verification (PR-02: pendulum test with an inspection every 1,000 punches).</p>
+
+        <!-- Section 7: Reflection -->
+        <h2>7. Reflection and Key Takeaways</h2>
         <p>
-            This assignment was a massive reality check, particularly during the market sizing and competitive analysis. Calculating our TAM, SAM, and SOM revealed that capturing 45 initial customers wouldn't generate enough revenue (~$800K MXN) to sustain a startup team of four. This forced us to look at our pricing strategy critically: relying on low-ticket consumer SaaS pricing simply won't keep the lights on, meaning we either have to scale aggressively to 100+ studios quickly or pivot to a stronger B2B institutional pricing model.
+            This week taught us that validating is not the same as asking whether people like the idea. All four interviews showed interest in making training more fun, but none of them was with the person who actually pays, and the administrator's line, "it's free," made it clear that nobody pays to measure their reaction time today. The real problem is a different one: getting training to happen again and again, with follow-up and motivation. That is why our value proposition shifted from "measuring precisely" to "a challenge students want to repeat."
         </p>
         <p>
-            The Blue Ocean exercise was equally eye-opening. We realized our biggest competitor isn't BlazePod or FITLIGHT—it's the completely free, zero-friction method of a coach blowing a whistle and pointing at cones. Trying to compete on "elite sports analytics" (like FITLIGHT) is a red ocean that alienates our actual target market. Instead, by entirely eliminating deep analytics and focusing heavily on gamification (persistent social progress) and instant setup, we found a blue ocean. We aren't selling a clinical measurement device; we are selling a seamless, fun class experience that makes athletes want to come back the next week.
+            Sizing the market with TAM, SAM, and SOM pushed us to be transparent about where every number comes from. Most of the filters are assumptions, and the result (800 packages in two years, ≈ 267 gyms) is only profitable from year 1 because the team draws no salary, so the margin is thin. The competitive analysis showed us that our most dangerous rival is not BlazePod, but the cones and whistle the coach already uses for free. Plotting the Blue Ocean canvas made the advantage visible at a glance in a way the table alone never did: the one thing no competitor does is measure the impact of the punch, not just the time. In Week 5, that idea became a measurable requirement (FR-03) and a design decision: load cells under a floating plate.
+        </p>
+        <p>
+            We also learned to be suspicious of what AI makes look good. The concept images are attractive, but they describe a smart speaker rather than a device that takes punches, because the AI drew exactly what our prompt asked for. A rugged product doesn't come from adjectives; it comes from requirements that can be tested, like withstanding 10,000 punches of ≈ 1,500 N (PR-02) and mounting to the wall without a lever arm. Claude and Perplexity helped us structure the analysis, but we had to check every figure and every image against the sources, the interviews, and what the pod actually has to withstand.
         </p>
 
     </div>
 </div>
+
 
 		<!-- Footer -->
 		<footer id="footer">
